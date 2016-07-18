@@ -23,7 +23,6 @@
 		1747D1AF1D3C8570002C2EE1 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1AE1D3C8570002C2EE1 /* HistoryViewController.m */; };
 		1747D1B21D3C9A78002C2EE1 /* HistoryBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1B11D3C9A78002C2EE1 /* HistoryBoardView.m */; };
 		1747D1B51D3C9DBE002C2EE1 /* Computation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1B41D3C9DBE002C2EE1 /* Computation.m */; };
-		1747D1B71D3C9FFA002C2EE1 /* ComputationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1747D1B61D3C9FFA002C2EE1 /* ComputationCell.xib */; };
 		1747D1BD1D3CA1E5002C2EE1 /* ComputationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1BC1D3CA1E5002C2EE1 /* ComputationCell.m */; };
 		1747D1C01D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1BF1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m */; };
 		1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C21D3CB289002C2EE1 /* BaseView.m */; };
@@ -63,7 +62,6 @@
 		1747D1B11D3C9A78002C2EE1 /* HistoryBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryBoardView.m; sourceTree = "<group>"; };
 		1747D1B31D3C9DBE002C2EE1 /* Computation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Computation.h; path = Calculator/Computation.h; sourceTree = "<group>"; };
 		1747D1B41D3C9DBE002C2EE1 /* Computation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Computation.m; path = Calculator/Computation.m; sourceTree = "<group>"; };
-		1747D1B61D3C9FFA002C2EE1 /* ComputationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComputationCell.xib; sourceTree = "<group>"; };
 		1747D1BB1D3CA1E5002C2EE1 /* ComputationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputationCell.h; sourceTree = "<group>"; };
 		1747D1BC1D3CA1E5002C2EE1 /* ComputationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputationCell.m; sourceTree = "<group>"; };
 		1747D1BE1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ComputaionCell+ConfigureForComputation.h"; sourceTree = "<group>"; };
@@ -107,6 +105,8 @@
 		1747D17C1D3C6B36002C2EE1 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				1747D1C51D3CB78C002C2EE1 /* ArrayComputationDataSource.h */,
+				1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */,
 				1747D1C11D3CB289002C2EE1 /* BaseView.h */,
 				1747D1C21D3CB289002C2EE1 /* BaseView.m */,
 				1747D1941D3C6B8A002C2EE1 /* CalButton.h */,
@@ -115,22 +115,19 @@
 				1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */,
 				1747D1981D3C6B8A002C2EE1 /* CalView.h */,
 				1747D1991D3C6B8A002C2EE1 /* CalView.m */,
-				1747D1C51D3CB78C002C2EE1 /* ArrayComputationDataSource.h */,
-				1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */,
-				1747D1BB1D3CA1E5002C2EE1 /* ComputationCell.h */,
-				1747D1BC1D3CA1E5002C2EE1 /* ComputationCell.m */,
-				1747D1B61D3C9FFA002C2EE1 /* ComputationCell.xib */,
 				1747D1BE1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.h */,
 				1747D1BF1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m */,
+				1747D1BB1D3CA1E5002C2EE1 /* ComputationCell.h */,
+				1747D1BC1D3CA1E5002C2EE1 /* ComputationCell.m */,
 				1747D19A1D3C6B8A002C2EE1 /* constant.m */,
 				1747D19B1D3C6B8A002C2EE1 /* constants.h */,
 				1747D19C1D3C6B8A002C2EE1 /* factorial.h */,
 				1747D1B01D3C9A78002C2EE1 /* HistoryBoardView.h */,
 				1747D1B11D3C9A78002C2EE1 /* HistoryBoardView.m */,
-				1747D1AD1D3C8570002C2EE1 /* HistoryViewController.h */,
-				1747D1AE1D3C8570002C2EE1 /* HistoryViewController.m */,
 				1747D1C81D3CC1B1002C2EE1 /* HistorysViewController.h */,
 				1747D1C91D3CC1B1002C2EE1 /* HistorysViewController.m */,
+				1747D1AD1D3C8570002C2EE1 /* HistoryViewController.h */,
+				1747D1AE1D3C8570002C2EE1 /* HistoryViewController.m */,
 				1747D1861D3C6B36002C2EE1 /* Main.storyboard */,
 				1747D1A11D3C6B95002C2EE1 /* MainViewController.h */,
 				1747D1A21D3C6B95002C2EE1 /* MainViewController.m */,
@@ -227,7 +224,6 @@
 				1747D18D1D3C6B36002C2EE1 /* LaunchScreen.storyboard in Resources */,
 				1747D18A1D3C6B36002C2EE1 /* Assets.xcassets in Resources */,
 				1747D1881D3C6B36002C2EE1 /* Main.storyboard in Resources */,
-				1747D1B71D3C9FFA002C2EE1 /* ComputationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,7 +35,7 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     self.computationDataSource = [[ArrayComputationDataSource alloc]initWithItems:computations cellIdentifier:HistoryCellIdentifier configureCellBlock:configureCell];
     self.tableView.dataSource = self.computationDataSource;
     self.tableView.delegate = self;
-    [self.tableView registerNib:[ComputationCell nib] forCellReuseIdentifier:HistoryCellIdentifier];
+   
 }
 
 //#pragma mark UITableViewDataSource

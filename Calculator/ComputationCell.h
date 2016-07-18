@@ -12,5 +12,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *date;
 
 @property (weak, nonatomic) IBOutlet UILabel *expression;
-+ (UINib *)nib;
+
 @end

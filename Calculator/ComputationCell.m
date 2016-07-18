@@ -10,14 +10,10 @@
 
 @implementation ComputationCell
 
-+ (UINib *)nib
-{
-    return [UINib nibWithNibName:@"ComputationCell" bundle:nil];
-}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor redColor];
     // Initialization code
 }
 
@@ -25,6 +21,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    return self;
 }
 
 @end
