@@ -9,11 +9,13 @@
 #import "MainViewController.h"
 #import "constants.h"
 #import "CalculatorBrain.h"
+#import "HistoryViewController.h"
+#import "HistorysViewController.h"
 
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lastExpression;
 @property (weak, nonatomic) IBOutlet UILabel *input;
-@property (weak, nonatomic) IBOutlet UITableView *history;
+@property (weak, nonatomic) IBOutlet UIView *historyBoard;
 @property CalculatorBrain *brain;
 
 @property BOOL isFirstInput;
@@ -66,8 +68,25 @@
     [self.scrollView addSubview:self.stack2];
 
     [self start];
+    [self addHistoryTableView];
     
 }
+
+-(void)addHistoryTableView
+{
+    HistorysViewController *history =[[HistorysViewController alloc] init];
+
+    [self addChildViewController:history];
+    CGRect bounds = self.historyBoard.bounds;
+    NSLog(NSStringFromCGRect(bounds));
+  
+    history.view.frame = bounds;
+    history.view.backgroundColor = [UIColor grayColor];
+    history.view.layer.cornerRadius = 10;
+    [self.historyBoard addSubview:history.view];
+    [history didMoveToParentViewController:self];
+}
+
 
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
