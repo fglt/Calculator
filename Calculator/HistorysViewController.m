@@ -16,6 +16,9 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSArray *ta = @[@"7\n7",@"1+2+3"];
+    self.array =[NSMutableArray  arrayWithArray:ta];
+    self.count = 5;
     [self setupTableView];
 }
 
@@ -30,7 +33,7 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return self.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -46,11 +49,63 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     return cell;
 }
 
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
 #pragma mark UITableViewDelegate
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+      UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"cellSelectedController"];
+
+    controller.modalPresentationStyle = UIModalPresentationPopover;
+    [self presentViewController:controller animated:YES completion:nil];
     
+    // configure the Popover presentation controller
+    UIPopoverPresentationController *popController = [controller popoverPresentationController];
+    popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+    UIView *view = [tableView cellForRowAtIndexPath:indexPath];
+    popController.sourceView = view;
+    popController.sourceRect = view.bounds;
 }
 
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray * indexPaths = [NSArray arrayWithObject:indexPath];
+    if (editingStyle == UITableViewCellEditingStyleDelete ) {
+        // Delete the row from the data source
+        if(indexPath.row>0){
+            self.count--;
+            [   tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+        }else{
+            [tableView reloadData];
+        }
+    }
+}
+
+//-(void)popover
+//{
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MainStoryBoardName bundle:nil];
+//    UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:FileTableNavigationID];
+//    
+//    CGFloat maxH = MIN(480, ([self.drawingDataSource.pathBL allPathFiles].count + 1) * 50);
+//    controller.preferredContentSize = CGSizeMake(200, maxH);
+//    // present the controller
+//    // on iPad, this will be a Popover
+//    // on iPhone, this will be an action sheet
+//    controller.modalPresentationStyle = UIModalPresentationPopover;
+//    [self presentViewController:controller animated:YES completion:nil];
+//    
+//    // configure the Popover presentation controller
+//    UIPopoverPresentationController *popController = [controller popoverPresentationController];
+//    popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+//    popController.barButtonItem = sender;
+//    
+//    popController.delegate = self;
+//
+//}
 @end
