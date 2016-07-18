@@ -74,11 +74,14 @@
 
 -(void)addHistoryTableView
 {
-    HistorysViewController *history =[[HistorysViewController alloc] init];
+    
+    UIStoryboard *mainStoryBoard = self.storyboard;
+    HistorysViewController *history = [mainStoryBoard instantiateViewControllerWithIdentifier:@"historyID"];
 
+   // 用下面这句代替上面是错误的！！！！！导致computationCell创建失败！！！
+//    HistorysViewController *history = [[HistorysViewController alloc]init];
     [self addChildViewController:history];
     CGRect bounds = self.historyBoard.bounds;
-    NSLog(NSStringFromCGRect(bounds));
   
     history.view.frame = bounds;
     history.view.backgroundColor = [UIColor grayColor];

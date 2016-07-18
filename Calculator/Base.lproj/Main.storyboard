@@ -9,7 +9,7 @@
         <!--Historys View Controller-->
         <scene sceneID="Qgd-ew-PU2">
             <objects>
-                <tableViewController id="Qxc-qs-29F" customClass="HistorysViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="historyID" id="Qxc-qs-29F" customClass="HistorysViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UMQ-PE-xge">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,6 +46,7 @@
                                         <constraint firstItem="E4s-zL-G8B" firstAttribute="top" secondItem="NDe-Xs-Ma7" secondAttribute="top" id="mhe-t3-aDd"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="date" destination="h7e-et-wPI" id="Um0-s7-RZS"/>
                                     <outlet property="expression" destination="E4s-zL-G8B" id="q6k-v4-i9R"/>

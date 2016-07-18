@@ -36,10 +36,10 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ComputationCell *cell = [tableView dequeueReusableCellWithIdentifier:          HistoryCellIdentifier];
-    if(cell == nil)
-    {
-        cell = [[ComputationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HistoryCellIdentifier];
-    }
+//    if(cell == nil)
+//    {
+//        cell = [[ComputationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HistoryCellIdentifier];
+//    }
 
     cell.date.text = @"7\n17";
     cell.expression.text = @"1+2+3\n6";
