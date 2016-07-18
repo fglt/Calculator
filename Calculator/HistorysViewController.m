@@ -20,13 +20,51 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     self.array =[NSMutableArray  arrayWithArray:ta];
     self.count = 5;
     [self setupTableView];
+    [self setRefresh];
 }
 
 - (void)setupTableView
 {
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     //[self.tableView registerNib:[ComputationCell nib] forCellReuseIdentifier:HistoryCellIdentifier];
+}
+
+-(void)setRefresh{
+    UIRefreshControl *rc = [ [UIRefreshControl alloc] init];
+    rc.attributedTitle = [[NSAttributedString alloc] initWithString:@"松开清空记录"];
+    [rc addTarget:self action:@selector(clearHistory) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = rc;
+}
+
+-(void)clearHistory
+{
+    if(self.refreshControl.refreshing)
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"清空记录"
+                                    message:@"是否清空记录？"
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* noAction = [UIAlertAction actionWithTitle:@"No"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action){
+                                    [self.refreshControl endRefreshing];
+            
+        }];
+        UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"Yes"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction *action){
+                                        [self.refreshControl endRefreshing];
+                                        self.count = 0;
+                                        [self.tableView reloadData];
+                                        
+            
+        }];
+        
+        [alert addAction:noAction];
+        [alert addAction:yesAction];
+        [self presentViewController:alert animated:true completion:nil];
+    }
 }
 
 #pragma mark UITableViewDataSource

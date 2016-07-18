@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HistorysViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface HistorysViewController : UITableViewController
 @property NSMutableArray *array;
 @property u_long count;
 @end

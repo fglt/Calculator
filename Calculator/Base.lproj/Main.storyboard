@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="-1199" y="911"/>
         </scene>
-        <!--Historys View Controller-->
+        <!--History View Controller-->
         <scene sceneID="Qgd-ew-PU2">
             <objects>
-                <tableViewController storyboardIdentifier="historyID" id="Qxc-qs-29F" customClass="HistorysViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="historyID" id="Qxc-qs-29F" customClass="HistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="UMQ-PE-xge">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

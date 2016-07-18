@@ -12,4 +12,15 @@
 @property NSString* expression;
 @property NSString* result;
 @property NSDate* date;
+
+@end
+
+@protocol ComputationDelegate <NSObject>
+
+@required
+-(NSMutableArray*) findAllComputation;
+-(void) remove:(NSInteger)index;
+-(void) add:(Computation*)computation;
+-(void) removeAll;
+
 @end

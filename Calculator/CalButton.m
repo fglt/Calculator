@@ -86,16 +86,10 @@ IB_DESIGNABLE
         // Set the colors
         _backgroundLayer.colors = (@[
                                      (id)[UIColor colorWithRed:0.94f green:0.82f blue:0.52f alpha:1.00f].CGColor,
-                                     (id)[UIColor colorWithRed:0.91f green:0.55f blue:0.00f alpha:1.00f].CGColor
-                                     
-                                     
-                                     ]);
+                                     (id)[UIColor colorWithRed:0.91f green:0.55f blue:0.00f alpha:1.00f].CGColor]);
         
         // Set the stops
-        _backgroundLayer.locations = (@[
-                                        @0.0f,
-                                        @1.0f
-                                        ]);
+        _backgroundLayer.locations = (@[@0.0f,@1.0f]);
         
         // Add the gradient to the layer hierarchy
         [self.layer insertSublayer:_backgroundLayer atIndex:0];
@@ -111,10 +105,7 @@ IB_DESIGNABLE
                                               (id)[UIColor colorWithRed:0.91f green:0.55f blue:0.00f alpha:1.00f].CGColor,
                                               (id)[UIColor colorWithRed:0.94f green:0.82f blue:0.52f alpha:1.00f].CGColor
                                               ]);
-        _highlightBackgroundLayer.locations = (@[
-                                                 @0.0f,
-                                                 @1.0f
-                                                 ]);
+        _highlightBackgroundLayer.locations = (@[@0.0f,@1.0f]);
         [self.layer insertSublayer:_highlightBackgroundLayer atIndex:1];
     }
 }

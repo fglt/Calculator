@@ -12,4 +12,10 @@
 @synthesize expression;
 @synthesize result;
 @synthesize date;
+
+//-(id)initWithDictionary:(NSDictionary *)dict{
+//    self = [super init];
+//    self.date = [dict objectForKey:@"date"];
+//    self.date = [dict objectForKey:@"date"];
+//}
 @end

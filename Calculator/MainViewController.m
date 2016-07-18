@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *input;
 @property (weak, nonatomic) IBOutlet UIView *historyBoard;
 @property CalculatorBrain *brain;
+@property ComputationDao* computationDao;
+@property HistoryViewController* historyController;
 
 @property BOOL isFirstInput;
 @property BOOL isDotOK;
@@ -24,7 +26,7 @@
 @end
 
 @implementation MainViewController
-
+@synthesize historyController;
 @synthesize isFirstInput;
 @synthesize isDotOK;
 @synthesize isINFINITY;
@@ -37,7 +39,7 @@
 -(void) viewDidLoad
 {
     [super viewDidLoad];
-
+    self.computationDao = [ComputationDao singleInstance];
     self.scrollView.delegate = self;
     CGFloat scrollWidth = self.view.frame.size.width * 0.5 - 20;
     CGFloat scrollHeight = self.view.frame.size.height * 0.7 - 60;
@@ -76,18 +78,19 @@
 {
     
     UIStoryboard *mainStoryBoard = self.storyboard;
-    HistorysViewController *history = [mainStoryBoard instantiateViewControllerWithIdentifier:@"historyID"];
+    historyController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"historyID"];
 
    // 用下面这句代替上面是错误的！！！！！导致computationCell创建失败！！！
 //    HistorysViewController *history = [[HistorysViewController alloc]init];
-    [self addChildViewController:history];
+    [self addChildViewController:historyController];
     CGRect bounds = self.historyBoard.bounds;
-  
-    history.view.frame = bounds;
-    history.view.backgroundColor = [UIColor grayColor];
-    history.view.layer.cornerRadius = 10;
-    [self.historyBoard addSubview:history.view];
-    [history didMoveToParentViewController:self];
+   
+    historyController.view.frame = bounds;
+    historyController.view.backgroundColor = [UIColor grayColor];
+    historyController.view.layer.cornerRadius = 10;
+    self.historyTable = (UITableView*)historyController.view;
+    [self.historyBoard addSubview:historyController.view];
+    [historyController didMoveToParentViewController:self];
 }
 
 
@@ -150,6 +153,12 @@
     }else{
         self.input.text = [ [NSNumber numberWithDouble:result] stringValue];
         isFirstInput = false;
+        Computation* computation = [[Computation alloc]init];
+        computation.date = [[NSDate alloc] init];
+        computation.expression = self.lastExpression.text;
+        computation.result = self.input.text;
+        [self.computationDao add:computation];
+        [historyController update];
     }
     
     //NSLog(operands);

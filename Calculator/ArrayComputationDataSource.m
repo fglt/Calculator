@@ -13,13 +13,15 @@
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic) NSString *cellIdentifier;
 @property (nonatomic) TableViewCellConfigureBlock configureCellBlock;
+@property (nonatomic, weak) ComputationDao* computationDao;
 @end
 
 @implementation ArrayComputationDataSource
--(id)initWithItems:(NSMutableArray *)anItems cellIdentifier:(NSString *)aCellIdentifier configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
+-(id)initWithCellIdentifier:(NSString *)aCellIdentifier configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
 {
     self = [super init];
-    self.items = anItems;
+    self.computationDao = [ComputationDao singleInstance];
+    self.items = [self.computationDao findAll];
     self.cellIdentifier = aCellIdentifier;
     self.configureCellBlock = [aConfigureCellBlock copy] ;
     return self;
@@ -30,6 +32,22 @@
     return self.items[indexPath.row];
 }
 
+-(void) delete:(NSInteger)index
+{
+    [self.items removeObjectAtIndex:index];
+    [self.computationDao remove:index];
+
+}
+
+-(void) deleteAll{
+    [self.items removeAllObjects];
+    [self.computationDao removeAll];
+}
+
+-(void) update{
+    self.items = [self.computationDao findAll];
+    
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -40,10 +58,30 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
     
     id item = [self itemAtIndexPath:indexPath];
     self.configureCellBlock(cell, item);
     return cell;
 }
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete ) {
+        // Delete the row from the data source
+        if(indexPath.row>0){
+            [self delete:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }else{
+            [tableView reloadData];
+        }
+    }
+    
+}
+
 @end

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ArrayComputationDataSource.h"
+#import "ComputationDao.h"
 
-@interface HistoryViewController : UITableViewController
+@interface HistoryViewController : UITableViewController<UITableViewDelegate>
 @property (nonatomic, strong) ArrayComputationDataSource *computationDataSource;
+@property (nonatomic, strong) ComputationDao* computationDao;
+-(void)update;
 @end

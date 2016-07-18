@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Computation.h"
+#import "ComputationDao.h"
 
 @interface MainViewController : UIViewController<UIScrollViewDelegate>
 
@@ -15,5 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView * scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl * pageControl;
+
+@property(nonatomic, strong) UITableView* historyTable;
 
 @end

@@ -28,6 +28,8 @@
 		1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C21D3CB289002C2EE1 /* BaseView.m */; };
 		1747D1C71D3CB78C002C2EE1 /* ArrayComputationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */; };
 		1747D1CA1D3CC1B1002C2EE1 /* HistorysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C91D3CC1B1002C2EE1 /* HistorysViewController.m */; };
+		1747D1F61D3D107B002C2EE1 /* HistoryPlistDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1F51D3D107B002C2EE1 /* HistoryPlistDelegate.m */; };
+		1747D1F91D3D1ACE002C2EE1 /* ComputationDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1F81D3D1ACE002C2EE1 /* ComputationDao.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,10 @@
 		1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayComputationDataSource.m; sourceTree = "<group>"; };
 		1747D1C81D3CC1B1002C2EE1 /* HistorysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistorysViewController.h; sourceTree = "<group>"; };
 		1747D1C91D3CC1B1002C2EE1 /* HistorysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistorysViewController.m; sourceTree = "<group>"; };
+		1747D1F41D3D107B002C2EE1 /* HistoryPlistDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryPlistDelegate.h; sourceTree = "<group>"; };
+		1747D1F51D3D107B002C2EE1 /* HistoryPlistDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryPlistDelegate.m; sourceTree = "<group>"; };
+		1747D1F71D3D1ACE002C2EE1 /* ComputationDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputationDao.h; sourceTree = "<group>"; };
+		1747D1F81D3D1ACE002C2EE1 /* ComputationDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputationDao.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,10 @@
 			children = (
 				1747D1B31D3C9DBE002C2EE1 /* Computation.h */,
 				1747D1B41D3C9DBE002C2EE1 /* Computation.m */,
+				1747D1F41D3D107B002C2EE1 /* HistoryPlistDelegate.h */,
+				1747D1F51D3D107B002C2EE1 /* HistoryPlistDelegate.m */,
+				1747D1F71D3D1ACE002C2EE1 /* ComputationDao.h */,
+				1747D1F81D3D1ACE002C2EE1 /* ComputationDao.m */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -240,6 +250,7 @@
 				1747D19D1D3C6B8A002C2EE1 /* CalButton.m in Sources */,
 				1747D1A91D3C6B96002C2EE1 /* MainViewController.m in Sources */,
 				1747D1BD1D3CA1E5002C2EE1 /* ComputationCell.m in Sources */,
+				1747D1F91D3D1ACE002C2EE1 /* ComputationDao.m in Sources */,
 				1747D1AF1D3C8570002C2EE1 /* HistoryViewController.m in Sources */,
 				1747D1CA1D3CC1B1002C2EE1 /* HistorysViewController.m in Sources */,
 				1747D17F1D3C6B36002C2EE1 /* main.m in Sources */,
@@ -247,6 +258,7 @@
 				1747D1A01D3C6B8A002C2EE1 /* constant.m in Sources */,
 				1747D1C71D3CB78C002C2EE1 /* ArrayComputationDataSource.m in Sources */,
 				1747D19F1D3C6B8A002C2EE1 /* CalView.m in Sources */,
+				1747D1F61D3D107B002C2EE1 /* HistoryPlistDelegate.m in Sources */,
 				1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */,
 				1747D1AA1D3C6B96002C2EE1 /* NSString+Calculator.m in Sources */,
 				1747D1C01D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m in Sources */,
