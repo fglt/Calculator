@@ -7,8 +7,6 @@
 //
 
 #import "CalculatorViewController.h"
-#import "CalculatorBrain.h"
-#import "ComputationDao.h"
 #import "constants.h"
 
 
@@ -19,12 +17,8 @@ static NSString * const ErrorMessage = @"ERROR";
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
-@property CalculatorBrain *brain;
-@property ComputationDao* computationDao;
-
 @property (nonatomic, strong) NSString* expression;
-@property (nonatomic, strong) NSString* lastExpression;
-@property BOOL isComputable;
+
 @property BOOL isFirstInput;
 @property BOOL isDotOK;
 @property BOOL isINFINITY;
@@ -34,16 +28,21 @@ static NSString * const ErrorMessage = @"ERROR";
 @synthesize isFirstInput;
 @synthesize isDotOK;
 @synthesize isINFINITY;
-@synthesize brain;
-@synthesize isComputable;
+
 
 -(void) viewDidLoad
 {
     [super viewDidLoad];
+    [self configureScrollView];
+    [self start];    
+}
+
+-(void)configureScrollView
+{
     self.scrollView.delegate = self;
-    CGRect scrollFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-20);
+    //CGRect scrollFrame = CGRectMake(0, 0, 492, 477);
+    CGRect scrollFrame = CGRectMake(0, 0, self.view.frame.size.width * 0.5 - 20, self.view.frame.size.height * 0.7 - 60);
     
-    //如果没有此句，scrollview 疑问？
     self.scrollView.frame = scrollFrame;
     self.scrollView.contentSize = CGSizeMake(scrollFrame.size.width * 2, scrollFrame.size.height);
     
@@ -51,14 +50,11 @@ static NSString * const ErrorMessage = @"ERROR";
     
     _stack2.frame = CGRectMake( scrollFrame.size.width, 0, scrollFrame.size.width, scrollFrame.size.height);
     //
-    NSLog(@"%f, %f, %f , %f ",scrollFrame.origin.x, scrollFrame.origin.y, scrollFrame.size.width, scrollFrame.size.height);
+    NSLog(@"scrollFrame: %@",NSStringFromCGRect(scrollFrame));
     
     [self.scrollView addSubview:self.stack1];
     [self.scrollView addSubview:self.stack2];
     
-    
-    brain = [[ CalculatorBrain alloc] init];
-    [self start];    
 }
 
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
@@ -74,7 +70,6 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)clickDigit:(UIButton *)sender {
-    isComputable = true;
     if (isFirstInput){
         if(isINFINITY){
             self.expression = DefalultOfInput ;
@@ -89,7 +84,7 @@ static NSString * const ErrorMessage = @"ERROR";
     }
 }
 - (IBAction)clickDot:(UIButton *)sender {
-    isComputable = false;
+
     if(isINFINITY){
         self.expression = DefalultOfInput ;
         isINFINITY = false;
@@ -104,33 +99,10 @@ static NSString * const ErrorMessage = @"ERROR";
 - (IBAction)clickEqual:(UIButton *)sender {
     if(isFirstInput) return;
     [self.calculatorDelegate equal];
-    
-//    BOOL isEqualToLastExpression = false;
-//    
-//    if([_expression isEqualToString: self.lastExpression])
-//        isEqualToLastExpression = true;
-//    
-//    self.lastExpression = self.expression;
-//    
-//    _expression = [self.calculatorDelegate currentResult];
-//    [self.calculatorDelegate sendResult:_expression];
-//    isFirstInput = false;
-//    
-//    if(isEqualToLastExpression) return;
-//    
-//    Computation* computation = [[Computation alloc]init];
-//    computation.date = [[NSDate alloc] init];
-//    computation.expression = self.lastExpression;
-//    computation.result = self.resultLabel.text;
-//    
-//    [self.computationDao add:computation];
-//    [historyController update];
-    
-    //NSLog(operands);
+    self.expression = [self.calculatorDelegate  currentResult];
 }
 
 - (IBAction)clickOperator:(UIButton *)sender {
-    isComputable = false;
     
     if(isFirstInput){
         if( [sender.currentTitle isEqualToString:Add]||[sender.currentTitle isEqualToString:Minius]){
@@ -155,7 +127,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)ClickFunction:(UIButton *)sender {
-    isComputable = false;
+
     if(isFirstInput){
         self.expression = [sender.currentTitle stringByAppendingString:LeftBracket];
         isFirstInput = NO;
@@ -165,7 +137,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
-    isComputable = true;
+
     if(isFirstInput){
         self.expression = sender.currentTitle ;
     }else
@@ -174,10 +146,6 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)ClickPowerOrFactorial:(UIButton *)sender {
-    if([sender.currentTitle  isEqual: @"!"])
-        isComputable = true;
-    else
-        isComputable = false;
     
     NSString *  const jc = @"09)";
     NSString * text = self.expression;
@@ -190,7 +158,6 @@ static NSString * const ErrorMessage = @"ERROR";
 
 //改动：当最先输入时候修正
 - (IBAction)ClickSquare:(UIButton *)sender {
-    isComputable = false;
     if(isFirstInput){
         self.expression = sender.currentTitle;
         isFirstInput = false;
@@ -201,7 +168,6 @@ static NSString * const ErrorMessage = @"ERROR";
 
 
 - (IBAction)ClickLeftBracket:(UIButton *)sender {
-    isComputable = false;
     if(isFirstInput){
         self.expression = LeftBracket;
         isFirstInput = false;
@@ -212,7 +178,6 @@ static NSString * const ErrorMessage = @"ERROR";
     
 }
 - (IBAction)ClickRightBracket:(UIButton *)sender {
-    isComputable = false;
     if(!isFirstInput)
         self.expression = [self.expression stringByAppendingString:RightBracket];
     isDotOK = true;
@@ -225,12 +190,12 @@ static NSString * const ErrorMessage = @"ERROR";
 
 
 - (IBAction)deleteLastChar:(UIButton *)sender {
-    isComputable = true;
     NSString *text = self.expression;
     u_long l = text.length;
     
     if(l ==1){
         [self start];
+        self.expression = @"0";
         return ;
     }
     
@@ -260,27 +225,11 @@ static NSString * const ErrorMessage = @"ERROR";
     isFirstInput = true;
     isDotOK = true;
     isINFINITY = false;
-    isComputable = true;
 }
 
 -(void)setExpression:(NSString *)newValue
 {
     _expression = newValue;
-    //self.expressionLabel.text = _expression;
     [self.calculatorDelegate sendExpression:_expression];
-    if(isComputable){
-        brain.expression = _expression;
-        double result = [brain calculate];
-        if( result == INFINITY||result == -INFINITY)
-        {
-            [self.calculatorDelegate sendResult:ErrorMessage];
-            isINFINITY =true;
-            isFirstInput = true;
-            return ;
-        }
-        //self.resultLabel.text = [ [NSNumber numberWithDouble:result] stringValue];
-        [self.calculatorDelegate sendResult:[[NSNumber numberWithDouble:result] stringValue]];
-        
-    }
 }
 @end

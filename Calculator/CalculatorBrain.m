@@ -22,10 +22,16 @@
 @synthesize operators;
 @synthesize operands;
 
--(id) initWithInput:(NSString *)text{
-    expression = text;
+-(id)init{
+    self = [super init];
     operators =[ NSMutableArray array];
     operands =[ NSMutableArray array];
+    return self;
+}
+
+-(id) initWithInput:(NSString *)text{
+    self =  [self init];
+    expression = text;
     return  self;
 }
 

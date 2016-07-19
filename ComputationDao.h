@@ -18,4 +18,6 @@
 -(void) remove:(NSInteger) index;
 -(NSMutableArray *)findAll;
 -(void) removeAll;
+
+- (id)init NS_UNAVAILABLE;
 @end

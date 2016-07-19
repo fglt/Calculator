@@ -16,7 +16,7 @@
 
 static NSString * const HistoryCellIdentifier = @"HistoryCell";
 
-@interface HistoryViewController  () <CellSelectedControllerDelegate,UIPopoverPresentationControllerDelegate,ClearHistoryControllerDelegate>
+@interface HistoryViewController  () <CellSelectedControllerDelegate,ClearHistoryControllerDelegate>
 
 @end
 
@@ -55,28 +55,6 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 {
     if(self.refreshControl.refreshing)
     {
-//        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"清空记录"
-//                                                                       message:@"是否清空记录？"
-//                                                                preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction* noAction = [UIAlertAction actionWithTitle:@"No"
-//                                                           style:UIAlertActionStyleCancel
-//                                                         handler:^(UIAlertAction *action){
-//                                                             [self.refreshControl endRefreshing];
-//                                                             
-//                                                         }];
-//        UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"Yes"
-//                                                            style:UIAlertActionStyleDefault
-//                                                          handler:^(UIAlertAction *action){
-//                                                              [self.refreshControl endRefreshing];
-//                                                              [self.computationDataSource deleteAll];
-//                                                              [self.tableView reloadData];
-//                                                              
-//                                                              
-//                                                          }];
-//        
-//        [alert addAction:noAction];
-//        [alert addAction:yesAction];
-        
         ClearHistoryController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ClearHistory"];
         
         controller.delegate = self;
@@ -84,20 +62,20 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
         [self presentViewController:controller animated:YES completion:nil];
         UIPopoverPresentationController *popController = [controller popoverPresentationController];
         popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
-        popController.delegate = self;
         popController.sourceView = self.tableView;
-        popController.sourceRect = self.tableView.bounds;
+        popController.sourceRect = CGRectMake(self.tableView.bounds.size.width/4 ,self.tableView.bounds.size.height/4,self.tableView.bounds.size.width/2, self.tableView.bounds.size.height/2);
+        [self.refreshControl endRefreshing];
         
     }
 }
 
 
-- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
-{
-    if(self.refreshControl.refreshing){
-        [self.refreshControl endRefreshing];
-    }
-}
+//- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
+//{
+//    if(self.refreshControl.refreshing){
+//        [self.refreshControl endRefreshing];
+//    }
+//}
 
 #pragma mark - UITableViewDelegate
 
@@ -136,13 +114,19 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 -(void)useResultAtIndex:(NSIndexPath*)indexPath
 {
     Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
-    [self.historyDelegate changeResult:com.result];
+    Computation *newCom = [[Computation alloc]init];
+    newCom.expression = com.result;
+    newCom.result = com.result;
+    [self.historyDelegate useComputation:newCom];
 }
 
 -(void)useExpressionAtIndex:(NSIndexPath*)indexPath
 {
     Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
-    [self.historyDelegate changeExpression:com.expression ];
+    Computation *newCom = [[Computation alloc]init];
+    newCom.expression = com.expression;
+    newCom.result = com.result;
+    [self.historyDelegate useComputation:com];
 }
 
 #pragma mark - ClearHistoryDelegate

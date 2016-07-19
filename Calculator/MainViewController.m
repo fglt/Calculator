@@ -20,26 +20,16 @@
 @property (weak, nonatomic) IBOutlet UIView *historyBoard;
 @property (weak, nonatomic) IBOutlet CalView *calView;
 
-@property CalculatorBrain *brain;
 @property ComputationDao* computationDao;
 @property HistoryViewController* historyController;
 
-@property (nonatomic, strong) NSString* expression;
 @property (nonatomic, strong) NSString* lastExpression;
-@property BOOL isFirstInput;
-@property BOOL isDotOK;
-@property BOOL isINFINITY;
-@property BOOL isComputable;
+@property CalculatorBrain *brain;
 @end
 
 @implementation MainViewController
 @synthesize historyController;
-@synthesize isFirstInput;
-@synthesize isDotOK;
-@synthesize isINFINITY;
-@synthesize isComputable;
 @synthesize brain;
-//@synthesize expression;
 
 -(BOOL) prefersStatusBarHidden
 {
@@ -48,8 +38,11 @@
 -(void) viewDidLoad
 {
     [super viewDidLoad];
+
     [self addHistoryTableView];
-    
+    [self addCalculatorViewController];
+    self.computationDao = [ComputationDao singleInstance];
+    self.brain = [[CalculatorBrain alloc] init];
 }
 
 -(void)addHistoryTableView
@@ -80,35 +73,66 @@
     CGRect bounds = self.calView.bounds;
     calViewController.calculatorDelegate =self;
     calViewController.view.frame = bounds;
+   
     [self.calView addSubview:calViewController.view];
     [calViewController didMoveToParentViewController:self];
+    
+    NSLog(@"calView: %@", NSStringFromCGRect(bounds));
+    NSLog(@"calView: %@", NSStringFromCGRect(self.historyBoard.bounds));
 }
 
+-(void)useComputation:(Computation *)computation
+{
+    self.expressionLabel.text = computation.expression;
+    self.resultLabel.text = computation.result;
+}
 
-//-(void)changeResult:(NSString*)result
-//{
-//    
-//}
-//-(void)changeExpression:(NSString*)expression
-//{
-//    
-//}
-//
-//-(NSString *)currentExpression
-//{
-//    
-//}
-//-(NSString *)currentResult
-//{
-//    
-//}
-//-(void) sendExpression:(NSString *)expression{
-//    
-//}
-//-(void) sendResult:(NSString *)result{
-//    
-//}
-//-(void) equal{
-//    
-//}
+-(NSString *)currentExpression
+{
+    return self.expressionLabel.text;
+}
+-(NSString *)currentResult
+{
+    return self.resultLabel.text;
+}
+
+-(void) sendExpression:(NSString *)expression{
+    self.expressionLabel.text = expression;
+    brain.expression = expression;
+    double result = [brain calculate];
+    if( result == INFINITY||result == -INFINITY)
+    {
+        self.resultLabel.text =@"😀";;
+
+        return ;
+    }
+    self.resultLabel.text = [ [NSNumber numberWithDouble:result] stringValue];
+}
+
+-(void) sendResult:(NSString *)result{
+    self.resultLabel.text = result;
+}
+
+-(void) equal{
+    BOOL isEqualToLastExpression = false;
+    if([self.resultLabel.text isEqualToString:@"∞"]){
+        return;
+    }
+
+    if([self.lastExpression isEqualToString: self.expressionLabel.text])
+        isEqualToLastExpression = true;
+
+    self.lastExpression = self.expressionLabel.text;
+    self.expressionLabel.text = self.resultLabel.text;
+
+    if(isEqualToLastExpression) return;
+
+    Computation* computation = [[Computation alloc]init];
+    computation.date = [[NSDate alloc] init];
+    computation.expression = self.lastExpression;
+    computation.result = self.resultLabel.text;
+
+    [self.computationDao add:computation];
+    [historyController update];
+}
 @end

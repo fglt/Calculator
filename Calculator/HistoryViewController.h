@@ -12,8 +12,7 @@
 
 @protocol HistoryViewControllerDelegate <NSObject>
 
--(void)changeResult:(NSString*)result;
--(void)changeExpression:(NSString*)expression;
+-(void)useComputation:(Computation*)computation;
 
 @end
 
