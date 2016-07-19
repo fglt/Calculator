@@ -13,11 +13,7 @@
 
 @interface MainViewController : UIViewController<UIScrollViewDelegate, HistoryViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIStackView *stack1;
-@property (weak, nonatomic) IBOutlet UIStackView *stack2;
 
-@property (weak, nonatomic) IBOutlet UIScrollView * scrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl * pageControl;
 
 @property(nonatomic, strong) UITableView* historyTable;
 
