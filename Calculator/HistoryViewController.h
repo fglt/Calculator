@@ -10,8 +10,16 @@
 #import "ArrayComputationDataSource.h"
 #import "ComputationDao.h"
 
+@protocol HistoryViewControllerDelegate <NSObject>
+
+-(void)changeResult:(NSString*)result;
+-(void)changeExpression:(NSString*)expression;
+
+@end
+
 @interface HistoryViewController : UITableViewController<UITableViewDelegate>
 @property (nonatomic, strong) ArrayComputationDataSource *computationDataSource;
 @property (nonatomic, strong) ComputationDao* computationDao;
+@property (nonatomic, weak) id<HistoryViewControllerDelegate> historyDelegate;
 -(void)update;
 @end

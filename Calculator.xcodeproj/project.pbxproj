@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170827B61D3DBCBB005B3CAD /* CellSelectedControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170827B51D3DBCBB005B3CAD /* CellSelectedControllerViewController.m */; };
+		170827B91D3DC8F5005B3CAD /* ClearHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170827B81D3DC8F5005B3CAD /* ClearHistoryController.m */; };
+		170827C61D3DFA14005B3CAD /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170827C51D3DFA14005B3CAD /* CalculatorViewController.m */; };
 		1747D17F1D3C6B36002C2EE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D17E1D3C6B36002C2EE1 /* main.m */; };
 		1747D1821D3C6B36002C2EE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1811D3C6B36002C2EE1 /* AppDelegate.m */; };
 		1747D1881D3C6B36002C2EE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1747D1861D3C6B36002C2EE1 /* Main.storyboard */; };
@@ -18,8 +21,6 @@
 		1747D1A01D3C6B8A002C2EE1 /* constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D19A1D3C6B8A002C2EE1 /* constant.m */; };
 		1747D1A91D3C6B96002C2EE1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1A21D3C6B95002C2EE1 /* MainViewController.m */; };
 		1747D1AA1D3C6B96002C2EE1 /* NSString+Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1A41D3C6B95002C2EE1 /* NSString+Calculator.m */; };
-		1747D1AB1D3C6B96002C2EE1 /* ScientificViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1A61D3C6B95002C2EE1 /* ScientificViewController.m */; };
-		1747D1AC1D3C6B96002C2EE1 /* StandardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1A81D3C6B95002C2EE1 /* StandardViewController.m */; };
 		1747D1AF1D3C8570002C2EE1 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1AE1D3C8570002C2EE1 /* HistoryViewController.m */; };
 		1747D1B21D3C9A78002C2EE1 /* HistoryBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1B11D3C9A78002C2EE1 /* HistoryBoardView.m */; };
 		1747D1B51D3C9DBE002C2EE1 /* Computation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1B41D3C9DBE002C2EE1 /* Computation.m */; };
@@ -27,12 +28,17 @@
 		1747D1C01D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1BF1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m */; };
 		1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C21D3CB289002C2EE1 /* BaseView.m */; };
 		1747D1C71D3CB78C002C2EE1 /* ArrayComputationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */; };
-		1747D1CA1D3CC1B1002C2EE1 /* HistorysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C91D3CC1B1002C2EE1 /* HistorysViewController.m */; };
 		1747D1F61D3D107B002C2EE1 /* HistoryPlistDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1F51D3D107B002C2EE1 /* HistoryPlistDelegate.m */; };
 		1747D1F91D3D1ACE002C2EE1 /* ComputationDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1F81D3D1ACE002C2EE1 /* ComputationDao.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170827B41D3DBCBB005B3CAD /* CellSelectedControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellSelectedControllerViewController.h; sourceTree = "<group>"; };
+		170827B51D3DBCBB005B3CAD /* CellSelectedControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellSelectedControllerViewController.m; sourceTree = "<group>"; };
+		170827B71D3DC8F5005B3CAD /* ClearHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearHistoryController.h; sourceTree = "<group>"; };
+		170827B81D3DC8F5005B3CAD /* ClearHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearHistoryController.m; sourceTree = "<group>"; };
+		170827C41D3DFA14005B3CAD /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		170827C51D3DFA14005B3CAD /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		1747D17A1D3C6B36002C2EE1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1747D17E1D3C6B36002C2EE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1747D1801D3C6B36002C2EE1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,8 +49,8 @@
 		1747D18E1D3C6B36002C2EE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1747D1941D3C6B8A002C2EE1 /* CalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalButton.h; sourceTree = "<group>"; };
 		1747D1951D3C6B8A002C2EE1 /* CalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalButton.m; sourceTree = "<group>"; };
-		1747D1961D3C6B8A002C2EE1 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
-		1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
+		1747D1961D3C6B8A002C2EE1 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorBrain.h; path = Calculator/CalculatorBrain.h; sourceTree = "<group>"; };
+		1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorBrain.m; path = Calculator/CalculatorBrain.m; sourceTree = "<group>"; };
 		1747D1981D3C6B8A002C2EE1 /* CalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalView.h; sourceTree = "<group>"; };
 		1747D1991D3C6B8A002C2EE1 /* CalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalView.m; sourceTree = "<group>"; };
 		1747D19A1D3C6B8A002C2EE1 /* constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constant.m; sourceTree = "<group>"; };
@@ -52,12 +58,8 @@
 		1747D19C1D3C6B8A002C2EE1 /* factorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = factorial.h; sourceTree = "<group>"; };
 		1747D1A11D3C6B95002C2EE1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		1747D1A21D3C6B95002C2EE1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		1747D1A31D3C6B95002C2EE1 /* NSString+Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Calculator.h"; sourceTree = "<group>"; };
-		1747D1A41D3C6B95002C2EE1 /* NSString+Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Calculator.m"; sourceTree = "<group>"; };
-		1747D1A51D3C6B95002C2EE1 /* ScientificViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScientificViewController.h; sourceTree = "<group>"; };
-		1747D1A61D3C6B95002C2EE1 /* ScientificViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScientificViewController.m; sourceTree = "<group>"; };
-		1747D1A71D3C6B95002C2EE1 /* StandardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardViewController.h; sourceTree = "<group>"; };
-		1747D1A81D3C6B95002C2EE1 /* StandardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandardViewController.m; sourceTree = "<group>"; };
+		1747D1A31D3C6B95002C2EE1 /* NSString+Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Calculator.h"; path = "Calculator/NSString+Calculator.h"; sourceTree = "<group>"; };
+		1747D1A41D3C6B95002C2EE1 /* NSString+Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Calculator.m"; path = "Calculator/NSString+Calculator.m"; sourceTree = "<group>"; };
 		1747D1AD1D3C8570002C2EE1 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		1747D1AE1D3C8570002C2EE1 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		1747D1B01D3C9A78002C2EE1 /* HistoryBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryBoardView.h; sourceTree = "<group>"; };
@@ -72,8 +74,6 @@
 		1747D1C21D3CB289002C2EE1 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		1747D1C51D3CB78C002C2EE1 /* ArrayComputationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayComputationDataSource.h; sourceTree = "<group>"; };
 		1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayComputationDataSource.m; sourceTree = "<group>"; };
-		1747D1C81D3CC1B1002C2EE1 /* HistorysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistorysViewController.h; sourceTree = "<group>"; };
-		1747D1C91D3CC1B1002C2EE1 /* HistorysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistorysViewController.m; sourceTree = "<group>"; };
 		1747D1F41D3D107B002C2EE1 /* HistoryPlistDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryPlistDelegate.h; sourceTree = "<group>"; };
 		1747D1F51D3D107B002C2EE1 /* HistoryPlistDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryPlistDelegate.m; sourceTree = "<group>"; };
 		1747D1F71D3D1ACE002C2EE1 /* ComputationDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputationDao.h; sourceTree = "<group>"; };
@@ -91,9 +91,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		170827BA1D3DC92B005B3CAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1747D1BE1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.h */,
+				1747D1BF1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m */,
+				1747D1BB1D3CA1E5002C2EE1 /* ComputationCell.h */,
+				1747D1BC1D3CA1E5002C2EE1 /* ComputationCell.m */,
+				1747D1B01D3C9A78002C2EE1 /* HistoryBoardView.h */,
+				1747D1B11D3C9A78002C2EE1 /* HistoryBoardView.m */,
+				1747D1981D3C6B8A002C2EE1 /* CalView.h */,
+				1747D1991D3C6B8A002C2EE1 /* CalView.m */,
+				1747D1C11D3CB289002C2EE1 /* BaseView.h */,
+				1747D1C21D3CB289002C2EE1 /* BaseView.m */,
+				1747D1941D3C6B8A002C2EE1 /* CalButton.h */,
+				1747D1951D3C6B8A002C2EE1 /* CalButton.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		1747D1711D3C6B36002C2EE1 = {
 			isa = PBXGroup;
 			children = (
+				1747D17D1D3C6B36002C2EE1 /* Supporting Files */,
 				1747D1C41D3CB6F5002C2EE1 /* Modal */,
 				1747D17C1D3C6B36002C2EE1 /* Calculator */,
 				1747D17B1D3C6B36002C2EE1 /* Products */,
@@ -113,37 +133,18 @@
 			children = (
 				1747D1C51D3CB78C002C2EE1 /* ArrayComputationDataSource.h */,
 				1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */,
-				1747D1C11D3CB289002C2EE1 /* BaseView.h */,
-				1747D1C21D3CB289002C2EE1 /* BaseView.m */,
-				1747D1941D3C6B8A002C2EE1 /* CalButton.h */,
-				1747D1951D3C6B8A002C2EE1 /* CalButton.m */,
-				1747D1961D3C6B8A002C2EE1 /* CalculatorBrain.h */,
-				1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */,
-				1747D1981D3C6B8A002C2EE1 /* CalView.h */,
-				1747D1991D3C6B8A002C2EE1 /* CalView.m */,
-				1747D1BE1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.h */,
-				1747D1BF1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m */,
-				1747D1BB1D3CA1E5002C2EE1 /* ComputationCell.h */,
-				1747D1BC1D3CA1E5002C2EE1 /* ComputationCell.m */,
-				1747D19A1D3C6B8A002C2EE1 /* constant.m */,
-				1747D19B1D3C6B8A002C2EE1 /* constants.h */,
-				1747D19C1D3C6B8A002C2EE1 /* factorial.h */,
-				1747D1B01D3C9A78002C2EE1 /* HistoryBoardView.h */,
-				1747D1B11D3C9A78002C2EE1 /* HistoryBoardView.m */,
-				1747D1C81D3CC1B1002C2EE1 /* HistorysViewController.h */,
-				1747D1C91D3CC1B1002C2EE1 /* HistorysViewController.m */,
+				170827C41D3DFA14005B3CAD /* CalculatorViewController.h */,
+				170827C51D3DFA14005B3CAD /* CalculatorViewController.m */,
+				170827B41D3DBCBB005B3CAD /* CellSelectedControllerViewController.h */,
+				170827B51D3DBCBB005B3CAD /* CellSelectedControllerViewController.m */,
+				170827B71D3DC8F5005B3CAD /* ClearHistoryController.h */,
+				170827B81D3DC8F5005B3CAD /* ClearHistoryController.m */,
 				1747D1AD1D3C8570002C2EE1 /* HistoryViewController.h */,
 				1747D1AE1D3C8570002C2EE1 /* HistoryViewController.m */,
 				1747D1861D3C6B36002C2EE1 /* Main.storyboard */,
 				1747D1A11D3C6B95002C2EE1 /* MainViewController.h */,
 				1747D1A21D3C6B95002C2EE1 /* MainViewController.m */,
-				1747D1A31D3C6B95002C2EE1 /* NSString+Calculator.h */,
-				1747D1A41D3C6B95002C2EE1 /* NSString+Calculator.m */,
-				1747D1A51D3C6B95002C2EE1 /* ScientificViewController.h */,
-				1747D1A61D3C6B95002C2EE1 /* ScientificViewController.m */,
-				1747D1A71D3C6B95002C2EE1 /* StandardViewController.h */,
-				1747D1A81D3C6B95002C2EE1 /* StandardViewController.m */,
-				1747D17D1D3C6B36002C2EE1 /* Supporting Files */,
+				170827BA1D3DC92B005B3CAD /* View */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -151,6 +152,9 @@
 		1747D17D1D3C6B36002C2EE1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1747D19A1D3C6B8A002C2EE1 /* constant.m */,
+				1747D19B1D3C6B8A002C2EE1 /* constants.h */,
+				1747D19C1D3C6B8A002C2EE1 /* factorial.h */,
 				1747D18B1D3C6B36002C2EE1 /* LaunchScreen.storyboard */,
 				1747D18E1D3C6B36002C2EE1 /* Info.plist */,
 				1747D1801D3C6B36002C2EE1 /* AppDelegate.h */,
@@ -159,11 +163,16 @@
 				1747D17E1D3C6B36002C2EE1 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		1747D1C41D3CB6F5002C2EE1 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				1747D1A31D3C6B95002C2EE1 /* NSString+Calculator.h */,
+				1747D1A41D3C6B95002C2EE1 /* NSString+Calculator.m */,
+				1747D1961D3C6B8A002C2EE1 /* CalculatorBrain.h */,
+				1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */,
 				1747D1B31D3C9DBE002C2EE1 /* Computation.h */,
 				1747D1B41D3C9DBE002C2EE1 /* Computation.m */,
 				1747D1F41D3D107B002C2EE1 /* HistoryPlistDelegate.h */,
@@ -244,15 +253,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1747D1AC1D3C6B96002C2EE1 /* StandardViewController.m in Sources */,
 				1747D1821D3C6B36002C2EE1 /* AppDelegate.m in Sources */,
 				1747D1B51D3C9DBE002C2EE1 /* Computation.m in Sources */,
+				170827C61D3DFA14005B3CAD /* CalculatorViewController.m in Sources */,
 				1747D19D1D3C6B8A002C2EE1 /* CalButton.m in Sources */,
 				1747D1A91D3C6B96002C2EE1 /* MainViewController.m in Sources */,
+				170827B61D3DBCBB005B3CAD /* CellSelectedControllerViewController.m in Sources */,
+				170827B91D3DC8F5005B3CAD /* ClearHistoryController.m in Sources */,
 				1747D1BD1D3CA1E5002C2EE1 /* ComputationCell.m in Sources */,
 				1747D1F91D3D1ACE002C2EE1 /* ComputationDao.m in Sources */,
 				1747D1AF1D3C8570002C2EE1 /* HistoryViewController.m in Sources */,
-				1747D1CA1D3CC1B1002C2EE1 /* HistorysViewController.m in Sources */,
 				1747D17F1D3C6B36002C2EE1 /* main.m in Sources */,
 				1747D19E1D3C6B8A002C2EE1 /* CalculatorBrain.m in Sources */,
 				1747D1A01D3C6B8A002C2EE1 /* constant.m in Sources */,
@@ -263,7 +273,6 @@
 				1747D1AA1D3C6B96002C2EE1 /* NSString+Calculator.m in Sources */,
 				1747D1C01D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m in Sources */,
 				1747D1B21D3C9A78002C2EE1 /* HistoryBoardView.m in Sources */,
-				1747D1AB1D3C6B96002C2EE1 /* ScientificViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

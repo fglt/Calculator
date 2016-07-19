@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Computation.h"
 #import "ComputationDao.h"
+#import "HistoryViewController.h"
 
-@interface MainViewController : UIViewController<UIScrollViewDelegate>
+@interface MainViewController : UIViewController<UIScrollViewDelegate, HistoryViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIStackView *stack1;
 @property (weak, nonatomic) IBOutlet UIStackView *stack2;

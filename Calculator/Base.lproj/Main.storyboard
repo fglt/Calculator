@@ -6,10 +6,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--HistoryCellSelectedController-->
         <scene sceneID="rFR-jd-977">
             <objects>
-                <viewController storyboardIdentifier="cellSelectedController" id="XNy-AH-Ffv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cellSelectedController" title="HistoryCellSelectedController" id="XNy-AH-Ffv" customClass="CellSelectedControllerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wif-3Q-qeq"/>
                         <viewControllerLayoutGuide type="bottom" id="7zk-qb-I6U"/>
@@ -21,14 +21,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmf-FA-LQQ">
                                 <rect key="frame" x="128" y="10" width="43" height="30"/>
                                 <state key="normal" title="delete"/>
+                                <connections>
+                                    <action selector="onClickDelete:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="eet-Tg-8Sd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tZ-km-UkT">
                                 <rect key="frame" x="10" y="50" width="67" height="30"/>
                                 <state key="normal" title="use result"/>
+                                <connections>
+                                    <action selector="onClickUseResult:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="r0j-FA-gou"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ov-Mq-Bt2">
                                 <rect key="frame" x="187" y="50" width="103" height="30"/>
                                 <state key="normal" title="use expression"/>
+                                <connections>
+                                    <action selector="onClickUseExpression:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="8Kd-4P-sO4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,6 +57,673 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAS-yx-ubn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1199" y="911"/>
+        </scene>
+        <!--Clear History Controller-->
+        <scene sceneID="Tnf-75-tJw">
+            <objects>
+                <viewController storyboardIdentifier="ClearHistory" id="Wof-9w-rcS" customClass="ClearHistoryController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Dt-OG-EWH"/>
+                        <viewControllerLayoutGuide type="bottom" id="XyP-KK-FkZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rhT-f8-Qeh">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="clear history?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvk-kF-pTJ">
+                                <rect key="frame" x="0.0" y="0.0" width="103" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUg-zn-Iqt">
+                                <rect key="frame" x="70.5" y="38" width="59" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="onClickClear:" destination="Wof-9w-rcS" eventType="touchUpInside" id="rga-OG-EfA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jvk-kF-pTJ" firstAttribute="leading" secondItem="rhT-f8-Qeh" secondAttribute="leading" id="DOy-8Y-H96"/>
+                            <constraint firstItem="jvk-kF-pTJ" firstAttribute="top" secondItem="rhT-f8-Qeh" secondAttribute="top" id="EPj-q5-nHh"/>
+                            <constraint firstAttribute="bottom" secondItem="KUg-zn-Iqt" secondAttribute="bottom" id="HsL-RA-cXH"/>
+                            <constraint firstItem="KUg-zn-Iqt" firstAttribute="centerX" secondItem="rhT-f8-Qeh" secondAttribute="centerX" id="wfX-tb-gbq"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="80"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="80"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kOh-ka-1v0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2643" y="144"/>
+        </scene>
+        <!--Calculator View Controller-->
+        <scene sceneID="g7G-3k-RhR">
+            <objects>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" id="jwI-1F-rlX" userLabel="Stack View1">
+                    <rect key="frame" x="0.0" y="0.0" width="486" height="442"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gjc-hI-Zlo" userLabel="line2">
+                            <rect key="frame" x="0.0" y="0.0" width="486" height="42"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMi-ES-NBi">
+                                    <rect key="frame" x="0.0" y="0.0" width="91" height="42"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <state key="normal" title="+/-"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UT-zF-oYW">
+                                    <rect key="frame" x="99" y="3" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="("/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-ot-oDe">
+                                    <rect key="frame" x="197.5" y="3" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title=")"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDr-lQ-aRe">
+                                    <rect key="frame" x="296.5" y="3" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="C"/>
+                                    <connections>
+                                        <action selector="clearInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U7p-7n-KhS"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FX6-af-uLz">
+                                    <rect key="frame" x="395" y="3" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="DEL"/>
+                                    <connections>
+                                        <action selector="deleteLastChar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbV-gM-2Tc"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zWt-hn-kdB" userLabel="line3">
+                            <rect key="frame" x="0.0" y="86" width="486" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwd-uw-q6S">
+                                    <rect key="frame" x="0.0" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="EE"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCc-FF-B1J" customClass="CalButton">
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="7"/>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rVt-cC-2h6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaC-VK-0rk" customClass="CalButton">
+                                    <rect key="frame" x="197.5" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="8"/>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KxR-G4-J6q"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMw-x8-qDJ" customClass="CalButton">
+                                    <rect key="frame" x="296.5" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="9"/>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Si1-LH-MVp"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSk-he-zjl">
+                                    <rect key="frame" x="395" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="÷"/>
+                                    <connections>
+                                        <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xQC-Ob-WVy"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IMj-x6-QBA" userLabel="line4">
+                            <rect key="frame" x="0.0" y="166" width="486" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBr-hv-Hqj">
+                                    <rect key="frame" x="0.0" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="X2"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKh-Da-Kct" customClass="CalButton">
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="4"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="98" y="0.0" width="94" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ccb-iJ-msu"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSp-pn-m7g" customClass="CalButton">
+                                    <rect key="frame" x="197.5" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="5"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="197" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hVe-rc-kQ6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-Jy-Edi" customClass="CalButton">
+                                    <rect key="frame" x="296.5" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="6"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="295" y="0.0" width="94" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="owz-fd-RGw"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5L-Fh-Tjn">
+                                    <rect key="frame" x="395" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="+"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="393" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nac-Bh-RFK"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="u89-vq-Bbp" userLabel="line5">
+                            <rect key="frame" x="0.0" y="246" width="486" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDH-nF-bFR">
+                                    <rect key="frame" x="0.0" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="X3"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNc-RK-WiI" customClass="CalButton">
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="1"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="98" y="0.0" width="94" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LJW-61-IUm"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgL-wy-Lrv" customClass="CalButton">
+                                    <rect key="frame" x="197.5" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="2"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="197" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUy-9u-nPP"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVW-pN-0nh" customClass="CalButton">
+                                    <rect key="frame" x="296.5" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="3"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="295" y="0.0" width="94" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bUA-Tn-HlG"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKf-Ol-JHs">
+                                    <rect key="frame" x="395" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="-"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="393" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xqK-1j-Hkn"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ing-c0-rqh" userLabel="line6">
+                            <rect key="frame" x="0.0" y="326" width="486" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8U1-nA-Cl3">
+                                    <rect key="frame" x="0.0" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="yx"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npd-0A-lwv" customClass="CalButton">
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="0"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="98" y="0.0" width="94" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ueE-oq-ySC"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-8z-N4u" customClass="CalButton">
+                                    <rect key="frame" x="197.5" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="00"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="197" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9z9-eD-2rg"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZa-oi-k2a">
+                                    <rect key="frame" x="296.5" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="."/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="295" y="0.0" width="94" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kCJ-Nj-ym6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEv-5F-WmD">
+                                    <rect key="frame" x="395" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="×"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="393" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Syd-Ew-4UV"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4AP-AY-Ejp" userLabel="line7">
+                            <rect key="frame" x="0.0" y="406" width="486" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7E4-5v-QQl">
+                                    <rect key="frame" x="0.0" y="0.0" width="91" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="1/X"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="36"/>
+                                    </variation>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZH-og-cIH">
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="%"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="98" y="0.0" width="94" height="36"/>
+                                    </variation>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-7W-mY9">
+                                    <rect key="frame" x="197.5" y="3" width="288.5" height="30"/>
+                                    <state key="normal" title="="/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="393" y="3" width="93" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickEqual:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yOj-JM-l9i"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="hZH-og-cIH" firstAttribute="height" secondItem="7E4-5v-QQl" secondAttribute="height" id="vmp-SZ-oiU"/>
+                                <constraint firstItem="hZH-og-cIH" firstAttribute="width" secondItem="7E4-5v-QQl" secondAttribute="width" id="wvw-CJ-6Tf"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="7E4-5v-QQl" firstAttribute="height" secondItem="8U1-nA-Cl3" secondAttribute="height" id="Apv-VV-fpi"/>
+                        <constraint firstItem="7E4-5v-QQl" firstAttribute="width" secondItem="8U1-nA-Cl3" secondAttribute="width" id="fFv-Os-V6q"/>
+                    </constraints>
+                </stackView>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hB6-a6-0ez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" id="yiz-hp-BJ2" userLabel="Stack View2">
+                    <rect key="frame" x="0.0" y="0.0" width="362" height="442"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bfi-Vh-4sM" userLabel="line1">
+                            <rect key="frame" x="0.0" y="0.0" width="362" height="42"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHc-D8-dXI">
+                                    <rect key="frame" x="0.0" y="0.0" width="66" height="42"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <state key="normal" title="+/-"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeY-v5-8Da">
+                                    <rect key="frame" x="74" y="3" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="("/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nm-9V-Kfa">
+                                    <rect key="frame" x="148" y="3" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title=")"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW7-Au-wsX">
+                                    <rect key="frame" x="222" y="3" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="C"/>
+                                    <connections>
+                                        <action selector="clearInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q4a-XD-nvh"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTN-SD-5gn">
+                                    <rect key="frame" x="296" y="3" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="DEL"/>
+                                    <connections>
+                                        <action selector="deleteLastChar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X64-p5-XeU"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lff-2S-oCV" userLabel="line2">
+                            <rect key="frame" x="0.0" y="86" width="362" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vz-cC-7DZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="^"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickPowerOrFactorial:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IbW-MD-s9h"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzz-pm-eb0">
+                                    <rect key="frame" x="74" y="3" width="66" height="30"/>
+                                    <state key="normal" title="!"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="74" y="3" width="69" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickPowerOrFactorial:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bnU-i8-s06"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FA-xR-7FD">
+                                    <rect key="frame" x="148" y="0.0" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="√"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="147" y="0.0" width="68" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickSquare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="INp-3g-Ndj"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg1-Ma-Nlv">
+                                    <rect key="frame" x="222" y="0.0" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="π"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="220" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickPIOrEXP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V5j-cr-gde"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKb-ua-Nqz">
+                                    <rect key="frame" x="296" y="0.0" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="℮"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="220" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickPIOrEXP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="glY-1v-Pu9"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="N10-1V-WMC" userLabel="line3">
+                            <rect key="frame" x="0.0" y="166" width="362" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bg2-pa-y2X">
+                                    <rect key="frame" x="0.0" y="3" width="66" height="30"/>
+                                    <state key="normal" title="sin"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="47m-Pg-nay"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fT-2b-WbE">
+                                    <rect key="frame" x="74" y="3" width="66" height="30"/>
+                                    <state key="normal" title="cos"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hh1-lu-Di4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVq-2T-Mzj">
+                                    <rect key="frame" x="148" y="3" width="66" height="30"/>
+                                    <state key="normal" title="tan"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8HF-Ck-Rlc"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f14-Bw-ydU">
+                                    <rect key="frame" x="222" y="3" width="66" height="30"/>
+                                    <state key="normal" title="ln"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jY1-39-wRI"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wj-tI-HlK">
+                                    <rect key="frame" x="296" y="0.0" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="×"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="294" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="077-rr-Nja"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z1V-dJ-5tx" userLabel="line5">
+                            <rect key="frame" x="0.0" y="246" width="362" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuJ-WQ-xdZ">
+                                    <rect key="frame" x="0.0" y="3" width="177" height="30"/>
+                                    <state key="normal" title="log"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QDe-BX-5fe"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS3-V9-plK">
+                                    <rect key="frame" x="185" y="0.0" width="177" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="÷"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="294" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cUf-db-QCM"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4k9-4B-UNC" userLabel="line6">
+                            <rect key="frame" x="0.0" y="326" width="362" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qM9-P1-DWf" customClass="CalButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="85" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="1"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="74" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1oJ-OK-Rsk"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-xT-Hr3" customClass="CalButton">
+                                    <rect key="frame" x="93" y="0.0" width="85" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="2"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="147" y="0.0" width="68" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxd-sS-ebJ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXp-m1-ChV" customClass="CalButton">
+                                    <rect key="frame" x="185" y="0.0" width="85" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="3"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="220" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zYG-b5-iTs"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QwY-kR-Wxm">
+                                    <rect key="frame" x="278" y="3" width="85" height="30"/>
+                                    <state key="normal" title="-"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="294" y="3" width="69" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GHH-kz-q6P"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dpL-ig-tvd" userLabel="line7">
+                            <rect key="frame" x="0.0" y="406" width="362" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kz7-ce-OAg">
+                                    <rect key="frame" x="0.0" y="0.0" width="85" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="0"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="74" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oEM-VI-dJw"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-Rk-cLx">
+                                    <rect key="frame" x="93" y="0.0" width="85" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="."/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="147" y="0.0" width="68" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickDot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pue-Vl-f36"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YM3-Eb-1jt">
+                                    <rect key="frame" x="185" y="0.0" width="85" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="="/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="220" y="0.0" width="69" height="36"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickEqual:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CxO-zh-PLb"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpC-d4-iPS">
+                                    <rect key="frame" x="278" y="3" width="85" height="30"/>
+                                    <state key="normal" title="+"/>
+                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="294" y="3" width="69" height="30"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkW-Da-7xd"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <viewController id="un8-7v-BAb" customClass="CalculatorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OJy-IL-nDA"/>
+                        <viewControllerLayoutGuide type="bottom" id="oLZ-fJ-Fgd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fkz-iR-4ui" customClass="CalView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTC-LM-Ofa">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="9wn-Of-gm3">
+                                <rect key="frame" x="0.0" y="580" width="80" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="hEj-Cm-xvA"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.39810949280000002" green="0.87028306290000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changePage:" destination="BYZ-38-t0r" eventType="valueChanged" id="fbs-tn-2Nb"/>
+                                    <action selector="changePage:" destination="un8-7v-BAb" eventType="valueChanged" id="q5z-Db-VKX"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9wn-Of-gm3" firstAttribute="leading" secondItem="RTC-LM-Ofa" secondAttribute="leading" id="FE3-vN-8r3"/>
+                            <constraint firstItem="RTC-LM-Ofa" firstAttribute="bottom" secondItem="Fkz-iR-4ui" secondAttribute="bottom" constant="-20" id="JhE-mR-uZ4"/>
+                            <constraint firstItem="9wn-Of-gm3" firstAttribute="top" secondItem="RTC-LM-Ofa" secondAttribute="bottom" id="OCX-qf-fXk"/>
+                            <constraint firstItem="RTC-LM-Ofa" firstAttribute="leading" secondItem="Fkz-iR-4ui" secondAttribute="leading" id="UUc-jP-WqF"/>
+                            <constraint firstItem="9wn-Of-gm3" firstAttribute="leading" secondItem="Fkz-iR-4ui" secondAttribute="leading" id="grj-do-QnC"/>
+                            <constraint firstItem="RTC-LM-Ofa" firstAttribute="top" secondItem="Fkz-iR-4ui" secondAttribute="top" id="mYV-8f-ci6"/>
+                            <constraint firstAttribute="bottom" secondItem="9wn-Of-gm3" secondAttribute="bottom" id="r1G-9U-7p9"/>
+                            <constraint firstAttribute="trailing" secondItem="RTC-LM-Ofa" secondAttribute="trailing" id="rwW-Cf-cW0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="9wn-Of-gm3" id="7sW-tT-8HC"/>
+                        <outlet property="scrollView" destination="RTC-LM-Ofa" id="YKQ-3s-ux3"/>
+                        <outlet property="stack1" destination="jwI-1F-rlX" id="KDp-Fi-Nor"/>
+                        <outlet property="stack2" destination="yiz-hp-BJ2" id="Ni4-Wc-HKu"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-2881" y="205"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="Qgd-ew-PU2">
@@ -198,10 +874,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="expressionLabel" destination="PG9-fE-UoH" id="adR-6h-otb"/>
                         <outlet property="historyBoard" destination="ht0-rL-0FQ" id="EGp-9L-HX7"/>
-                        <outlet property="input" destination="QMS-GI-OwE" id="hV7-CZ-Lfq"/>
-                        <outlet property="lastExpression" destination="PG9-fE-UoH" id="Ggf-rE-41x"/>
                         <outlet property="pageControl" destination="fLt-kG-lgT" id="XdP-kk-qMR"/>
+                        <outlet property="resultLabel" destination="QMS-GI-OwE" id="dOX-kY-tqi"/>
                         <outlet property="scrollView" destination="vXU-WI-fWl" id="CqC-Kn-rWw"/>
                         <outlet property="stack1" destination="pbh-DU-6RW" id="c1R-fD-oDc"/>
                         <outlet property="stack2" destination="q8A-Vr-pJW" id="vFT-if-huJ"/>
@@ -221,17 +897,17 @@
                                     <state key="normal" title="+/-"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-bF-OMd">
-                                    <rect key="frame" x="99" y="3" width="91" height="36"/>
+                                    <rect key="frame" x="99" y="3" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="("/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7la-OZ-ynl">
-                                    <rect key="frame" x="198" y="3" width="91" height="36"/>
+                                    <rect key="frame" x="197.5" y="3" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title=")"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVv-wg-qsU">
-                                    <rect key="frame" x="297" y="3" width="91" height="36"/>
+                                    <rect key="frame" x="296.5" y="3" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="C"/>
                                     <connections>
@@ -257,7 +933,7 @@
                                     <state key="normal" title="EE"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDu-ZU-rJD" customClass="CalButton">
-                                    <rect key="frame" x="99" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="7"/>
                                     <connections>
@@ -265,7 +941,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyv-V8-Wyg" customClass="CalButton">
-                                    <rect key="frame" x="198" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="197.5" y="0.0" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="8"/>
                                     <connections>
@@ -273,7 +949,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRq-u3-fIj" customClass="CalButton">
-                                    <rect key="frame" x="297" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="296.5" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="9"/>
                                     <connections>
@@ -302,7 +978,7 @@
                                     </variation>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywC-dN-4iP" customClass="CalButton">
-                                    <rect key="frame" x="99" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="4"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -313,7 +989,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmt-f9-O3z" customClass="CalButton">
-                                    <rect key="frame" x="198" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="197.5" y="0.0" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="5"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -324,7 +1000,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPE-M1-15h" customClass="CalButton">
-                                    <rect key="frame" x="297" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="296.5" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="6"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -359,7 +1035,7 @@
                                     </variation>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7AC-l1-N8j" customClass="CalButton">
-                                    <rect key="frame" x="99" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="1"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -370,7 +1046,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUk-Ou-pwZ" customClass="CalButton">
-                                    <rect key="frame" x="198" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="197.5" y="0.0" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="2"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -381,7 +1057,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Au-66-GOH" customClass="CalButton">
-                                    <rect key="frame" x="297" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="296.5" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="3"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -416,7 +1092,7 @@
                                     </variation>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Wi-Y8-13F" customClass="CalButton">
-                                    <rect key="frame" x="99" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="0"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -427,7 +1103,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tz-ph-Lga" customClass="CalButton">
-                                    <rect key="frame" x="198" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="197.5" y="0.0" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="00"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -438,7 +1114,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyt-YY-4TQ">
-                                    <rect key="frame" x="297" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="296.5" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="."/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -461,7 +1137,7 @@
                                 </button>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ySd-Df-nck" userLabel="line7">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ySd-Df-nck" userLabel="line7">
                             <rect key="frame" x="0.0" y="406" width="486" height="36"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqz-3W-OMU">
@@ -473,37 +1149,15 @@
                                     </variation>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mP-I7-COy">
-                                    <rect key="frame" x="99" y="0.0" width="91" height="36"/>
+                                    <rect key="frame" x="99" y="0.0" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="%"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="98" y="0.0" width="94" height="36"/>
                                     </variation>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QV2-If-KAp">
-                                    <rect key="frame" x="198" y="0.0" width="91" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="="/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="197" y="0.0" width="93" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="clickEqual:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vty-Ii-YJH"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0DB-Jc-9Ha">
-                                    <rect key="frame" x="297" y="0.0" width="91" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="="/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="295" y="0.0" width="94" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="clickEqual:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M5X-ae-G4h"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIg-dO-7BE">
-                                    <rect key="frame" x="395" y="3" width="91" height="30"/>
+                                    <rect key="frame" x="197.5" y="3" width="288.5" height="30"/>
                                     <state key="normal" title="="/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="393" y="3" width="93" height="30"/>
@@ -513,15 +1167,59 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="5mP-I7-COy" firstAttribute="height" secondItem="bqz-3W-OMU" secondAttribute="height" id="TKd-dX-nsF"/>
+                                <constraint firstItem="5mP-I7-COy" firstAttribute="width" secondItem="bqz-3W-OMU" secondAttribute="width" id="aam-WN-AOz"/>
+                            </constraints>
                         </stackView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="bqz-3W-OMU" firstAttribute="height" secondItem="z17-S3-S4d" secondAttribute="height" id="4P4-UE-sEq"/>
+                        <constraint firstItem="bqz-3W-OMU" firstAttribute="width" secondItem="z17-S3-S4d" secondAttribute="width" id="poh-4t-aA8"/>
+                    </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" id="q8A-Vr-pJW" userLabel="Stack View2">
                     <rect key="frame" x="0.0" y="0.0" width="362" height="442"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZEi-Hb-qYU" userLabel="line1">
+                            <rect key="frame" x="0.0" y="0.0" width="362" height="42"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjh-QK-reY">
+                                    <rect key="frame" x="0.0" y="0.0" width="66" height="42"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <state key="normal" title="+/-"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G47-YQ-y90">
+                                    <rect key="frame" x="74" y="3" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="("/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0v-fl-n3q">
+                                    <rect key="frame" x="148" y="3" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title=")"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNk-55-QM1">
+                                    <rect key="frame" x="222" y="3" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="C"/>
+                                    <connections>
+                                        <action selector="clearInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="quh-XD-bN0"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fD-UK-Ynb">
+                                    <rect key="frame" x="296" y="3" width="66" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="DEL"/>
+                                    <connections>
+                                        <action selector="deleteLastChar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wVv-T5-I4z"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wzN-Vc-Tmd" userLabel="line2">
-                            <rect key="frame" x="0.0" y="0.0" width="362" height="36"/>
+                            <rect key="frame" x="0.0" y="86" width="362" height="36"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njn-wk-npA">
                                     <rect key="frame" x="0.0" y="0.0" width="66" height="36"/>
@@ -566,21 +1264,21 @@
                                         <action selector="ClickPIOrEXP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s11-Cp-BMn"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZv-jF-I4K">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvy-vh-wgq">
                                     <rect key="frame" x="296" y="0.0" width="66" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="C"/>
+                                    <state key="normal" title="℮"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="294" y="0.0" width="69" height="36"/>
+                                        <rect key="frame" x="220" y="0.0" width="69" height="36"/>
                                     </variation>
                                     <connections>
-                                        <action selector="clearInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Wx-bo-AT9"/>
+                                        <action selector="ClickPIOrEXP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WWT-g6-T6Z"/>
                                     </connections>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a33-1c-HWO" userLabel="line3">
-                            <rect key="frame" x="0.0" y="81" width="362" height="36"/>
+                            <rect key="frame" x="0.0" y="166" width="362" height="36"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwC-kJ-gJO">
                                     <rect key="frame" x="0.0" y="3" width="66" height="30"/>
@@ -592,57 +1290,8 @@
                                         <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R6Q-T8-z3T"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0d-u7-Wpm">
-                                    <rect key="frame" x="74" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="("/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="74" y="0.0" width="69" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="ClickLeftBracket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Ri-3n-c4c"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SC-MV-kZC">
-                                    <rect key="frame" x="148" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title=")"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="147" y="0.0" width="68" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="ClickRightBracket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JPV-2h-ALu"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvy-vh-wgq">
-                                    <rect key="frame" x="222" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="℮"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="220" y="0.0" width="69" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="ClickPIOrEXP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WWT-g6-T6Z"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IE-bT-8lQ">
-                                    <rect key="frame" x="296" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="DEL"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="294" y="0.0" width="69" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="deleteLastChar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PCM-h8-nbS"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9PT-yb-6CY" userLabel="line4">
-                            <rect key="frame" x="0.0" y="163" width="362" height="36"/>
-                            <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0u-s7-SHC">
-                                    <rect key="frame" x="0.0" y="3" width="66" height="30"/>
+                                    <rect key="frame" x="74" y="3" width="66" height="30"/>
                                     <state key="normal" title="cos"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
@@ -651,37 +1300,24 @@
                                         <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wbB-ro-6A8"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-xG-zuD" customClass="CalButton">
-                                    <rect key="frame" x="74" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                    <state key="normal" title="7"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQI-mi-ugd">
+                                    <rect key="frame" x="148" y="3" width="66" height="30"/>
+                                    <state key="normal" title="tan"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="74" y="0.0" width="69" height="36"/>
+                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ed7-IE-hU9"/>
+                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZpX-Nu-960"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEM-Zd-5b8" customClass="CalButton">
-                                    <rect key="frame" x="148" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="8"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QiM-i2-U8O">
+                                    <rect key="frame" x="222" y="3" width="66" height="30"/>
+                                    <state key="normal" title="ln"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="147" y="0.0" width="68" height="36"/>
+                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5xD-qE-cMJ"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0e-iI-W8D" customClass="CalButton">
-                                    <rect key="frame" x="222" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="9"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="220" y="0.0" width="69" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VQp-uf-Qci"/>
+                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="faf-fI-pJa"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVh-lz-ecv">
@@ -698,53 +1334,20 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jg6-Pw-SVr" userLabel="line5">
-                            <rect key="frame" x="0.0" y="244" width="362" height="36"/>
+                            <rect key="frame" x="0.0" y="246" width="362" height="36"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQI-mi-ugd">
-                                    <rect key="frame" x="0.0" y="3" width="66" height="30"/>
-                                    <state key="normal" title="tan"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNb-DL-fCX">
+                                    <rect key="frame" x="0.0" y="3" width="177" height="30"/>
+                                    <state key="normal" title="log"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZpX-Nu-960"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apJ-hG-QP1" customClass="CalButton">
-                                    <rect key="frame" x="74" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="4"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="74" y="0.0" width="69" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9ty-dP-9EY"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH1-dU-825" customClass="CalButton">
-                                    <rect key="frame" x="148" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="5"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="147" y="0.0" width="68" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="usW-3H-Qlv"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyE-bb-SDh" customClass="CalButton">
-                                    <rect key="frame" x="222" y="0.0" width="66" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="6"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="220" y="0.0" width="69" height="36"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Igy-X3-oGT"/>
+                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qnE-YS-UPX"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWl-H9-MxH">
-                                    <rect key="frame" x="296" y="0.0" width="66" height="36"/>
+                                    <rect key="frame" x="185" y="0.0" width="177" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="÷"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -757,20 +1360,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-dO-4iM" userLabel="line6">
-                            <rect key="frame" x="0.0" y="325" width="362" height="36"/>
+                            <rect key="frame" x="0.0" y="326" width="362" height="36"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QiM-i2-U8O">
-                                    <rect key="frame" x="0.0" y="3" width="66" height="30"/>
-                                    <state key="normal" title="ln"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="faf-fI-pJa"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQ5-1E-X30" customClass="CalButton">
-                                    <rect key="frame" x="74" y="0.0" width="66" height="36"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="85" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="1"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -781,7 +1374,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izr-P2-voB" customClass="CalButton">
-                                    <rect key="frame" x="148" y="0.0" width="66" height="36"/>
+                                    <rect key="frame" x="93" y="0.0" width="85" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="2"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -792,7 +1385,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHL-2b-rZ8" customClass="CalButton">
-                                    <rect key="frame" x="222" y="0.0" width="66" height="36"/>
+                                    <rect key="frame" x="185" y="0.0" width="85" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="3"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -803,7 +1396,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3el-hI-oNR">
-                                    <rect key="frame" x="296" y="3" width="66" height="30"/>
+                                    <rect key="frame" x="278" y="3" width="85" height="30"/>
                                     <state key="normal" title="-"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="294" y="3" width="69" height="30"/>
@@ -817,18 +1410,8 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-at-12u" userLabel="line7">
                             <rect key="frame" x="0.0" y="406" width="362" height="36"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNb-DL-fCX">
-                                    <rect key="frame" x="0.0" y="3" width="66" height="30"/>
-                                    <state key="normal" title="log"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="0.0" y="3" width="69" height="30"/>
-                                    </variation>
-                                    <connections>
-                                        <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qnE-YS-UPX"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbD-xn-lYu">
-                                    <rect key="frame" x="74" y="0.0" width="66" height="36"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="85" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="0"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -839,7 +1422,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdS-fV-xcK">
-                                    <rect key="frame" x="148" y="0.0" width="66" height="36"/>
+                                    <rect key="frame" x="93" y="0.0" width="85" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="."/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -850,7 +1433,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3R-ve-MkJ">
-                                    <rect key="frame" x="222" y="0.0" width="66" height="36"/>
+                                    <rect key="frame" x="185" y="0.0" width="85" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="="/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -861,7 +1444,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbe-TH-H95">
-                                    <rect key="frame" x="296" y="3" width="66" height="30"/>
+                                    <rect key="frame" x="278" y="3" width="85" height="30"/>
                                     <state key="normal" title="+"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="294" y="3" width="69" height="30"/>
@@ -874,33 +1457,6 @@
                         </stackView>
                     </subviews>
                 </stackView>
-            </objects>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="sMN-Uq-vmj">
-            <objects>
-                <tableViewController id="n3M-n9-d9F" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lqD-aZ-6WE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="y6j-AD-4W3">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y6j-AD-4W3" id="Ujw-bR-OJB">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="n3M-n9-d9F" id="5hP-GF-htf"/>
-                            <outlet property="delegate" destination="n3M-n9-d9F" id="Spe-p4-aYE"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7tn-ou-ld2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>

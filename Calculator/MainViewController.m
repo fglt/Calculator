@@ -10,16 +10,17 @@
 #import "constants.h"
 #import "CalculatorBrain.h"
 #import "HistoryViewController.h"
-#import "HistorysViewController.h"
+#import "ClearHistoryController.h"
 
 @interface MainViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *lastExpression;
-@property (weak, nonatomic) IBOutlet UILabel *input;
+@property (weak, nonatomic) IBOutlet UILabel *expressionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIView *historyBoard;
 @property CalculatorBrain *brain;
 @property ComputationDao* computationDao;
 @property HistoryViewController* historyController;
 
+@property (nonatomic, strong) NSString* expression;
 @property BOOL isFirstInput;
 @property BOOL isDotOK;
 @property BOOL isINFINITY;
@@ -31,6 +32,7 @@
 @synthesize isDotOK;
 @synthesize isINFINITY;
 @synthesize brain;
+@synthesize expression;
 
 -(BOOL) prefersStatusBarHidden
 {
@@ -52,14 +54,6 @@
     CGRect  scrollFrame = self.scrollView.frame;
     self.scrollView.contentSize = CGSizeMake(scrollFrame.size.width * 2, scrollFrame.size.height);
 
-//    UIStoryboard *mainStoryBoard = self.storyboard;
-//    UIViewController *page1Contro = [mainStoryBoard instantiateViewControllerWithIdentifier:@"page1"];
-//    self.page1 =  page1Contro.view;
-   // self.page1 = self.stack1;
-    
-    //    UIViewController *page2Contro = [mainStoryBoard instantiateViewControllerWithIdentifier:@"page2"];
-    //    self.page2 =  page2Contro.view;
-    // self.page2 = self.stack2;
     _stack1.frame = CGRectMake(0 , 0, scrollFrame.size.width, scrollFrame.size.height);
 
     _stack2.frame = CGRectMake( scrollFrame.size.width, 0, scrollFrame.size.width, scrollFrame.size.height);
@@ -84,7 +78,7 @@
 //    HistorysViewController *history = [[HistorysViewController alloc]init];
     [self addChildViewController:historyController];
     CGRect bounds = self.historyBoard.bounds;
-   
+    historyController.historyDelegate =self;
     historyController.view.frame = bounds;
     historyController.view.backgroundColor = [UIColor grayColor];
     historyController.view.layer.cornerRadius = 10;
@@ -112,24 +106,24 @@
     
     if (isFirstInput){
         if(isINFINITY){
-            self.input.text =DefalultOfInput ;
+            self.resultLabel.text =DefalultOfInput ;
             isINFINITY = false;
         }
         isFirstInput = false;
-        self.input.text = sender.currentTitle ;
+        self.resultLabel.text = sender.currentTitle ;
         
     }else{
-        self.input.text = [self.input.text stringByAppendingString:sender.currentTitle] ;
+        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:sender.currentTitle] ;
         
     }
 }
 - (IBAction)clickDot:(UIButton *)sender {
     if(isINFINITY){
-        self.input.text =DefalultOfInput ;
+        self.resultLabel.text =DefalultOfInput ;
         isINFINITY = false;
     }
     if(isDotOK){
-        self.input.text =[self.input.text stringByAppendingString:Dot];
+        self.resultLabel.text =[self.resultLabel.text stringByAppendingString:Dot];
         isDotOK = false;
         isFirstInput = false;
     }
@@ -140,23 +134,23 @@
     //save
     
     if(isFirstInput) return;
-    self.lastExpression.text = [self.input.text stringByAppendingString:@"="];
-    if(self.input.text.length ==1 ) return;
-    brain = [[ CalculatorBrain alloc] initWithInput:self.input.text];
+    self.expressionLabel.text = [self.resultLabel.text stringByAppendingString:@"="];
+    if(self.resultLabel.text.length ==1 ) return;
+    brain = [[ CalculatorBrain alloc] initWithInput:self.resultLabel.text];
     double result = [brain calculate];
     
     if( result == INFINITY||result == -INFINITY)
     {
-        self.input.text = @"ERROR";
+        self.resultLabel.text = @"ERROR";
         isINFINITY =true;
         isFirstInput = true;
     }else{
-        self.input.text = [ [NSNumber numberWithDouble:result] stringValue];
+        self.resultLabel.text = [ [NSNumber numberWithDouble:result] stringValue];
         isFirstInput = false;
         Computation* computation = [[Computation alloc]init];
         computation.date = [[NSDate alloc] init];
-        computation.expression = self.lastExpression.text;
-        computation.result = self.input.text;
+        computation.expression = self.expressionLabel.text;
+        computation.result = self.resultLabel.text;
         [self.computationDao add:computation];
         [historyController update];
     }
@@ -168,13 +162,13 @@
     
     if(isFirstInput){
         if( [sender.currentTitle isEqualToString:Add]||[sender.currentTitle isEqualToString:Minius]){
-            self.input.text = sender.currentTitle;
+            self.resultLabel.text = sender.currentTitle;
             isFirstInput = false;
         }
         return;
     }
     
-    NSString *text = self.input.text;
+    NSString *text = self.resultLabel.text;
     
     NSString * sub = [text substringFromIndex:text.length-1];
     if([Operatorstr containsString:sub])
@@ -183,7 +177,7 @@
         
     }
     
-    self.input.text = [text stringByAppendingString:sender.currentTitle];
+    self.resultLabel.text = [text stringByAppendingString:sender.currentTitle];
     isDotOK = true;
     
 }
@@ -191,66 +185,66 @@
 - (IBAction)ClickFunction:(UIButton *)sender {
     
     if(isFirstInput){
-        self.input.text = [sender.currentTitle stringByAppendingString:LeftBracket];
+        self.resultLabel.text = [sender.currentTitle stringByAppendingString:LeftBracket];
         isFirstInput = NO;
         
     }else
-        self.input.text = [ [self.input.text stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
+        self.resultLabel.text = [ [self.resultLabel.text stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
     if(isFirstInput){
-        self.input.text = sender.currentTitle ;
+        self.resultLabel.text = sender.currentTitle ;
     }else
-        self.input.text =  [self.input.text stringByAppendingString:sender.currentTitle] ;
+        self.resultLabel.text =  [self.resultLabel.text stringByAppendingString:sender.currentTitle] ;
     isFirstInput =false;
 }
 
 - (IBAction)ClickPowerOrFactorial:(UIButton *)sender {
     NSString *  const jc = @"09)";
-    NSString * text = self.input.text;
+    NSString * text = self.resultLabel.text;
     unichar  c = [text characterAtIndex:text.length-1];
     
     if( c == [jc characterAtIndex:2] || ( c>= '0'&& c<='9') ){
-        self.input.text = [self.input.text stringByAppendingString:sender.currentTitle];
+        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:sender.currentTitle];
     }
 }
 
 //改动：当最先输入时候修正
 - (IBAction)ClickSquare:(UIButton *)sender {
     if(isFirstInput){
-        self.input.text = sender.currentTitle;
+        self.resultLabel.text = sender.currentTitle;
         isFirstInput = false;
     }else
-        self.input.text =  [self.input.text stringByAppendingString:sender.currentTitle] ;
+        self.resultLabel.text =  [self.resultLabel.text stringByAppendingString:sender.currentTitle] ;
 }
 
 
 - (IBAction)ClickLeftBracket:(UIButton *)sender {
     if(isFirstInput){
-        self.input.text = LeftBracket;
+        self.resultLabel.text = LeftBracket;
         isFirstInput = false;
     }else
-        self.input.text = [self.input.text stringByAppendingString:LeftBracket];
+        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:LeftBracket];
     
     isDotOK = true;
     
 }
 - (IBAction)ClickRightBracket:(UIButton *)sender {
     if(!isFirstInput)
-        self.input.text = [self.input.text stringByAppendingString:RightBracket];
+        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:RightBracket];
     isDotOK = true;
 }
 
 - (IBAction)clearInput:(UIButton *)sender {
     [self start];
-    self.input.text = DefalultOfInput;
-    self.lastExpression.text = @"";
+    self.resultLabel.text = DefalultOfInput;
+    self.expressionLabel.text = @"";
 }
 
 
 - (IBAction)deleteLastChar:(UIButton *)sender {
-    NSString *text = self.input.text;
+    NSString *text = self.resultLabel.text;
     u_long l = text.length;
     
     if(l ==1){
@@ -271,7 +265,7 @@
         else l=l-1;
     }else l=l-1;
     
-    self.input.text = [text substringToIndex:l];
+    self.resultLabel.text = [text substringToIndex:l];
 }
 //将阿拉伯数字转换成汉字
 - (IBAction)changeToChinese:(UIButton *)sender {
@@ -284,7 +278,7 @@
 //将结果拷贝到粘贴板
 - (IBAction)paste:(UIButton *)sender {
     UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-    pboard.string = self.input.text;
+    pboard.string = self.resultLabel.text;
 }
 
 -(void)start{
@@ -293,7 +287,20 @@
     isINFINITY = false;
 }
 
+-(void)changeResult:(NSString*)result
+{
+    self.resultLabel.text = result;
+    isFirstInput = false;
+}
 
+-(void)changeExpression:(NSString*)exp
+{
+    self.expressionLabel.text = exp;
+}
 
-
+-(void)setExpression:(NSString *)newValue
+{
+    expression = newValue;
+    self.expressionLabel.text = expression;
+}
 @end

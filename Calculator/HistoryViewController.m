@@ -11,10 +11,12 @@
 #import "ArrayComputationDataSource.h"
 #import "Computation.h"
 #import "ComputaionCell+ConfigureForComputation.h"
+#import "CellSelectedControllerViewController.h"
+#import "ClearHistoryController.h"
 
 static NSString * const HistoryCellIdentifier = @"HistoryCell";
 
-@interface HistoryViewController  () 
+@interface HistoryViewController  () <CellSelectedControllerDelegate,UIPopoverPresentationControllerDelegate,ClearHistoryControllerDelegate>
 
 @end
 
@@ -47,41 +49,64 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     self.refreshControl = rc;
 }
 
+
+#pragma mark - 下拉清空historyTable
 -(void)clearHistory
 {
     if(self.refreshControl.refreshing)
     {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"清空记录"
-                                                                       message:@"是否清空记录？"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* noAction = [UIAlertAction actionWithTitle:@"No"
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:^(UIAlertAction *action){
-                                                             [self.refreshControl endRefreshing];
-                                                             
-                                                         }];
-        UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"Yes"
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction *action){
-                                                              [self.refreshControl endRefreshing];
-                                                              [self.computationDataSource deleteAll];
-                                                              [self.tableView reloadData];
-                                                              
-                                                              
-                                                          }];
+//        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"清空记录"
+//                                                                       message:@"是否清空记录？"
+//                                                                preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction* noAction = [UIAlertAction actionWithTitle:@"No"
+//                                                           style:UIAlertActionStyleCancel
+//                                                         handler:^(UIAlertAction *action){
+//                                                             [self.refreshControl endRefreshing];
+//                                                             
+//                                                         }];
+//        UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"Yes"
+//                                                            style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction *action){
+//                                                              [self.refreshControl endRefreshing];
+//                                                              [self.computationDataSource deleteAll];
+//                                                              [self.tableView reloadData];
+//                                                              
+//                                                              
+//                                                          }];
+//        
+//        [alert addAction:noAction];
+//        [alert addAction:yesAction];
         
-        [alert addAction:noAction];
-        [alert addAction:yesAction];
-        [self presentViewController:alert animated:true completion:nil];
+        ClearHistoryController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ClearHistory"];
+        
+        controller.delegate = self;
+        controller.modalPresentationStyle = UIModalPresentationPopover;
+        [self presentViewController:controller animated:YES completion:nil];
+        UIPopoverPresentationController *popController = [controller popoverPresentationController];
+        popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+        popController.delegate = self;
+        popController.sourceView = self.tableView;
+        popController.sourceRect = self.tableView.bounds;
+        
     }
 }
 
-#pragma mark UITableViewDelegate
+
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
+{
+    if(self.refreshControl.refreshing){
+        [self.refreshControl endRefreshing];
+    }
+}
+
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"cellSelectedController"];
+    CellSelectedControllerViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"cellSelectedController"];
     
+    controller.delegate = self;
+    controller.indexPath = indexPath;
     controller.modalPresentationStyle = UIModalPresentationPopover;
     [self presentViewController:controller animated:YES completion:nil];
     
@@ -96,6 +121,35 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 -(void)update
 {
     [self.computationDataSource update];
+    [self.tableView reloadData];
+}
+
+
+#pragma mark - CellSelectedControllerDelegate
+
+-(void)deleteCellAtIndex:(NSIndexPath*)indexPath
+{
+    [self.computationDataSource delete:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)useResultAtIndex:(NSIndexPath*)indexPath
+{
+    Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
+    [self.historyDelegate changeResult:com.result];
+}
+
+-(void)useExpressionAtIndex:(NSIndexPath*)indexPath
+{
+    Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
+    [self.historyDelegate changeExpression:com.expression ];
+}
+
+#pragma mark - ClearHistoryDelegate
+-(void)clearTable
+{
+    [self.refreshControl endRefreshing];
+    [self.computationDataSource deleteAll];
     [self.tableView reloadData];
 }
 @end
