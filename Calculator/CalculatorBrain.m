@@ -354,11 +354,18 @@
         num = [operator calWithOneParm:num1];
         
     }else if( [operator isEqualToString: @"^"] || [operator isOperator]){
-        double num2 = [[operands objectAtIndex:opdCount-1] doubleValue];
-        [operands removeLastObject];
-        double num1 = [[operands objectAtIndex:opdCount-2] doubleValue];
-        [operands removeLastObject];
-        num = [operator calWithTwoParm:num1 :num2];
+        
+        if(opdCount>=2){
+            double num2 = [[operands objectAtIndex:opdCount-1] doubleValue];
+            [operands removeLastObject];
+            double num1 = [[operands objectAtIndex:opdCount-2] doubleValue];
+            [operands removeLastObject];
+            num = [operator calWithTwoParm:num1 :num2];
+        }else if(opdCount==1){
+            num = [[operands objectAtIndex:0] doubleValue];
+        }else{
+            num = 0;
+        }
     }
     
     return num;

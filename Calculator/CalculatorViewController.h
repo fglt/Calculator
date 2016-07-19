@@ -14,10 +14,9 @@
 -(NSString *)currentResult;
 -(void) sendExpression:(NSString *)expression;
 -(void) sendResult:(NSString *)result;
--(void) updateHistory;
+-(void) equal;
 @end
 
 @interface CalculatorViewController : UIViewController
-@property (nonatomic, strong) NSString* text;
 @property (nonatomic, weak) id<CalculatorViewControllerDelegate>calculatorDelegate;
 @end

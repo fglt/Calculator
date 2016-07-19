@@ -120,17 +120,24 @@
                                     <rect key="frame" x="99" y="3" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="("/>
+                                    <connections>
+                                        <action selector="ClickLeftBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="txs-h7-rvq"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-ot-oDe">
                                     <rect key="frame" x="197.5" y="3" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title=")"/>
+                                    <connections>
+                                        <action selector="ClickRightBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="bcH-VO-KEL"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDr-lQ-aRe">
                                     <rect key="frame" x="296.5" y="3" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="C"/>
                                     <connections>
+                                        <action selector="clearInput:" destination="un8-7v-BAb" eventType="touchUpInside" id="1UP-fR-7br"/>
                                         <action selector="clearInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U7p-7n-KhS"/>
                                     </connections>
                                 </button>
@@ -140,6 +147,7 @@
                                     <state key="normal" title="DEL"/>
                                     <connections>
                                         <action selector="deleteLastChar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbV-gM-2Tc"/>
+                                        <action selector="deleteLastChar:" destination="un8-7v-BAb" eventType="touchUpInside" id="qZv-Tg-Vp1"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -158,6 +166,7 @@
                                     <state key="normal" title="7"/>
                                     <connections>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rVt-cC-2h6"/>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="xT8-3N-2Yf"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaC-VK-0rk" customClass="CalButton">
@@ -166,6 +175,7 @@
                                     <state key="normal" title="8"/>
                                     <connections>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KxR-G4-J6q"/>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="hKJ-Gd-4Fz"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMw-x8-qDJ" customClass="CalButton">
@@ -174,6 +184,7 @@
                                     <state key="normal" title="9"/>
                                     <connections>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Si1-LH-MVp"/>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="ltl-2j-AB2"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSk-he-zjl">
@@ -181,6 +192,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="÷"/>
                                     <connections>
+                                        <action selector="clickOperator:" destination="un8-7v-BAb" eventType="touchUpInside" id="Cat-4X-CxJ"/>
                                         <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xQC-Ob-WVy"/>
                                     </connections>
                                 </button>
@@ -206,6 +218,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ccb-iJ-msu"/>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="GSq-OP-NzO"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSp-pn-m7g" customClass="CalButton">
@@ -216,6 +229,7 @@
                                         <rect key="frame" x="197" y="0.0" width="93" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="TzZ-FI-qEI"/>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hVe-rc-kQ6"/>
                                     </connections>
                                 </button>
@@ -227,6 +241,7 @@
                                         <rect key="frame" x="295" y="0.0" width="94" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="bgD-pF-1GV"/>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="owz-fd-RGw"/>
                                     </connections>
                                 </button>
@@ -239,6 +254,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nac-Bh-RFK"/>
+                                        <action selector="clickOperator:" destination="un8-7v-BAb" eventType="touchUpInside" id="hfT-pB-AGN"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -263,6 +279,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LJW-61-IUm"/>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="uCZ-8e-0H4"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgL-wy-Lrv" customClass="CalButton">
@@ -274,6 +291,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUy-9u-nPP"/>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="zGB-r4-7EA"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVW-pN-0nh" customClass="CalButton">
@@ -284,6 +302,7 @@
                                         <rect key="frame" x="295" y="0.0" width="94" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="8fV-bj-LsW"/>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bUA-Tn-HlG"/>
                                     </connections>
                                 </button>
@@ -295,6 +314,7 @@
                                         <rect key="frame" x="393" y="0.0" width="93" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickOperator:" destination="un8-7v-BAb" eventType="touchUpInside" id="xOO-nO-Dkr"/>
                                         <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xqK-1j-Hkn"/>
                                     </connections>
                                 </button>
@@ -319,6 +339,7 @@
                                         <rect key="frame" x="98" y="0.0" width="94" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="DWV-iN-b1U"/>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ueE-oq-ySC"/>
                                     </connections>
                                 </button>
@@ -331,6 +352,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9z9-eD-2rg"/>
+                                        <action selector="clickDigit:" destination="un8-7v-BAb" eventType="touchUpInside" id="dWl-Bw-Q7L"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZa-oi-k2a">
@@ -341,6 +363,7 @@
                                         <rect key="frame" x="295" y="0.0" width="94" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickDot:" destination="un8-7v-BAb" eventType="touchUpInside" id="DJ8-ik-c1D"/>
                                         <action selector="clickDot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kCJ-Nj-ym6"/>
                                     </connections>
                                 </button>
@@ -353,6 +376,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Syd-Ew-4UV"/>
+                                        <action selector="clickOperator:" destination="un8-7v-BAb" eventType="touchUpInside" id="kkQ-n7-uBp"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -383,6 +407,7 @@
                                         <rect key="frame" x="393" y="3" width="93" height="30"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickEqual:" destination="un8-7v-BAb" eventType="touchUpInside" id="Ntj-sg-PkT"/>
                                         <action selector="clickEqual:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yOj-JM-l9i"/>
                                     </connections>
                                 </button>
@@ -415,17 +440,24 @@
                                     <rect key="frame" x="74" y="3" width="66" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="("/>
+                                    <connections>
+                                        <action selector="ClickLeftBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="zfq-Pl-6Lq"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nm-9V-Kfa">
                                     <rect key="frame" x="148" y="3" width="66" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title=")"/>
+                                    <connections>
+                                        <action selector="ClickRightBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="Af3-9P-bGz"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW7-Au-wsX">
                                     <rect key="frame" x="222" y="3" width="66" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="C"/>
                                     <connections>
+                                        <action selector="clearInput:" destination="un8-7v-BAb" eventType="touchUpInside" id="D1w-d7-7X1"/>
                                         <action selector="clearInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q4a-XD-nvh"/>
                                     </connections>
                                 </button>
@@ -434,6 +466,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="DEL"/>
                                     <connections>
+                                        <action selector="deleteLastChar:" destination="un8-7v-BAb" eventType="touchUpInside" id="FP9-hp-ac1"/>
                                         <action selector="deleteLastChar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X64-p5-XeU"/>
                                     </connections>
                                 </button>
@@ -450,6 +483,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="69" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="ClickPowerOrFactorial:" destination="un8-7v-BAb" eventType="touchUpInside" id="CzD-8a-fsy"/>
                                         <action selector="ClickPowerOrFactorial:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IbW-MD-s9h"/>
                                     </connections>
                                 </button>
@@ -461,6 +495,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="ClickPowerOrFactorial:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bnU-i8-s06"/>
+                                        <action selector="ClickPowerOrFactorial:" destination="un8-7v-BAb" eventType="touchUpInside" id="xTA-9k-Bob"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FA-xR-7FD">
@@ -472,6 +507,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="ClickSquare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="INp-3g-Ndj"/>
+                                        <action selector="ClickSquare:" destination="un8-7v-BAb" eventType="touchUpInside" id="gV5-lw-IeR"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg1-Ma-Nlv">
@@ -482,6 +518,7 @@
                                         <rect key="frame" x="220" y="0.0" width="69" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="ClickPIOrEXP:" destination="un8-7v-BAb" eventType="touchUpInside" id="A7J-E6-Hml"/>
                                         <action selector="ClickPIOrEXP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V5j-cr-gde"/>
                                     </connections>
                                 </button>
@@ -494,6 +531,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="ClickPIOrEXP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="glY-1v-Pu9"/>
+                                        <action selector="ClickPIOrEXP:" destination="un8-7v-BAb" eventType="touchUpInside" id="vtG-RI-HQr"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -509,6 +547,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="47m-Pg-nay"/>
+                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="Z7Y-eU-Rd5"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fT-2b-WbE">
@@ -518,6 +557,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
+                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="Isn-7E-14c"/>
                                         <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hh1-lu-Di4"/>
                                     </connections>
                                 </button>
@@ -529,6 +569,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8HF-Ck-Rlc"/>
+                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="m2f-pi-pN5"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f14-Bw-ydU">
@@ -538,6 +579,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
+                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="idZ-Zq-Rk3"/>
                                         <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jY1-39-wRI"/>
                                     </connections>
                                 </button>
@@ -550,6 +592,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="077-rr-Nja"/>
+                                        <action selector="clickOperator:" destination="un8-7v-BAb" eventType="touchUpInside" id="abK-bf-IkR"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -564,6 +607,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
+                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="38j-6L-oc0"/>
                                         <action selector="ClickFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QDe-BX-5fe"/>
                                     </connections>
                                 </button>
@@ -575,6 +619,7 @@
                                         <rect key="frame" x="294" y="0.0" width="69" height="36"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickOperator:" destination="un8-7v-BAb" eventType="touchUpInside" id="bpf-wt-SRC"/>
                                         <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cUf-db-QCM"/>
                                     </connections>
                                 </button>
@@ -624,6 +669,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GHH-kz-q6P"/>
+                                        <action selector="clickOperator:" destination="un8-7v-BAb" eventType="touchUpInside" id="g5m-Nd-6qU"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -651,6 +697,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickDot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pue-Vl-f36"/>
+                                        <action selector="clickDot:" destination="un8-7v-BAb" eventType="touchUpInside" id="g3A-rq-bkJ"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YM3-Eb-1jt">
@@ -662,6 +709,7 @@
                                     </variation>
                                     <connections>
                                         <action selector="clickEqual:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CxO-zh-PLb"/>
+                                        <action selector="clickEqual:" destination="un8-7v-BAb" eventType="touchUpInside" id="fzS-lg-s6N"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpC-d4-iPS">
@@ -671,6 +719,7 @@
                                         <rect key="frame" x="294" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
+                                        <action selector="clickOperator:" destination="un8-7v-BAb" eventType="touchUpInside" id="Lmm-ux-pKs"/>
                                         <action selector="clickOperator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkW-Da-7xd"/>
                                     </connections>
                                 </button>
@@ -900,11 +949,17 @@
                                     <rect key="frame" x="99" y="3" width="90.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="("/>
+                                    <connections>
+                                        <action selector="ClickLeftBracket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NIx-eT-5Ic"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7la-OZ-ynl">
                                     <rect key="frame" x="197.5" y="3" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title=")"/>
+                                    <connections>
+                                        <action selector="ClickRightBracket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7TA-v2-qf5"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVv-wg-qsU">
                                     <rect key="frame" x="296.5" y="3" width="90.5" height="36"/>

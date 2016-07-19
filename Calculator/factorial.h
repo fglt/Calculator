@@ -57,6 +57,8 @@ double factorial2(double input){
     
     double result =1;
     
+    if(input >170)
+        return INFINITY;
     while (input >1){
         result = result * input;
         input --;

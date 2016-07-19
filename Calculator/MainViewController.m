@@ -21,9 +21,11 @@
 @property HistoryViewController* historyController;
 
 @property (nonatomic, strong) NSString* expression;
+@property (nonatomic, strong) NSString* lastExpression;
 @property BOOL isFirstInput;
 @property BOOL isDotOK;
 @property BOOL isINFINITY;
+@property BOOL isComputable;
 @end
 
 @implementation MainViewController
@@ -31,8 +33,9 @@
 @synthesize isFirstInput;
 @synthesize isDotOK;
 @synthesize isINFINITY;
+@synthesize isComputable;
 @synthesize brain;
-@synthesize expression;
+//@synthesize expression;
 
 -(BOOL) prefersStatusBarHidden
 {
@@ -103,72 +106,73 @@
 }
 
 - (IBAction)clickDigit:(UIButton *)sender {
-    
+    isComputable = true;
     if (isFirstInput){
         if(isINFINITY){
-            self.resultLabel.text =DefalultOfInput ;
+            self.expression = DefalultOfInput ;
             isINFINITY = false;
         }
         isFirstInput = false;
-        self.resultLabel.text = sender.currentTitle ;
+        self.expression = sender.currentTitle ;
         
     }else{
-        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:sender.currentTitle] ;
+        self.expression = [self.expressionLabel.text stringByAppendingString:sender.currentTitle] ;
         
     }
 }
 - (IBAction)clickDot:(UIButton *)sender {
+    isComputable = false;
     if(isINFINITY){
-        self.resultLabel.text =DefalultOfInput ;
+        self.expression = DefalultOfInput ;
         isINFINITY = false;
     }
     if(isDotOK){
-        self.resultLabel.text =[self.resultLabel.text stringByAppendingString:Dot];
+        _expression =[self.expressionLabel.text stringByAppendingString:Dot];
         isDotOK = false;
         isFirstInput = false;
     }
 }
 
 - (IBAction)clickEqual:(UIButton *)sender {
-    //calculator
-    //save
-    
     if(isFirstInput) return;
-    self.expressionLabel.text = [self.resultLabel.text stringByAppendingString:@"="];
-    if(self.resultLabel.text.length ==1 ) return;
-    brain = [[ CalculatorBrain alloc] initWithInput:self.resultLabel.text];
-    double result = [brain calculate];
     
-    if( result == INFINITY||result == -INFINITY)
-    {
-        self.resultLabel.text = @"ERROR";
-        isINFINITY =true;
-        isFirstInput = true;
-    }else{
-        self.resultLabel.text = [ [NSNumber numberWithDouble:result] stringValue];
-        isFirstInput = false;
-        Computation* computation = [[Computation alloc]init];
-        computation.date = [[NSDate alloc] init];
-        computation.expression = self.expressionLabel.text;
-        computation.result = self.resultLabel.text;
-        [self.computationDao add:computation];
-        [historyController update];
-    }
+    BOOL isEqualToLastExpression = false;
+    
+    if([_expression isEqualToString: self.lastExpression])
+        isEqualToLastExpression = true;
+    
+    self.lastExpression = self.expression;
+
+    _expression = self.resultLabel.text;
+    self.expressionLabel.text = _expression;
+    isFirstInput = false;
+    
+    if(isEqualToLastExpression) return;
+    
+    Computation* computation = [[Computation alloc]init];
+    computation.date = [[NSDate alloc] init];
+    computation.expression = self.lastExpression;
+    computation.result = self.resultLabel.text;
+    
+    [self.computationDao add:computation];
+    [historyController update];
+    
     
     //NSLog(operands);
 }
 
 - (IBAction)clickOperator:(UIButton *)sender {
+    isComputable = false;
     
     if(isFirstInput){
         if( [sender.currentTitle isEqualToString:Add]||[sender.currentTitle isEqualToString:Minius]){
-            self.resultLabel.text = sender.currentTitle;
+            self.expression = sender.currentTitle;
             isFirstInput = false;
         }
         return;
     }
     
-    NSString *text = self.resultLabel.text;
+    NSString *text = _expression;
     
     NSString * sub = [text substringFromIndex:text.length-1];
     if([Operatorstr containsString:sub])
@@ -177,74 +181,84 @@
         
     }
     
-    self.resultLabel.text = [text stringByAppendingString:sender.currentTitle];
+    self.expression = [text stringByAppendingString:sender.currentTitle];
     isDotOK = true;
     
 }
 
 - (IBAction)ClickFunction:(UIButton *)sender {
-    
+    isComputable = false;
     if(isFirstInput){
-        self.resultLabel.text = [sender.currentTitle stringByAppendingString:LeftBracket];
+        self.expression = [sender.currentTitle stringByAppendingString:LeftBracket];
         isFirstInput = NO;
         
     }else
-        self.resultLabel.text = [ [self.resultLabel.text stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
+        self.expression = [ [_expression stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
+    isComputable = true;
     if(isFirstInput){
-        self.resultLabel.text = sender.currentTitle ;
+        self.expression = sender.currentTitle ;
     }else
-        self.resultLabel.text =  [self.resultLabel.text stringByAppendingString:sender.currentTitle] ;
+        self.expression =  [_expression stringByAppendingString:sender.currentTitle] ;
     isFirstInput =false;
 }
 
 - (IBAction)ClickPowerOrFactorial:(UIButton *)sender {
+    if([sender.currentTitle  isEqual: @"!"])
+        isComputable = true;
+    else
+        isComputable = false;
+
     NSString *  const jc = @"09)";
-    NSString * text = self.resultLabel.text;
+    NSString * text = self.expression;
     unichar  c = [text characterAtIndex:text.length-1];
     
     if( c == [jc characterAtIndex:2] || ( c>= '0'&& c<='9') ){
-        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:sender.currentTitle];
+        self.expression = [self.expression stringByAppendingString:sender.currentTitle];
     }
 }
 
 //改动：当最先输入时候修正
 - (IBAction)ClickSquare:(UIButton *)sender {
+    isComputable = false;
     if(isFirstInput){
-        self.resultLabel.text = sender.currentTitle;
+        self.expression = sender.currentTitle;
         isFirstInput = false;
-    }else
-        self.resultLabel.text =  [self.resultLabel.text stringByAppendingString:sender.currentTitle] ;
+    }else{
+        self.expression = [self.expression stringByAppendingString:sender.currentTitle] ;
+    }
 }
 
 
 - (IBAction)ClickLeftBracket:(UIButton *)sender {
+    isComputable = false;
     if(isFirstInput){
-        self.resultLabel.text = LeftBracket;
+        self.expression = LeftBracket;
         isFirstInput = false;
     }else
-        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:LeftBracket];
+        self.expression = [self.expression stringByAppendingString:LeftBracket];
     
     isDotOK = true;
     
 }
 - (IBAction)ClickRightBracket:(UIButton *)sender {
+    isComputable = false;
     if(!isFirstInput)
-        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:RightBracket];
+        self.expression = [self.expression stringByAppendingString:RightBracket];
     isDotOK = true;
 }
 
 - (IBAction)clearInput:(UIButton *)sender {
     [self start];
-    self.resultLabel.text = DefalultOfInput;
-    self.expressionLabel.text = @"";
+    self.expression = DefalultOfInput;
 }
 
 
 - (IBAction)deleteLastChar:(UIButton *)sender {
-    NSString *text = self.resultLabel.text;
+    isComputable = true;
+    NSString *text = self.expression;
     u_long l = text.length;
     
     if(l ==1){
@@ -265,14 +279,7 @@
         else l=l-1;
     }else l=l-1;
     
-    self.resultLabel.text = [text substringToIndex:l];
-}
-//将阿拉伯数字转换成汉字
-- (IBAction)changeToChinese:(UIButton *)sender {
-}
-
-//打开历史记录
-- (IBAction)openRecord:(UIButton *)sender {
+    self.expression = [text substringToIndex:l];
 }
 
 //将结果拷贝到粘贴板
@@ -285,22 +292,35 @@
     isFirstInput = true;
     isDotOK = true;
     isINFINITY = false;
+    isComputable = true;
 }
 
 -(void)changeResult:(NSString*)result
 {
-    self.resultLabel.text = result;
+    self.expression = result;
     isFirstInput = false;
 }
 
 -(void)changeExpression:(NSString*)exp
 {
-    self.expressionLabel.text = exp;
+    self.expression = exp;
 }
 
 -(void)setExpression:(NSString *)newValue
 {
-    expression = newValue;
-    self.expressionLabel.text = expression;
+    _expression = newValue;
+    self.expressionLabel.text = _expression;
+    if(isComputable){
+        brain = [[ CalculatorBrain alloc] initWithInput:_expression];
+        double result = [brain calculate];
+        if( result == INFINITY||result == -INFINITY)
+        {
+            self.resultLabel.text = @"ERROR";
+            isINFINITY =true;
+            isFirstInput = true;
+        }else{
+            self.resultLabel.text = [ [NSNumber numberWithDouble:result] stringValue];
+        }
+    }
 }
 @end
