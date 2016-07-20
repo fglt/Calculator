@@ -12,7 +12,7 @@
 @implementation NSString (Calculator)
 
 -(BOOL)isOperator{
-    return [Operatorstr containsString:self];
+    return [FourArithmeticOperation containsString:self];
 }
 
 -(BOOL) isDigit
@@ -88,6 +88,16 @@
         return -1;
     }
     return -1;
+}
+
+-(BOOL)containCharacter:(UniChar)ch
+{
+    for(int i=0; i<self.length; i++)
+    {
+        if(ch == [self characterAtIndex:i])
+            return true;
+    }
+    return false;
 }
 
 @end

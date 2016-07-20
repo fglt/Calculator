@@ -35,7 +35,25 @@
     return  self;
 }
 
+-(void)checkLast
+{
+    NSString * content = @"!℮π)";
+    if(expression.length<=1) return;
+
+    for(u_long i = expression.length-1; i>0; i-- )
+    {
+        NSString *last = [expression substringFromIndex:i];
+        if( !([last isDigit] || [content containsString:last] ) ){
+            expression = [expression  substringToIndex:i];
+        }
+        else return;
+    }
+
+    return ;
+}
+
 - (NSString *)fixInput{
+    [self checkLast ];
     NSMutableString *result = [NSMutableString stringWithString: expression];
     u_long i;
     int lCount = 0;

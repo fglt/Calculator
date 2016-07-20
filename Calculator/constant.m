@@ -10,7 +10,7 @@
 #import "constants.h"
 
 NSString * const DefalultOfInput = @"0";
-NSString * const Operatorstr = @"+-×÷";
+NSString * const FourArithmeticOperation = @"+-×÷";
 NSString * const Multiply = @"×";
 NSString * const Divide  = @"÷";
 NSString * const Add  = @"+" ;

@@ -24,6 +24,8 @@
 @property HistoryViewController* historyController;
 
 @property (nonatomic, strong) NSString* lastExpression;
+@property (nonatomic, strong) NSString* curExpression;
+@property (nonatomic, strong) NSString* result;
 @property CalculatorBrain *brain;
 @end
 
@@ -83,46 +85,61 @@
 
 -(void)useComputation:(Computation *)computation
 {
+    self.result = computation.result;
+    self.curExpression = computation.expression;
     self.expressionLabel.text = computation.expression;
     self.resultLabel.text = computation.result;
 }
 
 -(NSString *)currentExpression
 {
-    return self.expressionLabel.text;
+    return self.curExpression;
 }
 -(NSString *)currentResult
 {
-    return self.resultLabel.text;
+    return self.result;
+}
+
+-(void)clearComputation
+{
+    self.curExpression =@"0";
+    self.result = @"0";
 }
 
 -(void) sendExpression:(NSString *)expression{
-    self.expressionLabel.text = expression;
+    if(!expression) return;
+    if(expression.length==0)
+    {
+        [self clearComputation];
+        return;
+    }
+    
+    self.curExpression = expression;
     brain.expression = expression;
     double result = [brain calculate];
     if( result == INFINITY||result == -INFINITY)
     {
-        self.resultLabel.text =@"😀";;
+        self.result =@"🆕";;
 
         return ;
     }
-    self.resultLabel.text = [ [NSNumber numberWithDouble:result] stringValue];
+    self.result = [ [NSNumber numberWithDouble:result] stringValue];
 }
 
 -(void) sendResult:(NSString *)result{
-    self.resultLabel.text = result;
+    self.result = result;
 }
 
 -(void) equal{
     BOOL isEqualToLastExpression = false;
-    if([self.resultLabel.text isEqualToString:@"∞"]){
+    if([self.result isEqualToString:@"∞"]){
         return;
     }
 
-    if([self.lastExpression isEqualToString: self.expressionLabel.text])
+    if([self.lastExpression isEqualToString: self.curExpression])
         isEqualToLastExpression = true;
 
-    self.lastExpression = self.expressionLabel.text;
+    self.lastExpression = self.curExpression;
     self.expressionLabel.text = self.resultLabel.text;
 
     if(isEqualToLastExpression) return;
@@ -130,9 +147,30 @@
     Computation* computation = [[Computation alloc]init];
     computation.date = [[NSDate alloc] init];
     computation.expression = self.lastExpression;
-    computation.result = self.resultLabel.text;
+    computation.result = self.result;
 
     [self.computationDao add:computation];
     [historyController update];
+}
+
+-(void)setCurExpression:(NSString *)expression
+{
+    _curExpression = expression;
+    self.expressionLabel.text = _curExpression;
+    brain.expression = expression;
+    double result = [brain calculate];
+    if( result == INFINITY||result == -INFINITY)
+    {
+        self.result =@"🆕";;
+        
+        return ;
+    }
+    self.result = [ [NSNumber numberWithDouble:result] stringValue];
+}
+
+-(void)setResult:(NSString *)newValue
+{
+    _result = newValue;
+    self.resultLabel.text = newValue;
 }
 @end

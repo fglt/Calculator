@@ -16,4 +16,5 @@
 -(double) calWithOneParm:(double)operand;
 -(u_long) lastLocationForNumberStartAt:(u_long)start;
 - (int) priorityCompareTo : (NSString *)op2;
+-(BOOL)containCharacter:(UniChar)ch;
 @end

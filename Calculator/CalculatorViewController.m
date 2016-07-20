@@ -8,6 +8,7 @@
 
 #import "CalculatorViewController.h"
 #import "constants.h"
+#import "NSString+Calculator.h"
 
 
 static NSString * const ErrorMessage = @"ERROR";
@@ -19,16 +20,13 @@ static NSString * const ErrorMessage = @"ERROR";
 
 @property (nonatomic, strong) NSString* expression;
 
-@property BOOL isFirstInput;
 @property BOOL isDotOK;
-@property BOOL isINFINITY;
+
 @end
 
 @implementation CalculatorViewController
-@synthesize isFirstInput;
-@synthesize isDotOK;
-@synthesize isINFINITY;
 
+@synthesize isDotOK;
 
 -(void) viewDidLoad
 {
@@ -70,79 +68,61 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)clickDigit:(UIButton *)sender {
-    if (isFirstInput){
-        if(isINFINITY){
-            self.expression = DefalultOfInput ;
-            isINFINITY = false;
-        }
-        isFirstInput = false;
-        self.expression = sender.currentTitle ;
-        
-    }else{
-        self.expression = [[self.calculatorDelegate currentExpression] stringByAppendingString:sender.currentTitle] ;
-        
-    }
-}
-- (IBAction)clickDot:(UIButton *)sender {
 
-    if(isINFINITY){
-        self.expression = DefalultOfInput ;
-        isINFINITY = false;
-    }
+    self.expression = [self.expression stringByAppendingString:sender.currentTitle] ;
+}
+
+- (IBAction)onClickZero:(UIButton *)sender {
+    if(self.expression.length>0)
+        self.expression = [self.expression stringByAppendingString:sender.currentTitle] ;
+}
+
+- (IBAction)clickDot:(UIButton *)sender {
     if(isDotOK){
-        _expression =[[self.calculatorDelegate currentExpression] stringByAppendingString:Dot];
+        _expression =[self.expression stringByAppendingString:Dot];
         isDotOK = false;
-        isFirstInput = false;
     }
 }
 
 - (IBAction)clickEqual:(UIButton *)sender {
-    if(isFirstInput) return;
+    if(self.expression.length == 0) return;
     [self.calculatorDelegate equal];
-    self.expression = [self.calculatorDelegate  currentResult];
+    _expression = [self.calculatorDelegate  currentResult];
 }
 
 - (IBAction)clickOperator:(UIButton *)sender {
     
-    if(isFirstInput){
-        if( [sender.currentTitle isEqualToString:Add]||[sender.currentTitle isEqualToString:Minius]){
-            self.expression = sender.currentTitle;
-            isFirstInput = false;
-        }
+    if(self.expression.length==0)
         return;
-    }
     
     NSString *text = _expression;
     
-    NSString * sub = [text substringFromIndex:text.length-1];
-    if([Operatorstr containsString:sub])
+   // NSString * sub = [text substringFromIndex:text.length-1];
+
+//    if([FourArithmeticOperation containsString:sub])
+//    {
+//        text = [text substringToIndex:text.length-1];
+//    }
+    
+    if([FourArithmeticOperation containCharacter:[text characterAtIndex:text.length-1]])
     {
         text = [text substringToIndex:text.length-1];
-        
     }
-    
+//    _expression = text;
+//    [self addOperationToExpression:sender.currentTitle];
     self.expression = [text stringByAppendingString:sender.currentTitle];
     isDotOK = true;
-    
 }
 
 - (IBAction)ClickFunction:(UIButton *)sender {
-
-    if(isFirstInput){
-        self.expression = [sender.currentTitle stringByAppendingString:LeftBracket];
-        isFirstInput = NO;
-        
-    }else
-        self.expression = [ [_expression stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
+    self.expression = [ [_expression stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
+    
+//    NSString *tmp = [sender.currentTitle stringByAppendingString:LeftBracket];
+//    [self addOperationToExpression:tmp];
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
-
-    if(isFirstInput){
-        self.expression = sender.currentTitle ;
-    }else
-        self.expression =  [_expression stringByAppendingString:sender.currentTitle] ;
-    isFirstInput =false;
+    self.expression =  [_expression stringByAppendingString:sender.currentTitle];
 }
 
 - (IBAction)ClickPowerOrFactorial:(UIButton *)sender {
@@ -151,51 +131,67 @@ static NSString * const ErrorMessage = @"ERROR";
     NSString * text = self.expression;
     unichar  c = [text characterAtIndex:text.length-1];
     
+    if([FourArithmeticOperation containCharacter:c]){
+        text = [text substringToIndex:text.length-1];
+        self.expression = [text stringByAppendingString:sender.currentTitle];
+    }
     if( c == [jc characterAtIndex:2] || ( c>= '0'&& c<='9') ){
         self.expression = [self.expression stringByAppendingString:sender.currentTitle];
     }
 }
 
 //改动：当最先输入时候修正
-- (IBAction)ClickSquare:(UIButton *)sender {
-    if(isFirstInput){
-        self.expression = sender.currentTitle;
-        isFirstInput = false;
-    }else{
-        self.expression = [self.expression stringByAppendingString:sender.currentTitle] ;
-    }
+- (IBAction)ClickSquareRoot:(UIButton *)sender {
+    self.expression = [self.expression stringByAppendingString:sender.currentTitle] ;
 }
 
 
 - (IBAction)ClickLeftBracket:(UIButton *)sender {
-    if(isFirstInput){
-        self.expression = LeftBracket;
-        isFirstInput = false;
-    }else
-        self.expression = [self.expression stringByAppendingString:LeftBracket];
+
+    self.expression = [self.expression stringByAppendingString:LeftBracket];
     
     isDotOK = true;
-    
 }
+
 - (IBAction)ClickRightBracket:(UIButton *)sender {
-    if(!isFirstInput)
+    if(self.expression.length >0)
         self.expression = [self.expression stringByAppendingString:RightBracket];
     isDotOK = true;
 }
 
 - (IBAction)clearInput:(UIButton *)sender {
     [self start];
-    self.expression = DefalultOfInput;
 }
 
+//符号位button处理
+- (IBAction)onClickSignBit:(UIButton *)sender {
+
+}
+
+- (IBAction)onClickScientificNotation:(UIButton *)sender {
+    
+}
+
+
+- (IBAction)onClickSquare:(UIButton *)sender {
+    
+}
+
+- (IBAction)onClickCube:(UIButton *)sender {
+    
+}
+
+//倒数
+- (IBAction)reciprocal:(id)sender {
+}
 
 - (IBAction)deleteLastChar:(UIButton *)sender {
     NSString *text = self.expression;
     u_long l = text.length;
     
+    if(l == 0) return;
     if(l ==1){
         [self start];
-        self.expression = @"0";
         return ;
     }
     
@@ -222,14 +218,27 @@ static NSString * const ErrorMessage = @"ERROR";
 //}
 
 -(void)start{
-    isFirstInput = true;
     isDotOK = true;
-    isINFINITY = false;
+    self.expression = @"";
 }
 
 -(void)setExpression:(NSString *)newValue
 {
-    _expression = newValue;
-    [self.calculatorDelegate sendExpression:_expression];
+    if(_expression != newValue){
+        _expression = newValue;
+        [self.calculatorDelegate sendExpression:_expression];
+    }
 }
+
+-(void) addOperationToExpression:(NSString*)operation
+{
+   
+    self.expression = [self.expression stringByAppendingString:operation];
+    
+//    static NSString* space = @" ";
+//    NSString * tmp =  [space stringByAppendingString:operation];
+//    tmp = [tmp stringByAppendingString:space];
+//    self.expression =  [self.expression stringByAppendingString:tmp];
+}
+
 @end
