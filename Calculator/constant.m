@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "constants.h"
 
-NSString * const FourArithmeticOperation = @"+-*/";
+NSString * const BasicOperation = @"+-*/%";
 NSString * const Multiply = @"*";
 NSString * const Divide  = @"/";
 NSString * const Add  = @"+" ;
@@ -19,12 +19,12 @@ NSString * const LeftBracket = @"(" ;
 NSString * const RightBracket = @")" ;
 NSString * const Digits = @"0123456789";
 NSString * const PIAndE = @"π℮";
-NSString * const PIStr = @"π";
-NSString * const Exp = @"℮";
-NSString * const Factorial = @"!";
+NSString * const NumberPI = @"π";
+NSString * const NumberExp = @"℮";
+NSString * const FunFactorial = @"!";
 
-NSString * const Power = @"^";
-NSString * const SquareRoot = @"√" ;
+NSString * const FunPower = @"^";
+NSString * const FunSquareRoot = @"√" ;
 NSString * const FunRemainder = @"%";
 
 
@@ -47,7 +47,11 @@ NSString * const FunSquare = @"squa";
 NSString * const FunCube = @"cube";
 NSString * const FunReciprocal = @"reci";//倒数
 NSString * const FunPowRoot = @"powr";
+NSString * const FunScientific = @"scie";
 
 NSString * const FunRightOnly = @"FunRightOnly";
 NSString * const FunLeftOnly  = @"FunLeftOnly";
 NSString * const FunLogs = @"FunLogs";
+
+NSString * const SignedBit = @"-";
+

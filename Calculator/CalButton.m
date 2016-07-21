@@ -30,6 +30,7 @@ IB_DESIGNABLE
         [self drawHighlightBackgroundLayer];
         
         _highlightBackgroundLayer.hidden = YES;
+        self.titleLabel.font =  [UIFont systemFontOfSize:25 ];
     }
     
     return self;

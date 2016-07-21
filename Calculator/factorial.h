@@ -1,6 +1,10 @@
 
+
 #import <Foundation/Foundation.h>
 #import<math.h>
+
+#ifndef FACTORIAL_H
+#define FACTORIAL_H
 
 double F(double t,double input)
 {
@@ -76,4 +80,4 @@ double factorial2(double input){
     return INFINITY;
 }
 
-
+#endif

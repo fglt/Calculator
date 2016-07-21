@@ -8,13 +8,14 @@
 
 #import "CalculatorBrain.h"
 #import "constants.h"
-#import "factorial.h"
+
 #import "NSString+Calculator.h"
 #import "CalculatorConstants.h"
 
 @interface CalculatorBrain()
 @property NSMutableArray *operators;
 @property NSMutableArray *operands;
+@property NSMutableArray *opArray;//包括数和运算符
 
 @end
 
@@ -22,27 +23,14 @@
 @synthesize expression;
 @synthesize operators;
 @synthesize operands;
+@synthesize opArray;
 
-//static NSDictionary *inStackPriorityDictionary;
-//static NSDictionary *outStackPriorityDictionary;
-//
-//+(NSDictionary *)inStackPriorityDictionary
-//{
-//    return @{@"(":@1, @"*":@5, @"/":@5, @"%":@5, @"+":@3, @"-":@3, @")":@8 };
-//}
-//
-//+(NSDictionary *)outStackPriorityDictionary
-//{
-//    return @{@"(":@8, @"*":@4, @"/":@4, @"%":@4, @"+":@2, @"-":@2, @")":@1};
-//}
 
 -(id)init{
     self = [super init];
     operators =[ NSMutableArray array];
     operands =[ NSMutableArray array];
-    NSLog(@"brain: %@",[CalculatorConstants outStackPriorityDictionary][@"("]);
-//    inStackPriorityDictionary = @{@"(":@1, @"*":@5, @"/":@5, @"%":@5, @"+":@3, @"-":@3, @")":@8};
-//    outStackPriorityDictionary =@{@"(":@8, @"*":@4, @"/":@4, @"%":@4, @"+":@2, @"-":@2, @")":@1};
+    
     return self;
 }
 
@@ -52,363 +40,200 @@
     return  self;
 }
 
--(void)checkLast
+-(void)checkOpArrayLast
 {
-    NSString * content = @"!℮π)";
-    if(expression.length<=1) return;
-
-    for(u_long i = expression.length-1; i>0; i-- )
+    while((opArray.count >0 ) && [[opArray lastObject] isFunNeedRightOperator])
     {
-        NSString *last = [expression substringFromIndex:i];
-        if( !([last isDigit] || [content containsString:last] ) ){
-            expression = [expression  substringToIndex:i];
-        }
-        else return;
+        [opArray removeLastObject];
     }
-
     return ;
 }
 
-- (NSString *)fixInput{
-    [self checkLast ];
-    NSMutableString *result = [NSMutableString stringWithString: expression];
-    u_long i;
+-(void) willCalculate
+{
+    operators =[ NSMutableArray array];
+    operands =[ NSMutableArray array];
+    
+    NSArray* tempArray = [expression componentsSeparatedByCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@" "]];
+    opArray = [NSMutableArray arrayWithArray:tempArray];
+    [self clearSpace];
+    [self checkOpArrayLast];
+    [self addBracket];
+    [self addMultiply];
+    
+//    u_long length = opArray.count;
+//    
+//    for(u_long i = 0; i<length; i++)
+//    {
+//        NSString * str = opArray[i];
+//        if([str isNumberic] || [str isPIOrExp])
+//            [operands addObject:str];
+//        else
+//            [operators addObject:str];
+//        
+//    }
+    NSLog(@"array: %@", opArray);
+    NSLog(@"array: %@", operands);
+    NSLog(@"array: %@", operators);
+}
+
+-(void)addBracket
+{
+    u_long i = 0;
+    
     int lCount = 0;
     int rCount = 0;
     
-    //加乘法 如2(1+2)变为 2*(1+2)
-    for(i=1; i<result.length-1; i++){
-        unichar c = [result characterAtIndex:i];
-        if( (c == ')' && [self isDigital:[result characterAtIndex:i+1]]) || ( c == '(' && [self isDigital:[result characterAtIndex:i-1]] ) )
-        {
-            [result replaceCharactersInRange:NSMakeRange(i, 1) withString:[self ext:c :NO]];
-            i= i+2;
-        }
-    }
-    //在π和℮两边为数字时候加乘法
-    for(i=0; i<result.length-1; i++)
+    while(i < opArray.count)
     {
-        unichar c = [result characterAtIndex:i];
-        if( c == [PIAndE characterAtIndex:0]||c == [PIAndE characterAtIndex:1])
+        if([opArray[i] isEqualToString:RightBracket])
         {
-            unichar ch = [result characterAtIndex:i+1];
-            if( [self isDigital:ch]){
-                [result  replaceCharactersInRange:NSMakeRange(i, 1) withString:[self ext:c :NO]];
-                i++;
-            }
-        }
-    }
-    for(i=1; i<result.length; i++)
-    {
-        unichar c = [result characterAtIndex:i];
-        if( c == [PIAndE characterAtIndex:0]||c == [PIAndE characterAtIndex:1])
-        {
-            unichar ch = [result characterAtIndex:i-1];
-            if( [self isDigital:ch]){
-                [result  replaceCharactersInRange:NSMakeRange(i, 1) withString:[self ext:c :YES]];
-                i++;
-            }
-        }
-    }
-    
-    i=0;
-    
-    //补全括号
-    while(i<result.length){
-        unichar c = [result characterAtIndex:i];
-        if( c == ')' )
-        {
-            if(rCount == lCount){
-                NSString * startc = [result substringToIndex:1];
-                [result replaceCharactersInRange:NSMakeRange(0, 1) withString:[@"(" stringByAppendingString:startc] ];
+            if(lCount == rCount)
+            {
+                [opArray insertObject:LeftBracket atIndex:0];
                 lCount++;
                 i++;
             }
-            
-            rCount++;
-        }else if(c == '('){
+            rCount ++;
+        }else if ([opArray[i] isEqualToString:LeftBracket])
+        {
             lCount++;
         }
-        
         i++;
     }
-    while(lCount>rCount){
-        [result appendString:@")"];
+    
+    while(lCount > rCount)
+    {
+        [opArray addObject:RightBracket];
         rCount++;
     }
-    
-
-    return result;
 }
 
--(NSString *) ext:(unichar)ch :(BOOL)isLeft
+-(void) clearSpace
 {
-    if(ch== [PIAndE characterAtIndex:0] && isLeft) return @"*π";
-    if(ch== [PIAndE characterAtIndex:0] && !isLeft) return @"π*";
-    if(ch== [PIAndE characterAtIndex:1] && isLeft) return @"*℮";
-    if(ch== [PIAndE characterAtIndex:1] && !isLeft) return @"℮*";
-    if(ch== ')' ) return @")*";
-    if(ch== '(' ) return @"*(";
-    return nil;
+    u_long i = 0;
+
+    while(i < opArray.count)
+    {
+        if([opArray[i] isEqualToString:@""])
+            [opArray removeObjectAtIndex:i];
+        else
+            i++;
+    }
 }
 
+//在π和℮两边为数字时候加乘法
+//加乘法 如2(1+2)变为 2*(1+2)
+-(void)addMultiply
+{
+    if((!opArray) || (opArray.count<=1)) return;
+    u_long i = 0;
+    while(i < opArray.count - 1){
+        NSString * op1 =  opArray[i];
+        NSString * op2 =  opArray[i+1];
+        if([op1 isNumberic] && ([op2 isLeftBracket] || [op2 isPIOrExp]))
+        {
+            [opArray insertObject:Multiply atIndex:i+1];
+            i++;
+        }
+        
+        if([op1 isRightBracket] && ([op2 isNumberic] || [op2 isPIOrExp]))
+        {
+            [opArray insertObject:Multiply atIndex:i+1];
+            i++;
+        }
+        if([op1 isPIOrExp] && ([op2 isNumberic] || [op2 isLeftBracket] || [op1 isPIOrExp]))
+        {
+            [opArray insertObject:Multiply atIndex:i+1];
+            i++;
+        }
+        i++;
+    }
+}
 
-//×÷
 -(BOOL)check
 {
-    NSString * const ck = @"*/+-()√^";
-    NSString * input = expression;
+    u_long i = 0;
+    u_long length = opArray.count;
     
-    u_long l = input.length;
-    int  i=1;
-    
-    unichar c;
-    
-    c = [input characterAtIndex:0];
-    
-    //如果左括号右边出现乘除法 错误
-    if(c == '('){
-        unichar nc = [input characterAtIndex:1];
-        if( nc == [ck characterAtIndex:1] || nc == [ck characterAtIndex:0] ){
-             NSLog(@"check ( ERROR");
-            return NO;
-           
-        }
-    }
-    c = [input characterAtIndex:l-1];
-    //如果右括号左边边出现加减乘除 错误
-    if(c == ')'){
-        unichar nc = [input characterAtIndex:l-2];
-        if( nc == [ck characterAtIndex:0] || nc == [ck characterAtIndex:1] || nc == [ck characterAtIndex:2] || nc == [ck characterAtIndex:3] ){
-             NSLog(@"check ) ERROR");
-            return NO;
-        }
-    }
-    //如果左括号右边出现乘除法 错误；如果右括号左边边出现加减乘除 错误
-    
-    while(i < l-1){
-        unichar c = [input characterAtIndex:i];
-        unichar nc;
+    while(i < length)
+    {
+        //如果左括号右边出现乘除法 错误
+        //如果右括号左边边出现加减乘除 错误
+        //如果左括号右边出现乘除法 错误；如果右括号左边边出现加减乘除 错误
+        //如果根号或N方右边不为数字左括号，错误
         
-        if(c == '('){
-            nc = [input characterAtIndex:i+1];
-            if( nc == [ck characterAtIndex:0] || nc == [ck characterAtIndex:1] ){
-                 NSLog(@"check ( ERROR");
-                return NO;
-            }
-        }else if (c == ')'){
-            nc = [input characterAtIndex:i-1];
-            if( nc == [ck characterAtIndex:0] || nc == [ck characterAtIndex:1] || nc == [ck characterAtIndex:2] || nc == [ck characterAtIndex:3] ){
-                 NSLog(@"check ) ERROR");
-                return NO;
-            }
-        }
-        
-        i++;
     }
     
-    //如果根号或N方右边不为数字左括号，错误
-    i=0;
-    while( i<l-1){
-        c = [input characterAtIndex:i];
-        
-        if( c == [ck characterAtIndex:6] || c == '(' ){
-            unichar nc = [input characterAtIndex:i+1];
-            if( ![self isRightOKOfSquareOrPower:nc] ){
-                 NSLog(@"check 根号或N方右边不为数字左括号 ERROR");
-                return NO;
-            }
-        }
-        i++;
-    }
-    c= [input characterAtIndex:input.length-1];
-    if( c == [ck characterAtIndex:6] || c == '('){
-        NSLog(@"check 根号或N方右边不为数字左括号 ERROR");
-
-        return NO;
-    }
-    
-    return YES;
+    return false;
 }
 
--(BOOL) isRightOKOfSquareOrPower:(unichar)c
-{
-    NSString *ck = @".(sctl√℮π+-";
-    if(c>='0'&&c<='9') return YES;
-    for(int i=0; i<ck.length; i++){
-        if(c == [ck characterAtIndex:i])
-            return YES;
-    }
-    return NO;
-}
 -(double) calculate{
-    
-    double result =0;
-    
-    BOOL expressionOK = [self check];
-    
-    if(!expressionOK)
-        return INFINITY;
-    
-    NSString *input = [self fixInput];
-    
-    NSLog(@"calculate input: %@",input);
-    u_long len = input.length;
-    NSString *ch;
-    NSString *operator;
 
-    u_long oprCount, opdCount;
-    u_long i =0;
-    
-    u_long  lastIndex = 0;
-    
-    BOOL isOpNegative = true;//数字能否有符号位
-    BOOL isNegative = false ;//数字符号位为-
-    
-    for(; i<len; ++i){
-        if(isOpNegative){
-            NSString *tmpch = [input substringWithRange:NSMakeRange(i, 1)];
-            if([tmpch isEqualToString:Add] )
-                i++;
-            else if([tmpch isEqualToString:Minius] ){
-                i++;
-                isNegative = true;
-            }
-            isOpNegative = false;
-        }
-        ch = [input substringWithRange:NSMakeRange(i, 1)];
-        u_long oprCount ;
+    [self willCalculate];
+
+    while( opArray.count > 0)
+    {
+        NSString * opCurrent = opArray[0];
         
-        if( [ch isDigit]||[ch isEqualToString:Dot]){
-            lastIndex = [input lastLocationForNumberStartAt: i];
-            NSString *tmp = [input substringWithRange:NSMakeRange(i, lastIndex-i+1)];
-            if(isNegative){
-                tmp = [Minius stringByAppendingString:tmp];
-                isNegative = false;
-            }
-            NSNumber *number =  [ NSNumber numberWithDouble:[tmp doubleValue]];
-            [operands addObject:number];
-            i = lastIndex;
-        }else if([ch isOperator]) {
-            oprCount = [operators count];
-            while( oprCount>0 && (![ (operator=[operators objectAtIndex:oprCount-1]) isEqualToString: LeftBracket]) && [ch priorityCompareTo:operator]<=0){
-                double num = [self calWithOperator:operator];
-                [operands addObject: [NSNumber numberWithDouble:num] ] ;
-                [operators removeLastObject];
-                oprCount--;
-            }
-            
-            [operators addObject:ch];
-        }else if([ch isEqualToString:LeftBracket] ){
-            isOpNegative = true;
-            [operators addObject:ch];
-        }else if([ch isEqualToString:RightBracket] ){
-           
-            
-            while( (oprCount =[operators count]) >0 && ![( operator = [operators objectAtIndex:oprCount-1]) isEqualToString:LeftBracket])
+        if([opCurrent isNumberic])
+        {
+            [operands addObject:[NSNumber numberWithDouble:opCurrent.doubleValue]];
+
+        }else if([opCurrent isNumberPI]){
+            [operands addObject:[NSNumber numberWithDouble:M_PI]];
+        }else if([opCurrent isNumberExp]){
+            [operands addObject:[NSNumber numberWithDouble:M_E]];
+        }else{
+            NSString* lastOperator;
+            while((operators.count>0))
             {
-                [operators removeLastObject];
-                double num = [self calWithOperator:operator];
-                [operands addObject: [NSNumber numberWithDouble:num] ] ;
-            }
-            if([operator isEqualToString:LeftBracket])
-                [operators removeLastObject];
-        }else if( [ch isEqualToString:@"π"] ){
-            [operands addObject:[NSNumber numberWithDouble:M_PI] ];
-        }else if( [ch isEqualToString:@"℮"] ){
-            [operands addObject:[NSNumber numberWithDouble:M_E] ];
-        }else if( [ch isEqualToString:@"!"] ){
-            opdCount = [operands count];
-            double num = [[operands objectAtIndex:opdCount-1] doubleValue];
-            [operands removeLastObject];
-            num = [[NSString stringWithFormat:@"%f", factorial(num)] doubleValue];
-            NSLog(@"num: %e", num);
-            [operands addObject:[NSNumber numberWithDouble:num] ];
-        }else if( [ch isEqualToString:Power]){
-            [operators addObject:ch];
-            isOpNegative = true;
-        }else if( [ch isEqualToString:SquareRoot]){
-            [operators addObject:ch];
-        }else if( [ch isMathFunction]){
-            int x = 2;
-            if([ch isEqualToString:@"s"]){
-                [operators addObject:@"sin"];
-                isOpNegative = true;
-            }
-            else if([ch isEqualToString:@"c"]){
-                [operators addObject:@"cos"];
-                isOpNegative = true;
-            }
-            else if([ch isEqualToString:@"t"]){
-                [operators addObject:@"tan"];
-                isOpNegative = true;
-            }
-            else if([ch isEqualToString:@"l"]){
-                unichar  nextc = [input characterAtIndex:i+1];
-                
-                if( nextc == 'n')
+                lastOperator = [operators lastObject];
+                int pri = [CalculatorConstants stackPriorityOpOut:opCurrent OpIn:lastOperator];
+                if(pri <= 0)
                 {
-                    [operators addObject:@"ln"];
-                    x=1;
-                }else{
-                    [operators addObject:@"log"];
-                }
+                    if(![lastOperator isLeftBracket]){
+                        [self calculateWithOperator:lastOperator];
+                    }
+                    [operators removeLastObject];
+                }else break;
             }
-            i=i+x;
+            if( [opCurrent isOperator] || [opCurrent isLeftBracket])
+                [operators addObject:opCurrent];
         }
-        else {
-            NSLog(@"calculat: ERROE");
-            return INFINITY;
-        }
+        [opArray removeObjectAtIndex:0];
     }
     
-    oprCount =[operators count];
-    while (oprCount>0){
-        double num;
-        operator = [operators objectAtIndex:oprCount-1];
+    while (operators.count > 0){
+        NSString* lastOperator = [operators lastObject];
         [operators removeLastObject];
-        oprCount--;
-        
-        num = [self calWithOperator:operator];
-        
-        [operands addObject: [NSNumber numberWithDouble:num] ] ;
-        
+
+        [self calculateWithOperator:lastOperator];
     }
-    
-    opdCount = [operands count];
-    result = [[operands objectAtIndex:opdCount-1] doubleValue];
-    
-    return result;
-    
+
+    return [[operands lastObject] doubleValue];
 }
 
--(double) calWithOperator:(NSString *)operator
+-(void)calculateWithOperator:(NSString *)operator
 {
-    
-    double num = 0;
-    u_long opdCount = [operands count];
-    
-    if([operator isEqualToString: SquareRoot] || [operator isMathFunction]){
-        double num1 = [[operands objectAtIndex:opdCount-1] doubleValue];
+    double result = 0;
+    if([CalculatorConstants operatorsType:operator] == 2)
+    {
+        if(operands.count <= 1) return ;
+        double op1 = [[operands lastObject] doubleValue];
         [operands removeLastObject];
-        num = [operator calWithOneParm:num1];
-        
-    }else if( [operator isEqualToString: Power] || [operator isOperator]){
-        
-        if(opdCount>=2){
-            double num2 = [[operands objectAtIndex:opdCount-1] doubleValue];
-            [operands removeLastObject];
-            double num1 = [[operands objectAtIndex:opdCount-2] doubleValue];
-            [operands removeLastObject];
-            num = [operator calWithTwoParm:num1 :num2];
-        }else if(opdCount==1){
-            num = [[operands objectAtIndex:0] doubleValue];
-        }else{
-            num = 0;
-        }
+        double op2 = [[operands lastObject] doubleValue];
+        [operands removeLastObject];
+        result = [operator calWithTwoParm:op2 :op1];
+        [operands addObject:[NSNumber numberWithDouble:result]];
+    }else if([CalculatorConstants operatorsType:operator] == 1)
+    {
+        if(operands.count < 1) return ;
+        double opd = [[operands lastObject] doubleValue];
+        [operands removeLastObject];
+        result = [operator calWithOneParm:opd];
+        [operands addObject:[NSNumber numberWithDouble:result]];
     }
-    
-    return num;
 }
 
 

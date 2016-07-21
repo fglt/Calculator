@@ -9,10 +9,11 @@
 #import "CalculatorViewController.h"
 #import "constants.h"
 #import "NSString+Calculator.h"
+#import "CalculatorConstants.h"
 
 
 static NSString * const ErrorMessage = @"ERROR";
-static NSDictionary *buttonTag;
+
 @interface CalculatorViewController ()<UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIStackView *stack1;
 @property (strong, nonatomic) IBOutlet UIStackView *stack2;
@@ -20,44 +21,15 @@ static NSDictionary *buttonTag;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @property (nonatomic, strong) NSString* expression;
-
-@property BOOL isDotOK;
+@property (nonatomic, strong) NSString* lastInput;
+@property (nonatomic, strong) NSString* appendStr;
 
 @end
 
 @implementation CalculatorViewController
 
-@synthesize isDotOK;
-
-+(NSString*)buttonStringWithTag:(NSUInteger)tag
-{
-    if(!buttonTag){
-        buttonTag =  @{@"20":@"/",
-                       @"21":@"*",
-                       @"22":@"-",
-                       @"23":@"+",
-                       @"24":@"/",
-                       @"25":@"*",
-                       @"26":@"-",
-                       @"27":@"+",
-                       @"110":FunLogDecimal,
-                       @"111":FunLogE,
-                       @"112":FunLogBinary,
-                       @"120":FunSin,
-                       @"121":FunCos,
-                       @"122":FunTan,
-                       @"123":FunArcSin,
-                       @"124":FunArcCos,
-                       @"125":FunArcTan,
-                       @"126":FunSinh,
-                       @"127":FunCosh,
-                       @"128":FunTanh,
-                       };
-    }
-    
-    NSString *tagStr = [NSString stringWithFormat:@"%lu",(u_long)tag];
-    return  buttonTag[tagStr];
-}
+@synthesize calculatorDelegate;
+@synthesize lastInput;
 
 -(void) viewDidLoad
 {
@@ -99,26 +71,48 @@ static NSDictionary *buttonTag;
 }
 
 - (IBAction)clickDigit:(UIButton *)sender {
-
-    self.expression = [self.expression stringByAppendingString:sender.currentTitle] ;
+    lastInput = sender.currentTitle;
+    self.appendStr = lastInput;
 }
 
 - (IBAction)onClickZero:(UIButton *)sender {
     if(self.expression.length>0)
-        self.expression = [self.expression stringByAppendingString:sender.currentTitle] ;
+    {
+        lastInput = sender.currentTitle;
+        self.appendStr = lastInput;
+    }
 }
 
 - (IBAction)clickDot:(UIButton *)sender {
-    if(isDotOK){
-        _expression =[self.expression stringByAppendingString:Dot];
-        isDotOK = false;
+    if(_expression.length == 0)
+    {
+        lastInput = Dot;
+        self.appendStr = lastInput;
+    }
+    
+    long i =_expression.length - 1;
+    
+    UniChar ch = '+';
+    while(i >= 0){
+        ch = [_expression characterAtIndex:i];
+        
+        if( (ch != ' ') && (ch != '.'))
+            i--;
+        else break;
+    }
+    
+    if(i < 0 || ch == ' ')
+    {
+        lastInput = Dot;
+        self.appendStr = lastInput;
     }
 }
 
 - (IBAction)clickEqual:(UIButton *)sender {
     if(self.expression.length == 0) return;
-    [self.calculatorDelegate equal];
-    _expression = [self.calculatorDelegate  currentResult];
+    [calculatorDelegate equal];
+    _expression = [calculatorDelegate currentResult];
+    lastInput = _expression;
 }
 
 - (IBAction)clickOperator:(UIButton *)sender {
@@ -126,94 +120,80 @@ static NSDictionary *buttonTag;
     if(self.expression.length == 0)
         return;
     
-    NSString *text = _expression;
-    if([FourArithmeticOperation containCharacter:[text characterAtIndex:text.length-1]])
+    if([lastInput isBasicOperator])
     {
-        text = [text substringToIndex:text.length-1]; 
+        _expression = [_expression substringToIndex:_expression.length-3];
     }
+    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
+    self.appendStr = [lastInput addSpace];
 
-    NSString * appendStr = [CalculatorViewController buttonStringWithTag:sender.tag];
-    self.expression = [text stringByAppendingString:appendStr];
-    isDotOK = true;
 }
 
 - (IBAction)ClickFunction:(UIButton *)sender {
-//    self.expression = [ [_expression stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
-    NSString * appendStr = [CalculatorViewController buttonStringWithTag:sender.tag];
-    self.expression = [ [_expression stringByAppendingString:appendStr] stringByAppendingString:LeftBracket];
-    
+
+    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
+    self.appendStr = [[lastInput addSpace] stringByAppendingString:@" ( "];
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
-    self.expression =  [_expression stringByAppendingString:sender.currentTitle];
+    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
+    self.appendStr = [lastInput addSpace];
 }
 
 - (IBAction)ClickPowerOrFactorial:(UIButton *)sender {
+
+    if(![lastInput isFunLeftOK]) return;
+
+    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
     
-    NSString *  const jc = @"09)";
-    NSString * text = self.expression;
-    unichar  c = [text characterAtIndex:text.length-1];
-    
-    if([FourArithmeticOperation containCharacter:c]){
-        text = [text substringToIndex:text.length-1];
-        self.expression = [text stringByAppendingString:sender.currentTitle];
-    }
-    if( c == [jc characterAtIndex:2] || ( c>= '0'&& c<='9') ){
-        self.expression = [self.expression stringByAppendingString:sender.currentTitle];
-    }
+    self.appendStr = [lastInput addSpace];
 }
 
-//改动：当最先输入时候修正
 - (IBAction)ClickSquareRoot:(UIButton *)sender {
-    self.expression = [self.expression stringByAppendingString:sender.currentTitle] ;
+    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
+    self.appendStr = [lastInput addSpace];
 }
-
 
 - (IBAction)ClickLeftBracket:(UIButton *)sender {
-
-    self.expression = [self.expression stringByAppendingString:LeftBracket];
-    
-    isDotOK = true;
+    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
+    self.appendStr = [lastInput addSpace] ;
 }
 
 - (IBAction)ClickRightBracket:(UIButton *)sender {
-    if(self.expression.length >0)
-        self.expression = [self.expression stringByAppendingString:RightBracket];
-    isDotOK = true;
+    if(self.expression.length >0){
+        lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
+        self.appendStr = [lastInput addSpace];
+    }
 }
 
 - (IBAction)clearInput:(UIButton *)sender {
     [self start];
 }
 
-
-- (IBAction)onClickbuttons:(UIButton *)sender {
+- (IBAction)onClickButtons:(UIButton *)sender {
+    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
+    self.appendStr = [lastInput addSpace];
 }
 
 - (IBAction)deleteLastChar:(UIButton *)sender {
-    NSString *text = self.expression;
-    u_long l = text.length;
-    
-    if(l == 0) return;
-    if(l ==1){
-        [self start];
-        return ;
+    if(_expression.length>0){
+        self.expression = [self.expression substringToIndex:self.expression.length - self.appendStr.length];
+        if(self.expression.length == 0)return;
+        u_long length = self.expression.length;
+        long index = length - 1;
+        
+        if([_expression characterAtIndex:index] == ' '){
+            index--;
+            while((index > 0) &&[_expression characterAtIndex:index] != ' '){
+                index--;
+            }
+            _appendStr = [_expression substringWithRange:NSMakeRange(index , length - index)];
+            self.lastInput = [self.appendStr substringWithRange:NSMakeRange(1, 1)];
+        }else{
+            _appendStr = [_expression substringWithRange:NSMakeRange(length - 1, 1)];
+            self.lastInput = self.appendStr;
+        }
     }
-    
-    unichar c  = [text characterAtIndex:l-1];
-    if( c=='.')
-        isDotOK = true;
-    if(c == '(')
-    {
-        unichar fc = [text characterAtIndex:l-2];
-        if (fc == 'n' && [text characterAtIndex:l-3]=='l')
-            l = l-3;
-        else if( fc =='g' || fc== 's' || fc == 'n' )
-            l=l-4;
-        else l=l-1;
-    }else l=l-1;
-    
-    self.expression = [text substringToIndex:l];
 }
 
 ////将结果拷贝到粘贴板
@@ -223,7 +203,6 @@ static NSDictionary *buttonTag;
 //}
 
 -(void)start{
-    isDotOK = true;
     self.expression = @"";
 }
 
@@ -231,9 +210,15 @@ static NSDictionary *buttonTag;
 {
     if(_expression != newValue){
         _expression = newValue;
+        NSLog(@"_expression: %@", _expression);
         [self.calculatorDelegate sendExpression:_expression];
     }
 }
 
 
+-(void)setAppendStr:(NSString *)appendStr
+{
+    _appendStr = appendStr;
+    self.expression = [self.expression stringByAppendingString:_appendStr];
+}
 @end

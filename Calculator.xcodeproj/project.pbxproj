@@ -64,9 +64,9 @@
 		1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorBrain.m; path = Calculator/CalculatorBrain.m; sourceTree = "<group>"; };
 		1747D1981D3C6B8A002C2EE1 /* CalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalView.h; sourceTree = "<group>"; };
 		1747D1991D3C6B8A002C2EE1 /* CalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalView.m; sourceTree = "<group>"; };
-		1747D19A1D3C6B8A002C2EE1 /* constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constant.m; sourceTree = "<group>"; };
-		1747D19B1D3C6B8A002C2EE1 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
-		1747D19C1D3C6B8A002C2EE1 /* factorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = factorial.h; sourceTree = "<group>"; };
+		1747D19A1D3C6B8A002C2EE1 /* constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = constant.m; path = Calculator/constant.m; sourceTree = "<group>"; };
+		1747D19B1D3C6B8A002C2EE1 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = Calculator/constants.h; sourceTree = "<group>"; };
+		1747D19C1D3C6B8A002C2EE1 /* factorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = factorial.h; path = Calculator/factorial.h; sourceTree = "<group>"; };
 		1747D1A11D3C6B95002C2EE1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		1747D1A21D3C6B95002C2EE1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		1747D1A31D3C6B95002C2EE1 /* NSString+Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Calculator.h"; path = "Calculator/NSString+Calculator.h"; sourceTree = "<group>"; };
@@ -162,9 +162,6 @@
 		1747D17D1D3C6B36002C2EE1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1747D19A1D3C6B8A002C2EE1 /* constant.m */,
-				1747D19B1D3C6B8A002C2EE1 /* constants.h */,
-				1747D19C1D3C6B8A002C2EE1 /* factorial.h */,
 				1747D18B1D3C6B36002C2EE1 /* LaunchScreen.storyboard */,
 				1747D18E1D3C6B36002C2EE1 /* Info.plist */,
 				1747D1801D3C6B36002C2EE1 /* AppDelegate.h */,
@@ -179,6 +176,9 @@
 		1747D1C41D3CB6F5002C2EE1 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				1747D19A1D3C6B8A002C2EE1 /* constant.m */,
+				1747D19B1D3C6B8A002C2EE1 /* constants.h */,
+				1747D19C1D3C6B8A002C2EE1 /* factorial.h */,
 				170827FF1D3FCD58005B3CAD /* CalculatorConstants.h */,
 				170828001D3FCD58005B3CAD /* CalculatorConstants.m */,
 				170827C71D3E7693005B3CAD /* ComputationDao.h */,

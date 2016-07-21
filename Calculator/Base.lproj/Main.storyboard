@@ -158,10 +158,10 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                     <state key="normal" title="+/-"/>
                                     <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="CHs-33-OML"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="TJd-bH-BlT"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UT-zF-oYW">
+                                <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UT-zF-oYW">
                                     <rect key="frame" x="99" y="3" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="("/>
@@ -169,7 +169,7 @@
                                         <action selector="ClickLeftBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="txs-h7-rvq"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-ot-oDe">
+                                <button opaque="NO" tag="41" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-ot-oDe">
                                     <rect key="frame" x="198" y="3" width="91" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title=")"/>
@@ -203,7 +203,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="EE"/>
                                     <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="AFs-GB-Pot"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="Xbe-qO-Vl4"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCc-FF-B1J" customClass="CalButton">
@@ -251,7 +251,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="93" height="36"/>
                                     </variation>
                                     <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="OE4-L7-RVc"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="m5u-Ub-uw8"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKh-Da-Kct" customClass="CalButton">
@@ -311,7 +311,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="93" height="36"/>
                                     </variation>
                                     <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="f3L-zA-ryN"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="OMR-oT-n0H"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNc-RK-WiI" customClass="CalButton">
@@ -431,7 +431,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="93" height="36"/>
                                     </variation>
                                     <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="SKW-Hh-9hT"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="yHc-Iq-oL8"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZH-og-cIH">
@@ -442,7 +442,7 @@
                                         <rect key="frame" x="98" y="0.0" width="94" height="36"/>
                                     </variation>
                                     <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="qvp-ug-RsF"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="cka-UL-kLa"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-7W-mY9">
@@ -477,10 +477,10 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                     <state key="normal" title="+/-"/>
                                     <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="di2-gR-8Vf"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="Axh-vX-74Q"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeY-v5-8Da">
+                                <button opaque="NO" tag="42" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeY-v5-8Da">
                                     <rect key="frame" x="74" y="3" width="66" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="("/>
@@ -488,7 +488,7 @@
                                         <action selector="ClickLeftBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="zfq-Pl-6Lq"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nm-9V-Kfa">
+                                <button opaque="NO" tag="43" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nm-9V-Kfa">
                                     <rect key="frame" x="148" y="3" width="66" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title=")"/>
@@ -546,7 +546,7 @@
                                         <rect key="frame" x="147" y="0.0" width="68" height="36"/>
                                     </variation>
                                     <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="m8W-2l-BFS"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="FBk-xj-9rk"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="110" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9X-B6-Qkc">
@@ -749,9 +749,6 @@
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="147" y="0.0" width="68" height="36"/>
                                     </variation>
-                                    <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="rrk-LZ-RSh"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg1-Ma-Nlv">
                                     <rect key="frame" x="74" y="0.0" width="66" height="36"/>
@@ -771,9 +768,6 @@
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="220" y="0.0" width="69" height="36"/>
                                     </variation>
-                                    <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="lzR-hI-dHB"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="42" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUh-n3-EyI">
                                     <rect key="frame" x="222" y="0.0" width="66" height="36"/>
@@ -782,9 +776,6 @@
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="220" y="0.0" width="69" height="36"/>
                                     </variation>
-                                    <connections>
-                                        <action selector="onClickbuttons:" destination="un8-7v-BAb" eventType="touchUpInside" id="wdb-1d-Pg9"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQU-Dk-tTM">
                                     <rect key="frame" x="296" y="0.0" width="66" height="36"/>

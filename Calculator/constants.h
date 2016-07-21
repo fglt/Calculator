@@ -11,7 +11,7 @@
 
 #ifndef constants_h
 #define constants_h
-extern NSString * const FourArithmeticOperation ;
+extern NSString * const BasicOperation ;
 extern NSString * const Multiply ;
 extern NSString * const Divide ;
 extern NSString * const Add ;
@@ -21,12 +21,12 @@ extern NSString * const LeftBracket ;
 extern NSString * const RightBracket;
 extern NSString * const Digits;
 extern NSString * const PIAndE;
-extern NSString * const PIStr;
-extern NSString * const Exp;
-extern NSString * const Factorial;
+extern NSString * const NumberPI;
+extern NSString * const NumberExp;
+extern NSString * const FunFactorial;
 
-extern NSString * const Power;
-extern NSString * const SquareRoot;
+extern NSString * const FunPower;
+extern NSString * const FunSquareRoot;
 extern NSString * const FunRemainder;
 
 extern NSString * const FunSin;
@@ -53,4 +53,7 @@ extern NSString * const FunRightOnly;
 extern NSString * const FunLeftOnly;
 extern NSString * const FunTriangle;
 extern NSString * const FunLogs;
+
+extern NSString * const FunScientific;
+extern NSString * const SignedBit;
 #endif /* constants_h */
