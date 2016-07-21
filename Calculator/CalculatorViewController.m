@@ -1,4 +1,4 @@
-//
+ //
 //  CalculatorViewController.m
 //  Calculator
 //
@@ -12,6 +12,7 @@
 
 
 static NSString * const ErrorMessage = @"ERROR";
+static NSDictionary *buttonTag;
 @interface CalculatorViewController ()<UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIStackView *stack1;
 @property (strong, nonatomic) IBOutlet UIStackView *stack2;
@@ -27,6 +28,36 @@ static NSString * const ErrorMessage = @"ERROR";
 @implementation CalculatorViewController
 
 @synthesize isDotOK;
+
++(NSString*)buttonStringWithTag:(NSUInteger)tag
+{
+    if(!buttonTag){
+        buttonTag =  @{@"20":@"/",
+                       @"21":@"*",
+                       @"22":@"-",
+                       @"23":@"+",
+                       @"24":@"/",
+                       @"25":@"*",
+                       @"26":@"-",
+                       @"27":@"+",
+                       @"110":FunLogDecimal,
+                       @"111":FunLogE,
+                       @"112":FunLogBinary,
+                       @"120":FunSin,
+                       @"121":FunCos,
+                       @"122":FunTan,
+                       @"123":FunArcSin,
+                       @"124":FunArcCos,
+                       @"125":FunArcTan,
+                       @"126":FunSinh,
+                       @"127":FunCosh,
+                       @"128":FunTanh,
+                       };
+    }
+    
+    NSString *tagStr = [NSString stringWithFormat:@"%lu",(u_long)tag];
+    return  buttonTag[tagStr];
+}
 
 -(void) viewDidLoad
 {
@@ -92,33 +123,25 @@ static NSString * const ErrorMessage = @"ERROR";
 
 - (IBAction)clickOperator:(UIButton *)sender {
     
-    if(self.expression.length==0)
+    if(self.expression.length == 0)
         return;
     
     NSString *text = _expression;
-    
-   // NSString * sub = [text substringFromIndex:text.length-1];
-
-//    if([FourArithmeticOperation containsString:sub])
-//    {
-//        text = [text substringToIndex:text.length-1];
-//    }
-    
     if([FourArithmeticOperation containCharacter:[text characterAtIndex:text.length-1]])
     {
-        text = [text substringToIndex:text.length-1];
+        text = [text substringToIndex:text.length-1]; 
     }
-//    _expression = text;
-//    [self addOperationToExpression:sender.currentTitle];
-    self.expression = [text stringByAppendingString:sender.currentTitle];
+
+    NSString * appendStr = [CalculatorViewController buttonStringWithTag:sender.tag];
+    self.expression = [text stringByAppendingString:appendStr];
     isDotOK = true;
 }
 
 - (IBAction)ClickFunction:(UIButton *)sender {
-    self.expression = [ [_expression stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
+//    self.expression = [ [_expression stringByAppendingString:sender.currentTitle] stringByAppendingString:LeftBracket];
+    NSString * appendStr = [CalculatorViewController buttonStringWithTag:sender.tag];
+    self.expression = [ [_expression stringByAppendingString:appendStr] stringByAppendingString:LeftBracket];
     
-//    NSString *tmp = [sender.currentTitle stringByAppendingString:LeftBracket];
-//    [self addOperationToExpression:tmp];
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
@@ -163,26 +186,8 @@ static NSString * const ErrorMessage = @"ERROR";
     [self start];
 }
 
-//符号位button处理
-- (IBAction)onClickSignBit:(UIButton *)sender {
 
-}
-
-- (IBAction)onClickScientificNotation:(UIButton *)sender {
-    
-}
-
-
-- (IBAction)onClickSquare:(UIButton *)sender {
-    
-}
-
-- (IBAction)onClickCube:(UIButton *)sender {
-    
-}
-
-//倒数
-- (IBAction)reciprocal:(id)sender {
+- (IBAction)onClickbuttons:(UIButton *)sender {
 }
 
 - (IBAction)deleteLastChar:(UIButton *)sender {
@@ -230,15 +235,5 @@ static NSString * const ErrorMessage = @"ERROR";
     }
 }
 
--(void) addOperationToExpression:(NSString*)operation
-{
-   
-    self.expression = [self.expression stringByAppendingString:operation];
-    
-//    static NSString* space = @" ";
-//    NSString * tmp =  [space stringByAppendingString:operation];
-//    tmp = [tmp stringByAppendingString:space];
-//    self.expression =  [self.expression stringByAppendingString:tmp];
-}
 
 @end

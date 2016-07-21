@@ -10,6 +10,7 @@
 #import "constants.h"
 #import "factorial.h"
 #import "NSString+Calculator.h"
+#import "CalculatorConstants.h"
 
 @interface CalculatorBrain()
 @property NSMutableArray *operators;
@@ -22,10 +23,26 @@
 @synthesize operators;
 @synthesize operands;
 
+//static NSDictionary *inStackPriorityDictionary;
+//static NSDictionary *outStackPriorityDictionary;
+//
+//+(NSDictionary *)inStackPriorityDictionary
+//{
+//    return @{@"(":@1, @"*":@5, @"/":@5, @"%":@5, @"+":@3, @"-":@3, @")":@8 };
+//}
+//
+//+(NSDictionary *)outStackPriorityDictionary
+//{
+//    return @{@"(":@8, @"*":@4, @"/":@4, @"%":@4, @"+":@2, @"-":@2, @")":@1};
+//}
+
 -(id)init{
     self = [super init];
     operators =[ NSMutableArray array];
     operands =[ NSMutableArray array];
+    NSLog(@"brain: %@",[CalculatorConstants outStackPriorityDictionary][@"("]);
+//    inStackPriorityDictionary = @{@"(":@1, @"*":@5, @"/":@5, @"%":@5, @"+":@3, @"-":@3, @")":@8};
+//    outStackPriorityDictionary =@{@"(":@8, @"*":@4, @"/":@4, @"%":@4, @"+":@2, @"-":@2, @")":@1};
     return self;
 }
 
@@ -126,12 +143,12 @@
 
 -(NSString *) ext:(unichar)ch :(BOOL)isLeft
 {
-    if(ch== [PIAndE characterAtIndex:0] && isLeft) return @"×π";
-    if(ch== [PIAndE characterAtIndex:0] && !isLeft) return @"π×";
-    if(ch== [PIAndE characterAtIndex:1] && isLeft) return @"×℮";
-    if(ch== [PIAndE characterAtIndex:1] && !isLeft) return @"℮×";
-    if(ch== ')' ) return @")×";
-    if(ch== '(' ) return @"×(";
+    if(ch== [PIAndE characterAtIndex:0] && isLeft) return @"*π";
+    if(ch== [PIAndE characterAtIndex:0] && !isLeft) return @"π*";
+    if(ch== [PIAndE characterAtIndex:1] && isLeft) return @"*℮";
+    if(ch== [PIAndE characterAtIndex:1] && !isLeft) return @"℮*";
+    if(ch== ')' ) return @")*";
+    if(ch== '(' ) return @"*(";
     return nil;
 }
 
@@ -139,7 +156,7 @@
 //×÷
 -(BOOL)check
 {
-    NSString * const ck = @"×÷+-()√^";
+    NSString * const ck = @"*/+-()√^";
     NSString * input = expression;
     
     u_long l = input.length;
@@ -218,7 +235,6 @@
 {
     NSString *ck = @".(sctl√℮π+-";
     if(c>='0'&&c<='9') return YES;
-    //return (c>='0'&&c<='9') || c=='.' || c== '(' || c=='s' || c== 'c'|| c=='t'|| c=='l'|| [@"√" characterAtIndex:0];
     for(int i=0; i<ck.length; i++){
         if(c == [ck characterAtIndex:i])
             return YES;
@@ -236,7 +252,7 @@
     
     NSString *input = [self fixInput];
     
-    NSLog(@"input: %@",input);
+    NSLog(@"calculate input: %@",input);
     u_long len = input.length;
     NSString *ch;
     NSString *operator;
@@ -308,10 +324,10 @@
             num = [[NSString stringWithFormat:@"%f", factorial(num)] doubleValue];
             NSLog(@"num: %e", num);
             [operands addObject:[NSNumber numberWithDouble:num] ];
-        }else if( [ch isEqualToString:@"^"]){
+        }else if( [ch isEqualToString:Power]){
             [operators addObject:ch];
             isOpNegative = true;
-        }else if( [ch isEqualToString:@"√"]){
+        }else if( [ch isEqualToString:SquareRoot]){
             [operators addObject:ch];
         }else if( [ch isMathFunction]){
             int x = 2;
@@ -372,12 +388,12 @@
     double num = 0;
     u_long opdCount = [operands count];
     
-    if([operator isEqualToString: @"√"] || [operator isMathFunction]){
+    if([operator isEqualToString: SquareRoot] || [operator isMathFunction]){
         double num1 = [[operands objectAtIndex:opdCount-1] doubleValue];
         [operands removeLastObject];
         num = [operator calWithOneParm:num1];
         
-    }else if( [operator isEqualToString: @"^"] || [operator isOperator]){
+    }else if( [operator isEqualToString: Power] || [operator isOperator]){
         
         if(opdCount>=2){
             double num2 = [[operands objectAtIndex:opdCount-1] doubleValue];

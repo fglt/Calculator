@@ -9,14 +9,45 @@
 #import <Foundation/Foundation.h>
 #import "constants.h"
 
-NSString * const DefalultOfInput = @"0";
-NSString * const FourArithmeticOperation = @"+-×÷";
-NSString * const Multiply = @"×";
-NSString * const Divide  = @"÷";
+NSString * const FourArithmeticOperation = @"+-*/";
+NSString * const Multiply = @"*";
+NSString * const Divide  = @"/";
 NSString * const Add  = @"+" ;
 NSString * const Minius  = @"-" ;
 NSString * const Dot = @".";
 NSString * const LeftBracket = @"(" ;
 NSString * const RightBracket = @")" ;
-NSString * const Digits =@"0123456789";
+NSString * const Digits = @"0123456789";
 NSString * const PIAndE = @"π℮";
+NSString * const PIStr = @"π";
+NSString * const Exp = @"℮";
+NSString * const Factorial = @"!";
+
+NSString * const Power = @"^";
+NSString * const SquareRoot = @"√" ;
+NSString * const FunRemainder = @"%";
+
+
+NSString * const FunTriangle = @"FunTriangle";
+NSString * const FunSin = @"sina";
+NSString * const FunArcSin = @"sinr" ;
+NSString * const FunSinh = @"sinh";
+NSString * const FunCos = @"cosa";;
+NSString * const FunArcCos = @"cosr";
+NSString * const FunCosh = @"cosh";
+NSString * const FunTan = @"tana";
+NSString * const FunArcTan = @"tanr";
+NSString * const FunTanh = @"tanh";
+
+NSString * const FunLogDecimal = @"logd";
+NSString * const FunLogE = @"loge";
+NSString * const FunLogBinary = @"logb";
+
+NSString * const FunSquare = @"squa";
+NSString * const FunCube = @"cube";
+NSString * const FunReciprocal = @"reci";//倒数
+NSString * const FunPowRoot = @"powr";
+
+NSString * const FunRightOnly = @"FunRightOnly";
+NSString * const FunLeftOnly  = @"FunLeftOnly";
+NSString * const FunLogs = @"FunLogs";

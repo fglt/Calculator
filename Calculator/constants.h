@@ -11,7 +11,6 @@
 
 #ifndef constants_h
 #define constants_h
-extern NSString * const DefalultOfInput ;
 extern NSString * const FourArithmeticOperation ;
 extern NSString * const Multiply ;
 extern NSString * const Divide ;
@@ -22,31 +21,36 @@ extern NSString * const LeftBracket ;
 extern NSString * const RightBracket;
 extern NSString * const Digits;
 extern NSString * const PIAndE;
+extern NSString * const PIStr;
+extern NSString * const Exp;
+extern NSString * const Factorial;
 
-extern NSString * const Dot;
-extern NSString * const LeftBracket ;
-extern NSString * const RightBracket;
-extern NSString * const Digits;
-extern NSString * const PIAndE;
+extern NSString * const Power;
+extern NSString * const SquareRoot;
+extern NSString * const FunRemainder;
 
+extern NSString * const FunSin;
+extern NSString * const FunArcSin ;
+extern NSString * const FunSinh;
+extern NSString * const FunCos;
+extern NSString * const FunArcCos;
+extern NSString * const FunCosh;
+extern NSString * const FunTan;
+extern NSString * const FunArcTan;
+extern NSString * const FunTanh;
 
-//各种按钮的tag在storyBoard中的tag类型是NSInteger
-extern NSInteger const SignedTag ;//符号位buttonTag
-extern NSInteger const LeftBracketTag ;
-extern NSInteger const RightBracketTag ;
-extern NSInteger const ClearTag ;
-extern NSInteger const DeleteTag ;
-extern NSInteger const ScientificNotationTag ;//科学计数tag
-extern NSInteger const SquareTag;//平方tag
-extern NSInteger const CubeTag ;//立方
+extern NSString * const FunLogDecimal;
+extern NSString * const FunLogE;
+extern NSString * const FunLogBinary;
 
-extern NSInteger const SignedTag ;//符号位buttonTag
-extern NSInteger const LeftBracketTag ;
-extern NSInteger const RightBracketTag ;
-extern NSInteger const ClearTag ;
-extern NSInteger const DeleteTag ;
-extern NSInteger const ScientificNotationTag ;//科学计数tag
-extern NSInteger const SquareTag;//平方tag
-extern NSInteger const CubeTag ;//立方
+extern NSString * const FunSquare;
+extern NSString * const FunCube;
+extern NSString * const FunReciprocal;//倒数
 
+extern NSString * const FunPowRoot;
+
+extern NSString * const FunRightOnly;
+extern NSString * const FunLeftOnly;
+extern NSString * const FunTriangle;
+extern NSString * const FunLogs;
 #endif /* constants_h */

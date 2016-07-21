@@ -13,6 +13,7 @@
 		170827CB1D3E7693005B3CAD /* ComputationDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 170827C81D3E7693005B3CAD /* ComputationDao.m */; };
 		170827CC1D3E7693005B3CAD /* HistoryPlistDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170827CA1D3E7693005B3CAD /* HistoryPlistDelegate.m */; };
 		170827FD1D3F53CF005B3CAD /* ExpressionLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 170827FC1D3F53CF005B3CAD /* ExpressionLabel.m */; };
+		170828011D3FCD58005B3CAD /* CalculatorConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 170828001D3FCD58005B3CAD /* CalculatorConstants.m */; };
 		1747D17F1D3C6B36002C2EE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D17E1D3C6B36002C2EE1 /* main.m */; };
 		1747D1821D3C6B36002C2EE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1811D3C6B36002C2EE1 /* AppDelegate.m */; };
 		1747D1881D3C6B36002C2EE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1747D1861D3C6B36002C2EE1 /* Main.storyboard */; };
@@ -47,6 +48,8 @@
 		170827FB1D3F53CF005B3CAD /* ExpressionLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionLabel.h; sourceTree = "<group>"; };
 		170827FC1D3F53CF005B3CAD /* ExpressionLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressionLabel.m; sourceTree = "<group>"; };
 		170827FE1D3F66C8005B3CAD /* ButtonTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonTag.h; sourceTree = "<group>"; };
+		170827FF1D3FCD58005B3CAD /* CalculatorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorConstants.h; path = Calculator/CalculatorConstants.h; sourceTree = "<group>"; };
+		170828001D3FCD58005B3CAD /* CalculatorConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorConstants.m; path = Calculator/CalculatorConstants.m; sourceTree = "<group>"; };
 		1747D17A1D3C6B36002C2EE1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1747D17E1D3C6B36002C2EE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1747D1801D3C6B36002C2EE1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 		1747D1C41D3CB6F5002C2EE1 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				170827FF1D3FCD58005B3CAD /* CalculatorConstants.h */,
+				170828001D3FCD58005B3CAD /* CalculatorConstants.m */,
 				170827C71D3E7693005B3CAD /* ComputationDao.h */,
 				170827C81D3E7693005B3CAD /* ComputationDao.m */,
 				170827C91D3E7693005B3CAD /* HistoryPlistDelegate.h */,
@@ -265,6 +270,7 @@
 				170827C61D3DFA14005B3CAD /* CalculatorViewController.m in Sources */,
 				1747D19D1D3C6B8A002C2EE1 /* CalButton.m in Sources */,
 				1747D1A91D3C6B96002C2EE1 /* MainViewController.m in Sources */,
+				170828011D3FCD58005B3CAD /* CalculatorConstants.m in Sources */,
 				170827B61D3DBCBB005B3CAD /* CellSelectedControllerViewController.m in Sources */,
 				170827FD1D3F53CF005B3CAD /* ExpressionLabel.m in Sources */,
 				170827B91D3DC8F5005B3CAD /* ClearHistoryController.m in Sources */,

@@ -115,15 +115,6 @@
     }
     
     self.curExpression = expression;
-    brain.expression = expression;
-    double result = [brain calculate];
-    if( result == INFINITY||result == -INFINITY)
-    {
-        self.result =@"🆕";;
-
-        return ;
-    }
-    self.result = [ [NSNumber numberWithDouble:result] stringValue];
 }
 
 -(void) sendResult:(NSString *)result{
