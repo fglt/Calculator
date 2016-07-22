@@ -142,7 +142,7 @@ static NSString * const ErrorMessage = @"ERROR";
 
 - (IBAction)ClickPowerOrFactorial:(UIButton *)sender {
 
-    if(![lastInput isFunLeftOK]) return;
+    if(![lastInput isOpNeedRightOperand]) return;
 
     lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
     
@@ -175,7 +175,7 @@ static NSString * const ErrorMessage = @"ERROR";
     self.appendStr = [lastInput addSpace];
 }
 
-- (IBAction)deleteLastChar:(UIButton *)sender {
+- (IBAction)deleteLastInput:(UIButton *)sender {
     if(_expression.length>0){
         self.expression = [self.expression substringToIndex:self.expression.length - self.appendStr.length];
         if(self.expression.length == 0)return;

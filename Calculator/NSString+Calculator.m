@@ -115,6 +115,17 @@
     return false;
 }
 
+-(double)getNumber
+{
+    if([self isNumberic])
+        return self.doubleValue;
+    if([self isNumberPI])
+        return M_PI;
+    if([self isNumberExp])
+        return M_E;
+    return 0;
+}
+
 ///在字符串两端加上空格
 -(NSString*)addSpace
 {
@@ -125,12 +136,6 @@
     return tmp;
 }
 
-
--(BOOL)isFunLeftOK
-{
-    return [self isDigit] || [self isNumberExp]
-    || [self isNumberPI] || [self isRightBracket] || [self isEqualToString:Dot];
-}
 
 //判断是否为整数
 -(BOOL)isInteger
@@ -162,16 +167,7 @@
     return YES;
 }
 
--(BOOL)isFunNeedRightOperator
-{
-    if([self isBasicOperator]) return YES;
-    if([self isTriangleFun]) return YES;
-    if([self isLogFun]) return YES;
-    if([self isEqualToString:FunPower]) return YES;
-    if([self isEqualToString:FunPowRoot])return YES;
-    if([self isEqualToString:FunSquareRoot]) return YES;
-    return NO;
-}
+
 
 -(BOOL)isTriangleFun{
     
@@ -205,27 +201,43 @@
 
 -(BOOL)isBinaryOperator
 {
-    
-    return true;
+    return  [CalculatorConstants operatorsType:self] == 2;
 }
+
 -(BOOL)isUnaryOperator
 {
-    return true;
+    int i = [CalculatorConstants operatorsType:self];
+    return  i == 1 || i == 3;
 }
 
 -(BOOL)isOperator{
     int i = [CalculatorConstants operatorsType:self];
-    return  (i == 1) || (i == 2);
+    return  (i == 1) || (i == 2 || i == 3);
 }
 
--(double)getNumber
+///一元右操作符：需要右边数作为操作数的运算 以及左括号,
+-(BOOL)isOpNeedRightOperand
 {
-    if([self isNumberic])
-        return self.doubleValue;
-    if([self isNumberPI])
-        return M_PI;
-    if([self isNumberExp])
-        return M_E;
-    return 0;
+    if([self isBinaryOperator]) return YES;
+    return  [CalculatorConstants operatorsType:self] == 3;
 }
+
+-(BOOL)isOpNeedLeftOperand
+{
+    if([self isBinaryOperator]) return true;
+     return  [CalculatorConstants operatorsType:self] == 1;
+}
+
+///是否是一元左操作符（包括右括号））
+-(BOOL) isLeftBinaryOperator
+{
+    return  [CalculatorConstants operatorsType:self] == 1;
+}
+
+///是否是一元右操作符（包括左括号））
+-(BOOL) isRightBinaryOperator
+{
+    return  [CalculatorConstants operatorsType:self] == 3;
+}
+
 @end

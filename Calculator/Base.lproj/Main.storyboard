@@ -190,7 +190,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="DEL"/>
                                     <connections>
-                                        <action selector="deleteLastChar:" destination="un8-7v-BAb" eventType="touchUpInside" id="qZv-Tg-Vp1"/>
+                                        <action selector="deleteLastInput:" destination="un8-7v-BAb" eventType="touchUpInside" id="OJ2-iF-Zsf"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -509,7 +509,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="DEL"/>
                                     <connections>
-                                        <action selector="deleteLastChar:" destination="un8-7v-BAb" eventType="touchUpInside" id="FP9-hp-ac1"/>
+                                        <action selector="deleteLastInput:" destination="un8-7v-BAb" eventType="touchUpInside" id="2k0-bS-die"/>
                                     </connections>
                                 </button>
                             </subviews>

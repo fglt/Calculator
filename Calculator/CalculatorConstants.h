@@ -49,12 +49,19 @@ typedef enum
     TagOfTanh = 128,
 } functionTag;
 
-
+/**
+ @brief:
+ +(NSDictionary *)inStackPriorityDictionary;\n
+ +(NSDictionary *)outStackPriorityDictionary;\n
+ +(NSString*)buttonStringWithTag:(NSUInteger)tag;\n
+ +(int)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn;\n
+ +(int)operatorsType:(NSString*) op;
+ */
 @interface CalculatorConstants : NSObject
 
 +(NSDictionary *)inStackPriorityDictionary;
 +(NSDictionary *)outStackPriorityDictionary;
 +(NSString*)buttonStringWithTag:(NSUInteger)tag;
-+(NSNumber*)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn;
++(int)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn;
 +(int)operatorsType:(NSString*) op;
 @end

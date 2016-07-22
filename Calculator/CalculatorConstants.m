@@ -40,16 +40,17 @@ static NSDictionary *operatorsDict;
     return inStackPriorityDictionary;
 }
 
-+(NSNumber*)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn
++(int)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn
 {
     NSNumber* outp = [CalculatorConstants outStackPriorityDictionary][opOut];
     NSNumber* inp = [CalculatorConstants inStackPriorityDictionary][opIn];
     NSLog(@"operator: %@, %@",outp, inp);
     if(outp && inp)
     {
-        return [NSNumber numberWithInteger:(outp.intValue - inp.intValue)];
+        return (outp.intValue - inp.intValue);
     }
-    return  nil;
+    
+    return  INT_MAX;
 }
 
 +(NSDictionary *)outStackPriorityDictionary
@@ -119,14 +120,18 @@ static NSDictionary *operatorsDict;
 
 +(int)operatorsType:(NSString*) op
 {
+    
+    ///规定: 数值1表示： 左操作符：操作符左边必须为操作数 或者右括号 或者 左操作符 一元运算符；
+    ///数值3 表示：右操作符：操作符右边必需为操作数 或者 左括号 或者 右操作符 一元运算符；
     if(!operatorsDict){
         operatorsDict =@{Divide:@2,Multiply:@2,Minius:@2,Add:@2,
                          FunSquare:@1,FunCube:@1,FunPower:@2,
-                       FunReciprocal:@1, FunRemainder:@2,FunFactorial:@1,
-                       FunSquareRoot:@1,FunPowRoot:@2,FunLogDecimal:@1,
-                       FunLogE:@1,FunLogBinary:@1,FunSin:@1,
-                       FunCos:@1,FunTan:@1,FunArcSin:@1,FunArcCos:@1,
-                       FunArcTan:@1,FunSinh:@1,FunCosh:@1,FunTanh:@1,
+                       FunReciprocal:@3, FunRemainder:@2,FunFactorial:@1,
+                       FunSquareRoot:@3,FunPowRoot:@2,FunLogDecimal:@3,
+                       FunLogE:@3,FunLogBinary:@3,FunSin:@3,
+                       FunCos:@3,FunTan:@3,FunArcSin:@3,FunArcCos:@3,
+                       FunArcTan:@3,FunSinh:@3,FunCosh:@3,FunTanh:@3,
+                         LeftBracket:@3,RightBracket:@1
                        };
     }
     return [operatorsDict[op] intValue];

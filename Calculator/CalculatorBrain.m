@@ -42,7 +42,7 @@
 
 -(void)checkOpArrayLast
 {
-    while((opArray.count >0 ) && ([opArray.lastObject isFunNeedRightOperator]  || [opArray.lastObject isLeftBracket]))
+    while((opArray.count >0 ) && [opArray.lastObject isOpNeedRightOperand])
     {
         [opArray removeLastObject];
     }
@@ -149,7 +149,9 @@
         //如果右括号左边边出现加减乘除 错误
         //如果左括号右边出现乘除法 错误；如果右括号左边边出现加减乘除 错误
         //如果根号或N方右边不为数字左括号，错误
-        
+//        带左操作数的操作符 左边必须为 数 或者 右括号 ，或者  不带右操作数的 操作符
+//        
+//        带右操作数的操作符  右边必须为 数  或者 左括号  或者 不带 左操作数的操作符；
     }
     
     return false;
@@ -176,12 +178,12 @@
             while((operators.count>0))
             {
                 lastOperator = [operators lastObject];
-                NSNumber* pri = [CalculatorConstants stackPriorityOpOut:opCurrent OpIn:lastOperator];
-                if(!pri){
+               int priority = [CalculatorConstants stackPriorityOpOut:opCurrent OpIn:lastOperator];
+                if(priority == INT_MAX){
                     NSLog(@"操作符的优先级查询失败！");
                     return INFINITY;
                 }
-                if(pri.intValue <= 0)
+                if(priority <= 0)
                 {
                     if(![lastOperator isLeftBracket]){
                         [self calculateWithOperator:lastOperator];
@@ -208,7 +210,7 @@
 -(void)calculateWithOperator:(NSString *)operator
 {
     double result = 0;
-    if([CalculatorConstants operatorsType:operator] == 2)
+    if([operator isBinaryOperator])
     {
         if(operands.count <= 1) return ;
         double op1 = [[operands lastObject] doubleValue];
@@ -217,7 +219,7 @@
         [operands removeLastObject];
         result = [operator calWithTwoParm:op2 :op1];
         [operands addObject:[NSNumber numberWithDouble:result]];
-    }else if([CalculatorConstants operatorsType:operator] == 1)
+    }else if([operator isUnaryOperator])
     {
         if(operands.count < 1) return ;
         double opd = [[operands lastObject] doubleValue];

@@ -86,10 +86,10 @@
 
 -(void)useComputation:(Computation *)computation
 {
-    self.result = computation.result;
+   // self.result = computation.result;
     self.curExpression = computation.expression;
-    self.expressionLabel.text = computation.expression;
-    self.resultLabel.text = computation.result;
+   // [self displayExpression];
+   // self.resultLabel.text = computation.result;
 }
 
 -(NSString *)currentExpression
@@ -103,8 +103,7 @@
 
 -(void)clearComputation
 {
-    self.curExpression =@"0";
-    self.result = @"0";
+    self.curExpression = @"0";
 }
 
 -(void) sendExpression:(NSString *)expression{
@@ -172,47 +171,6 @@
     self.resultLabel.text = newValue;
 }
 
-
-- (UIImage *)funImageWithWidth:(CGFloat)width height:(CGFloat)height fontSize: (CGFloat)fontSize
-{
-    CGRect b = CGRectMake(0, 0, width,height);
-    // 1.开启上下文，第二个参数是是否不透明（opaque）NO为透明，这样可以防止占据额外空间（例如圆形图会出现方框），第三个为伸缩比例，0.0为不伸缩。
-    UIGraphicsBeginImageContextWithOptions(b.size, NO, 0.0);
-
-    CATextLayer *layer = [CATextLayer layer];
-    layer.bounds = b;
-    layer.backgroundColor = [UIColor redColor].CGColor;
-    layer.fontSize = fontSize;
-    layer.string = @"tan";
-    layer.contentsScale = 2.0f;
-    [layer setFont:@"Helvetica-Bold"];
-    layer.wrapped = YES;
-    layer.cornerRadius = 5;
-    CATextLayer *layer2 = [CATextLayer layer];
-    layer2.string = @"-1";
-
-    layer2.fontSize = fontSize * 0.5 ;
-    layer2.wrapped = YES;
-    layer2.contentsScale = 2.0f;
-    layer2.cornerRadius = 5;
-    [layer2 setFont:@"Helvetica-Bold"];
-    layer2.foregroundColor = [UIColor whiteColor].CGColor;
-    layer2.frame = CGRectMake(b.size.width*0.75, 0, b.size.width/4,b.size.height/2);
-    layer2.backgroundColor =[UIColor clearColor].CGColor;
-    [layer addSublayer:layer2];
-    // 2.将控制器view的layer渲染到上下文
-    [layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    // 3.取出图片
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // 4.结束上下文
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
-
 -(void)displayExpression
 {
     
@@ -234,7 +192,7 @@
         }
         else{
             NSTextAttachment *attachment = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
-            UIImage *img = [self imageWithHeight:fontHeight string:op];
+            UIImage *img = [self image2WithHeight:fontHeight string:op];
             attachment.image = img;
             attachment.bounds = CGRectMake(0, 0, img.size.width , img.size.height);
             NSAttributedString *imgText = [NSAttributedString attributedStringWithAttachment:attachment];
@@ -263,28 +221,9 @@
     return opArray;
 }
 
--(CALayer*)calayerWithString:(NSString*)string size:(CGSize)size backColor:(UIColor *)backColor foreColor:(UIColor *)foreColor
-{
-
-    CATextLayer *layer = [CATextLayer layer];
-    layer.bounds = CGRectMake(0, 0, size.width, size.height);
-    layer.backgroundColor = [UIColor redColor].CGColor;
-    [layer setFont:@"Helvetica-Bold"];
-    layer.fontSize = size.height ;
-    layer.string = [@" " stringByAppendingString:string];
-    layer.contentsScale = 2.0f;
-    layer.alignmentMode = kCAAlignmentCenter;
-    layer.contentsGravity = kCAGravityCenter;
-    layer.wrapped = YES;
-    layer.cornerRadius = 5;
-    layer.masksToBounds = YES;
-    return layer;
-}
-
 -(UIImage*)imageWithHeight:(CGFloat)height string:(NSString*)string
 {
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Bold" size:height *0.6]}];
-    [attrString addAttribute:NSBaselineOffsetAttributeName value:@3 range:NSMakeRange(0, string.length)];
 
     CGRect textFrame;
     
@@ -319,9 +258,11 @@
 
 -(UIImage*)image2WithHeight:(CGFloat)height string:(NSString*)string
 {
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Bold" size:height *0.7]}];
+    NSMutableAttributedString *attrString =
+        [[NSMutableAttributedString alloc] initWithString:string
+        attributes:@{ NSFontAttributeName: [UIFont boldSystemFontOfSize:height *0.7 ] } ];
 
-//  [attrString addAttributes:@{NSBaselineOffsetAttributeName:@(0),NSFontAttributeName: [UIFont fontWithName:@"STHeitiSC-Light" size:17]} range:(NSRange){0,attrString.length}];
+//    [attrString addAttributes:@{NSBaselineOffsetAttributeName:@(5),NSFontAttributeName: [UIFont boldSystemFontOfSize:17]} range:(NSRange){3,2}];
     
     CGRect textFrame;
     
