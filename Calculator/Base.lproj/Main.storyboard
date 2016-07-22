@@ -866,31 +866,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXP-TP-Cqp" userLabel="result">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXP-TP-Cqp" userLabel="result" customClass="ResultView">
+                                <rect key="frame" x="10" y="0.0" width="580" height="180"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PG9-fE-UoH">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMS-GI-OwE">
+                                        <rect key="frame" x="20" y="54" width="540" height="126"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="54"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMS-GI-OwE">
-                                        <rect key="frame" x="0.0" y="120" width="600" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PG9-fE-UoH">
+                                        <rect key="frame" x="20" y="0.0" width="540" height="54"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="37"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.79932111660000005" green="1" blue="0.38254641449999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="PG9-fE-UoH" secondAttribute="trailing" id="27g-fK-d3p"/>
-                                    <constraint firstItem="PG9-fE-UoH" firstAttribute="leading" secondItem="nXP-TP-Cqp" secondAttribute="leading" id="FkK-U9-Zw9"/>
+                                    <constraint firstItem="PG9-fE-UoH" firstAttribute="trailing" secondItem="nXP-TP-Cqp" secondAttribute="trailing" constant="-20" id="27g-fK-d3p"/>
+                                    <constraint firstItem="QMS-GI-OwE" firstAttribute="leading" secondItem="PG9-fE-UoH" secondAttribute="leading" id="7ZJ-bh-abz"/>
+                                    <constraint firstItem="PG9-fE-UoH" firstAttribute="leading" secondItem="nXP-TP-Cqp" secondAttribute="leading" constant="20" id="FkK-U9-Zw9"/>
                                     <constraint firstItem="QMS-GI-OwE" firstAttribute="top" secondItem="PG9-fE-UoH" secondAttribute="bottom" id="Hv2-a0-f1i"/>
-                                    <constraint firstItem="QMS-GI-OwE" firstAttribute="leading" secondItem="nXP-TP-Cqp" secondAttribute="leading" id="ZUv-iL-MyV"/>
-                                    <constraint firstAttribute="trailing" secondItem="QMS-GI-OwE" secondAttribute="trailing" id="eib-3L-T9b"/>
+                                    <constraint firstAttribute="bottom" secondItem="QMS-GI-OwE" secondAttribute="bottom" id="UrP-E4-iWC"/>
+                                    <constraint firstItem="QMS-GI-OwE" firstAttribute="width" secondItem="PG9-fE-UoH" secondAttribute="width" id="b08-40-XQc"/>
                                     <constraint firstItem="PG9-fE-UoH" firstAttribute="top" secondItem="nXP-TP-Cqp" secondAttribute="top" id="k72-Qq-DCH"/>
-                                    <constraint firstItem="PG9-fE-UoH" firstAttribute="height" secondItem="nXP-TP-Cqp" secondAttribute="height" multiplier="2:3" id="wwz-P7-oWD"/>
+                                    <constraint firstItem="PG9-fE-UoH" firstAttribute="height" secondItem="nXP-TP-Cqp" secondAttribute="height" multiplier="3:10" id="wwz-P7-oWD"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9y3-4N-DGS" userLabel="calView" customClass="CalView">
@@ -911,8 +912,8 @@
                             <constraint firstItem="9y3-4N-DGS" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-20" id="dWu-2O-fBW"/>
                             <constraint firstItem="9y3-4N-DGS" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="-20" id="ejU-cR-D9M"/>
                             <constraint firstItem="9y3-4N-DGS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:2" constant="-20" id="fHc-Gl-2O2"/>
-                            <constraint firstItem="nXP-TP-Cqp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="l5Z-9Q-wDb"/>
-                            <constraint firstItem="nXP-TP-Cqp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="lgC-if-wFr"/>
+                            <constraint firstItem="nXP-TP-Cqp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="l5Z-9Q-wDb"/>
+                            <constraint firstItem="nXP-TP-Cqp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-10" id="lgC-if-wFr"/>
                             <constraint firstItem="nXP-TP-Cqp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nA3-dj-51i"/>
                             <constraint firstItem="ht0-rL-0FQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="p4G-xg-lkb"/>
                             <constraint firstItem="ht0-rL-0FQ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="7:10" constant="-40" id="u0A-PF-1WP"/>

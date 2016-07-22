@@ -40,13 +40,16 @@ static NSDictionary *operatorsDict;
     return inStackPriorityDictionary;
 }
 
-+(int)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn
++(NSNumber*)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn
 {
     NSNumber* outp = [CalculatorConstants outStackPriorityDictionary][opOut];
     NSNumber* inp = [CalculatorConstants inStackPriorityDictionary][opIn];
     NSLog(@"operator: %@, %@",outp, inp);
-    int result = outp.intValue - inp.intValue;
-    return result;
+    if(outp && inp)
+    {
+        return [NSNumber numberWithInteger:(outp.intValue - inp.intValue)];
+    }
+    return  nil;
 }
 
 +(NSDictionary *)outStackPriorityDictionary
@@ -70,47 +73,47 @@ static NSDictionary *operatorsDict;
 +(NSString*)buttonStringWithTag:(NSUInteger)tag
 {
     if(!buttonTag){
-        buttonTag =  @{@"20":Divide,
-                       @"21":Multiply,
-                       @"22":Minius,
-                       @"23":Add,
-                       @"24":Divide,
-                       @"25":Multiply,
-                       @"26":Minius,
-                       @"27":Add,
-                       @"31":NumberExp,
-                       @"32":NumberPI,
-                       @"40":LeftBracket,
-                       @"41":RightBracket,
-                       @"42":LeftBracket,
-                       @"43":RightBracket,
-                       @"90":SignedBit,
-                       @"91":SignedBit,
-                       @"101":FunScientific,
-                       @"102":FunSquare,
-                       @"103":FunCube,
-                       @"104":FunPower,
-                       @"105":FunReciprocal,
-                       @"106":FunRemainder,
-                       @"107":FunFactorial,
-                       @"108":FunSquareRoot,
-                       @"109":FunPowRoot,
-                       @"110":FunLogDecimal,
-                       @"111":FunLogE,
-                       @"112":FunLogBinary,
-                       @"120":FunSin,
-                       @"121":FunCos,
-                       @"122":FunTan,
-                       @"123":FunArcSin,
-                       @"124":FunArcCos,
-                       @"125":FunArcTan,
-                       @"126":FunSinh,
-                       @"127":FunCosh,
-                       @"128":FunTanh,
+        buttonTag =  @{@20:Divide,
+                       @21:Multiply,
+                       @22:Minius,
+                       @23:Add,
+                       @24:Divide,
+                       @25:Multiply,
+                       @26:Minius,
+                       @27:Add,
+                       @31:NumberExp,
+                       @32:NumberPI,
+                       @40:LeftBracket,
+                       @41:RightBracket,
+                       @42:LeftBracket,
+                       @43:RightBracket,
+                       @90:SignedBit,
+                       @91:SignedBit,
+                       @101:FunScientific,
+                       @102:FunSquare,
+                       @103:FunCube,
+                       @104:FunPower,
+                       @105:FunReciprocal,
+                       @106:FunRemainder,
+                       @107:FunFactorial,
+                       @108:FunSquareRoot,
+                       @109:FunPowRoot,
+                       @110:FunLogDecimal,
+                       @111:FunLogE,
+                       @112:FunLogBinary,
+                       @120:FunSin,
+                       @121:FunCos,
+                       @122:FunTan,
+                       @123:FunArcSin,
+                       @124:FunArcCos,
+                       @125:FunArcTan,
+                       @126:FunSinh,
+                       @127:FunCosh,
+                       @128:FunTanh,
                        };
     }
     
-    NSString *tagStr = [NSString stringWithFormat:@"%lu",(u_long)tag];
+    NSNumber *tagStr = [NSNumber numberWithUnsignedInteger:tag];
     return  buttonTag[tagStr];
 }
 

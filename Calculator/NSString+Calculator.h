@@ -10,17 +10,18 @@
 #import "CalculatorConstants.h"
 
 @interface NSString (Calculator)
--(BOOL)isMathFunction;
 -(BOOL)isDigit;
 -(BOOL)isBasicOperator;
 -(BOOL)isLeftBracket;
 -(BOOL)isRightBracket;
 -(BOOL)isNumberPI;
 -(BOOL)isNumberExp;
+-(BOOL)isPIOrExp;
 -(BOOL)isFactorial;
+///是否是数，不包括PI 和自然数e
 -(BOOL)isNumberic;
 -(BOOL)isInteger;
--(BOOL)isPIOrExp;
+///是否是数，包括PI 和自然数e
 -(BOOL)isNumber;
 -(BOOL)isBinaryOperator;
 -(BOOL)isUnaryOperator;

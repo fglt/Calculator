@@ -31,11 +31,6 @@
     return [Digits containsString:self];
 }
 
--(BOOL) isMathFunction{
-    unichar uc= [self characterAtIndex:0];
-    return (uc >='a'&& uc<='z');
-}
-
 -(BOOL)isNumberPI
 {
     return [self isEqualToString:NumberPI];
@@ -50,13 +45,6 @@
     return [self isEqualToString:FunFactorial];
 }
 
-//@"+-×÷"
-//FunSquare:@1,FunCube:@1,FunPower:@2,
-//FunReciprocal:@1, FunRemainder:@2,FunFactorial:@1,
-//FunSquareRoot:@1,FunPowRoot:@2,FunLogDecimal:@1,
-//FunLogE:@1,FunLogBinary:@1,FunSin:@1,
-//FunCos:@1,FunTan:@1,FunArcSin:@1,FunArcCos:@1,
-//FunArcTan:@1,FunSinh:@1,FunCosh:@1,FunTanh:@1,
 -(double) calWithTwoParm: (double)op1 : (double)op2{
     if([self isEqualToString:Multiply]){
         return  op1 * op2;
@@ -84,7 +72,7 @@
         num = cos(operand);
     }else if( [self isEqualToString:FunTan]){
         num = tan(operand);
-    }if( [self isEqualToString:FunArcSin]){
+    }else if( [self isEqualToString:FunArcSin]){
         num = asin(operand);
     }else if( [self isEqualToString:FunArcCos]){
         num = acos(operand);
@@ -102,13 +90,13 @@
         num = log(operand);
     }else if( [self isEqualToString:FunLogBinary]){
         num = log2(operand);
-    }else if( [self isEqualToString: FunSquareRoot]){
+    }else if( [self isEqualToString:FunSquareRoot]){
         num = sqrt(operand);
     }else if( [self isEqualToString:FunSquare]){
         num = operand * operand;
     }else if( [self isEqualToString:FunCube]){
         num = operand * operand * operand;
-    }else if( [self isEqualToString: FunReciprocal]){
+    }else if( [self isEqualToString:FunReciprocal]){
         num = 1 / operand;
     }else if( [self isEqualToString:FunFactorial]){
         num = factorial2(operand);
@@ -195,7 +183,7 @@
                    };
     }
    
-    return ((int)triFun[self] == 1);
+    return ([triFun[self] intValue] == 1);
 }
 
 -(BOOL)isLogFun{
@@ -203,7 +191,7 @@
     if(!logFun){
         logFun = @{FunLogDecimal:@1,FunLogE:@1,FunLogBinary:@1};
     }
-    return ((int)logFun[self] == 1);
+    return ([logFun[self] intValue] == 1);
 }
 
 -(BOOL)isPIOrExp{

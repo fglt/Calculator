@@ -42,7 +42,7 @@
 
 -(void)checkOpArrayLast
 {
-    while((opArray.count >0 ) && [[opArray lastObject] isFunNeedRightOperator])
+    while((opArray.count >0 ) && ([opArray.lastObject isFunNeedRightOperator]  || [opArray.lastObject isLeftBracket]))
     {
         [opArray removeLastObject];
     }
@@ -61,20 +61,7 @@
     [self addBracket];
     [self addMultiply];
     
-//    u_long length = opArray.count;
-//    
-//    for(u_long i = 0; i<length; i++)
-//    {
-//        NSString * str = opArray[i];
-//        if([str isNumberic] || [str isPIOrExp])
-//            [operands addObject:str];
-//        else
-//            [operators addObject:str];
-//        
-//    }
     NSLog(@"array: %@", opArray);
-    NSLog(@"array: %@", operands);
-    NSLog(@"array: %@", operators);
 }
 
 -(void)addBracket
@@ -142,7 +129,7 @@
             [opArray insertObject:Multiply atIndex:i+1];
             i++;
         }
-        if([op1 isPIOrExp] && ([op2 isNumberic] || [op2 isLeftBracket] || [op1 isPIOrExp]))
+        if([op1 isPIOrExp] && ([op2 isNumberic] || [op2 isLeftBracket] || [op2 isPIOrExp]))
         {
             [opArray insertObject:Multiply atIndex:i+1];
             i++;
@@ -189,8 +176,12 @@
             while((operators.count>0))
             {
                 lastOperator = [operators lastObject];
-                int pri = [CalculatorConstants stackPriorityOpOut:opCurrent OpIn:lastOperator];
-                if(pri <= 0)
+                NSNumber* pri = [CalculatorConstants stackPriorityOpOut:opCurrent OpIn:lastOperator];
+                if(!pri){
+                    NSLog(@"操作符的优先级查询失败！");
+                    return INFINITY;
+                }
+                if(pri.intValue <= 0)
                 {
                     if(![lastOperator isLeftBracket]){
                         [self calculateWithOperator:lastOperator];
@@ -234,12 +225,6 @@
         result = [operator calWithOneParm:opd];
         [operands addObject:[NSNumber numberWithDouble:result]];
     }
-}
-
-
--(BOOL)isDigital:(unichar)ch
-{
-    return (ch>='0'&&ch<='9') || ch=='.'|| ch == [PIAndE characterAtIndex:0]|| ch == [PIAndE characterAtIndex:1];
 }
 
 @end

@@ -10,6 +10,31 @@
 
 typedef enum
 {
+    TagOfDivide = 20,
+    TagOfMultiply = 21,
+    TagOfMinus = 22,
+    TagOfAdd = 23,
+    TagOfDivide2 = 24,
+    TagOfMultiply2 = 25,
+    TagOfMinus2 = 26,
+    TagOfAdd2 = 27,
+    TagOfNumberExp = 31,
+    TagOfNumberPI = 32,
+    TagOfLeftBracket = 40,
+    TagOfRightBracket = 41,
+    TagOfLeftBracket2 = 42,
+    TagOfRightBracket2 = 43,
+    TagOfSignedBit = 90,
+    TagOfSignedBit2 = 91,
+    TagOfFunScientific = 101,
+    TagOfFunSquare = 102,
+    TagOfFunCube = 103,
+    TagOfFunPower = 104,
+    TagOfFunReciprocal = 105,
+    TagOfFunRemainder = 106,
+    TagOfFunFactorial = 107,
+    TagOfFunSquareRoot = 108,
+    TagOfFunPowRoot = 109,
     TagOfLogDecimal = 110,
     TagOfLogE = 111,
     TagOfLogBinary = 112,
@@ -24,11 +49,12 @@ typedef enum
     TagOfTanh = 128,
 } functionTag;
 
+
 @interface CalculatorConstants : NSObject
 
 +(NSDictionary *)inStackPriorityDictionary;
 +(NSDictionary *)outStackPriorityDictionary;
 +(NSString*)buttonStringWithTag:(NSUInteger)tag;
-+(int)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn;
++(NSNumber*)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn;
 +(int)operatorsType:(NSString*) op;
 @end
