@@ -36,7 +36,7 @@ NSString * const FunCos = @"cos";;
 NSString * const FunArcCos = @"acos";
 NSString * const FunCosh = @"cosh";
 NSString * const FunTan = @"tan";
-NSString * const FunArcTan = @"atan";
+NSString * const FunArcTan = @"tan-1";
 NSString * const FunTanh = @"tanh";
 
 NSString * const FunLogDecimal = @"log10";

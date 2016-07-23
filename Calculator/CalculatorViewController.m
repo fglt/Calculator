@@ -35,7 +35,13 @@ static NSString * const ErrorMessage = @"ERROR";
 {
     [super viewDidLoad];
     [self configureScrollView];
-    [self start];    
+    [self  start];
+}
+
+-(void) start{
+    self.expression = @"";
+    lastInput = @"";
+    _appendStr = @"";
 }
 
 -(void)configureScrollView
@@ -84,11 +90,11 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)clickDot:(UIButton *)sender {
-    if(_expression.length == 0)
-    {
-        lastInput = Dot;
-        self.appendStr = lastInput;
-    }
+//    if(_expression.length == 0)
+//    {
+//        lastInput = Dot;
+//        self.appendStr = lastInput;
+//    }
     
     long i =_expression.length - 1;
     
@@ -137,7 +143,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)clearInput:(UIButton *)sender {
-    [self start];
+    [self  start];
 }
 
 - (IBAction)onClickButtons:(UIButton *)sender {
@@ -175,7 +181,12 @@ static NSString * const ErrorMessage = @"ERROR";
 - (IBAction)deleteLastInput:(UIButton *)sender {
     if(_expression.length>0){
         self.expression = [self.expression substringToIndex:self.expression.length - self.appendStr.length];
-        if(self.expression.length == 0)return;
+        if(self.expression.length == 0)
+        {
+            _appendStr = @"";
+            lastInput = @"";
+            return;
+        }
         u_long length = self.expression.length;
         long index = length - 1;
         
@@ -185,7 +196,7 @@ static NSString * const ErrorMessage = @"ERROR";
                 index--;
             }
             _appendStr = [_expression substringWithRange:NSMakeRange(index , length - index)];
-            self.lastInput = [self.appendStr substringWithRange:NSMakeRange(1, 1)];
+            self.lastInput = [self.appendStr substringWithRange:NSMakeRange(1, _appendStr.length-2)];
         }else{
             _appendStr = [_expression substringWithRange:NSMakeRange(length - 1, 1)];
             self.lastInput = self.appendStr;
@@ -193,15 +204,6 @@ static NSString * const ErrorMessage = @"ERROR";
     }
 }
 
-////将结果拷贝到粘贴板
-//- (IBAction)paste:(UIButton *)sender {
-//    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-//    pboard.string = self.resultLabel.text;
-//}
-
--(void)start{
-    self.expression = @"";
-}
 
 -(void)setExpression:(NSString *)newValue
 {

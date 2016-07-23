@@ -207,6 +207,52 @@
 }
 
 
+-(void)displayExpression2
+{
+    
+    NSMutableAttributedString *displyText = [[NSMutableAttributedString alloc] initWithString:@" " attributes:nil];
+
+    NSAttributedString *attriSpace = [[NSAttributedString alloc]initWithString:@" " attributes:nil];
+    CGFloat fontHeight = self.expressionLabel.font.pointSize;
+    
+    NSMutableArray* opArray = [ self arrayToDisplay];
+    long  count = opArray.count;
+    
+    for(long  i = 0; i < count; i++)
+    {
+        NSString *  op = opArray[i];
+        
+        if([op isNumber])
+        {
+            NSMutableAttributedString * appText = [[NSMutableAttributedString alloc] initWithString:[@" " stringByAppendingString:op] attributes:nil];
+            [displyText insertAttributedString:appText atIndex:displyText.length-1];
+        }
+        else{
+            NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:op attributes:nil];
+            
+            if([op isEqualToString:FunArcTan]){
+                [attrString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:fontHeight*0.8] range:NSMakeRange(0, 3)];
+                [attrString addAttribute:NSBaselineOffsetAttributeName value:@5 range:NSMakeRange(0, op.length)];
+                [attrString addAttribute:NSBaselineOffsetAttributeName value:@15 range:NSMakeRange(3, 2)];
+                [attrString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:fontHeight *0.4] range:NSMakeRange(3, 2)];
+                [attrString addAttribute:NSBackgroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, op.length)];
+                [displyText insertAttributedString:attrString atIndex:displyText.length-1];
+            }else{
+                NSTextAttachment *attachment = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
+                UIImage *img = [self image2WithHeight:fontHeight string:op];
+                attachment.image = img;
+                attachment.bounds = CGRectMake(0, 0, img.size.width , img.size.height);
+                NSAttributedString *imgText = [NSAttributedString attributedStringWithAttachment:attachment];
+                [displyText insertAttributedString:attriSpace atIndex:displyText.length-1];
+                [displyText insertAttributedString:imgText atIndex:displyText.length-1];
+            }
+        }
+    }
+    
+    self.expressionLabel.attributedText = displyText;
+    
+}
+
 -(NSMutableArray *)arrayToDisplay
 {
     NSArray* tempArray = [_curExpression componentsSeparatedByCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@" "]];
