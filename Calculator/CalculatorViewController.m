@@ -130,8 +130,9 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)ClickFunction:(UIButton *)sender {
-
+    if([lastInput isLeftBinaryOperator]) return;
     lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
+
     self.appendStr = [[lastInput addSpace] stringByAppendingString:@" ( "];
 }
 
@@ -142,7 +143,7 @@ static NSString * const ErrorMessage = @"ERROR";
 
 - (IBAction)ClickPowerOrFactorial:(UIButton *)sender {
 
-    if(![lastInput isOpNeedRightOperand]) return;
+    if([lastInput isOpNeedRightOperand]) return;
 
     lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
     

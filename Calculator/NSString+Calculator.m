@@ -219,25 +219,29 @@
 -(BOOL)isOpNeedRightOperand
 {
     if([self isBinaryOperator]) return YES;
-    return  [CalculatorConstants operatorsType:self] == 3;
+    int i = [CalculatorConstants operatorsType:self];
+    return  i == 3 || i == 5;
 }
 
 -(BOOL)isOpNeedLeftOperand
 {
+    int i = [CalculatorConstants operatorsType:self];
     if([self isBinaryOperator]) return true;
-     return  [CalculatorConstants operatorsType:self] == 1;
+     return  i == 1 || i == 7;
 }
 
 ///是否是一元左操作符（包括右括号））
 -(BOOL) isLeftBinaryOperator
 {
-    return  [CalculatorConstants operatorsType:self] == 1;
+     int i = [CalculatorConstants operatorsType:self];
+    return  i == 1 || i == 7;
 }
 
 ///是否是一元右操作符（包括左括号））
 -(BOOL) isRightBinaryOperator
 {
-    return  [CalculatorConstants operatorsType:self] == 3;
+    int i = [CalculatorConstants operatorsType:self];
+    return  i == 3 || i == 5;
 }
 
 @end

@@ -131,7 +131,7 @@ static NSDictionary *operatorsDict;
                        FunLogE:@3,FunLogBinary:@3,FunSin:@3,
                        FunCos:@3,FunTan:@3,FunArcSin:@3,FunArcCos:@3,
                        FunArcTan:@3,FunSinh:@3,FunCosh:@3,FunTanh:@3,
-                         LeftBracket:@3,RightBracket:@1
+                         LeftBracket:@5,RightBracket:@7
                        };
     }
     return [operatorsDict[op] intValue];
