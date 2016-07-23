@@ -245,7 +245,7 @@ static NSDictionary * operatorsDict;
         unaryOperator opCube  = ^(double a){ return a * a * a; };
         unaryOperator opReciprocal  = ^(double a){ return 1.0 / a; };
         unaryOperator opPercent  = ^(double a){ return  a / 100.0; };
-        unaryOperator opFactorial  = ^(double a){ return factorial2(a); };
+        unaryOperator opFactorial  = ^(double a){ return factorial(a); };
         unaryOperator opSquareRoot  = ^(double a){ return sqrt(a); };
         
         unaryOperators =@{FunSin:opSin,FunCos:opCos,FunTan:opTan,

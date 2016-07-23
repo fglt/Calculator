@@ -633,7 +633,7 @@
                             <subviews>
                                 <button opaque="NO" tag="123" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wW-B0-tPS">
                                     <rect key="frame" x="0.0" y="0.0" width="66" height="30"/>
-                                    <state key="normal" title="sin-1"/>
+                                    <state key="normal" title="asin"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
@@ -643,7 +643,7 @@
                                 </button>
                                 <button opaque="NO" tag="124" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si4-ST-bMa">
                                     <rect key="frame" x="74" y="0.0" width="66" height="30"/>
-                                    <state key="normal" title="cos-1"/>
+                                    <state key="normal" title="acos"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
@@ -653,7 +653,7 @@
                                 </button>
                                 <button opaque="NO" tag="125" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH6-iO-4oG">
                                     <rect key="frame" x="148" y="0.0" width="66" height="30"/>
-                                    <state key="normal" title="tan-1"/>
+                                    <state key="normal" title="atan"/>
                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>

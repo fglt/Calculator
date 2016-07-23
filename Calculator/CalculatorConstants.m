@@ -47,7 +47,7 @@ static NSDictionary * buttonTag;
 {
     NSNumber* outp = [CalculatorConstants outStackPriorityDictionary][opOut];
     NSNumber* inp = [CalculatorConstants inStackPriorityDictionary][opIn];
-    NSLog(@"operator: %@, %@",outp, inp);
+    NSLog(@"operator priority : %@, %@",outp, inp);
     if(outp && inp)
     {
         return (outp.intValue - inp.intValue);

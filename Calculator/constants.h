@@ -52,7 +52,6 @@ extern NSString * const FunPowRoot;
 extern NSString * const FunRightOnly;
 extern NSString * const FunLeftOnly;
 extern NSString * const FunTriangle;
-extern NSString * const FunLogs;
 
 extern NSString * const FunScientific;
 extern NSString * const SignedBit;
