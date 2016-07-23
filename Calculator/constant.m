@@ -25,7 +25,7 @@ NSString * const FunFactorial = @"!";
 
 NSString * const FunPower = @"^";
 NSString * const FunSquareRoot = @"√" ;
-NSString * const FunRemainder = @"%";
+NSString * const FunPercent = @"%";
 
 
 NSString * const FunTriangle = @"FunTriangle";

@@ -56,8 +56,6 @@
         return  op1 - op2;;
     }else if([self isEqualToString:FunPower]){
         return pow(op1, op2);
-    }else if([self isEqualToString:FunRemainder]){
-        return (long long) op1 % (long long)op2;;
     }else if([self isEqualToString:FunPowRoot]){
         return pow(op2, 1 / op1);
     }
@@ -100,6 +98,8 @@
         num = 1 / operand;
     }else if( [self isEqualToString:FunFactorial]){
         num = factorial2(operand);
+    }else if([self isEqualToString:FunPercent]){
+        return operand / 100;
     }
     
     return num;
@@ -215,7 +215,6 @@
     return  (i == 1) || (i == 2 || i == 3);
 }
 
-///一元右操作符：需要右边数作为操作数的运算 以及左括号,
 -(BOOL)isOpNeedRightOperand
 {
     if([self isBinaryOperator]) return YES;

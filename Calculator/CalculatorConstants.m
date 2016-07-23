@@ -25,7 +25,7 @@ static NSDictionary *operatorsDict;
 {
     if(!inStackPriorityDictionary){
         inStackPriorityDictionary = @{LeftBracket:@1, Add:@3, Minius:@3,
-                                      Multiply:@5,Divide:@5,FunRemainder:@5,
+                                      Multiply:@5,Divide:@5,FunPercent:@5,
                                       FunSquareRoot:@7,
                                       FunSin:@9, FunCos:@9,FunTan:@9,
                                       FunArcSin:@9,FunArcCos:@9,FunArcTan:@9,
@@ -57,7 +57,7 @@ static NSDictionary *operatorsDict;
 {
     if(!outStackPriorityDictionary){
         outStackPriorityDictionary = @{LeftBracket:@20, Add:@2, Minius:@2,
-                                       Multiply:@4,Divide:@4,FunRemainder:@4,
+                                       Multiply:@4,Divide:@4,FunPercent:@4,
                                        FunSquareRoot:@6,
                                        FunSin:@8, FunCos:@8,FunTan:@8,
                                        FunArcSin:@8,FunArcCos:@8,FunArcTan:@8,
@@ -95,7 +95,7 @@ static NSDictionary *operatorsDict;
                        @103:FunCube,
                        @104:FunPower,
                        @105:FunReciprocal,
-                       @106:FunRemainder,
+                       @106:FunPercent,
                        @107:FunFactorial,
                        @108:FunSquareRoot,
                        @109:FunPowRoot,
@@ -126,7 +126,7 @@ static NSDictionary *operatorsDict;
     if(!operatorsDict){
         operatorsDict =@{Divide:@2,Multiply:@2,Minius:@2,Add:@2,
                          FunSquare:@1,FunCube:@1,FunPower:@2,
-                       FunReciprocal:@3, FunRemainder:@2,FunFactorial:@1,
+                       FunReciprocal:@1, FunPercent:@1,FunFactorial:@1,
                        FunSquareRoot:@3,FunPowRoot:@2,FunLogDecimal:@3,
                        FunLogE:@3,FunLogBinary:@3,FunSin:@3,
                        FunCos:@3,FunTan:@3,FunArcSin:@3,FunArcCos:@3,

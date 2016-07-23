@@ -27,7 +27,7 @@ extern NSString * const FunFactorial;
 
 extern NSString * const FunPower;
 extern NSString * const FunSquareRoot;
-extern NSString * const FunRemainder;
+extern NSString * const FunPercent;
 
 extern NSString * const FunSin;
 extern NSString * const FunArcSin ;

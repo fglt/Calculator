@@ -115,6 +115,8 @@ static NSString * const ErrorMessage = @"ERROR";
     lastInput = _expression;
 }
 
+
+//点击四则运算以及余数运算
 - (IBAction)clickOperator:(UIButton *)sender {
     
     if(self.expression.length == 0)
