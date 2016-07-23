@@ -38,6 +38,7 @@
 {
     return YES;
 }
+
 -(void) viewDidLoad
 {
     [super viewDidLoad];
@@ -205,6 +206,7 @@
     
 }
 
+
 -(NSMutableArray *)arrayToDisplay
 {
     NSArray* tempArray = [_curExpression componentsSeparatedByCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@" "]];
@@ -290,4 +292,5 @@
     
     return newImage;
 }
+
 @end

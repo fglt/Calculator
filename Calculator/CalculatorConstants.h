@@ -6,7 +6,10 @@
 //  Copyright © 2016 Coding. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
+
+
 
 typedef enum
 {
@@ -55,7 +58,6 @@ typedef enum
  +(NSDictionary *)outStackPriorityDictionary;\n
  +(NSString*)buttonStringWithTag:(NSUInteger)tag;\n
  +(int)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn;\n
- +(int)operatorsType:(NSString*) op;
  */
 @interface CalculatorConstants : NSObject
 
@@ -63,5 +65,5 @@ typedef enum
 +(NSDictionary *)outStackPriorityDictionary;
 +(NSString*)buttonStringWithTag:(NSUInteger)tag;
 +(int)stackPriorityOpOut:(NSString*)opOut OpIn :(NSString*)opIn;
-+(int)operatorsType:(NSString*) op;
+
 @end

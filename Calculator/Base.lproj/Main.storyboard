@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -73,7 +73,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="clear history?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvk-kF-pTJ">
                                 <rect key="frame" x="0.0" y="0.0" width="103" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUg-zn-Iqt">
@@ -166,7 +166,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="("/>
                                     <connections>
-                                        <action selector="ClickLeftBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="txs-h7-rvq"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="FaY-vi-eNt"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="41" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-ot-oDe">
@@ -174,7 +174,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title=")"/>
                                     <connections>
-                                        <action selector="ClickRightBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="bcH-VO-KEL"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="XzP-XK-sdX"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDr-lQ-aRe">
@@ -371,7 +371,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="69" height="36"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickPowerOrFactorial:" destination="un8-7v-BAb" eventType="touchUpInside" id="5El-W8-L3A"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="kb1-lO-evl"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npd-0A-lwv" customClass="CalButton">
@@ -485,7 +485,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="("/>
                                     <connections>
-                                        <action selector="ClickLeftBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="zfq-Pl-6Lq"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="JcQ-WX-OVf"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="43" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nm-9V-Kfa">
@@ -493,7 +493,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title=")"/>
                                     <connections>
-                                        <action selector="ClickRightBracket:" destination="un8-7v-BAb" eventType="touchUpInside" id="Af3-9P-bGz"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="ti7-Ua-DfA"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW7-Au-wsX">
@@ -524,7 +524,7 @@
                                         <rect key="frame" x="74" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickPowerOrFactorial:" destination="un8-7v-BAb" eventType="touchUpInside" id="xTA-9k-Bob"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="Xo4-Sc-ihs"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FA-xR-7FD">
@@ -535,7 +535,7 @@
                                         <rect key="frame" x="147" y="0.0" width="68" height="36"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickSquareRoot:" destination="un8-7v-BAb" eventType="touchUpInside" id="f4c-pZ-gUB"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="dnJ-GN-2Uk"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="109" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPB-pv-1Ru">
@@ -556,7 +556,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="vAI-bN-r48"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="9Nm-Ak-78Y"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS3-V9-plK">
@@ -582,7 +582,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="Z7Y-eU-Rd5"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="mCu-j5-WWQ"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="121" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fT-2b-WbE">
@@ -592,7 +592,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="Isn-7E-14c"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="wBd-XT-ceH"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="122" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVq-2T-Mzj">
@@ -602,7 +602,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="m2f-pi-pN5"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="upa-of-KGh"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f14-Bw-ydU">
@@ -612,7 +612,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="idZ-Zq-Rk3"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="hKt-mu-JUS"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wj-tI-HlK">
@@ -638,7 +638,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="tLP-Qq-HcK"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="cV2-Bm-Erv"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="124" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si4-ST-bMa">
@@ -648,7 +648,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="9RY-2L-ycS"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="a1m-79-Ge5"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="125" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH6-iO-4oG">
@@ -658,7 +658,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="gtT-ba-she"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="i8W-u7-wfS"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="112" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuJ-WQ-xdZ">
@@ -668,7 +668,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="38j-6L-oc0"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="eBM-Ah-688"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="26" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QwY-kR-Wxm">
@@ -693,7 +693,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="U7e-uX-AWY"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="eUu-LR-E2c"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="127" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jv0-pQ-mOh">
@@ -703,7 +703,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="WF1-Pj-bob"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="I2a-f5-bM9"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="128" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UV-Vh-Jhj">
@@ -713,7 +713,7 @@
                                         <rect key="frame" x="0.0" y="3" width="69" height="30"/>
                                     </variation>
                                     <connections>
-                                        <action selector="ClickFunction:" destination="un8-7v-BAb" eventType="touchUpInside" id="Oai-h0-HHe"/>
+                                        <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="8Ev-hp-tJR"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKb-ua-Nqz">
@@ -814,14 +814,14 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7e-et-wPI" userLabel="date">
                                             <rect key="frame" x="0.0" y="0.0" width="60" height="69.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4s-zL-G8B" userLabel="expression">
                                             <rect key="frame" x="60" y="0.0" width="540" height="69.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

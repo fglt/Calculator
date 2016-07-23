@@ -6,13 +6,15 @@
 //  Copyright © 2016 Coding. All rights reserved.
 //
 
+
 #import "CalculatorConstants.h"
 #import "constants.h"
 
 static NSDictionary * inStackPriorityDictionary;
 static NSDictionary * outStackPriorityDictionary;
-static NSDictionary *buttonTag;
-static NSDictionary *operatorsDict;
+static NSDictionary * buttonTag;
+
+
 
 @implementation CalculatorConstants
 
@@ -20,6 +22,7 @@ static NSDictionary *operatorsDict;
     self = [super init];
     return self;
 }
+
 
 +(NSDictionary *)inStackPriorityDictionary
 {
@@ -118,22 +121,6 @@ static NSDictionary *operatorsDict;
     return  buttonTag[tagStr];
 }
 
-+(int)operatorsType:(NSString*) op
-{
-    
-    ///规定: 数值1表示： 左操作符：操作符左边必须为操作数 或者右括号 或者 左操作符 一元运算符；
-    ///数值3 表示：右操作符：操作符右边必需为操作数 或者 左括号 或者 右操作符 一元运算符；
-    if(!operatorsDict){
-        operatorsDict =@{Divide:@2,Multiply:@2,Minius:@2,Add:@2,
-                         FunSquare:@1,FunCube:@1,FunPower:@2,
-                       FunReciprocal:@1, FunPercent:@1,FunFactorial:@1,
-                       FunSquareRoot:@3,FunPowRoot:@2,FunLogDecimal:@3,
-                       FunLogE:@3,FunLogBinary:@3,FunSin:@3,
-                       FunCos:@3,FunTan:@3,FunArcSin:@3,FunArcCos:@3,
-                       FunArcTan:@3,FunSinh:@3,FunCosh:@3,FunTanh:@3,
-                         LeftBracket:@5,RightBracket:@7
-                       };
-    }
-    return [operatorsDict[op] intValue];
-}
+
+
 @end

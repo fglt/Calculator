@@ -10,7 +10,13 @@
 #import "constants.h"
 #import "factorial.h"
 
+
 @implementation NSString (Calculator)
+
+
+static NSDictionary * binaryOperators;
+static NSDictionary * unaryOperators;
+static NSDictionary * operatorsDict;
 
 -(BOOL)isLeftBracket
 {
@@ -46,63 +52,19 @@
 }
 
 -(double) calWithTwoParm: (double)op1 : (double)op2{
-    if([self isEqualToString:Multiply]){
-        return  op1 * op2;
-    }else if([self isEqualToString:Divide]){
-        return  op1 / op2;;
-    }else if([self isEqualToString:Add]){
-        return  op1 + op2;;
-    }else if([self isEqualToString:Minius]){
-        return  op1 - op2;;
-    }else if([self isEqualToString:FunPower]){
-        return pow(op1, op2);
-    }else if([self isEqualToString:FunPowRoot]){
-        return pow(op2, 1 / op1);
-    }
-    return 0;
+    binaryOperator op = [self binaryOperator];
+    if(op)
+        return op(op1,  op2);
+     NSLog(@"运算符不存在");
+    return NAN;
 }
 
 -(double) calWithOneParm:(double)operand{
-    double  num=0;
-    if( [self isEqualToString:FunSin]){
-        num = sin(operand);
-    }else if( [self isEqualToString:FunCos]){
-        num = cos(operand);
-    }else if( [self isEqualToString:FunTan]){
-        num = tan(operand);
-    }else if( [self isEqualToString:FunArcSin]){
-        num = asin(operand);
-    }else if( [self isEqualToString:FunArcCos]){
-        num = acos(operand);
-    }else if( [self isEqualToString:FunArcTan]){
-        num = atan(operand);
-    }else if( [self isEqualToString:FunSinh]){
-        num = sinh(operand);
-    }else if( [self isEqualToString:FunCosh]){
-        num = cosh(operand);
-    }else if( [self isEqualToString:FunTanh]){
-        num = tanh(operand);
-    }else if( [self isEqualToString:FunLogDecimal]){
-        num = log10(operand);
-    }else if( [self isEqualToString:FunLogE]){
-        num = log(operand);
-    }else if( [self isEqualToString:FunLogBinary]){
-        num = log2(operand);
-    }else if( [self isEqualToString:FunSquareRoot]){
-        num = sqrt(operand);
-    }else if( [self isEqualToString:FunSquare]){
-        num = operand * operand;
-    }else if( [self isEqualToString:FunCube]){
-        num = operand * operand * operand;
-    }else if( [self isEqualToString:FunReciprocal]){
-        num = 1 / operand;
-    }else if( [self isEqualToString:FunFactorial]){
-        num = factorial2(operand);
-    }else if([self isEqualToString:FunPercent]){
-        return operand / 100;
-    }
-    
-    return num;
+    unaryOperator op = [self unaryOperator];
+    if(op)
+        return op(operand);
+    NSLog(@"运算符不存在");
+    return NAN;
 }
 
 -(BOOL)containCharacter:(UniChar)ch
@@ -201,46 +163,117 @@
 
 -(BOOL)isBinaryOperator
 {
-    return  [CalculatorConstants operatorsType:self] == 2;
+    return  [self operatorsType] == 2;
 }
 
 -(BOOL)isUnaryOperator
 {
-    int i = [CalculatorConstants operatorsType:self];
+    int i = [self operatorsType];
     return  i == 1 || i == 3;
 }
 
 -(BOOL)isOperator{
-    int i = [CalculatorConstants operatorsType:self];
+    int i = [self operatorsType];
     return  (i == 1) || (i == 2 || i == 3);
 }
 
 -(BOOL)isOpNeedRightOperand
 {
     if([self isBinaryOperator]) return YES;
-    int i = [CalculatorConstants operatorsType:self];
+    int i = [self operatorsType];
     return  i == 3 || i == 5;
 }
 
 -(BOOL)isOpNeedLeftOperand
 {
-    int i = [CalculatorConstants operatorsType:self];
+    int i = [self operatorsType];
     if([self isBinaryOperator]) return true;
      return  i == 1 || i == 7;
 }
 
 ///是否是一元左操作符（包括右括号））
--(BOOL) isLeftBinaryOperator
+-(BOOL) isLeftUnaryOperator
 {
-     int i = [CalculatorConstants operatorsType:self];
+     int i = [self operatorsType];
     return  i == 1 || i == 7;
 }
 
 ///是否是一元右操作符（包括左括号））
--(BOOL) isRightBinaryOperator
+-(BOOL) isRightUnaryOperator
 {
-    int i = [CalculatorConstants operatorsType:self];
+    int i = [self operatorsType];
     return  i == 3 || i == 5;
 }
 
+
+-(binaryOperator)binaryOperator
+{
+    if(!binaryOperators)
+    {
+        
+        binaryOperator opAdd  = ^(double a, double b){ return a + b; };
+        binaryOperator opMinus  = ^(double a, double b){ return a - b; };
+        binaryOperator opMultiply  = ^(double a, double b){ return a * b; };
+        binaryOperator opDivide  = ^(double a, double b){ return a / b; };
+        binaryOperator opPow  = ^(double a, double b){ return pow( a , b); };
+        binaryOperator opPowRoot  = ^(double a, double b){ return pow( a , 1 / b); };
+        
+        binaryOperators =@{Divide:opDivide,Multiply:opMultiply,Minius:opMinus,Add:opAdd,
+                           FunPower:opPow,FunPowRoot:opPowRoot,};
+    }
+    
+    return binaryOperators[self];
+}
+
+-(unaryOperator)unaryOperator
+{
+    if(!unaryOperators)
+    {
+        unaryOperator opSin  = ^(double a){ return sin(a); };
+        unaryOperator opCos  = ^(double a){ return cos(a); };
+        unaryOperator opTan  = ^(double a){ return tan(a); };
+        unaryOperator opAsin  = ^(double a){ return asin(a); };
+        unaryOperator opAcos  = ^(double a){ return acos(a); };
+        unaryOperator opAtan  = ^(double a){ return atan(a); };
+        unaryOperator opSinh  = ^(double a){ return sinh(a); };
+        unaryOperator opCosh  = ^(double a){ return cosh(a); };
+        unaryOperator opTanh  = ^(double a){ return tanh(a); };
+        unaryOperator oplog2  = ^(double a){ return log2(a); };
+        unaryOperator opln  = ^(double a){ return log(a); };
+        unaryOperator oplog10  = ^(double a){ return log10(a); };
+        unaryOperator opSquare  = ^(double a){ return a * a; };
+        unaryOperator opCube  = ^(double a){ return a * a * a; };
+        unaryOperator opReciprocal  = ^(double a){ return 1.0 / a; };
+        unaryOperator opPercent  = ^(double a){ return  a / 100.0; };
+        unaryOperator opFactorial  = ^(double a){ return factorial2(a); };
+        unaryOperator opSquareRoot  = ^(double a){ return sqrt(a); };
+        
+        unaryOperators =@{FunSin:opSin,FunCos:opCos,FunTan:opTan,
+                          FunArcSin:opAsin,FunArcCos:opAcos,FunArcTan:opAtan,
+                          FunSinh:opSinh,FunCosh:opCosh,FunTanh:opTanh,
+                          FunLogBinary:oplog2, FunLogE:opln, FunLogDecimal:oplog10,
+                          FunSquare:opSquare,FunCube:opCube,FunReciprocal:opReciprocal,
+                          FunPercent:opPercent,FunFactorial:opFactorial,FunSquareRoot:opSquareRoot
+                          };
+    }
+    
+    return unaryOperators[self];
+}
+
+-(int)operatorsType
+{
+    ///规定: 数值1表示： 左操作符：操作符左边必须为操作数 或者右括号 或者 左操作符 一元运算符；
+    ///数值3 表示：右操作符：操作符右边必需为操作数 或者 左括号 或者 右操作符 一元运算符；
+    if(!operatorsDict){
+        operatorsDict =@{Divide:@2,Multiply:@2,Minius:@2,Add:@2,
+                         FunPower:@2,FunPowRoot:@2,
+                         FunSquare:@1,FunCube:@1,FunReciprocal:@1, FunPercent:@1,FunFactorial:@1,
+                         FunSquareRoot:@3,FunLogDecimal:@3,FunLogE:@3,FunLogBinary:@3,
+                         FunSin:@3,FunCos:@3,FunTan:@3,FunArcSin:@3,FunArcCos:@3,
+                         FunArcTan:@3,FunSinh:@3,FunCosh:@3,FunTanh:@3,
+                         LeftBracket:@5,RightBracket:@7
+                         };
+    }
+    return [operatorsDict[self] intValue];
+}
 @end

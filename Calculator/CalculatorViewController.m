@@ -131,42 +131,9 @@ static NSString * const ErrorMessage = @"ERROR";
 
 }
 
-- (IBAction)ClickFunction:(UIButton *)sender {
-    if([lastInput isLeftBinaryOperator]) return;
-    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
-
-    self.appendStr = [[lastInput addSpace] stringByAppendingString:@" ( "];
-}
-
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
     lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
     self.appendStr = [lastInput addSpace];
-}
-
-- (IBAction)ClickPowerOrFactorial:(UIButton *)sender {
-
-    if([lastInput isOpNeedRightOperand]) return;
-
-    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
-    
-    self.appendStr = [lastInput addSpace];
-}
-
-- (IBAction)ClickSquareRoot:(UIButton *)sender {
-    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
-    self.appendStr = [lastInput addSpace];
-}
-
-- (IBAction)ClickLeftBracket:(UIButton *)sender {
-    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
-    self.appendStr = [lastInput addSpace] ;
-}
-
-- (IBAction)ClickRightBracket:(UIButton *)sender {
-    if(self.expression.length >0){
-        lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
-        self.appendStr = [lastInput addSpace];
-    }
 }
 
 - (IBAction)clearInput:(UIButton *)sender {
@@ -174,8 +141,35 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)onClickButtons:(UIButton *)sender {
-    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
-    self.appendStr = [lastInput addSpace];
+    
+    NSString * send = [CalculatorConstants buttonStringWithTag:sender.tag];
+    BOOL isAdd = false;
+    
+    if(!lastInput || lastInput.length == 0)
+    {
+        if([send isRightUnaryOperator])
+            isAdd = true;
+    }else{
+        
+        if([lastInput isNumber])
+        {
+            if([send  isOpNeedLeftOperand])
+                isAdd = true;
+        }else if([lastInput isOpNeedRightOperand]){
+            
+            if(![send isOpNeedLeftOperand])
+                isAdd = true;
+        }else if([send isOpNeedLeftOperand])
+        {
+            isAdd = true;
+        }
+    }
+   
+    if(isAdd){
+        lastInput = send;
+        self.appendStr = [lastInput addSpace];
+    }
+
 }
 
 - (IBAction)deleteLastInput:(UIButton *)sender {
