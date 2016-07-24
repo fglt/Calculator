@@ -22,13 +22,13 @@ static NSString * const ErrorMessage = @"ERROR";
 @end
 
 @interface CalculatorViewController ()
-@property (nonatomic, strong) NSMutableArray* ops;
+@property (nonatomic, strong) NSMutableArray* operatorsArray;
 @end
 
 @implementation CalculatorViewController
 
 @synthesize calculatorDelegate;
-@synthesize ops;
+@synthesize operatorsArray;
 
 -(void) viewDidLoad
 {
@@ -38,7 +38,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 -(void) start{
-    ops = [NSMutableArray array];
+    operatorsArray = [NSMutableArray array];
 }
 
 -(void)configureScrollView
@@ -79,11 +79,19 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)onClickZero:(UIButton *)sender {
-    if(ops.count > 0)
+    
+    NSString *lastOp = [operatorsArray lastObject];
+    if([lastOp isNumberic])
     {
-        [self changeLastObejctWithAppend:sender.currentTitle];
-        [self calculate];
+        if([lastOp doubleValue] == 0)
+        {
+            if( ![lastOp containCharacter:'.'])
+                return ;
+        }
     }
+    
+    [self changeLastObejctWithAppend:sender.currentTitle];
+    [self calculate];
 }
 
 /**
@@ -93,52 +101,52 @@ static NSString * const ErrorMessage = @"ERROR";
  */
 - (IBAction)clickDot:(UIButton *)sender {
 
-    NSString *op = [ops lastObject];
+    NSString *op = [operatorsArray lastObject];
 
     if(isdigit([op characterAtIndex:0]))
     {
         if([op containCharacter:'.']) return;
-        NSString * op = [ops lastObject];
+        NSString * op = [operatorsArray lastObject];
 
-        [ops removeLastObject];
-        [ops addObject:[op stringByAppendingString:Dot]];
+        [operatorsArray removeLastObject];
+        [operatorsArray addObject:[op stringByAppendingString:Dot]];
         [self calculate];
         return;
 
     }
-    [ops addObject:Dot];
+    [operatorsArray addObject:Dot];
     [self calculate];
 }
 
 - (IBAction)clickEqual:(UIButton *)sender {
 
-    if(ops.count == 0) return;
+    if(operatorsArray.count == 0) return;
     [calculatorDelegate equal];
-    [ops removeAllObjects];
-    [ops addObject:[calculatorDelegate currentResult]];
+    [operatorsArray removeAllObjects];
+    [operatorsArray addObject:[calculatorDelegate currentResult]];
 }
 
 
 //点击四则运算以及余数运算
 - (IBAction)clickOperator:(UIButton *)sender {
     
-    if(ops.count == 0 ) return;
-    NSString * lastop = [ops lastObject];
+    if(operatorsArray.count == 0 ) return;
+    NSString * lastop = [operatorsArray lastObject];
     NSString * inputOP = [CalculatorConstants buttonStringWithTag:sender.tag];
     if([lastop isBasicOperator]){
-        [ops removeLastObject];
-        [ops addObject:inputOP];
+        [operatorsArray removeLastObject];
+        [operatorsArray addObject:inputOP];
         [self calculate];
         return;
     }
     if([lastop isOpNeedRightOperand]) return;
-    [ops addObject:inputOP];
+    [operatorsArray addObject:inputOP];
     [self calculate];
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
 
-    [ops addObject:[CalculatorConstants buttonStringWithTag:sender.tag]];
+    [operatorsArray addObject:[CalculatorConstants buttonStringWithTag:sender.tag]];
     [self calculate];
 }
 
@@ -151,7 +159,7 @@ static NSString * const ErrorMessage = @"ERROR";
     
     NSString * send = [CalculatorConstants buttonStringWithTag:sender.tag];
     BOOL isAdd = false;
-    NSString * lastInput = [ops lastObject];
+    NSString * lastInput = [operatorsArray lastObject];
     if(!lastInput || lastInput.length == 0)
     {
         if([send isRightUnaryOperator])
@@ -173,7 +181,7 @@ static NSString * const ErrorMessage = @"ERROR";
     }
    
     if(isAdd){
-        [ops addObject:send];
+        [operatorsArray addObject:send];
         [self calculate];
     }
 
@@ -181,27 +189,28 @@ static NSString * const ErrorMessage = @"ERROR";
 
 - (IBAction)deleteLastInput:(UIButton *)sender {
 
-    if(ops.count>0)
-        [ops removeLastObject];
-    [self calculate];
+    if(operatorsArray.count>0){
+        [operatorsArray removeLastObject];
+        [self calculate];
+    }
 }
 
 
 -(void) calculate
 {
-    NSString * expression = [ops componentsJoinedByString:@" "];
+    NSString * expression = [operatorsArray componentsJoinedByString:@" "];
     [self.calculatorDelegate sendExpression:expression];
 }
 
 
 -(void)changeLastObejctWithAppend:(NSString*)input
 {
-     NSString * op = [ops lastObject];
+     NSString * op = [operatorsArray lastObject];
     if([op isNumberic]){
-        [ops removeLastObject];
-        [ops addObject:[op stringByAppendingString:input]];
+        [operatorsArray removeLastObject];
+        [operatorsArray addObject:[op stringByAppendingString:input]];
     }else{
-        [ops addObject:input];
+        [operatorsArray addObject:input];
     }
 }
 @end
