@@ -14,9 +14,9 @@
 #import "ExpressionParser.h"
 
 @interface CalculatorBrain()
-@property NSMutableArray *operators;
-@property NSMutableArray *operands;
-@property NSMutableArray *opArray;//包括数和运算符
+@property (nonatomic) NSMutableArray *operators;
+@property (nonatomic) NSMutableArray *operands;
+@property (nonatomic) NSMutableArray *opArray;//包括数和运算符
 
 @end
 
@@ -69,9 +69,15 @@
                 }
                 if(priority <= 0)
                 {
-                    if(![lastOperator isLeftBracket]){
-                        [self calculateWithOperator:lastOperator];
+                    
+                    //修复一个bug：遇到左括号 必须退出while循环
+                    if([lastOperator isLeftBracket]) {
+                        [operators removeLastObject];
+                        break;
                     }
+
+                    [self calculateWithOperator:lastOperator];
+                    
                     [operators removeLastObject];
                 }else break;
             }

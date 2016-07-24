@@ -19,17 +19,16 @@ static NSString * const ErrorMessage = @"ERROR";
 @property (strong, nonatomic) IBOutlet UIStackView *stack2;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@end
 
-@property (nonatomic, strong) NSString* expression;
-@property (nonatomic, strong) NSString* lastInput;
-@property (nonatomic, strong) NSString* appendStr;
-
+@interface CalculatorViewController ()
+@property (nonatomic, strong) NSMutableArray* ops;
 @end
 
 @implementation CalculatorViewController
 
 @synthesize calculatorDelegate;
-@synthesize lastInput;
+@synthesize ops;
 
 -(void) viewDidLoad
 {
@@ -39,9 +38,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 -(void) start{
-    self.expression = @"";
-    lastInput = @"";
-    _appendStr = @"";
+    ops = [NSMutableArray array];
 }
 
 -(void)configureScrollView
@@ -77,15 +74,15 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)clickDigit:(UIButton *)sender {
-    lastInput = sender.currentTitle;
-    self.appendStr = lastInput;
+    [self changeLastObejctWithAppend:sender.currentTitle];
+    [self calculate];
 }
 
 - (IBAction)onClickZero:(UIButton *)sender {
-    if(self.expression.length>0)
+    if(ops.count > 0)
     {
-        lastInput = sender.currentTitle;
-        self.appendStr = lastInput;
+        [self changeLastObejctWithAppend:sender.currentTitle];
+        [self calculate];
     }
 }
 
@@ -95,67 +92,66 @@ static NSString * const ErrorMessage = @"ERROR";
  *  @param sender <#sender description#>
  */
 - (IBAction)clickDot:(UIButton *)sender {
-//    if(_expression.length == 0)
-//    {
-//        lastInput = Dot;
-//        self.appendStr = lastInput;
-//    }
-    
-    long i =_expression.length - 1;
-    
-    UniChar ch = '+';
-    while(i >= 0){
-        ch = [_expression characterAtIndex:i];
-        
-        if( (ch != ' ') && (ch != '.'))
-            i--;
-        else break;
-    }
-    
-    if(i < 0 || ch == ' ')
+
+    NSString *op = [ops lastObject];
+
+    if(isdigit([op characterAtIndex:0]))
     {
-        lastInput = Dot;
-        self.appendStr = lastInput;
+        if([op containCharacter:'.']) return;
+        NSString * op = [ops lastObject];
+
+        [ops removeLastObject];
+        [ops addObject:[op stringByAppendingString:Dot]];
+        [self calculate];
+        return;
+
     }
+    [ops addObject:Dot];
+    [self calculate];
 }
 
 - (IBAction)clickEqual:(UIButton *)sender {
-    if(self.expression.length == 0) return;
+
+    if(ops.count == 0) return;
     [calculatorDelegate equal];
-    _expression = [calculatorDelegate currentResult];
-    lastInput = _expression;
+    [ops removeAllObjects];
+    [ops addObject:[calculatorDelegate currentResult]];
 }
 
 
 //点击四则运算以及余数运算
 - (IBAction)clickOperator:(UIButton *)sender {
     
-    if(self.expression.length == 0)
+    if(ops.count == 0 ) return;
+    NSString * lastop = [ops lastObject];
+    NSString * inputOP = [CalculatorConstants buttonStringWithTag:sender.tag];
+    if([lastop isBasicOperator]){
+        [ops removeLastObject];
+        [ops addObject:inputOP];
+        [self calculate];
         return;
-    
-    if([lastInput isBasicOperator])
-    {
-        _expression = [_expression substringToIndex:_expression.length-3];
     }
-    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
-    self.appendStr = [lastInput addSpace];
-
+    if([lastop isOpNeedRightOperand]) return;
+    [ops addObject:inputOP];
+    [self calculate];
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
-    lastInput = [CalculatorConstants buttonStringWithTag:sender.tag];
-    self.appendStr = [lastInput addSpace];
+
+    [ops addObject:[CalculatorConstants buttonStringWithTag:sender.tag]];
+    [self calculate];
 }
 
 - (IBAction)clearInput:(UIButton *)sender {
     [self  start];
+    [self calculate];
 }
 
 - (IBAction)onClickButtons:(UIButton *)sender {
     
     NSString * send = [CalculatorConstants buttonStringWithTag:sender.tag];
     BOOL isAdd = false;
-    
+    NSString * lastInput = [ops lastObject];
     if(!lastInput || lastInput.length == 0)
     {
         if([send isRightUnaryOperator])
@@ -177,52 +173,35 @@ static NSString * const ErrorMessage = @"ERROR";
     }
    
     if(isAdd){
-        lastInput = send;
-        self.appendStr = [lastInput addSpace];
+        [ops addObject:send];
+        [self calculate];
     }
 
 }
 
 - (IBAction)deleteLastInput:(UIButton *)sender {
-    if(_expression.length>0){
-        self.expression = [self.expression substringToIndex:self.expression.length - self.appendStr.length];
-        if(self.expression.length == 0)
-        {
-            _appendStr = @"";
-            lastInput = @"";
-            return;
-        }
-        u_long length = self.expression.length;
-        long index = length - 1;
-        
-        if([_expression characterAtIndex:index] == ' '){
-            index--;
-            while((index > 0) &&[_expression characterAtIndex:index] != ' '){
-                index--;
-            }
-            _appendStr = [_expression substringWithRange:NSMakeRange(index , length - index)];
-            self.lastInput = [self.appendStr substringWithRange:NSMakeRange(1, _appendStr.length-2)];
-        }else{
-            _appendStr = [_expression substringWithRange:NSMakeRange(length - 1, 1)];
-            self.lastInput = self.appendStr;
-        }
-    }
+
+    if(ops.count>0)
+        [ops removeLastObject];
+    [self calculate];
 }
 
 
--(void)setExpression:(NSString *)newValue
+-(void) calculate
 {
-    if(_expression != newValue){
-        _expression = newValue;
-        NSLog(@"_expression: %@", _expression);
-        [self.calculatorDelegate sendExpression:_expression];
-    }
+    NSString * expression = [ops componentsJoinedByString:@" "];
+    [self.calculatorDelegate sendExpression:expression];
 }
 
 
--(void)setAppendStr:(NSString *)appendStr
+-(void)changeLastObejctWithAppend:(NSString*)input
 {
-    _appendStr = appendStr;
-    self.expression = [self.expression stringByAppendingString:_appendStr];
+     NSString * op = [ops lastObject];
+    if([op isNumberic]){
+        [ops removeLastObject];
+        [ops addObject:[op stringByAppendingString:input]];
+    }else{
+        [ops addObject:input];
+    }
 }
 @end

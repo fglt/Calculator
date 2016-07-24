@@ -12,6 +12,7 @@
 #import "constants.h"
 
 @interface ExpressionParser : NSObject
+//@property (nonatomic, strong) NSString* expressioin;
 
 +(NSMutableAttributedString  *)parseString:(NSString*)expression fontSize:(CGFloat)fontSize operatorColor:(UIColor*)color;
 
