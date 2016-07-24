@@ -10,10 +10,10 @@
 
 
 @interface ArrayComputationDataSource ()
-@property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic) NSString *cellIdentifier;
-@property (nonatomic) TableViewCellConfigureBlock configureCellBlock;
-@property (nonatomic, weak) ComputationDao* computationDao;
+@property (nonatomic, strong) NSMutableArray              *items;
+@property (nonatomic        ) NSString                    *cellIdentifier;
+@property (nonatomic        ) TableViewCellConfigureBlock configureCellBlock;
+@property (nonatomic, weak  ) ComputationDao              * computationDao;
 @end
 
 @implementation ArrayComputationDataSource

@@ -89,6 +89,11 @@ static NSString * const ErrorMessage = @"ERROR";
     }
 }
 
+/**
+ *  <#Description#>
+ *
+ *  @param sender <#sender description#>
+ */
 - (IBAction)clickDot:(UIButton *)sender {
 //    if(_expression.length == 0)
 //    {

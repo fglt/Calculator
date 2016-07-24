@@ -17,8 +17,8 @@
 @end
 
 @interface HistoryViewController : UITableViewController<UITableViewDelegate>
-@property (nonatomic, strong) ArrayComputationDataSource *computationDataSource;
-@property (nonatomic, strong) ComputationDao* computationDao;
-@property (nonatomic, weak) id<HistoryViewControllerDelegate> historyDelegate;
+@property (nonatomic, strong) ArrayComputationDataSource    *computationDataSource;
+@property (nonatomic, strong) ComputationDao                * computationDao;
+@property (nonatomic, weak  ) id<HistoryViewControllerDelegate> historyDelegate;
 -(void)update;
 @end

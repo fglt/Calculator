@@ -34,7 +34,7 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     self.computationDao = [ComputationDao singleInstance];
 
     TableViewCellConfigureBlock configureCell = ^(ComputationCell *cell, Computation *computation) {
-        [cell configureForComputation:computation];
+        [cell configureForComputation:computation height:28];
     };
     self.computationDataSource = [[ArrayComputationDataSource alloc]initWithCellIdentifier:HistoryCellIdentifier configureCellBlock:configureCell];
     self.tableView.dataSource = self.computationDataSource;

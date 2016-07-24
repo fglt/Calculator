@@ -13,7 +13,6 @@
 
 @implementation NSString (Calculator)
 
-
 static NSDictionary * binaryOperators;
 static NSDictionary * unaryOperators;
 static NSDictionary * operatorsDict;

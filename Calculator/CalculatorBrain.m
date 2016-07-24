@@ -11,6 +11,7 @@
 
 #import "NSString+Calculator.h"
 #import "CalculatorConstants.h"
+#import "ExpressionParser.h"
 
 @interface CalculatorBrain()
 @property NSMutableArray *operators;
@@ -40,126 +41,9 @@
     return  self;
 }
 
--(void)checkOpArrayLast
-{
-    while((opArray.count >0 ) && [opArray.lastObject isOpNeedRightOperand])
-    {
-        [opArray removeLastObject];
-    }
-    return ;
-}
-
--(void) willCalculate
-{
-    operators =[ NSMutableArray array];
-    operands =[ NSMutableArray array];
-    
-    NSArray* tempArray = [expression componentsSeparatedByCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@" "]];
-    opArray = [NSMutableArray arrayWithArray:tempArray];
-    [self clearSpace];
-    [self checkOpArrayLast];
-    [self addBracket];
-    [self addMultiply];
-    
-    NSLog(@"array: %@", opArray);
-}
-
--(void)addBracket
-{
-    u_long i = 0;
-    
-    int lCount = 0;
-    int rCount = 0;
-    
-    while(i < opArray.count)
-    {
-        if([opArray[i] isEqualToString:RightBracket])
-        {
-            if(lCount == rCount)
-            {
-                [opArray insertObject:LeftBracket atIndex:0];
-                lCount++;
-                i++;
-            }
-            rCount ++;
-        }else if ([opArray[i] isEqualToString:LeftBracket])
-        {
-            lCount++;
-        }
-        i++;
-    }
-    
-    while(lCount > rCount)
-    {
-        [opArray addObject:RightBracket];
-        rCount++;
-    }
-}
-
--(void) clearSpace
-{
-    u_long i = 0;
-
-    while(i < opArray.count)
-    {
-        if([opArray[i] isEqualToString:@""])
-            [opArray removeObjectAtIndex:i];
-        else
-            i++;
-    }
-}
-
-//在π和℮两边为数字时候加乘法
-//加乘法 如2(1+2)变为 2*(1+2)
--(void)addMultiply
-{
-    if((!opArray) || (opArray.count<=1)) return;
-    u_long i = 0;
-    while(i < opArray.count - 1){
-        NSString * op1 =  opArray[i];
-        NSString * op2 =  opArray[i+1];
-        if([op1 isNumberic] && ([op2 isLeftBracket] || [op2 isPIOrExp]))
-        {
-            [opArray insertObject:Multiply atIndex:i+1];
-            i++;
-        }
-        
-        if([op1 isRightBracket] && ([op2 isNumberic] || [op2 isPIOrExp]))
-        {
-            [opArray insertObject:Multiply atIndex:i+1];
-            i++;
-        }
-        if([op1 isPIOrExp] && ([op2 isNumberic] || [op2 isLeftBracket] || [op2 isPIOrExp]))
-        {
-            [opArray insertObject:Multiply atIndex:i+1];
-            i++;
-        }
-        i++;
-    }
-}
-
--(BOOL)check
-{
-    u_long i = 0;
-    u_long length = opArray.count;
-    
-    while(i < length)
-    {
-        //如果左括号右边出现乘除法 错误
-        //如果右括号左边边出现加减乘除 错误
-        //如果左括号右边出现乘除法 错误；如果右括号左边边出现加减乘除 错误
-        //如果根号或N方右边不为数字左括号，错误
-//        带左操作数的操作符 左边必须为 数 或者 右括号 ，或者  不带右操作数的 操作符
-//        
-//        带右操作数的操作符  右边必须为 数  或者 左括号  或者 不带 左操作数的操作符；
-    }
-    
-    return false;
-}
-
 -(double) calculate{
 
-    [self willCalculate];
+    opArray = [ExpressionParser wilCalculateWithString:self.expression];
 
     while( opArray.count > 0)
     {
@@ -203,8 +87,13 @@
 
         [self calculateWithOperator:lastOperator];
     }
+    
+    double result = [[operands lastObject] doubleValue];
 
-    return [[operands lastObject] doubleValue];
+    [operators removeAllObjects];
+    [operands removeAllObjects];
+    
+    return result;
 }
 
 -(void)calculateWithOperator:(NSString *)operator
