@@ -19,7 +19,7 @@
 		1747D1881D3C6B36002C2EE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1747D1861D3C6B36002C2EE1 /* Main.storyboard */; };
 		1747D18A1D3C6B36002C2EE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1747D1891D3C6B36002C2EE1 /* Assets.xcassets */; };
 		1747D18D1D3C6B36002C2EE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1747D18B1D3C6B36002C2EE1 /* LaunchScreen.storyboard */; };
-		1747D19D1D3C6B8A002C2EE1 /* CalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1951D3C6B8A002C2EE1 /* CalButton.m */; };
+		1747D19D1D3C6B8A002C2EE1 /* DigitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1951D3C6B8A002C2EE1 /* DigitButton.m */; };
 		1747D19E1D3C6B8A002C2EE1 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */; };
 		1747D19F1D3C6B8A002C2EE1 /* CalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1991D3C6B8A002C2EE1 /* CalView.m */; };
 		1747D1A01D3C6B8A002C2EE1 /* constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D19A1D3C6B8A002C2EE1 /* constant.m */; };
@@ -32,7 +32,7 @@
 		1747D1C01D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1BF1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m */; };
 		1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C21D3CB289002C2EE1 /* BaseView.m */; };
 		1747D1C71D3CB78C002C2EE1 /* ArrayComputationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */; };
-		1786297F1D445F5A00067294 /* ExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1786297E1D445F5A00067294 /* ExpressionParser.m */; };
+		178629821D44FB4C00067294 /* ExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 178629811D44FB4C00067294 /* ExpressionParser.m */; };
 		17F9E6E81D424C7000BC4B38 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F9E6E71D424C7000BC4B38 /* ResultView.m */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +60,8 @@
 		1747D1891D3C6B36002C2EE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1747D18C1D3C6B36002C2EE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1747D18E1D3C6B36002C2EE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1747D1941D3C6B8A002C2EE1 /* CalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalButton.h; sourceTree = "<group>"; };
-		1747D1951D3C6B8A002C2EE1 /* CalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalButton.m; sourceTree = "<group>"; };
+		1747D1941D3C6B8A002C2EE1 /* DigitButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitButton.h; sourceTree = "<group>"; };
+		1747D1951D3C6B8A002C2EE1 /* DigitButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitButton.m; sourceTree = "<group>"; };
 		1747D1961D3C6B8A002C2EE1 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorBrain.h; path = Calculator/CalculatorBrain.h; sourceTree = "<group>"; };
 		1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorBrain.m; path = Calculator/CalculatorBrain.m; sourceTree = "<group>"; };
 		1747D1981D3C6B8A002C2EE1 /* CalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalView.h; sourceTree = "<group>"; };
@@ -87,8 +87,8 @@
 		1747D1C21D3CB289002C2EE1 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		1747D1C51D3CB78C002C2EE1 /* ArrayComputationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayComputationDataSource.h; sourceTree = "<group>"; };
 		1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayComputationDataSource.m; sourceTree = "<group>"; };
-		1786297D1D445F5A00067294 /* ExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionParser.h; sourceTree = "<group>"; };
-		1786297E1D445F5A00067294 /* ExpressionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressionParser.m; sourceTree = "<group>"; };
+		178629801D44FB4C00067294 /* ExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpressionParser.h; path = Calculator/ExpressionParser.h; sourceTree = "<group>"; };
+		178629811D44FB4C00067294 /* ExpressionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpressionParser.m; path = Calculator/ExpressionParser.m; sourceTree = "<group>"; };
 		17F9E6E61D424C7000BC4B38 /* ResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
 		17F9E6E71D424C7000BC4B38 /* ResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,8 +119,8 @@
 				1747D1991D3C6B8A002C2EE1 /* CalView.m */,
 				1747D1C11D3CB289002C2EE1 /* BaseView.h */,
 				1747D1C21D3CB289002C2EE1 /* BaseView.m */,
-				1747D1941D3C6B8A002C2EE1 /* CalButton.h */,
-				1747D1951D3C6B8A002C2EE1 /* CalButton.m */,
+				1747D1941D3C6B8A002C2EE1 /* DigitButton.h */,
+				1747D1951D3C6B8A002C2EE1 /* DigitButton.m */,
 				170827FE1D3F66C8005B3CAD /* ButtonTag.h */,
 				17F9E6E61D424C7000BC4B38 /* ResultView.h */,
 				17F9E6E71D424C7000BC4B38 /* ResultView.m */,
@@ -184,6 +184,8 @@
 		1747D1C41D3CB6F5002C2EE1 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				178629801D44FB4C00067294 /* ExpressionParser.h */,
+				178629811D44FB4C00067294 /* ExpressionParser.m */,
 				1747D19A1D3C6B8A002C2EE1 /* constant.m */,
 				1747D19B1D3C6B8A002C2EE1 /* constants.h */,
 				1747D19C1D3C6B8A002C2EE1 /* factorial.h */,
@@ -199,8 +201,6 @@
 				1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */,
 				1747D1B31D3C9DBE002C2EE1 /* Computation.h */,
 				1747D1B41D3C9DBE002C2EE1 /* Computation.m */,
-				1786297D1D445F5A00067294 /* ExpressionParser.h */,
-				1786297E1D445F5A00067294 /* ExpressionParser.m */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -278,20 +278,20 @@
 				1747D1821D3C6B36002C2EE1 /* AppDelegate.m in Sources */,
 				1747D1B51D3C9DBE002C2EE1 /* Computation.m in Sources */,
 				170827C61D3DFA14005B3CAD /* CalculatorViewController.m in Sources */,
-				1747D19D1D3C6B8A002C2EE1 /* CalButton.m in Sources */,
+				1747D19D1D3C6B8A002C2EE1 /* DigitButton.m in Sources */,
 				1747D1A91D3C6B96002C2EE1 /* MainViewController.m in Sources */,
 				170828011D3FCD58005B3CAD /* CalculatorConstants.m in Sources */,
 				170827B61D3DBCBB005B3CAD /* CellSelectedControllerViewController.m in Sources */,
 				17F9E6E81D424C7000BC4B38 /* ResultView.m in Sources */,
 				170827FD1D3F53CF005B3CAD /* ExpressionLabel.m in Sources */,
 				170827B91D3DC8F5005B3CAD /* ClearHistoryController.m in Sources */,
-				1786297F1D445F5A00067294 /* ExpressionParser.m in Sources */,
 				170827CB1D3E7693005B3CAD /* ComputationDao.m in Sources */,
 				1747D1BD1D3CA1E5002C2EE1 /* ComputationCell.m in Sources */,
 				1747D1AF1D3C8570002C2EE1 /* HistoryViewController.m in Sources */,
 				1747D17F1D3C6B36002C2EE1 /* main.m in Sources */,
 				1747D19E1D3C6B8A002C2EE1 /* CalculatorBrain.m in Sources */,
 				1747D1A01D3C6B8A002C2EE1 /* constant.m in Sources */,
+				178629821D44FB4C00067294 /* ExpressionParser.m in Sources */,
 				1747D1C71D3CB78C002C2EE1 /* ArrayComputationDataSource.m in Sources */,
 				1747D19F1D3C6B8A002C2EE1 /* CalView.m in Sources */,
 				1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */,
