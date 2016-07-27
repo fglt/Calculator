@@ -40,7 +40,7 @@
                 else as = @"-1";
                 NSRange range = NSMakeRange(0, as.length);
                 attrString = [[NSMutableAttributedString alloc] initWithString:as attributes:nil];
-                [attrString addAttribute:NSBaselineOffsetAttributeName value:@10 range:range];
+                [attrString addAttribute:NSBaselineOffsetAttributeName value:@15 range:range];
                 [attrString addAttribute:NSFontAttributeName value:helveticaFontLittle range:range];
                 [displyText insertAttributedString:attriSpace atIndex:displyText.length-1];
                 [attrString addAttribute:NSForegroundColorAttributeName value:foreColor range:range];
@@ -64,7 +64,7 @@
                 [attrString addAttribute:NSFontAttributeName value:helveticaFontLittle range:foreRange];
                 [attrString addAttribute:NSForegroundColorAttributeName value:foreColor range:range];
                 [attrString addAttribute:NSKernAttributeName value:@-12 range:foreRange];
-                [attrString addAttribute:NSBaselineOffsetAttributeName value:@10 range:foreRange];
+                [attrString addAttribute:NSBaselineOffsetAttributeName value:@15 range:foreRange];
                 [displyText insertAttributedString:attrString atIndex:displyText.length-1];
             }
             else {
@@ -218,13 +218,17 @@ void addMultiply(NSMutableArray* opArray)
             [displyText insertAttributedString:appText atIndex:displyText.length-1];
         }
         else{
+            
+            u_long curPosition = displyText.length - 1;
             NSTextAttachment *attachment = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
             UIImage *img = [ExpressionParser image2WithHeight:fontHeight string:op];
             attachment.image = img;
             attachment.bounds = CGRectMake(0, 0, img.size.width , img.size.height);
             NSAttributedString *imgText = [NSAttributedString attributedStringWithAttachment:attachment];
+            
             [displyText insertAttributedString:attriSpace atIndex:displyText.length-1];
             [displyText insertAttributedString:imgText atIndex:displyText.length-1];
+            [displyText addAttribute:NSBaselineOffsetAttributeName value:@-3 range:NSMakeRange(curPosition+1 , imgText.length)];
         }
     }
     
@@ -269,6 +273,11 @@ void addMultiply(NSMutableArray* opArray)
 
 +(UIImage*)image2WithHeight:(CGFloat)height string:(NSString*)string
 {
+//    static NSMutableArray *array ;
+//    if(!array){
+//        array =[NSMutableArray array];
+//    }
+
     NSMutableAttributedString *attrString =
     [[NSMutableAttributedString alloc] initWithString:string
                                            attributes:@{ NSFontAttributeName: [UIFont boldSystemFontOfSize:height *0.7 ] } ];
@@ -287,6 +296,7 @@ void addMultiply(NSMutableArray* opArray)
     label.attributedText = attrString;
     label.backgroundColor = [UIColor greenColor];
     label.layer.cornerRadius = 5;
+    label.layer.masksToBounds = YES;
     [label setTextAlignment:NSTextAlignmentCenter];
     
     // 1.开启上下文，第二个参数是是否不透明（opaque）NO为透明，这样可以防止占据额外空间（例如圆形图会出现方框），第三个为伸缩比例，0.0为不伸缩。
@@ -300,7 +310,39 @@ void addMultiply(NSMutableArray* opArray)
     // 4.结束上下文
     UIGraphicsEndImageContext();
     
+//    if(![array containsObject:string]){
+//        [array addObject:string];
+//        [ExpressionParser saveImageToFile:string image:newImage];
+//    }
     return newImage;
+}
+
++(void)saveImageToFile:(NSString *)path image:(UIImage *)image
+{
+    
+    NSString * home = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/"];
+    // Create paths to output images
+    NSString * fp = [home stringByAppendingPathComponent:path];
+    NSString  * pngPath = [fp stringByAppendingPathExtension:@"png"];
+    NSString  *jpgPath = [fp stringByAppendingPathExtension:@"jpg"];
+    
+    // Write a UIImage to JPEG with minimum compression (best quality)
+    // The value 'image' must be a UIImage object
+    // The value '1.0' represents image compression quality as value from 0.0 to 1.0
+    [UIImageJPEGRepresentation(image, 1.0) writeToFile:jpgPath atomically:YES];
+    
+    // Write image to PNG
+    [UIImagePNGRepresentation(image) writeToFile:pngPath atomically:YES];
+    //UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
+    
+    // Let's check to see if files were successfully written...
+    
+    // Create file manager
+    NSError *error;
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    
+    // Write out the contents of home directory to console
+    NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:home error:&error]);
 }
 
 @end

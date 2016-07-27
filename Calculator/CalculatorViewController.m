@@ -213,4 +213,10 @@ static NSString * const ErrorMessage = @"ERROR";
         [operatorsArray addObject:input];
     }
 }
+
+-(void)addOperand:(NSString*)operand
+{
+    [operatorsArray removeAllObjects];
+    [operatorsArray addObject:operand];
+}
 @end

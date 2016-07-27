@@ -13,8 +13,6 @@
 
 @interface MainViewController : UIViewController<UIScrollViewDelegate, HistoryViewControllerDelegate>
 
-
-
 @property(nonatomic, strong) UITableView* historyTable;
 
 @end

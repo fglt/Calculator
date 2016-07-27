@@ -24,6 +24,7 @@
 
 @property ComputationDao* computationDao;
 @property HistoryViewController* historyController;
+@property CalculatorViewController* calculatorController;
 
 @property (nonatomic, strong) NSString* lastExpression;
 @property (nonatomic, strong) NSString* curExpression;
@@ -33,6 +34,7 @@
 
 @implementation MainViewController
 @synthesize historyController;
+@synthesize calculatorController;
 @synthesize brain;
 
 -(BOOL) prefersStatusBarHidden
@@ -43,8 +45,9 @@
 -(void) viewDidLoad
 {
     [super viewDidLoad];
-
+    //if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){}
     [self addHistoryTableView];
+    
     [self addCalculatorViewController];
     self.computationDao = [ComputationDao singleInstance];
     self.brain = [[CalculatorBrain alloc] init];
@@ -73,15 +76,15 @@
 -(void)addCalculatorViewController
 {
     UIStoryboard *mainStoryBoard = self.storyboard;
-    CalculatorViewController* calViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"CalculatorViewController"];
+    calculatorController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"CalculatorViewController"];
 
-    [self addChildViewController:calViewController];
+    [self addChildViewController:calculatorController];
     CGRect bounds = self.calView.bounds;
-    calViewController.calculatorDelegate =self;
-    calViewController.view.frame = bounds;
+    calculatorController.calculatorDelegate =self;
+    calculatorController.view.frame = bounds;
    
-    [self.calView addSubview:calViewController.view];
-    [calViewController didMoveToParentViewController:self];
+    [self.calView addSubview:calculatorController.view];
+    [calculatorController didMoveToParentViewController:self];
     
     NSLog(@"calView: %@", NSStringFromCGRect(bounds));
     NSLog(@"calView: %@", NSStringFromCGRect(self.historyBoard.bounds));
@@ -91,6 +94,7 @@
 {
    // self.result = computation.result;
     self.curExpression = computation.expression;
+    [calculatorController addOperand:computation.result];
    // [self displayExpression];
    // self.resultLabel.text = computation.result;
 }
@@ -178,7 +182,7 @@
 -(void)displayExpression
 {
 
-    self.expressionLabel.attributedText = [ExpressionParser parse2String:self.curExpression fontSize:self.expressionLabel.font.pointSize operatorColor:[UIColor blueColor]];
+    self.expressionLabel.attributedText = [ExpressionParser parseString:self.curExpression fontSize:self.expressionLabel.font.pointSize operatorColor:[UIColor blueColor]];
 }
 
 

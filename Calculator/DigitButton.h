@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CalculatorButton.h"
 
-@interface DigitButton : UIButton
-
-@property (strong,nonatomic) CAGradientLayer *backgroundLayer, *highlightBackgroundLayer;
-@property (strong,nonatomic) CALayer *innerGlow;
+@interface DigitButton : CalculatorButton
 
 @end

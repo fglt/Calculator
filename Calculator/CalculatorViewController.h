@@ -21,6 +21,7 @@
 
 @interface CalculatorViewController : UIViewController
 @property (nonatomic, weak) id<CalculatorViewControllerDelegate>calculatorDelegate;
+-(void)addOperand:(NSString*)operand;
 @end
 
 
