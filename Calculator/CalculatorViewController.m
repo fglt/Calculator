@@ -53,7 +53,7 @@ static NSString * const ErrorMessage = @"ERROR";
     _stack1.frame = CGRectMake(0 , 0, scrollFrame.size.width, scrollFrame.size.height);
     
     _stack2.frame = CGRectMake( scrollFrame.size.width, 0, scrollFrame.size.width, scrollFrame.size.height);
-    //
+    
     NSLog(@"scrollFrame: %@",NSStringFromCGRect(scrollFrame));
     
     [self.scrollView addSubview:self.stack1];

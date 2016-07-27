@@ -182,6 +182,7 @@
 -(void)displayExpression
 {
 
+    
     self.expressionLabel.attributedText = [ExpressionParser parseString:self.curExpression fontSize:self.expressionLabel.font.pointSize operatorColor:[UIColor blueColor]];
 }
 

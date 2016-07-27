@@ -19,6 +19,8 @@ IB_DESIGNABLE
 }
 */
 
+
+
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -31,13 +33,11 @@ IB_DESIGNABLE
         self.layer.borderWidth = 2;
         self.layer.borderColor = [UIColor grayColor].CGColor;
         self.layer.backgroundColor = [UIColor darkGrayColor].CGColor;
-//        [self drawButton];
-//        [self drawInnerGlow];
-//        [self drawBackgroundLayer];
-//        [self drawHighlightBackgroundLayer];
     }
     
     return self;
 }
+
+
 
 @end
