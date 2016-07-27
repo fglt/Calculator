@@ -10,15 +10,12 @@
 #import "constants.h"
 #import "NSString+Calculator.h"
 #import "CalculatorConstants.h"
-
+#import "CalculateView.h"
 
 static NSString * const ErrorMessage = @"ERROR";
 
 @interface CalculatorViewController ()<UIScrollViewDelegate>
-@property (strong, nonatomic) IBOutlet UIStackView *stack1;
-@property (strong, nonatomic) IBOutlet UIStackView *stack2;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet CalculateView *calView;
 @end
 
 @interface CalculatorViewController ()
@@ -43,33 +40,20 @@ static NSString * const ErrorMessage = @"ERROR";
 
 -(void)configureScrollView
 {
-    self.scrollView.delegate = self;
-    //CGRect scrollFrame = CGRectMake(0, 0, 492, 477);
-    CGRect scrollFrame = CGRectMake(0, 0, self.view.frame.size.width * 0.5 - 20, self.view.frame.size.height * 0.7 - 60);
-    
-    self.scrollView.frame = scrollFrame;
-    self.scrollView.contentSize = CGSizeMake(scrollFrame.size.width * 2, scrollFrame.size.height);
-    
-    _stack1.frame = CGRectMake(0 , 0, scrollFrame.size.width, scrollFrame.size.height);
-    
-    _stack2.frame = CGRectMake( scrollFrame.size.width, 0, scrollFrame.size.width, scrollFrame.size.height);
-    
-    NSLog(@"scrollFrame: %@",NSStringFromCGRect(scrollFrame));
-    
-    [self.scrollView addSubview:self.stack1];
-    [self.scrollView addSubview:self.stack2];
+
+    self.calView.scrollView.delegate = self;
     
 }
 
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGPoint offset = scrollView.contentOffset;
-    self.pageControl.currentPage = (offset.x + self.scrollView.frame.size.width/2)/ self.scrollView.frame.size.width ;
+    self.calView.pageControl.currentPage = offset.x / scrollView.frame.size.width ;
 }
 - (IBAction)changePage:(UIPageControl *)sender {
     [UIView animateWithDuration:0.3 animations:^{
-        NSInteger whichPage = self.pageControl.currentPage;
-        self.scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width * whichPage, 0);
+        NSInteger whichPage = self.calView.pageControl.currentPage;
+        self.calView.scrollView.contentOffset = CGPointMake(self.calView.scrollView.frame.size.width * whichPage, 0);
     }];
 }
 

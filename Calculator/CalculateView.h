@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CalculateView : UIView
-@property UIScrollView *scrollViwe;
-@property UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (nonatomic, weak) IBOutlet UIPageControl* pageControl;
+
+
 @end
