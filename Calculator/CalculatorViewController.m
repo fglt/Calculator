@@ -42,6 +42,7 @@ static NSString * const ErrorMessage = @"ERROR";
 {
 
     self.calView.scrollView.delegate = self;
+    NSLog(@"frame: %@", NSStringFromCGRect(self.calView.scrollView.frame));
     
 }
 

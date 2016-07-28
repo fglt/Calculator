@@ -72,8 +72,10 @@
     
     layer.cornerRadius = 5;
     layer.borderWidth = 1;
-    layer.borderColor = [UIColor colorWithRed:0.77f green:0.77f blue:0.77f alpha:1.00f].CGColor;
+    layer.borderColor = [UIColor paperColorGray200].CGColor;
     layer.masksToBounds = YES;
+    self.titleLabel.adjustsFontSizeToFitWidth = TRUE;
+    self.titleLabel.minimumScaleFactor = 0.8;
 }
 
 - (void)drawBackgroundLayer
@@ -86,8 +88,8 @@
         
         // Set the colors
         backgroundLayer.colors = (@[
-                                     (id)[UIColor colorWithRed:0.94f green:0.82f blue:0.52f alpha:1.00f].CGColor,
-                                     (id)[UIColor colorWithRed:0.91f green:0.55f blue:0.00f alpha:1.00f].CGColor]);
+                                     (id)[UIColor paperColorGray100].CGColor,
+                                     (id)[UIColor paperColorGray300].CGColor]);
         
         // Set the stops
         backgroundLayer.locations = (@[@0.0f,@1.0f]);
@@ -103,9 +105,8 @@
     {
         highlightBackgroundLayer = [CAGradientLayer layer];
         highlightBackgroundLayer.colors = (@[
-                                              (id)[UIColor colorWithRed:0.91f green:0.55f blue:0.00f alpha:1.00f].CGColor,
-                                              (id)[UIColor colorWithRed:0.94f green:0.82f blue:0.52f alpha:1.00f].CGColor
-                                              ]);
+                                             (id)[UIColor paperColorGray300].CGColor,
+                                             (id)[UIColor paperColorGray100].CGColor]);
         highlightBackgroundLayer.locations = (@[@0.0f,@1.0f]);
         [self.layer insertSublayer:highlightBackgroundLayer atIndex:1];
     }
