@@ -121,7 +121,7 @@ static NSDictionary * operatorsDict;
 
     if ([value length]!= 0) {//value为ch中除数字之外的字符
         if (!([value isEqualToString:Dot]^[value isEqualToString:Minius])) {//value中包含.或者-可能为小数或者负数
-            NSLog(@"Not Numberic! %@",value);
+//            NSLog(@"Not Numberic! %@",value);
             return NO;
         }
     }

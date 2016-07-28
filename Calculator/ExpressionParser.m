@@ -119,7 +119,7 @@ void checkOpArrayLast(NSMutableArray* opArray)
     addBracket(opArray);
     addMultiply(opArray);
     
-    NSLog(@"array: %@", opArray);
+//    NSLog(@"array: %@", opArray);
     
     return opArray;
 }

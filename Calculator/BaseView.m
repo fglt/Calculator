@@ -37,6 +37,10 @@
             break;
     }
     
-    NSLog(@"layoutSubviews: %@",NSStringFromCGRect( self.calView.frame) );
+    //修复scrollview 切换设备方向后可能显示不正确的问题；（当显示page2的时候切换显示不正确））
+    CalculateView*  view  = [self.calView subviews][0];
+    view.scrollView.contentOffset = CGPointZero;
+    
+//    NSLog(@"layoutSubviews: %@",NSStringFromCGRect( self.calView.frame) );
 }
 @end
