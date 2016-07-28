@@ -36,6 +36,8 @@
 		1786298B1D4654FA00067294 /* OperatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1786298A1D4654FA00067294 /* OperatorButton.m */; };
 		178629911D4839D000067294 /* CalculatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178629901D4839D000067294 /* CalculatorButton.m */; };
 		178629971D48FA1600067294 /* CalculateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 178629961D48FA1600067294 /* CalculateView.m */; };
+		17F805911D49DD3F0085511A /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F8058F1D49DD3F0085511A /* Other.storyboard */; };
+		17F805941D49EDF20085511A /* SepcialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F805931D49EDF20085511A /* SepcialButton.m */; };
 		17F9E6E81D424C7000BC4B38 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F9E6E71D424C7000BC4B38 /* ResultView.m */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,9 @@
 		178629901D4839D000067294 /* CalculatorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorButton.m; sourceTree = "<group>"; };
 		178629951D48FA1600067294 /* CalculateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateView.h; sourceTree = "<group>"; };
 		178629961D48FA1600067294 /* CalculateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateView.m; sourceTree = "<group>"; };
+		17F805901D49DD3F0085511A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Other.storyboard; sourceTree = "<group>"; };
+		17F805921D49EDF20085511A /* SepcialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SepcialButton.h; sourceTree = "<group>"; };
+		17F805931D49EDF20085511A /* SepcialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SepcialButton.m; sourceTree = "<group>"; };
 		17F9E6E61D424C7000BC4B38 /* ResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
 		17F9E6E71D424C7000BC4B38 /* ResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +144,8 @@
 				178629901D4839D000067294 /* CalculatorButton.m */,
 				178629951D48FA1600067294 /* CalculateView.h */,
 				178629961D48FA1600067294 /* CalculateView.m */,
+				17F805921D49EDF20085511A /* SepcialButton.h */,
+				17F805931D49EDF20085511A /* SepcialButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 		1747D17C1D3C6B36002C2EE1 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				17F8058F1D49DD3F0085511A /* Other.storyboard */,
 				1747D1C51D3CB78C002C2EE1 /* ArrayComputationDataSource.h */,
 				1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */,
 				170827C41D3DFA14005B3CAD /* CalculatorViewController.h */,
@@ -278,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1747D18D1D3C6B36002C2EE1 /* LaunchScreen.storyboard in Resources */,
+				17F805911D49DD3F0085511A /* Other.storyboard in Resources */,
 				1747D18A1D3C6B36002C2EE1 /* Assets.xcassets in Resources */,
 				1747D1881D3C6B36002C2EE1 /* Main.storyboard in Resources */,
 			);
@@ -305,6 +314,7 @@
 				170827CB1D3E7693005B3CAD /* ComputationDao.m in Sources */,
 				1786298B1D4654FA00067294 /* OperatorButton.m in Sources */,
 				1747D1BD1D3CA1E5002C2EE1 /* ComputationCell.m in Sources */,
+				17F805941D49EDF20085511A /* SepcialButton.m in Sources */,
 				1747D1AF1D3C8570002C2EE1 /* HistoryViewController.m in Sources */,
 				1747D17F1D3C6B36002C2EE1 /* main.m in Sources */,
 				1747D19E1D3C6B8A002C2EE1 /* CalculatorBrain.m in Sources */,
@@ -337,6 +347,14 @@
 				1747D18C1D3C6B36002C2EE1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		17F8058F1D49DD3F0085511A /* Other.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17F805901D49DD3F0085511A /* Base */,
+			);
+			name = Other.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

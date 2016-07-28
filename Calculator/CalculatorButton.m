@@ -32,7 +32,8 @@
         [self drawHighlightBackgroundLayer];
         
         highlightBackgroundLayer.hidden = YES;
-        self.titleLabel.font =  [UIFont systemFontOfSize:25 ];
+        self.titleLabel.font =  [UIFont systemFontOfSize:30 ];
+        self.contentMode = UIViewContentModeScaleToFill;
     }
     
     return self;

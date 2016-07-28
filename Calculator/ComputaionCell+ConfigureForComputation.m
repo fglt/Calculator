@@ -16,7 +16,7 @@
     NSDateComponents *comp = [self.calendar components:units fromDate:computation.date];
     NSInteger month = [comp month];
     NSInteger day = [comp day];
-    self.date.text = [NSString stringWithFormat:@"%ld月\n%ld", (long)month, (long)day];
+    self.date.text = [NSString stringWithFormat:@"%ld\n%ld", (long)month, (long)day];
 
     NSMutableAttributedString * ex = [ExpressionParser parseString:computation.expression fontSize:height operatorColor:[UIColor greenColor]];
     NSAttributedString * attriResult = [[NSAttributedString alloc] initWithString:[@"\n" stringByAppendingString:computation.result]];

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ResultView : UIView
-
+@property (weak, nonatomic) IBOutlet UILabel*  resultLabel;
+@property (weak, nonatomic) IBOutlet UILabel*  experssionLabel;
 @end

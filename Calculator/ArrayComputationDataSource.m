@@ -29,13 +29,13 @@
 
 -(id) itemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.items[indexPath.row];
+    return self.items[self.items.count - 1 - indexPath.row];
 }
 
 -(void) delete:(NSInteger)index
 {
-    [self.items removeObjectAtIndex:index];
-    [self.computationDao remove:index];
+    [self.items removeObjectAtIndex:self.items.count - 1 - index];
+    [self.computationDao remove:self.items.count  - index];
 
 }
 

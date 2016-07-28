@@ -57,8 +57,8 @@
 -(void)addHistoryTableView
 {
     
-    UIStoryboard *mainStoryBoard = self.storyboard;
-    historyController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"historyID"];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
+    historyController = [storyBoard instantiateViewControllerWithIdentifier:@"historyID"];
 
    // 用下面这句代替上面是错误的！！！！！导致computationCell创建失败！！！
 //    HistorysViewController *history = [[HistorysViewController alloc]init];
@@ -75,8 +75,8 @@
 
 -(void)addCalculatorViewController
 {
-    UIStoryboard *mainStoryBoard = self.storyboard;
-    calculatorController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"CalculatorViewController"];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
+    calculatorController = [storyBoard instantiateViewControllerWithIdentifier:@"CalculatorViewController"];
 
     [self addChildViewController:calculatorController];
     CGRect bounds = self.calView.bounds;
@@ -85,9 +85,6 @@
    
     [self.calView addSubview:calculatorController.view];
     [calculatorController didMoveToParentViewController:self];
-    
-    NSLog(@"calView: %@", NSStringFromCGRect(bounds));
-    NSLog(@"calView: %@", NSStringFromCGRect(self.historyBoard.bounds));
 }
 
 -(void)useComputation:(Computation *)computation

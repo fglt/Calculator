@@ -18,4 +18,11 @@
     self.clipsToBounds = YES;
     return self;
 }
+
+-(void)layoutSubviews{
+    self.experssionLabel.frame = CGRectMake(10, 0, self.frame.size.width -20, self.frame.size.height * 0.6);
+    self.resultLabel.frame = CGRectMake(10, self.frame.size.height * 0.6, self.frame.size.width -20, self.frame.size.height * 0.4);
+    self.resultLabel.textAlignment = NSTextAlignmentRight;
+    self.experssionLabel.textAlignment = NSTextAlignmentRight;
+}
 @end
