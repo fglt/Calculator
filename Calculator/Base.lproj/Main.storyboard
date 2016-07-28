@@ -958,14 +958,14 @@
                                 <rect key="frame" x="10" y="0.0" width="580" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMS-GI-OwE">
-                                        <rect key="frame" x="20" y="54" width="540" height="126"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                        <rect key="frame" x="20" y="108" width="540" height="72"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PG9-fE-UoH">
-                                        <rect key="frame" x="20" y="0.0" width="540" height="54"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="37"/>
+                                        <rect key="frame" x="20" y="0.0" width="540" height="108"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -979,7 +979,7 @@
                                     <constraint firstAttribute="bottom" secondItem="QMS-GI-OwE" secondAttribute="bottom" id="UrP-E4-iWC"/>
                                     <constraint firstItem="QMS-GI-OwE" firstAttribute="width" secondItem="PG9-fE-UoH" secondAttribute="width" id="b08-40-XQc"/>
                                     <constraint firstItem="PG9-fE-UoH" firstAttribute="top" secondItem="nXP-TP-Cqp" secondAttribute="top" id="k72-Qq-DCH"/>
-                                    <constraint firstItem="PG9-fE-UoH" firstAttribute="height" secondItem="nXP-TP-Cqp" secondAttribute="height" multiplier="3:10" id="wwz-P7-oWD"/>
+                                    <constraint firstItem="PG9-fE-UoH" firstAttribute="height" secondItem="nXP-TP-Cqp" secondAttribute="height" multiplier="6:10" id="wwz-P7-oWD"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" restorationIdentifier="historyView" translatesAutoresizingMaskIntoConstraints="NO" id="ht0-rL-0FQ" userLabel="historyBoard" customClass="HistoryBoardView">
