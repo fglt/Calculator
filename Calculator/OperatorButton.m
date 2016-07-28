@@ -25,17 +25,6 @@
 
 #pragma mark - Layer setters
 
-- (void)drawButton
-{
-    // Get the root layer (any UIView subclass comes with one)
-    CALayer *layer = self.layer;
-    
-    layer.cornerRadius = 10;
-    layer.borderWidth = 1;
-    layer.borderColor = [UIColor colorWithRed:0.77f green:0.43f blue:0.00f alpha:1.00f].CGColor;
-    layer.masksToBounds = YES;
-}
-
 - (void)drawBackgroundLayer
 {
     // Check if the property has been set already
@@ -83,10 +72,7 @@
     if (self)
     {
         
-        NSMutableAttributedString * attstr = [[NSMutableAttributedString alloc] initWithString:@"x2" attributes:nil];
-        [attstr addAttribute:NSBaselineOffsetAttributeName value:@8 range:NSMakeRange(1, 1)];
-        [attstr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(1, 1)];
-        self.titleLabel.attributedText = attstr;
+        [self  attPowString:@"x2"];
     }
     
     return self;
@@ -103,10 +89,7 @@
     if (self)
     {
         
-        NSMutableAttributedString * attstr = [[NSMutableAttributedString alloc] initWithString:@"x3" attributes:nil];
-        [attstr addAttribute:NSBaselineOffsetAttributeName value:@8 range:NSMakeRange(1, 1)];
-        [attstr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(1, 1)];
-        self.titleLabel.attributedText = attstr;
+       [self  attPowString:@"x3"];
     }
     
     return self;
@@ -124,10 +107,7 @@
     if (self)
     {
         
-        NSMutableAttributedString * attstr = [[NSMutableAttributedString alloc] initWithString:@"xy" attributes:nil];
-        [attstr addAttribute:NSBaselineOffsetAttributeName value:@8 range:NSMakeRange(1, 1)];
-        [attstr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(1, 1)];
-        self.titleLabel.attributedText = attstr;
+       [self  attPowString:@"xy"];
     }
     
     return self;

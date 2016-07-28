@@ -12,17 +12,6 @@
 
 #pragma mark - Layer setters
 
-- (void)drawButton
-{
-    // Get the root layer (any UIView subclass comes with one)
-    CALayer *layer = self.layer;
-    
-    layer.cornerRadius = 10;
-    layer.borderWidth = 1;
-    layer.borderColor = [UIColor colorWithRed:0.77f green:0.43f blue:0.00f alpha:1.00f].CGColor;
-    layer.masksToBounds = YES;
-}
-
 - (void)drawBackgroundLayer
 {
     // Check if the property has been set already

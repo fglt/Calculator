@@ -17,7 +17,7 @@ IB_DESIGNABLE
     if (self)
     {
         self.clipsToBounds = YES;
-        self.layer.cornerRadius = 12;
+        self.layer.cornerRadius = 8;
         self.layer.borderWidth = 2;
         self.layer.borderColor = [UIColor grayColor].CGColor;
         self.layer.backgroundColor = [UIColor darkGrayColor].CGColor;

@@ -12,7 +12,7 @@
 
 @synthesize highlightBackgroundLayer;
 @synthesize backgroundLayer;
-@synthesize innerGlow;
+
 + (CalculatorButton *)buttonWithType:(UIButtonType)type
 {
     return [super buttonWithType:UIButtonTypeCustom];
@@ -27,7 +27,6 @@
     if (self)
     {
         [self drawButton];
-        [self drawInnerGlow];
         [self drawBackgroundLayer];
         [self drawHighlightBackgroundLayer];
         
@@ -41,8 +40,6 @@
 
 - (void)layoutSubviews
 {
-    // Set inner glow frame (1pt inset)
-    innerGlow.frame = CGRectInset(self.bounds, 1, 1);
     
     // Set gradient frame (fill the whole button))
     backgroundLayer.frame = self.bounds;
@@ -73,9 +70,9 @@
     // Get the root layer (any UIView subclass comes with one)
     CALayer *layer = self.layer;
     
-    layer.cornerRadius = 10;
+    layer.cornerRadius = 5;
     layer.borderWidth = 1;
-    layer.borderColor = [UIColor colorWithRed:0.77f green:0.43f blue:0.00f alpha:1.00f].CGColor;
+    layer.borderColor = [UIColor colorWithRed:0.77f green:0.77f blue:0.77f alpha:1.00f].CGColor;
     layer.masksToBounds = YES;
 }
 
@@ -111,22 +108,6 @@
                                               ]);
         highlightBackgroundLayer.locations = (@[@0.0f,@1.0f]);
         [self.layer insertSublayer:highlightBackgroundLayer atIndex:1];
-    }
-}
-
-- (void)drawInnerGlow
-{
-    if (!innerGlow)
-    {
-        // Instantiate the innerGlow layer
-        innerGlow = [CALayer layer];
-        
-        innerGlow.cornerRadius= 4;
-        innerGlow.borderWidth = 1;
-        innerGlow.borderColor = [[UIColor whiteColor] CGColor];
-        innerGlow.opacity = 0.5;
-        
-        [self.layer insertSublayer:innerGlow atIndex:2];
     }
 }
 
