@@ -839,12 +839,12 @@
                                 <constraints>
                                     <constraint firstItem="yiz-hp-BJ2" firstAttribute="height" secondItem="QC4-Kj-Iih" secondAttribute="height" id="9Rt-Az-Vdr"/>
                                     <constraint firstItem="jwI-1F-rlX" firstAttribute="leading" secondItem="QC4-Kj-Iih" secondAttribute="leading" id="E5W-aK-xaw"/>
-                                    <constraint firstItem="yiz-hp-BJ2" firstAttribute="width" secondItem="QC4-Kj-Iih" secondAttribute="width" id="Iqe-zo-5Kj"/>
                                     <constraint firstItem="yiz-hp-BJ2" firstAttribute="leading" secondItem="jwI-1F-rlX" secondAttribute="trailing" id="J32-RR-oRw"/>
+                                    <constraint firstItem="jwI-1F-rlX" firstAttribute="width" secondItem="QC4-Kj-Iih" secondAttribute="width" id="W2o-oF-lcI"/>
                                     <constraint firstItem="yiz-hp-BJ2" firstAttribute="top" secondItem="jwI-1F-rlX" secondAttribute="top" id="gcE-Eb-I37"/>
                                     <constraint firstItem="jwI-1F-rlX" firstAttribute="top" secondItem="QC4-Kj-Iih" secondAttribute="top" id="glr-p4-1L8"/>
-                                    <constraint firstAttribute="trailing" secondItem="jwI-1F-rlX" secondAttribute="trailing" id="jv0-TG-Dc1"/>
-                                    <constraint firstItem="jwI-1F-rlX" firstAttribute="width" secondItem="QC4-Kj-Iih" secondAttribute="width" id="n2O-2Z-Ggc"/>
+                                    <constraint firstAttribute="trailing" secondItem="yiz-hp-BJ2" secondAttribute="trailing" id="kE9-PS-zUd"/>
+                                    <constraint firstItem="yiz-hp-BJ2" firstAttribute="width" secondItem="jwI-1F-rlX" secondAttribute="width" id="r1o-1P-6Al"/>
                                     <constraint firstItem="jwI-1F-rlX" firstAttribute="height" secondItem="QC4-Kj-Iih" secondAttribute="height" id="xnl-ja-BoZ"/>
                                     <constraint firstAttribute="bottom" secondItem="jwI-1F-rlX" secondAttribute="bottom" id="xoE-YK-AuV"/>
                                 </constraints>
