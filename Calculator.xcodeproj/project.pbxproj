@@ -176,7 +176,6 @@
 		1747D17C1D3C6B36002C2EE1 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				17F8058F1D49DD3F0085511A /* Other.storyboard */,
 				1747D1C51D3CB78C002C2EE1 /* ArrayComputationDataSource.h */,
 				1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */,
 				170827C41D3DFA14005B3CAD /* CalculatorViewController.h */,
@@ -185,11 +184,12 @@
 				170827B51D3DBCBB005B3CAD /* CellSelectedControllerViewController.m */,
 				170827B71D3DC8F5005B3CAD /* ClearHistoryController.h */,
 				170827B81D3DC8F5005B3CAD /* ClearHistoryController.m */,
-				1747D1AE1D3C8570002C2EE1 /* HistoryViewController.m */,
 				1747D1AD1D3C8570002C2EE1 /* HistoryViewController.h */,
+				1747D1AE1D3C8570002C2EE1 /* HistoryViewController.m */,
 				1747D1861D3C6B36002C2EE1 /* Main.storyboard */,
 				1747D1A11D3C6B95002C2EE1 /* MainViewController.h */,
 				1747D1A21D3C6B95002C2EE1 /* MainViewController.m */,
+				17F8058F1D49DD3F0085511A /* Other.storyboard */,
 				170827BA1D3DC92B005B3CAD /* View */,
 			);
 			path = Calculator;

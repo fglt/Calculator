@@ -12,6 +12,7 @@
 #import "ComputaionCell+ConfigureForComputation.h"
 #import "CellSelectedControllerViewController.h"
 #import "ClearHistoryController.h"
+#import "ExpressionParser.h"
 
 
 static NSString * const HistoryCellIdentifier = @"HistoryCell";
@@ -55,17 +56,34 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 {
     if(self.refreshControl.refreshing)
     {
-//        ClearHistoryController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ClearHistoryController"];
-//        
-//        controller.delegate = self;
-//        controller.modalPresentationStyle = UIModalPresentationPopover;
-//        [self presentViewController:controller animated:YES completion:nil];
-//        UIPopoverPresentationController *popController = [controller popoverPresentationController];
-//        popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
-//        popController.sourceView = self.tableView;
-//        popController.sourceRect = CGRectMake(self.tableView.bounds.size.width/4 ,self.tableView.bounds.size.height/4,self.tableView.bounds.size.width/2, self.tableView.bounds.size.height/2);
+        UIDevice* device = [UIDevice currentDevice];
+        UIUserInterfaceIdiom idiom = [device userInterfaceIdiom];
+        BOOL ipad = (idiom == UIUserInterfaceIdiomPad);
+        if(ipad){
+            ClearHistoryController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ClearHistoryController"];
+            
+            controller.delegate = self;
+            controller.modalPresentationStyle = UIModalPresentationPopover;
+            [self presentViewController:controller animated:YES completion:nil];
+            UIPopoverPresentationController *popController = [controller popoverPresentationController];
+            popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+            popController.sourceView = self.tableView;
+            popController.sourceRect = CGRectMake(self.tableView.bounds.size.width/4 ,self.tableView.bounds.size.height/4,self.tableView.bounds.size.width/2, self.tableView.bounds.size.height/2);
+        }else{
+            UIAlertController* actionSheet = [[UIAlertController alloc] init];
+            UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
+                handler:^(UIAlertAction *action){
+                                                                     
+                }];
+            UIAlertAction* deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive
+                handler:^(UIAlertAction *action){
+                    [self  clearTable];
+                } ];
+            [actionSheet addAction:cancelAction];
+            [actionSheet addAction:deleteAction];
+            [self presentViewController:actionSheet animated:TRUE completion:nil];
+        }
         
-        //UIAlertController* actionSheet = [[UIAlertController alloc] init];
         [self.refreshControl endRefreshing];
     }
 }
@@ -75,19 +93,55 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CellSelectedControllerViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"cellSelectedController"];
+
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        CellSelectedControllerViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"cellSelectedController"];
+        
+        controller.delegate = self;
+        controller.indexPath = indexPath;
+        controller.modalPresentationStyle = UIModalPresentationPopover;
+        [self presentViewController:controller animated:YES completion:nil];
+        
+        // configure the Popover presentation controller
+        UIPopoverPresentationController *popController = [controller popoverPresentationController];
+        //popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+        UIView *view = [self.tableView cellForRowAtIndexPath:indexPath];
+        popController.sourceView = view;
+        popController.sourceRect = view.bounds;
+    }else{
+        UIAlertController* actionSheet = [[UIAlertController alloc] init];
+        UIAlertAction* cancelAction =
+        [UIAlertAction actionWithTitle:@"取消"
+                                 style:UIAlertActionStyleCancel
+                               handler:^(UIAlertAction *action){
+                                    }];
+        UIAlertAction* deleteAction =
+        [UIAlertAction actionWithTitle:@"删除"
+                                 style:UIAlertActionStyleDestructive
+                               handler:^(UIAlertAction *action){
+                                    [self deleteCellAtIndex:indexPath];
+                                    } ];
+         UIAlertAction* useExpressionAction =
+        [UIAlertAction actionWithTitle:@"使用表达式"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action){
+                                   [self useExpressionAtIndex:indexPath];
+                               } ];
+        UIAlertAction* useResultAction =
+        [UIAlertAction actionWithTitle:@"使用结果"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action){
+                                   [self useResultAtIndex:indexPath];
+                               } ];
+        [actionSheet addAction:cancelAction];
+        [actionSheet addAction:deleteAction];
+        [actionSheet addAction:useExpressionAction];
+        [actionSheet addAction:useResultAction];
+        [self presentViewController:actionSheet animated:TRUE completion:nil];
+
+    }
     
-    controller.delegate = self;
-    controller.indexPath = indexPath;
-    controller.modalPresentationStyle = UIModalPresentationPopover;
-    [self presentViewController:controller animated:YES completion:nil];
-    
-    // configure the Popover presentation controller
-    UIPopoverPresentationController *popController = [controller popoverPresentationController];
-    //popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
-    UIView *view = [self.tableView cellForRowAtIndexPath:indexPath];
-    popController.sourceView = view;
-    popController.sourceRect = view.bounds;
 }
 
 -(void)update
@@ -96,6 +150,19 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     [self.tableView reloadData];
 }
 
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    ComputationCell * cell = (ComputationCell*)[self.computationDataSource tableView:self.tableView cellForRowAtIndexPath:indexPath];
+
+    CGFloat height = CGRectGetMaxY(cell.expression.frame) + CGRectGetMaxY(cell.result.frame)+ 1;
+        NSLog(@"ef height: %f",CGRectGetMaxY( cell.result.frame));
+    return height;
+
+}
 
 #pragma mark - CellSelectedControllerDelegate
 
@@ -130,4 +197,5 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     [self.computationDataSource deleteAll];
     [self.tableView reloadData];
 }
+
 @end

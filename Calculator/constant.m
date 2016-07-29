@@ -29,15 +29,15 @@ NSString * const FunPercent = @"%";
 
 
 NSString * const FunTriangle = @"FunTriangle";
-NSString * const FunSin = @"SIN";
-NSString * const FunArcSin = @"ASIN" ;
-NSString * const FunSinh = @"SINH";
-NSString * const FunCos = @"COS";;
-NSString * const FunArcCos = @"ACOS";
-NSString * const FunCosh = @"COSH";
-NSString * const FunTan = @"TAN";
-NSString * const FunArcTan = @"ATAN";
-NSString * const FunTanh = @"TANH";
+NSString * const FunSin = @"Sin";
+NSString * const FunArcSin = @"Asin" ;
+NSString * const FunSinh = @"Sinh";
+NSString * const FunCos = @"Cos";;
+NSString * const FunArcCos = @"Acos";
+NSString * const FunCosh = @"Cosh";
+NSString * const FunTan = @"Tan";
+NSString * const FunArcTan = @"Atan";
+NSString * const FunTanh = @"Tanh";
 
 NSString * const FunLogDecimal = @"Log";
 NSString * const FunLogE = @"ln";

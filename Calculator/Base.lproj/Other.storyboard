@@ -129,10 +129,10 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUg-zn-Iqt">
                                 <rect key="frame" x="0.0" y="38" width="200" height="42"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="清空">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -506,7 +506,7 @@
                                                     <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-Rk-cLx" customClass="OperatorButton">
                                                         <rect key="frame" x="0.0" y="30" width="110" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <state key="normal" title="DEG">
+                                                        <state key="normal" title="Deg">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
                                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -529,7 +529,7 @@
                                                     <button opaque="NO" tag="41" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiI-fp-oW3" customClass="OperatorButton">
                                                         <rect key="frame" x="235" y="30" width="110" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <state key="normal" title="RAND">
+                                                        <state key="normal" title="Rand">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
                                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -979,32 +979,32 @@
         <scene sceneID="Qgd-ew-PU2">
             <objects>
                 <tableViewController storyboardIdentifier="historyID" id="Qxc-qs-29F" customClass="HistoryViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="UMQ-PE-xge">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="UMQ-PE-xge">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" id="U0r-BN-YNy" customClass="ComputationCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0r-BN-YNy" id="NDe-Xs-Ma7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h7e-et-wPI" userLabel="date">
-                                            <rect key="frame" x="15" y="0.0" width="75" height="59.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="75" height="69.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4s-zL-G8B" userLabel="expression">
-                                            <rect key="frame" x="90" y="0.0" width="500" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4s-zL-G8B" userLabel="expression">
+                                            <rect key="frame" x="90" y="0.0" width="500" height="24"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHp-Af-I7M">
-                                            <rect key="frame" x="90" y="30" width="500" height="21"/>
+                                            <rect key="frame" x="90" y="24" width="500" height="45.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -1016,12 +1016,12 @@
                                         <constraint firstItem="h7e-et-wPI" firstAttribute="top" secondItem="NDe-Xs-Ma7" secondAttribute="top" id="7Zm-BE-vvf"/>
                                         <constraint firstItem="E4s-zL-G8B" firstAttribute="leading" secondItem="h7e-et-wPI" secondAttribute="trailing" id="LNa-XI-RZb"/>
                                         <constraint firstItem="PHp-Af-I7M" firstAttribute="top" secondItem="E4s-zL-G8B" secondAttribute="bottom" id="LmV-8P-JAD"/>
-                                        <constraint firstItem="E4s-zL-G8B" firstAttribute="height" secondItem="NDe-Xs-Ma7" secondAttribute="height" multiplier="1:2" id="S0n-j6-vTS"/>
                                         <constraint firstItem="PHp-Af-I7M" firstAttribute="width" secondItem="E4s-zL-G8B" secondAttribute="width" id="YwW-Id-xCX"/>
                                         <constraint firstAttribute="bottom" secondItem="h7e-et-wPI" secondAttribute="bottom" id="ZIU-DV-l3G"/>
                                         <constraint firstItem="E4s-zL-G8B" firstAttribute="trailing" secondItem="NDe-Xs-Ma7" secondAttribute="trailing" constant="-10" id="ZNN-v8-8zE"/>
                                         <constraint firstItem="h7e-et-wPI" firstAttribute="leading" secondItem="NDe-Xs-Ma7" secondAttribute="leading" constant="15" id="aWB-5f-LXt"/>
                                         <constraint firstItem="E4s-zL-G8B" firstAttribute="top" secondItem="NDe-Xs-Ma7" secondAttribute="top" id="mhe-t3-aDd"/>
+                                        <constraint firstAttribute="bottom" secondItem="PHp-Af-I7M" secondAttribute="bottom" id="oKQ-1s-FtP"/>
                                         <constraint firstItem="PHp-Af-I7M" firstAttribute="leading" secondItem="E4s-zL-G8B" secondAttribute="leading" id="yhc-mn-kfN"/>
                                     </constraints>
                                 </tableViewCellContentView>

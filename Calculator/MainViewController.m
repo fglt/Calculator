@@ -215,7 +215,7 @@
 -(void)displayExpression
 {
 
-    
+    self.expressionLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     self.expressionLabel.attributedText = [ExpressionParser parseString:self.curExpression fontSize:self.expressionLabel.font.pointSize operatorColor:[UIColor blueColor]];
 }
 

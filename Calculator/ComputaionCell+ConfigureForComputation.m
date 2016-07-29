@@ -19,13 +19,14 @@
 //    NSInteger month = [comp month];
 //    NSInteger day = [comp day];
 //    self.date.text = [NSString stringWithFormat:@"%ld/%ld", (long)day, (long)month];
-   self.date.text = [self.dateFormatter stringFromDate:computation.date];
+    self.date.text = [self.dateFormatter stringFromDate:computation.date];
     self.result.text = computation.result;
 
     NSMutableAttributedString * attexp = [ExpressionParser parseString:computation.expression fontSize:height operatorColor:[UIColor greenColor]];
 //    NSAttributedString * attriResult = [[NSAttributedString alloc] initWithString:[@"\n" stringByAppendingString:computation.result]];
 //    [ex insertAttributedString:attriResult atIndex:ex.length-1];
     self.expression.attributedText = attexp;   //NSLog(@"%@", self.date.text);
+    [self layoutIfNeeded];
 }
 
 -(NSCalendar*)calendar
