@@ -106,7 +106,7 @@
     // Custom drawing methods
     if (self)
     {
-        
+
        [self  attPowString:@"xy"];
     }
     

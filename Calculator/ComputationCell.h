@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *date;
 
 @property (weak, nonatomic) IBOutlet UILabel *expression;
+@property (weak, nonatomic) IBOutlet UILabel *result;
 
 @end

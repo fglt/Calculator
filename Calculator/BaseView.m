@@ -25,13 +25,13 @@
     switch (orientation) {
         case UIDeviceOrientationPortrait:
         case UIDeviceOrientationPortraitUpsideDown:
-            self.calView.frame = CGRectMake(20, bounds.size.height * 0.2 +20, bounds.size.width - 40, bounds.size.height * 0.4 -20 );
-            self.historyView.frame = CGRectMake(20, bounds.size.height* 0.6 +10, bounds.size.width -40, bounds.size.height * 0.4 - 40);
+            self.calView.frame = CGRectMake(20, bounds.size.height * 0.2 +10, bounds.size.width - 40, bounds.size.height * 0.4 + 10 );
+            self.historyView.frame = CGRectMake(20, bounds.size.height* 0.6 +30, bounds.size.width -40, bounds.size.height * 0.4 - 50);
             break;
         case UIDeviceOrientationLandscapeLeft:
         case UIDeviceOrientationLandscapeRight:
-            self.historyView.frame = CGRectMake(20, bounds.size.height* 0.2 +20, bounds.size.width * 0.5 - 40, bounds.size.height * 0.8 - 40);
-            self.calView.frame = CGRectMake(bounds.size.width * 0.5, bounds.size.height * 0.2 +20, bounds.size.width * 0.5 - 20, bounds.size.height * 0.8 - 40 );
+            self.historyView.frame = CGRectMake(20, bounds.size.height* 0.2 +10, bounds.size.width * 0.5 - 80, bounds.size.height * 0.8 - 30);
+            self.calView.frame = CGRectMake(bounds.size.width * 0.5 - 40, bounds.size.height * 0.2 +10, bounds.size.width * 0.5 + 20, bounds.size.height * 0.8 - 30 );
            
         default:
             break;

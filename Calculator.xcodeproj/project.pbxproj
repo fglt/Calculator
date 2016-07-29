@@ -39,7 +39,7 @@
 		17F805911D49DD3F0085511A /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F8058F1D49DD3F0085511A /* Other.storyboard */; };
 		17F805941D49EDF20085511A /* SepcialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F805931D49EDF20085511A /* SepcialButton.m */; };
 		17F8059C1D4A2E090085511A /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F8059B1D4A2E090085511A /* UIColor+BFPaperColors.m */; };
-		17F805A21D4A2E7F0085511A /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F805A01D4A2E7F0085511A /* UIButton+Bootstrap.m */; };
+		17F805A51D4AD00F0085511A /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F805A41D4AD00F0085511A /* BFPaperButton.m */; };
 		17F9E6E81D424C7000BC4B38 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F9E6E71D424C7000BC4B38 /* ResultView.m */; };
 /* End PBXBuildFile section */
 
@@ -107,8 +107,8 @@
 		17F805931D49EDF20085511A /* SepcialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SepcialButton.m; sourceTree = "<group>"; };
 		17F8059A1D4A2E090085511A /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
 		17F8059B1D4A2E090085511A /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
-		17F8059F1D4A2E7F0085511A /* UIButton+Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Bootstrap.h"; sourceTree = "<group>"; };
-		17F805A01D4A2E7F0085511A /* UIButton+Bootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Bootstrap.m"; sourceTree = "<group>"; };
+		17F805A31D4AD00F0085511A /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
+		17F805A41D4AD00F0085511A /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
 		17F9E6E61D424C7000BC4B38 /* ResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
 		17F9E6E71D424C7000BC4B38 /* ResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,8 +127,8 @@
 		170827BA1D3DC92B005B3CAD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				17F8059F1D4A2E7F0085511A /* UIButton+Bootstrap.h */,
-				17F805A01D4A2E7F0085511A /* UIButton+Bootstrap.m */,
+				17F805A31D4AD00F0085511A /* BFPaperButton.h */,
+				17F805A41D4AD00F0085511A /* BFPaperButton.m */,
 				17F8059A1D4A2E090085511A /* UIColor+BFPaperColors.h */,
 				17F8059B1D4A2E090085511A /* UIColor+BFPaperColors.m */,
 				170827FB1D3F53CF005B3CAD /* ExpressionLabel.h */,
@@ -311,6 +311,7 @@
 			files = (
 				1747D1821D3C6B36002C2EE1 /* AppDelegate.m in Sources */,
 				1747D1B51D3C9DBE002C2EE1 /* Computation.m in Sources */,
+				17F805A51D4AD00F0085511A /* BFPaperButton.m in Sources */,
 				170827C61D3DFA14005B3CAD /* CalculatorViewController.m in Sources */,
 				178629971D48FA1600067294 /* CalculateView.m in Sources */,
 				1747D19D1D3C6B8A002C2EE1 /* DigitButton.m in Sources */,
@@ -331,7 +332,6 @@
 				1747D19E1D3C6B8A002C2EE1 /* CalculatorBrain.m in Sources */,
 				1747D1A01D3C6B8A002C2EE1 /* constant.m in Sources */,
 				178629821D44FB4C00067294 /* ExpressionParser.m in Sources */,
-				17F805A21D4A2E7F0085511A /* UIButton+Bootstrap.m in Sources */,
 				1747D1C71D3CB78C002C2EE1 /* ArrayComputationDataSource.m in Sources */,
 				1747D19F1D3C6B8A002C2EE1 /* CalView.m in Sources */,
 				1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */,

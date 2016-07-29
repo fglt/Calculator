@@ -82,7 +82,7 @@
     CGRect bounds = self.calView.bounds;
     calculatorController.calculatorDelegate =self;
     calculatorController.view.frame = bounds;
-   
+
     [self.calView addSubview:calculatorController.view];
     [calculatorController didMoveToParentViewController:self];
 }

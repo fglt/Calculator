@@ -7,7 +7,7 @@
 //
 
 #import "CalculatorButton.h"
-
+IB_DESIGNABLE
 @implementation CalculatorButton
 
 @synthesize highlightBackgroundLayer;
@@ -33,6 +33,7 @@
         highlightBackgroundLayer.hidden = YES;
         self.titleLabel.font =  [UIFont systemFontOfSize:30 ];
         self.contentMode = UIViewContentModeScaleToFill;
+        [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
     }
     
     return self;
@@ -67,6 +68,7 @@
 
 - (void)drawButton
 {
+    
     // Get the root layer (any UIView subclass comes with one)
     CALayer *layer = self.layer;
     

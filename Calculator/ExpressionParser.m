@@ -338,11 +338,11 @@ void addMultiply(NSMutableArray* opArray)
     // Let's check to see if files were successfully written...
     
     // Create file manager
-    NSError *error;
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
+//    NSError *error;
+//    NSFileManager *fileMgr = [NSFileManager defaultManager];
     
     // Write out the contents of home directory to console
-    NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:home error:&error]);
+//    NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:home error:&error]);
 }
 
 @end

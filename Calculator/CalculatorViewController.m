@@ -41,9 +41,7 @@ static NSString * const ErrorMessage = @"ERROR";
 -(void)configureScrollView
 {
 
-    self.calView.scrollView.delegate = self;
-    NSLog(@"frame: %@", NSStringFromCGRect(self.calView.scrollView.frame));
-    
+    self.calView.scrollView.delegate = self;    
 }
 
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
@@ -88,6 +86,9 @@ static NSString * const ErrorMessage = @"ERROR";
 
     NSString *op = [operatorsArray lastObject];
 
+    if([op characterAtIndex:0] == '.'){
+        return;
+    }
     if(isdigit([op characterAtIndex:0]))
     {
         if([op containCharacter:'.']) return;
@@ -97,8 +98,8 @@ static NSString * const ErrorMessage = @"ERROR";
         [operatorsArray addObject:[op stringByAppendingString:Dot]];
         [self calculate];
         return;
-
     }
+        
     [operatorsArray addObject:Dot];
     [self calculate];
 }
