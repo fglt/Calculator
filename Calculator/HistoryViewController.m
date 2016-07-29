@@ -7,12 +7,12 @@
 //
 
 #import "HistoryViewController.h"
-#import "ComputationCell.h"
 #import "ArrayComputationDataSource.h"
-#import "Computation.h"
+#import "ComputationDao.h"
 #import "ComputaionCell+ConfigureForComputation.h"
 #import "CellSelectedControllerViewController.h"
 #import "ClearHistoryController.h"
+
 
 static NSString * const HistoryCellIdentifier = @"HistoryCell";
 
@@ -55,7 +55,7 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 {
     if(self.refreshControl.refreshing)
     {
-        ClearHistoryController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ClearHistory"];
+        ClearHistoryController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ClearHistoryController"];
         
         controller.delegate = self;
         controller.modalPresentationStyle = UIModalPresentationPopover;
@@ -69,13 +69,6 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     }
 }
 
-
-//- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
-//{
-//    if(self.refreshControl.refreshing){
-//        [self.refreshControl endRefreshing];
-//    }
-//}
 
 #pragma mark - UITableViewDelegate
 

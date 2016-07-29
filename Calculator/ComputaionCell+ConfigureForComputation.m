@@ -7,6 +7,8 @@
 //
 
 #import "ComputaionCell+ConfigureForComputation.h"
+#import "Computation.h"
+#import "ExpressionParser.h"
 
 @implementation ComputationCell (ConfigureForComputaion)
 

@@ -10,7 +10,7 @@
 #import "ResultView.h"
 #import "HistoryBoardView.h"
 #import "CalView.h"
-#import "CalculateView.h"
+
 
 @interface BaseView : UIView
 @property (weak, nonatomic) IBOutlet ResultView *resultView;

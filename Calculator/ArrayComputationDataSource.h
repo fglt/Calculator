@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ComputationDao.h"
-#import "Computation.h"
-#import "ComputationCell.h"
+
 
 
 typedef void (^TableViewCellConfigureBlock)(id cell, id item);

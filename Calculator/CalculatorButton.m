@@ -7,6 +7,7 @@
 //
 
 #import "CalculatorButton.h"
+#import "UIColor+BFPaperColors.h"
 IB_DESIGNABLE
 @implementation CalculatorButton
 

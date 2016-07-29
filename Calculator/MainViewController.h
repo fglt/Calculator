@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Computation.h"
-#import "ComputationDao.h"
+
 #import "HistoryViewController.h"
 
 @interface MainViewController : UIViewController<UIScrollViewDelegate, HistoryViewControllerDelegate>

@@ -5,11 +5,7 @@
 //  Created by Coding on 7/18/16.
 //  Copyright © 2016 Coding. All rights reserved.
 //
-
-#import "Computation.h"
 #import "ComputationCell.h"
-#import "ExpressionParser.h"
-
 @class Computation;
 
 @interface ComputationCell (ConfigureForComputation)

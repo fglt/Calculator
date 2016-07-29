@@ -8,6 +8,7 @@
 
 #import "ResultView.h"
 
+IB_DESIGNABLE
 @implementation ResultView
 
 - (id)initWithCoder:(NSCoder *)coder

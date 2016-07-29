@@ -7,7 +7,9 @@
 //
 
 #import "ArrayComputationDataSource.h"
-
+#import "ComputationDao.h"
+#import "Computation.h"
+#import "ComputationCell.h"
 
 @interface ArrayComputationDataSource ()
 @property (nonatomic, strong) NSMutableArray              *items;

@@ -7,6 +7,7 @@
 //
 
 #import "BaseView.h"
+#import "CalculateView.h"
 
 @implementation BaseView
 

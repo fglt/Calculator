@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ArrayComputationDataSource.h"
-#import "ComputationDao.h"
+
+@class Computation;
+@class ComputationDao;
+@class ArrayComputationDataSource;
 
 @protocol HistoryViewControllerDelegate <NSObject>
 

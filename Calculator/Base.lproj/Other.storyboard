@@ -89,7 +89,7 @@
         <!--Clear History Controller-->
         <scene sceneID="Tnf-75-tJw">
             <objects>
-                <viewController storyboardIdentifier="ClearHistory" id="Wof-9w-rcS" customClass="ClearHistoryController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClearHistoryController" id="Wof-9w-rcS" customClass="ClearHistoryController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Dt-OG-EWH"/>
                         <viewControllerLayoutGuide type="bottom" id="XyP-KK-FkZ"/>
@@ -128,11 +128,6 @@
                             <constraint firstAttribute="bottom" secondItem="KUg-zn-Iqt" secondAttribute="bottom" id="HsL-RA-cXH"/>
                             <constraint firstAttribute="trailing" secondItem="KUg-zn-Iqt" secondAttribute="trailing" id="YbR-E0-AyG"/>
                             <constraint firstItem="KUg-zn-Iqt" firstAttribute="centerX" secondItem="rhT-f8-Qeh" secondAttribute="centerX" id="wfX-tb-gbq">
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="corn">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </constraint>
                             <constraint firstItem="KUg-zn-Iqt" firstAttribute="leading" secondItem="rhT-f8-Qeh" secondAttribute="leading" id="wju-tF-nTx"/>
                         </constraints>
@@ -1016,11 +1011,6 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="Qxc-qs-29F" id="Xyh-jB-ADj"/>
                             <outlet property="delegate" destination="Qxc-qs-29F" id="feX-xN-P8a"/>

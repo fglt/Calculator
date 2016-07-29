@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CalculatorButton.h"
 
-@class SquareButton;
-@class CubeButton;
-@class PowButton;
-
 @interface OperatorButton : CalculatorButton
 -(void)attPowString:(NSString*)text;
 @end

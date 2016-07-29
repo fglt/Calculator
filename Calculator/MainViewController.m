@@ -15,6 +15,7 @@
 #import "CalView.h"
 #import "NSString+Calculator.h"
 #import "ExpressionParser.h"
+#import "ComputationDao.h"
 
 @interface MainViewController ()<CalculatorViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *expressionLabel;
