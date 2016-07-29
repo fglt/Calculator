@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet HistoryBoardView *historyView;
 
 @property (weak, nonatomic) IBOutlet CalView *calView;
+@property (nonatomic, strong) UIButton *historyButton;
 
 @end

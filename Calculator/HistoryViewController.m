@@ -55,17 +55,18 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 {
     if(self.refreshControl.refreshing)
     {
-        ClearHistoryController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ClearHistoryController"];
+//        ClearHistoryController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ClearHistoryController"];
+//        
+//        controller.delegate = self;
+//        controller.modalPresentationStyle = UIModalPresentationPopover;
+//        [self presentViewController:controller animated:YES completion:nil];
+//        UIPopoverPresentationController *popController = [controller popoverPresentationController];
+//        popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+//        popController.sourceView = self.tableView;
+//        popController.sourceRect = CGRectMake(self.tableView.bounds.size.width/4 ,self.tableView.bounds.size.height/4,self.tableView.bounds.size.width/2, self.tableView.bounds.size.height/2);
         
-        controller.delegate = self;
-        controller.modalPresentationStyle = UIModalPresentationPopover;
-        [self presentViewController:controller animated:YES completion:nil];
-        UIPopoverPresentationController *popController = [controller popoverPresentationController];
-        popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
-        popController.sourceView = self.tableView;
-        popController.sourceRect = CGRectMake(self.tableView.bounds.size.width/4 ,self.tableView.bounds.size.height/4,self.tableView.bounds.size.width/2, self.tableView.bounds.size.height/2);
+        //UIAlertController* actionSheet = [[UIAlertController alloc] init];
         [self.refreshControl endRefreshing];
-        
     }
 }
 
@@ -83,7 +84,7 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
     
     // configure the Popover presentation controller
     UIPopoverPresentationController *popController = [controller popoverPresentationController];
-    popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+    //popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
     UIView *view = [self.tableView cellForRowAtIndexPath:indexPath];
     popController.sourceView = view;
     popController.sourceRect = view.bounds;

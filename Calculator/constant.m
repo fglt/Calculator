@@ -39,9 +39,9 @@ NSString * const FunTan = @"TAN";
 NSString * const FunArcTan = @"ATAN";
 NSString * const FunTanh = @"TANH";
 
-NSString * const FunLogDecimal = @"LOG";
+NSString * const FunLogDecimal = @"Log";
 NSString * const FunLogE = @"ln";
-NSString * const FunLogBinary = @"LOG2";
+NSString * const FunLogBinary = @"Log2";
 
 NSString * const FunSquare = @"squa";
 NSString * const FunCube = @"cube";

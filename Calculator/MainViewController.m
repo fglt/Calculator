@@ -16,6 +16,7 @@
 #import "NSString+Calculator.h"
 #import "ExpressionParser.h"
 #import "ComputationDao.h"
+#import "BaseView.h"
 
 @interface MainViewController ()<CalculatorViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *expressionLabel;
@@ -52,8 +53,42 @@
     [self addCalculatorViewController];
     self.computationDao = [ComputationDao singleInstance];
     self.brain = [[CalculatorBrain alloc] init];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChanged) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
+//-(void)orientationDidChanged
+//{
+//    static BOOL first = true;
+//    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+//    CGRect bounds = self.view.bounds;
+//    
+//    if(first){
+//        first = false;
+//    }else{
+//        bounds = CGRectMake(0, 0, bounds.size.height, bounds.size.width) ;
+//    }
+//    
+//    NSLog(@"bounds: %@",NSStringFromCGRect(bounds));
+//    BaseView* baseView = (BaseView*)self.view;
+//    baseView.resultView.frame = CGRectMake(10, 0, bounds.size.width -20, bounds.size.height* 0.2);
+//    
+//   
+//    switch (orientation) {
+//        case UIDeviceOrientationPortrait:
+//        case UIDeviceOrientationPortraitUpsideDown:
+//            baseView.calView.frame = CGRectMake(20, bounds.size.height * 0.2 +10, bounds.size.width - 40, bounds.size.height * 0.4 + 10 );
+//            baseView.historyView.frame = CGRectMake(20, bounds.size.height* 0.6 +30, bounds.size.width -40, bounds.size.height * 0.4 - 50);
+//            break;
+//        case UIDeviceOrientationLandscapeLeft:
+//        case UIDeviceOrientationLandscapeRight:
+//            baseView.historyView.frame = CGRectMake(20, bounds.size.height* 0.2 +10, bounds.size.width * 0.5 - 80, bounds.size.height * 0.8 - 30);
+//            baseView.calView.frame = CGRectMake(bounds.size.width * 0.5 - 40, bounds.size.height * 0.2 +10, bounds.size.width * 0.5 + 20, bounds.size.height * 0.8 - 30 );
+//            
+//        default:
+//            break;
+//    }
+//    
+//}
 
 -(void)addHistoryTableView
 {

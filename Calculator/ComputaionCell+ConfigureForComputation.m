@@ -44,7 +44,7 @@
         dateFormatter = [[NSDateFormatter alloc] init];
 //        dateFormatter.timeStyle = NSDateIntervalFormatterShortStyle;
 //        dateFormatter.dateStyle = NSDateIntervalFormatterShortStyle;
-        [dateFormatter setDateFormat:@"MM/dd hh:mm"];
+        [dateFormatter setDateFormat:@"MM/dd \nhh:mm"];
     }
     return dateFormatter;
 }

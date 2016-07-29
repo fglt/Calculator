@@ -38,13 +38,13 @@
                                     <outlet property="resultLabel" destination="QMS-GI-OwE" id="fbW-on-erF"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" restorationIdentifier="historyView" id="ht0-rL-0FQ" userLabel="historyBoard" customClass="HistoryBoardView">
-                                <rect key="frame" x="20" y="190" width="120" height="357.5"/>
+                            <view contentMode="scaleToFill" id="9y3-4N-DGS" userLabel="calView" customClass="CalView">
+                                <rect key="frame" x="160" y="190" width="140" height="357.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" id="9y3-4N-DGS" userLabel="calView" customClass="CalView">
-                                <rect key="frame" x="160" y="190" width="140" height="357.5"/>
+                            <view contentMode="scaleToFill" restorationIdentifier="historyView" id="ht0-rL-0FQ" userLabel="historyBoard" customClass="HistoryBoardView">
+                                <rect key="frame" x="100" y="105.5" width="120" height="357.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>

@@ -15,72 +15,95 @@
                         <viewControllerLayoutGuide type="bottom" id="7zk-qb-I6U"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XG1-Se-PkD">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmf-FA-LQQ">
-                                <rect key="frame" x="10" y="10" width="280" height="42"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="删除">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onClickDelete:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="eet-Tg-8Sd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ov-Mq-Bt2">
-                                <rect key="frame" x="190" y="138" width="100" height="42"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="使用算式">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onClickUseExpression:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="8Kd-4P-sO4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tZ-km-UkT">
-                                <rect key="frame" x="10" y="138" width="100" height="42"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="使用结果">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onClickUseResult:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="r0j-FA-gou"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qxc-bL-W17">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmf-FA-LQQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="48.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="删除">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onClickDelete:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="eet-Tg-8Sd"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIN-Nb-fR7">
+                                        <rect key="frame" x="0.0" y="48.5" width="200" height="2"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="fEy-AA-7vg"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tZ-km-UkT">
+                                        <rect key="frame" x="0.0" y="50.5" width="200" height="49"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="使用结果">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onClickUseResult:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="r0j-FA-gou"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RP-2q-7fC">
+                                        <rect key="frame" x="0.0" y="99.5" width="200" height="2"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="WfP-PG-fXv"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ov-Mq-Bt2">
+                                        <rect key="frame" x="0.0" y="101.5" width="200" height="48.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="使用算式">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onClickUseExpression:" destination="XNy-AH-Ffv" eventType="touchUpInside" id="8Kd-4P-sO4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8ov-Mq-Bt2" firstAttribute="height" secondItem="Dmf-FA-LQQ" secondAttribute="height" id="6rp-jg-fAx"/>
+                                    <constraint firstItem="8ov-Mq-Bt2" firstAttribute="width" secondItem="Dmf-FA-LQQ" secondAttribute="width" id="jIe-XB-yFb"/>
+                                    <constraint firstItem="9tZ-km-UkT" firstAttribute="height" secondItem="Dmf-FA-LQQ" secondAttribute="height" id="lTg-iE-91h"/>
+                                    <constraint firstItem="9tZ-km-UkT" firstAttribute="width" secondItem="Dmf-FA-LQQ" secondAttribute="width" id="qx2-HE-5ew"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9tZ-km-UkT" firstAttribute="bottom" secondItem="XG1-Se-PkD" secondAttribute="bottom" constant="-20" id="30z-iV-Oos"/>
-                            <constraint firstItem="8ov-Mq-Bt2" firstAttribute="trailing" secondItem="XG1-Se-PkD" secondAttribute="trailing" constant="-10" id="NiY-4u-RFQ"/>
-                            <constraint firstItem="8ov-Mq-Bt2" firstAttribute="bottom" secondItem="9tZ-km-UkT" secondAttribute="bottom" id="TUW-ro-NN8"/>
-                            <constraint firstItem="Dmf-FA-LQQ" firstAttribute="leading" secondItem="XG1-Se-PkD" secondAttribute="leading" constant="10" id="aLN-LN-ROW"/>
-                            <constraint firstItem="Dmf-FA-LQQ" firstAttribute="trailing" secondItem="XG1-Se-PkD" secondAttribute="trailing" constant="-10" id="bsd-oL-ZZ0"/>
-                            <constraint firstItem="9tZ-km-UkT" firstAttribute="leading" secondItem="XG1-Se-PkD" secondAttribute="leading" constant="10" id="it6-Eq-BhG"/>
-                            <constraint firstItem="Dmf-FA-LQQ" firstAttribute="top" secondItem="XG1-Se-PkD" secondAttribute="top" constant="10" id="pTl-tu-A9U"/>
+                            <constraint firstItem="Qxc-bL-W17" firstAttribute="leading" secondItem="XG1-Se-PkD" secondAttribute="leading" id="AoO-Bn-Jxd"/>
+                            <constraint firstItem="Qxc-bL-W17" firstAttribute="top" secondItem="XG1-Se-PkD" secondAttribute="top" id="JgU-xN-JQz"/>
+                            <constraint firstAttribute="bottom" secondItem="Qxc-bL-W17" secondAttribute="bottom" id="rph-UA-Ymo"/>
+                            <constraint firstAttribute="trailing" secondItem="Qxc-bL-W17" secondAttribute="trailing" id="tWo-W7-lM7"/>
                         </constraints>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="200"/>
+                    <size key="freeformSize" width="200" height="150"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAS-yx-ubn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,8 +150,7 @@
                             <constraint firstItem="jvk-kF-pTJ" firstAttribute="top" secondItem="rhT-f8-Qeh" secondAttribute="top" id="EPj-q5-nHh"/>
                             <constraint firstAttribute="bottom" secondItem="KUg-zn-Iqt" secondAttribute="bottom" id="HsL-RA-cXH"/>
                             <constraint firstAttribute="trailing" secondItem="KUg-zn-Iqt" secondAttribute="trailing" id="YbR-E0-AyG"/>
-                            <constraint firstItem="KUg-zn-Iqt" firstAttribute="centerX" secondItem="rhT-f8-Qeh" secondAttribute="centerX" id="wfX-tb-gbq">
-                            </constraint>
+                            <constraint firstItem="KUg-zn-Iqt" firstAttribute="centerX" secondItem="rhT-f8-Qeh" secondAttribute="centerX" id="wfX-tb-gbq"/>
                             <constraint firstItem="KUg-zn-Iqt" firstAttribute="leading" secondItem="rhT-f8-Qeh" secondAttribute="leading" id="wju-tF-nTx"/>
                         </constraints>
                     </view>
@@ -969,20 +991,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7e-et-wPI" userLabel="date">
-                                            <rect key="frame" x="6" y="0.0" width="120" height="59.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h7e-et-wPI" userLabel="date">
+                                            <rect key="frame" x="15" y="0.0" width="75" height="59.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4s-zL-G8B" userLabel="expression">
-                                            <rect key="frame" x="126" y="0.0" width="464" height="30"/>
+                                            <rect key="frame" x="90" y="0.0" width="500" height="30"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHp-Af-I7M">
-                                            <rect key="frame" x="126" y="30" width="464" height="21"/>
+                                            <rect key="frame" x="90" y="30" width="500" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -990,15 +1012,15 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="h7e-et-wPI" firstAttribute="width" secondItem="NDe-Xs-Ma7" secondAttribute="width" multiplier="1:5" id="1jR-4p-HaA"/>
+                                        <constraint firstItem="h7e-et-wPI" firstAttribute="width" secondItem="NDe-Xs-Ma7" secondAttribute="width" multiplier="1:8" id="1jR-4p-HaA"/>
                                         <constraint firstItem="h7e-et-wPI" firstAttribute="top" secondItem="NDe-Xs-Ma7" secondAttribute="top" id="7Zm-BE-vvf"/>
-                                        <constraint firstItem="E4s-zL-G8B" firstAttribute="width" secondItem="NDe-Xs-Ma7" secondAttribute="width" multiplier="4:5" constant="-16" id="9nK-9E-vfN"/>
+                                        <constraint firstItem="E4s-zL-G8B" firstAttribute="leading" secondItem="h7e-et-wPI" secondAttribute="trailing" id="LNa-XI-RZb"/>
                                         <constraint firstItem="PHp-Af-I7M" firstAttribute="top" secondItem="E4s-zL-G8B" secondAttribute="bottom" id="LmV-8P-JAD"/>
                                         <constraint firstItem="E4s-zL-G8B" firstAttribute="height" secondItem="NDe-Xs-Ma7" secondAttribute="height" multiplier="1:2" id="S0n-j6-vTS"/>
                                         <constraint firstItem="PHp-Af-I7M" firstAttribute="width" secondItem="E4s-zL-G8B" secondAttribute="width" id="YwW-Id-xCX"/>
                                         <constraint firstAttribute="bottom" secondItem="h7e-et-wPI" secondAttribute="bottom" id="ZIU-DV-l3G"/>
                                         <constraint firstItem="E4s-zL-G8B" firstAttribute="trailing" secondItem="NDe-Xs-Ma7" secondAttribute="trailing" constant="-10" id="ZNN-v8-8zE"/>
-                                        <constraint firstItem="h7e-et-wPI" firstAttribute="leading" secondItem="NDe-Xs-Ma7" secondAttribute="leading" constant="6" id="aWB-5f-LXt"/>
+                                        <constraint firstItem="h7e-et-wPI" firstAttribute="leading" secondItem="NDe-Xs-Ma7" secondAttribute="leading" constant="15" id="aWB-5f-LXt"/>
                                         <constraint firstItem="E4s-zL-G8B" firstAttribute="top" secondItem="NDe-Xs-Ma7" secondAttribute="top" id="mhe-t3-aDd"/>
                                         <constraint firstItem="PHp-Af-I7M" firstAttribute="leading" secondItem="E4s-zL-G8B" secondAttribute="leading" id="yhc-mn-kfN"/>
                                     </constraints>
