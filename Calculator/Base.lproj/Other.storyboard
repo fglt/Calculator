@@ -521,6 +521,9 @@
                                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                             <rect key="frame" x="220" y="0.0" width="69" height="36"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="onClickRand:" destination="un8-7v-BAb" eventType="touchUpInside" id="DVb-AJ-qG2"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="42" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUh-n3-EyI" customClass="OperatorButton">
                                                         <rect key="frame" x="354" y="0.0" width="108" height="86.5"/>

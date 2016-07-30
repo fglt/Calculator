@@ -140,6 +140,15 @@ static NSString * const ErrorMessage = @"ERROR";
     [self  start];
     [self calculate];
 }
+- (IBAction)onClickRand:(UIButton *)sender {
+
+    int randx = arc4random()%1000;
+    
+    if(operatorsArray.count ==0 || [[operatorsArray lastObject] isOpNeedRightOperand]  ){
+        [operatorsArray addObject:[NSString stringWithFormat:@"%g",randx/(double)1000]];
+        [self calculate];
+    }
+}
 
 - (IBAction)onClickButtons:(UIButton *)sender {
     
