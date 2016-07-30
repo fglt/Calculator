@@ -9,5 +9,5 @@
 @class Computation;
 
 @interface ComputationCell (ConfigureForComputation)
-- (void)configureForComputation:(Computation *)computation height:(CGFloat)height;
+- (void)configureForComputation:(Computation *)computation font:(UIFont*)font;
 @end

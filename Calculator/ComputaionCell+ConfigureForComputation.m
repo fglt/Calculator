@@ -12,7 +12,7 @@
 
 @implementation ComputationCell (ConfigureForComputaion)
 
-- (void)configureForComputation:(Computation *)computation height:(CGFloat)height{
+- (void)configureForComputation:(Computation *)computation font:(UIFont*)font{
     //NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
 //    unsigned units  = NSCalendarUnitDay|NSCalendarUnitMonth;
 //    NSDateComponents *comp = [self.calendar components:units fromDate:computation.date];
@@ -20,13 +20,19 @@
 //    NSInteger day = [comp day];
 //    self.date.text = [NSString stringWithFormat:@"%ld/%ld", (long)day, (long)month];
     self.date.text = [self.dateFormatter stringFromDate:computation.date];
+        NSMutableAttributedString * attributedString = [ExpressionParser parseString:computation.expression font:font operatorColor:[UIColor greenColor]];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setAlignment:NSTextAlignmentRight];
+    [paragraphStyle setLineSpacing:0];//调整行间距
+    [paragraphStyle setLineBreakMode:NSLineBreakByCharWrapping];
+    [paragraphStyle setHeadIndent:6];
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attributedString.length)];
+    self.expression.attributedText = attributedString;
+    
     self.result.text = computation.result;
-
-    NSMutableAttributedString * attexp = [ExpressionParser parseString:computation.expression fontSize:height operatorColor:[UIColor greenColor]];
-//    NSAttributedString * attriResult = [[NSAttributedString alloc] initWithString:[@"\n" stringByAppendingString:computation.result]];
-//    [ex insertAttributedString:attriResult atIndex:ex.length-1];
-    self.expression.attributedText = attexp;   //NSLog(@"%@", self.date.text);
     [self layoutIfNeeded];
+
 }
 
 -(NSCalendar*)calendar

@@ -28,7 +28,7 @@
     BOOL ipad = (idiom == UIUserInterfaceIdiomPad);
     UIDeviceOrientation orientation = [device orientation];
     CGRect bounds = self.bounds ;
-    NSLog(@"bounds: %@",NSStringFromCGRect(bounds));
+    //NSLog(@"bounds: %@",NSStringFromCGRect(bounds));
     self.resultView.frame = CGRectMake(10, 0, bounds.size.width -20, bounds.size.height* 0.2);
     
     switch (orientation) {

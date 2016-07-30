@@ -32,7 +32,9 @@ IB_DESIGNABLE
         [self drawHighlightBackgroundLayer];
         
         highlightBackgroundLayer.hidden = YES;
-        self.titleLabel.font =  [UIFont systemFontOfSize:30 ];
+        self.titleLabel.adjustsFontSizeToFitWidth = TRUE;
+        self.titleLabel.minimumScaleFactor = 0.5;
+        self.titleLabel.font =  [UIFont systemFontOfSize:35 ];
         self.contentMode = UIViewContentModeScaleToFill;
         [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
     }
@@ -45,7 +47,6 @@ IB_DESIGNABLE
     
     // Set gradient frame (fill the whole button))
     backgroundLayer.frame = self.bounds;
-    
     // Set inverted gradient frame
     highlightBackgroundLayer.frame = self.bounds;
     
@@ -77,8 +78,7 @@ IB_DESIGNABLE
     layer.borderWidth = 1;
     layer.borderColor = [UIColor paperColorGray200].CGColor;
     layer.masksToBounds = YES;
-    self.titleLabel.adjustsFontSizeToFitWidth = TRUE;
-    self.titleLabel.minimumScaleFactor = 0.8;
+
 }
 
 - (void)drawBackgroundLayer

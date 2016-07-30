@@ -16,6 +16,7 @@
 @property (nonatomic        ) NSString                    *cellIdentifier;
 @property (nonatomic        ) TableViewCellConfigureBlock configureCellBlock;
 @property (nonatomic, weak  ) ComputationDao              * computationDao;
+
 @end
 
 @implementation ArrayComputationDataSource
@@ -36,9 +37,9 @@
 
 -(void) delete:(NSInteger)index
 {
+ 
     [self.items removeObjectAtIndex:self.items.count - 1 - index];
     [self.computationDao remove:self.items.count  - index];
-
 }
 
 -(void) deleteAll{
@@ -60,7 +61,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
+    ComputationCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
     
     id item = [self itemAtIndexPath:indexPath];
     self.configureCellBlock(cell, item);
@@ -85,7 +86,6 @@
     }
     
 }
-
 
 
 @end

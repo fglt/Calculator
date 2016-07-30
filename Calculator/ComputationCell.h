@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class Computation;
-
 @interface ComputationCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *date;

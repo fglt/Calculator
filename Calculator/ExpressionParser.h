@@ -14,9 +14,9 @@
 @interface ExpressionParser : NSObject
 //@property (nonatomic, strong) NSString* expressioin;
 
-+(NSMutableAttributedString  *)parseString:(NSString*)expression fontSize:(CGFloat)fontSize operatorColor:(UIColor*)color;
++(NSMutableAttributedString  *)parseString:(NSString*)expression font:(UIFont*)font operatorColor:(UIColor*)color;
 
-+(NSMutableAttributedString  *)parse2String:(NSString*)expression fontSize:(CGFloat)fontHeight operatorColor:(UIColor*)foreColor;
++(NSMutableAttributedString  *)parse2String:(NSString*)expression font:(UIFont*)font operatorColor:(UIColor*)foreColor;
 
 +(NSMutableArray *) wilCalculateWithString:(NSString*)expression;
 @end

@@ -10,13 +10,13 @@
 
 @implementation ExpressionParser
 
-+(NSMutableAttributedString  *)parseString:(NSString*)expression fontSize:(CGFloat)fontHeight operatorColor:(UIColor*)foreColor
++(NSMutableAttributedString  *)parseString:(NSString*)expression font:(UIFont*)font operatorColor:(UIColor*)foreColor
 {
     NSMutableAttributedString *displyText = [[NSMutableAttributedString alloc] initWithString:@" " attributes:nil];
     
     NSAttributedString *attriSpace = [[NSAttributedString alloc]initWithString:@" " attributes:nil];
-    UIFont *helveticaFontLittle = [UIFont fontWithName:@"Helvetica-Bold" size:fontHeight *0.4];
-    UIFont *helveticaFontBig = [helveticaFontLittle fontWithSize:fontHeight * 0.7];
+    UIFont *fontLittle = [font  fontWithSize:font.pointSize *0.6];
+
     
     NSMutableArray* opArray = arrayFromString(expression);
     long  count = opArray.count;
@@ -41,7 +41,7 @@
                 NSRange range = NSMakeRange(0, as.length);
                 attrString = [[NSMutableAttributedString alloc] initWithString:as attributes:nil];
                 [attrString addAttribute:NSBaselineOffsetAttributeName value:@15 range:range];
-                [attrString addAttribute:NSFontAttributeName value:helveticaFontLittle range:range];
+                [attrString addAttribute:NSFontAttributeName value:fontLittle range:range];
                 [displyText insertAttributedString:attriSpace atIndex:displyText.length-1];
                 [attrString addAttribute:NSForegroundColorAttributeName value:foreColor range:range];
                 [displyText insertAttributedString:attrString atIndex:displyText.length-1];
@@ -49,8 +49,8 @@
                 NSRange range = NSMakeRange(0, op.length);
                 NSRange lastRange = NSMakeRange(op.length -1, 1);
                 attrString = [[NSMutableAttributedString alloc] initWithString:op attributes:nil];
-                [attrString addAttribute:NSFontAttributeName value:helveticaFontBig range:range];
-                [attrString addAttribute:NSFontAttributeName value:helveticaFontLittle range:lastRange];
+                [attrString addAttribute:NSFontAttributeName value:font range:range];
+                [attrString addAttribute:NSFontAttributeName value:fontLittle range:lastRange];
                 [attrString addAttribute:NSForegroundColorAttributeName value:foreColor range:range];
                 [displyText insertAttributedString:attriSpace atIndex:displyText.length-1];
                 [displyText insertAttributedString:attrString atIndex:displyText.length-1];
@@ -59,9 +59,9 @@
                 NSRange lastRange = NSMakeRange(3, 1);
                 NSRange foreRange = NSMakeRange(1, 1);
                 attrString = [[NSMutableAttributedString alloc] initWithString:@" x√y" attributes:nil];
-                [attrString addAttribute:NSFontAttributeName value:helveticaFontBig range:range];
-                [attrString addAttribute:NSFontAttributeName value:helveticaFontLittle range:lastRange];
-                [attrString addAttribute:NSFontAttributeName value:helveticaFontLittle range:foreRange];
+                [attrString addAttribute:NSFontAttributeName value:font range:range];
+                [attrString addAttribute:NSFontAttributeName value:fontLittle range:lastRange];
+                [attrString addAttribute:NSFontAttributeName value:fontLittle range:foreRange];
                 [attrString addAttribute:NSForegroundColorAttributeName value:foreColor range:range];
                 [attrString addAttribute:NSKernAttributeName value:@-12 range:foreRange];
                 [attrString addAttribute:NSBaselineOffsetAttributeName value:@15 range:foreRange];
@@ -70,7 +70,7 @@
             else {
                 attrString = [[NSMutableAttributedString alloc] initWithString:op attributes:nil];
                 NSRange range = NSMakeRange(0, op.length);
-                [attrString addAttribute:NSFontAttributeName value:helveticaFontBig range:range];
+                [attrString addAttribute:NSFontAttributeName value:font range:range];
                 [attrString addAttribute:NSForegroundColorAttributeName value:foreColor range:range];
                 [displyText insertAttributedString:attriSpace atIndex:displyText.length-1];
                 [displyText insertAttributedString:attrString atIndex:displyText.length-1];
@@ -199,7 +199,7 @@ void addMultiply(NSMutableArray* opArray)
 }
 
 
-+(NSMutableAttributedString  *)parse2String:(NSString*)expression fontSize:(CGFloat)fontHeight operatorColor:(UIColor*)foreColor
++(NSMutableAttributedString  *)parse2String:(NSString*)expression font:(UIFont*)font operatorColor:(UIColor*)foreColor
 {
     
     NSMutableAttributedString *displyText = [[NSMutableAttributedString alloc] initWithString:@" " attributes:nil];
@@ -221,7 +221,7 @@ void addMultiply(NSMutableArray* opArray)
             
             u_long curPosition = displyText.length - 1;
             NSTextAttachment *attachment = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
-            UIImage *img = [ExpressionParser image2WithHeight:fontHeight string:op];
+            UIImage *img = [ExpressionParser image2WithHeight:font.pointSize string:op];
             attachment.image = img;
             attachment.bounds = CGRectMake(0, 0, img.size.width , img.size.height);
             NSAttributedString *imgText = [NSAttributedString attributedStringWithAttachment:attachment];
