@@ -46,10 +46,6 @@ static NSDictionary * operatorsDict;
     return [self isEqualToString:NumberExp];
 }
 
--(BOOL)isFactorial{
-    return [self isEqualToString:FunFactorial];
-}
-
 -(double) calWithTwoParm: (double)op1 : (double)op2{
     binaryOperator op = [self binaryOperator];
     if(op)

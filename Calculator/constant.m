@@ -47,7 +47,7 @@ NSString * const FunSquare = @"squa";
 NSString * const FunCube = @"cube";
 NSString * const FunReciprocal = @"reci";//倒数
 NSString * const FunPowRoot = @"powr";
-NSString * const FunScientific = @"scie";
+NSString * const FunScientific = @"E10";
 
 NSString * const FunRightOnly = @"FunRightOnly";
 NSString * const FunLeftOnly  = @"FunLeftOnly";

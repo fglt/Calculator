@@ -13,8 +13,9 @@ typedef double (^unaryOperator)(double);
 
 typedef double (^binaryOperator)(double, double);
 
-///规定: 数值1表示： 左操作符：操作符左边必须为操作数 或者右括号 或者 左操作符 一元运算符；
-///数值3 表示：右操作符：操作符右边必需为操作数 或者 左括号 或者 右操作符 一元运算符；
+/**规定: 数值1表示： 左操作符：操作符左边必须为操作数 或者右括号 或者 左操作符 一元运算符；
+ * 数值3 表示：右操作符：操作符右边必需为操作数 或者 左括号 或者 右操作符 一元运算符；
+ */
 @interface NSString (Calculator)
 -(BOOL)isDigit;
 -(BOOL)isBasicOperator;
@@ -23,13 +24,27 @@ typedef double (^binaryOperator)(double, double);
 -(BOOL)isNumberPI;
 -(BOOL)isNumberExp;
 -(BOOL)isPIOrExp;
--(BOOL)isFactorial;
 ///是否是数，不包括PI 和自然数e
 -(BOOL)isNumberic;
+/**
+ *  判断字符串是否是整数
+ *
+ *  @return 如果是整数返回true，否则返回no
+ */
 -(BOOL)isInteger;
 ///是否是数，包括PI 和自然数e
 -(BOOL)isNumber;
+/**
+ *  判断字符串是否是二元操作符
+ *
+ *  @return 
+ */
 -(BOOL)isBinaryOperator;
+/**
+ *  判断字符串是否是一元操作符
+ *
+ *  @return
+ */
 -(BOOL)isUnaryOperator;
 -(BOOL)isOperator;
 
