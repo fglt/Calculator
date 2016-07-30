@@ -14,12 +14,12 @@
 
 -(void) awakeFromNib
 {
-    self.contentAlignment = ContentAlignmentTOP;
+    self.contentAlignment = ContentAlignmentRight;
 }
 
 -(void)setContentAlignment:(ContentAlignment)contentAlignment
 {
-    _contentAlignment = contentAlignment;
+    _contentAlignment = ContentAlignmentRight;
     [self setNeedsDisplay];
 }
 
@@ -28,13 +28,7 @@
     NSTextContainer *container = [[NSTextContainer alloc]initWithSize:rect.size];
     NSLayoutManager *manager = [[NSLayoutManager alloc] init];
     [manager addTextContainer:container];
-    NSTextStorage* storage = [[NSTextStorage alloc] initWithString:self.attributedText.string];
-    [storage addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(0,self.attributedText.length/2)];
-    [storage addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(self.attributedText.length/2,self.attributedText.length - self.attributedText.length/2)];
-
-    [storage addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial-BoldItalicMT" size:30.0] range:NSMakeRange(0, self.attributedText.length/2)];
-    [storage addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0] range:NSMakeRange(self.attributedText.length/2, self.attributedText.length - self.attributedText.length/2)];
-
+    NSTextStorage* storage = [[NSTextStorage alloc] initWithAttributedString:self.attributedText];
     [storage addLayoutManager:manager];
     CGRect frame = [manager usedRectForTextContainer:container];
     CGPoint point = [self alignOffsetViewSize:rect.size:CGRectIntegral(frame).size];
@@ -48,12 +42,17 @@
     CGFloat xMargin = viewSize.width - containerSize.width;
     CGFloat yMargin = viewSize.height - containerSize.height;
     switch (self.contentAlignment) {
-        case ContentAlignmentTOP:
+        case ContentAlignmentTop:
             return CGPointMake(MAX(xMargin / 2, 0), 0);
-        case ContentAlignmentCENTER:
+        case ContentAlignmentCenter:
             return CGPointMake(MAX(xMargin / 2, 0), MAX(yMargin / 2, 0));
-        case ContentAlignmentDOWN:
+        case ContentAlignmentDown:
             return CGPointMake(MAX(xMargin / 2, 0), MAX(yMargin, 0));
+        case ContentAlignmentLeft:
+            return CGPointMake(0,  MAX(yMargin / 2, 0));
+        case ContentAlignmentRight:
+            return CGPointMake( MAX(xMargin, 0), MAX(yMargin / 2, 0));
+
         default:
             break;
     }

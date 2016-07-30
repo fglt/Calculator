@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    ContentAlignmentTOP = 0,
-    ContentAlignmentCENTER ,
-    ContentAlignmentDOWN
+    ContentAlignmentTop = 0,
+    ContentAlignmentCenter ,
+    ContentAlignmentDown,
+    ContentAlignmentLeft,
+    ContentAlignmentRight
 } ContentAlignment;
 
 

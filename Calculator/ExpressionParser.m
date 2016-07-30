@@ -28,6 +28,7 @@
         if([op isNumber])
         {
             NSMutableAttributedString * appText = [[NSMutableAttributedString alloc] initWithString:[@" " stringByAppendingString:op] attributes:nil];
+            [appText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, op.length)];
             [displyText insertAttributedString:appText atIndex:displyText.length-1];
         }
         else{
