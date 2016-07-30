@@ -12,7 +12,7 @@
 #import "HistoryViewController.h"
 #import "ClearHistoryController.h"
 #import "CalculatorViewController.h"
-#import "CalView.h"
+#import "CalBoardView.h"
 #import "NSString+Calculator.h"
 #import "ExpressionParser.h"
 #import "ComputationDao.h"
@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *expressionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIView *historyBoard;
-@property (weak, nonatomic) IBOutlet CalView *calView;
+@property (weak, nonatomic) IBOutlet CalBoardView *calView;
 
 @property ComputationDao* computationDao;
 @property HistoryViewController* historyController;

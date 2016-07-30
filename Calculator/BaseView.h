@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ResultView.h"
-#import "HistoryBoardView.h"
-#import "CalView.h"
 
+@class ResultView;
+@class HistoryBoardView;
+@class CalBoardView;
 
 @interface BaseView : UIView
 @property (weak, nonatomic) IBOutlet ResultView *resultView;
 @property (weak, nonatomic) IBOutlet HistoryBoardView *historyView;
-
-@property (weak, nonatomic) IBOutlet CalView *calView;
+@property (weak, nonatomic) IBOutlet CalBoardView *calView;
 @property (nonatomic, strong) UIButton *historyButton;
 
 @end

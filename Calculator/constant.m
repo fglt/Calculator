@@ -6,7 +6,6 @@
 //  Copyright © 2016 Coding. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "constants.h"
 
 NSString * const BasicOperation = @"+-×÷%";

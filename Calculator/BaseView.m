@@ -8,6 +8,9 @@
 
 #import "BaseView.h"
 #import "CalculateView.h"
+#import "ResultView.h"
+#import "CalBoardView.h"
+#import "HistoryBoardView.h"
 
 @implementation BaseView
 @synthesize historyButton;

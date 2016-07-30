@@ -9,7 +9,7 @@
 #import "NSString+Calculator.h"
 #import "constants.h"
 #import "factorial.h"
-
+#import "CalculatorConstants.h"
 
 @implementation NSString (Calculator)
 

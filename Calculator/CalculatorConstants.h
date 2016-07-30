@@ -9,8 +9,6 @@
 
 #import <Foundation/Foundation.h>
 
-
-
 typedef enum
 {
     TagOfDivide = 20,

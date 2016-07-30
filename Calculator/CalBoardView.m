@@ -6,19 +6,10 @@
 //  Copyright © 2016 Coding. All rights reserved.
 //
 
-#import "CalView.h"
+#import "CalBoardView.h"
 
 IB_DESIGNABLE
-@implementation CalView
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
+@implementation CalBoardView
 
 
 -(id)initWithCoder:(NSCoder *)aDecoder

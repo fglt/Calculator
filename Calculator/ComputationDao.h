@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Computation.h"
 #import "HistoryPlistDelegate.h"
 
 @interface ComputationDao : NSObject

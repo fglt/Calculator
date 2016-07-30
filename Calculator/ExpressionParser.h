@@ -6,10 +6,7 @@
 //  Copyright © 2016 Coding. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "NSString+Calculator.h"
-#import "constants.h"
 
 @interface ExpressionParser : NSObject
 //@property (nonatomic, strong) NSString* expressioin;

@@ -21,7 +21,7 @@
 		1747D18D1D3C6B36002C2EE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1747D18B1D3C6B36002C2EE1 /* LaunchScreen.storyboard */; };
 		1747D19D1D3C6B8A002C2EE1 /* DigitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1951D3C6B8A002C2EE1 /* DigitButton.m */; };
 		1747D19E1D3C6B8A002C2EE1 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */; };
-		1747D19F1D3C6B8A002C2EE1 /* CalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1991D3C6B8A002C2EE1 /* CalView.m */; };
+		1747D19F1D3C6B8A002C2EE1 /* CalBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1991D3C6B8A002C2EE1 /* CalBoardView.m */; };
 		1747D1A01D3C6B8A002C2EE1 /* constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D19A1D3C6B8A002C2EE1 /* constant.m */; };
 		1747D1A91D3C6B96002C2EE1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1A21D3C6B95002C2EE1 /* MainViewController.m */; };
 		1747D1AA1D3C6B96002C2EE1 /* NSString+Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1A41D3C6B95002C2EE1 /* NSString+Calculator.m */; };
@@ -55,7 +55,6 @@
 		170827CA1D3E7693005B3CAD /* HistoryPlistDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryPlistDelegate.m; path = Calculator/HistoryPlistDelegate.m; sourceTree = "<group>"; };
 		170827FB1D3F53CF005B3CAD /* ExpressionLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionLabel.h; sourceTree = "<group>"; };
 		170827FC1D3F53CF005B3CAD /* ExpressionLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressionLabel.m; sourceTree = "<group>"; };
-		170827FE1D3F66C8005B3CAD /* ButtonTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonTag.h; sourceTree = "<group>"; };
 		170827FF1D3FCD58005B3CAD /* CalculatorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorConstants.h; path = Calculator/CalculatorConstants.h; sourceTree = "<group>"; };
 		170828001D3FCD58005B3CAD /* CalculatorConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorConstants.m; path = Calculator/CalculatorConstants.m; sourceTree = "<group>"; };
 		1747D17A1D3C6B36002C2EE1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,8 +69,8 @@
 		1747D1951D3C6B8A002C2EE1 /* DigitButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitButton.m; sourceTree = "<group>"; };
 		1747D1961D3C6B8A002C2EE1 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorBrain.h; path = Calculator/CalculatorBrain.h; sourceTree = "<group>"; };
 		1747D1971D3C6B8A002C2EE1 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorBrain.m; path = Calculator/CalculatorBrain.m; sourceTree = "<group>"; };
-		1747D1981D3C6B8A002C2EE1 /* CalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalView.h; sourceTree = "<group>"; };
-		1747D1991D3C6B8A002C2EE1 /* CalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalView.m; sourceTree = "<group>"; };
+		1747D1981D3C6B8A002C2EE1 /* CalBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalBoardView.h; sourceTree = "<group>"; };
+		1747D1991D3C6B8A002C2EE1 /* CalBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalBoardView.m; sourceTree = "<group>"; };
 		1747D19A1D3C6B8A002C2EE1 /* constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = constant.m; path = Calculator/constant.m; sourceTree = "<group>"; };
 		1747D19B1D3C6B8A002C2EE1 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = Calculator/constants.h; sourceTree = "<group>"; };
 		1747D19C1D3C6B8A002C2EE1 /* factorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = factorial.h; path = Calculator/factorial.h; sourceTree = "<group>"; };
@@ -132,13 +131,12 @@
 				1747D1BC1D3CA1E5002C2EE1 /* ComputationCell.m */,
 				1747D1B01D3C9A78002C2EE1 /* HistoryBoardView.h */,
 				1747D1B11D3C9A78002C2EE1 /* HistoryBoardView.m */,
-				1747D1981D3C6B8A002C2EE1 /* CalView.h */,
-				1747D1991D3C6B8A002C2EE1 /* CalView.m */,
+				1747D1981D3C6B8A002C2EE1 /* CalBoardView.h */,
+				1747D1991D3C6B8A002C2EE1 /* CalBoardView.m */,
 				1747D1C11D3CB289002C2EE1 /* BaseView.h */,
 				1747D1C21D3CB289002C2EE1 /* BaseView.m */,
 				1747D1941D3C6B8A002C2EE1 /* DigitButton.h */,
 				1747D1951D3C6B8A002C2EE1 /* DigitButton.m */,
-				170827FE1D3F66C8005B3CAD /* ButtonTag.h */,
 				17F9E6E61D424C7000BC4B38 /* ResultView.h */,
 				17F9E6E71D424C7000BC4B38 /* ResultView.m */,
 				178629891D4654FA00067294 /* OperatorButton.h */,
@@ -327,7 +325,7 @@
 				1747D1A01D3C6B8A002C2EE1 /* constant.m in Sources */,
 				178629821D44FB4C00067294 /* ExpressionParser.m in Sources */,
 				1747D1C71D3CB78C002C2EE1 /* ArrayComputationDataSource.m in Sources */,
-				1747D19F1D3C6B8A002C2EE1 /* CalView.m in Sources */,
+				1747D19F1D3C6B8A002C2EE1 /* CalBoardView.m in Sources */,
 				1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */,
 				1747D1AA1D3C6B96002C2EE1 /* NSString+Calculator.m in Sources */,
 				1747D1C01D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m in Sources */,

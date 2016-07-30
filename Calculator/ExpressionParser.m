@@ -7,6 +7,8 @@
 //
 
 #import "ExpressionParser.h"
+#import "NSString+Calculator.h"
+#import "constants.h"
 
 @implementation ExpressionParser
 
