@@ -21,13 +21,13 @@
 //    self.date.text = [NSString stringWithFormat:@"%ld/%ld", (long)day, (long)month];
     self.date.text = [self.dateFormatter stringFromDate:computation.date];
         NSMutableAttributedString * attributedString = [ExpressionParser parseString:computation.expression font:font operatorColor:[UIColor greenColor]];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setAlignment:NSTextAlignmentRight];
-    [paragraphStyle setLineSpacing:0];//调整行间距
-    [paragraphStyle setLineBreakMode:NSLineBreakByCharWrapping];
-    [paragraphStyle setHeadIndent:6];
-    
-    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attributedString.length)];
+//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//    [paragraphStyle setAlignment:NSTextAlignmentRight];
+//    [paragraphStyle setLineSpacing:0];//调整行间距
+//    [paragraphStyle setLineBreakMode:NSLineBreakByCharWrapping];
+//    [paragraphStyle setHeadIndent:6];
+//    
+//    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attributedString.length)];
     self.expression.attributedText = attributedString;
     
     self.result.text = computation.result;

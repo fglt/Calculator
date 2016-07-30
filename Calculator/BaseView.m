@@ -70,7 +70,7 @@
     //historyButton.titleLabel.text = @"记录";
     [historyButton setTitle:@"记录" forState:UIControlStateNormal];
     [historyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    historyButton.backgroundColor = [UIColor redColor];
+    historyButton.backgroundColor = [UIColor darkGrayColor];
     [historyButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:historyButton];
 }

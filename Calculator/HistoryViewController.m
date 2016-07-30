@@ -158,12 +158,12 @@ static CGFloat  expressionFontSize = 17;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    Computation* computation = [self.computationDataSource itemAtIndexPath:indexPath];
-    [estCell configureForComputation:computation font:[UIFont systemFontOfSize:expressionFontSize]];
-     estCell.expression.preferredMaxLayoutWidth = tableView.frame.size.width * 0.8 - 25;
-//    CGSize size = [estCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//    CGFloat height = size.height+1;
-    CGFloat height = estCell.expression.frame.size.height + estCell.result.frame.size.height + 1;
+//    Computation* computation = [self.computationDataSource itemAtIndexPath:indexPath];
+//    [estCell configureForComputation:computation font:[UIFont systemFontOfSize:expressionFontSize]];
+//     estCell.expression.preferredMaxLayoutWidth = tableView.frame.size.width * 0.8 - 25;
+////    CGSize size = [estCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+////    CGFloat height = size.height+1;
+//    CGFloat height = estCell.expression.frame.size.height + estCell.result.frame.size.height + 1;
 //    NSLog(@"%f",self.tableView.frame.size.width);
   //  ComputationCell * cell = [self.tableView dequeueReusableCellWithIdentifier:HistoryCellIdentifier];
 //    [cell configureForComputation:computation height:28];
@@ -184,7 +184,7 @@ static CGFloat  expressionFontSize = 17;
 //    textFrame = [attrString boundingRectWithSize:CGSizeMake((self.tableView.frame.size.width-2)* 0.875 -15, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading context:nil];
 //    
 //   CGFloat height = textFrame.size.height + 21 + 1;
-    return height;
+    return 60;
 
 }
 
