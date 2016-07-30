@@ -41,7 +41,7 @@
                 else as = @"-1";
                 NSRange range = NSMakeRange(0, as.length);
                 attrString = [[NSMutableAttributedString alloc] initWithString:as attributes:nil];
-                [attrString addAttribute:NSBaselineOffsetAttributeName value:@15 range:range];
+                [attrString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:font.pointSize/2] range:range];
                 [attrString addAttribute:NSFontAttributeName value:fontLittle range:range];
                 [displyText insertAttributedString:attriSpace atIndex:displyText.length-1];
                 [attrString addAttribute:NSForegroundColorAttributeName value:foreColor range:range];
@@ -64,8 +64,8 @@
                 [attrString addAttribute:NSFontAttributeName value:fontLittle range:lastRange];
                 [attrString addAttribute:NSFontAttributeName value:fontLittle range:foreRange];
                 [attrString addAttribute:NSForegroundColorAttributeName value:foreColor range:range];
-                [attrString addAttribute:NSKernAttributeName value:@-12 range:foreRange];
-                [attrString addAttribute:NSBaselineOffsetAttributeName value:@15 range:foreRange];
+                [attrString addAttribute:NSKernAttributeName value:[NSNumber numberWithFloat:-sqrt(font.pointSize)-2] range:NSMakeRange(1, 2)];
+                [attrString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:sqrt(font.pointSize)+3] range:foreRange];
                 [displyText insertAttributedString:attrString atIndex:displyText.length-1];
             }
             else {
