@@ -10,10 +10,4 @@
 IB_DESIGNABLE
 @implementation DigitButton
 
-
-+ (DigitButton *)buttonWithType:(UIButtonType)type
-{
-    return [super buttonWithType:UIButtonTypeCustom];
-}
-
 @end

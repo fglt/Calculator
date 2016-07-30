@@ -600,9 +600,8 @@
                                                             <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="XzP-XK-sdX"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDr-lQ-aRe" customClass="SepcialButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDr-lQ-aRe" customClass="SepcialButton">
                                                         <rect key="frame" x="354" y="0.0" width="108" height="86.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <state key="normal" title="C">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -610,9 +609,8 @@
                                                             <action selector="clearInput:" destination="un8-7v-BAb" eventType="touchUpInside" id="1UP-fR-7br"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FX6-af-uLz" customClass="SepcialButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FX6-af-uLz" customClass="SepcialButton">
                                                         <rect key="frame" x="472" y="0.0" width="108" height="86.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <state key="normal" title="DEL">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -836,11 +834,9 @@
                                                             <action selector="onClickZero:" destination="un8-7v-BAb" eventType="touchUpInside" id="eCT-cB-B3t"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-8z-N4u" customClass="DigitButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-8z-N4u" customClass="DigitButton">
                                                         <rect key="frame" x="236" y="0.0" width="108" height="87"/>
-                                                        <state key="normal" title="00">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        </state>
+                                                        <state key="normal" title="00"/>
                                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                             <rect key="frame" x="197" y="0.0" width="93" height="36"/>
                                                         </variation>
@@ -848,9 +844,8 @@
                                                             <action selector="onClickZero:" destination="un8-7v-BAb" eventType="touchUpInside" id="n3G-4E-j6j"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZa-oi-k2a" customClass="DigitButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZa-oi-k2a" customClass="DigitButton">
                                                         <rect key="frame" x="354" y="0.0" width="108" height="87"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -905,9 +900,8 @@
                                                             <action selector="onClickButtons:" destination="un8-7v-BAb" eventType="touchUpInside" id="cka-UL-kLa"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-7W-mY9" customClass="SepcialButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-7W-mY9" customClass="SepcialButton">
                                                         <rect key="frame" x="236" y="0.0" width="344" height="86.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <state key="normal" title="=">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>

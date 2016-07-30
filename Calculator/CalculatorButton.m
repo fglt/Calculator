@@ -16,7 +16,7 @@ IB_DESIGNABLE
     return [super buttonWithType:UIButtonTypeCustom];
 }
 
--(void)awakeFromNib{
+-(void)drawButton{
     self.titleLabel.adjustsFontSizeToFitWidth = TRUE;
     self.titleLabel.minimumScaleFactor = 0.5;
     self.titleLabel.font =  [UIFont systemFontOfSize:35 ];
@@ -29,7 +29,6 @@ IB_DESIGNABLE
     layer.borderColor = [UIColor paperColorGray200].CGColor;
     layer.masksToBounds = YES;
 }
-
 - (id)initWithCoder:(NSCoder *)coder
 {
     // Call the parent implementation of initWithCoder
@@ -38,6 +37,7 @@ IB_DESIGNABLE
     // Custom drawing methods
     if (self)
     {
+        [self drawButton];
         [self drawBackgroundLayer];
         [self drawHighlightBackgroundLayer];
         
@@ -52,6 +52,7 @@ IB_DESIGNABLE
     self = [super initWithFrame:frame];
     if(self)
     {
+        [self drawButton];
         [self drawBackgroundLayer];
         [self drawHighlightBackgroundLayer];
         
@@ -62,7 +63,6 @@ IB_DESIGNABLE
 
 - (void)layoutSubviews
 {
-    
     // Set gradient frame (fill the whole button))
     _backgroundLayer.frame = self.bounds;
     // Set inverted gradient frame

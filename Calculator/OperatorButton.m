@@ -7,11 +7,30 @@
 //
 
 #import "OperatorButton.h"
-
+IB_DESIGNABLE
 @implementation OperatorButton
-+ (OperatorButton *)buttonWithType:(UIButtonType)type
+
+- (id)initWithCoder:(NSCoder *)coder
 {
-    return [super buttonWithType:UIButtonTypeCustom];
+    // Call the parent implementation of initWithCoder
+    self = [super initWithCoder:coder];
+    
+    // Custom drawing methods
+    if (self)
+    {
+        self.backgroundLayer.colors = (@[
+                                         (id)[UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f].CGColor,
+                                         (id)[UIColor colorWithRed:0.65f green:0.65f blue:0.65f alpha:1.00f].CGColor
+                                         ]);
+        self.highlightBackgroundLayer.colors = (@[
+                                                  (id)[UIColor colorWithRed:0.65f green:0.65f blue:0.65f alpha:1.00f].CGColor,
+                                                  (id)[UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f].CGColor
+                                                  
+                                                  ]);
+
+    }
+    
+    return self;
 }
 
 -(void)attPowString:(NSString*)text
@@ -22,18 +41,6 @@
     self.titleLabel.attributedText = attstr;
 }
 
--(void)awakeFromNib{
-    [super awakeFromNib];
-    self.backgroundLayer.colors = (@[
-                                     (id)[UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f].CGColor,
-                                     (id)[UIColor colorWithRed:0.65f green:0.65f blue:0.65f alpha:1.00f].CGColor
-                                     ]);
-    self.highlightBackgroundLayer.colors = (@[
-                                            (id)[UIColor colorWithRed:0.65f green:0.65f blue:0.65f alpha:1.00f].CGColor,
-                                            (id)[UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f].CGColor
-                                            
-                                    ]);
-}
 @end
 
 @implementation SquareButton
@@ -45,7 +52,6 @@
     // Custom drawing methods
     if (self)
     {
-        
         [self  attPowString:@"x2"];
     }
     
@@ -62,7 +68,6 @@
     // Custom drawing methods
     if (self)
     {
-        
        [self  attPowString:@"x3"];
     }
     
@@ -80,7 +85,6 @@
     // Custom drawing methods
     if (self)
     {
-
        [self  attPowString:@"xy"];
     }
     
