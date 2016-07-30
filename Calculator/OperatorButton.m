@@ -7,6 +7,7 @@
 //
 
 #import "OperatorButton.h"
+#import "UIColor+BFPaperColors.h"
 IB_DESIGNABLE
 @implementation OperatorButton
 
@@ -19,13 +20,12 @@ IB_DESIGNABLE
     if (self)
     {
         self.backgroundLayer.colors = (@[
-                                         (id)[UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f].CGColor,
-                                         (id)[UIColor colorWithRed:0.65f green:0.65f blue:0.65f alpha:1.00f].CGColor
+                                         (id)[UIColor paperColorGray400].CGColor,
+                                         (id)[UIColor paperColorGray600].CGColor
                                          ]);
         self.highlightBackgroundLayer.colors = (@[
-                                                  (id)[UIColor colorWithRed:0.65f green:0.65f blue:0.65f alpha:1.00f].CGColor,
-                                                  (id)[UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f].CGColor
-                                                  
+                                                  (id)[UIColor paperColorGray600].CGColor,
+                                                  (id)[UIColor paperColorGray400].CGColor
                                                   ]);
 
     }

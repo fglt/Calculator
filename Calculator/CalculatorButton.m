@@ -11,11 +11,6 @@
 IB_DESIGNABLE
 @implementation CalculatorButton
 
-+ (CalculatorButton *)buttonWithType:(UIButtonType)type
-{
-    return [super buttonWithType:UIButtonTypeCustom];
-}
-
 -(void)drawButton{
     self.titleLabel.adjustsFontSizeToFitWidth = TRUE;
     self.titleLabel.minimumScaleFactor = 0.5;
@@ -28,6 +23,18 @@ IB_DESIGNABLE
     layer.borderWidth = 1;
     layer.borderColor = [UIColor paperColorGray200].CGColor;
     layer.masksToBounds = YES;
+}
+
+-(instancetype) init{
+    self = [super init];
+    if(self){
+        [self drawButton];
+        [self drawBackgroundLayer];
+        [self drawHighlightBackgroundLayer];
+    
+        _highlightBackgroundLayer.hidden = YES;
+    }
+    return self;
 }
 - (id)initWithCoder:(NSCoder *)coder
 {
