@@ -19,6 +19,8 @@ static NSString * const HistoryCellIdentifier = @"HistoryCell";
 static CGFloat  expressionFontSize = 17;
 
 @interface HistoryViewController  () <CellSelectedControllerDelegate,ClearHistoryControllerDelegate,UIPopoverPresentationControllerDelegate>
+@property (nonatomic, strong) ArrayComputationDataSource    *computationDataSource;
+@property (nonatomic, strong) ComputationDao                * computationDao;
 @end
 
 @implementation HistoryViewController
@@ -185,7 +187,7 @@ static CGFloat  expressionFontSize = 17;
 
 -(void)deleteCellAtIndex:(NSIndexPath*)indexPath
 {
-    [self.computationDataSource delete:indexPath.row];
+    [self.computationDataSource deleteItemAtIndexPath:indexPath];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 

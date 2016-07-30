@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class Computation;
-@class ComputationDao;
-@class ArrayComputationDataSource;
 
 @protocol HistoryViewControllerDelegate <NSObject>
 
@@ -18,9 +16,7 @@
 
 @end
 
-@interface HistoryViewController : UITableViewController<UITableViewDelegate>
-@property (nonatomic, strong) ArrayComputationDataSource    *computationDataSource;
-@property (nonatomic, strong) ComputationDao                * computationDao;
-@property (nonatomic, weak  ) id<HistoryViewControllerDelegate> historyDelegate;
+@interface HistoryViewController : UITableViewController
+@property (nonatomic, weak) id<HistoryViewControllerDelegate> historyDelegate;
 -(void)update;
 @end

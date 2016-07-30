@@ -35,11 +35,10 @@
     return self.items[self.items.count - 1 - indexPath.row];
 }
 
--(void) delete:(NSInteger)index
+-(void) deleteItemAtIndexPath:(NSIndexPath*)indexPath
 {
- 
-    [self.items removeObjectAtIndex:self.items.count - 1 - index];
-    [self.computationDao remove:self.items.count  - index];
+    [self.items removeObjectAtIndex:self.items.count - 1 - indexPath.row];
+    [self.computationDao remove:self.items.count  - indexPath.row];
 }
 
 -(void) deleteAll{
@@ -78,7 +77,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete ) {
         // Delete the row from the data source
         if(indexPath.row>0){
-            [self delete:indexPath.row];
+            [self deleteItemAtIndexPath:indexPath];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }else{
             [tableView reloadData];

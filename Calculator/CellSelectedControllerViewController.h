@@ -17,7 +17,7 @@
 @end
 
 @interface CellSelectedControllerViewController : UIViewController
-@property  id<CellSelectedControllerDelegate> delegate;
-@property NSIndexPath *indexPath;
+@property (nonatomic, weak) id<CellSelectedControllerDelegate> delegate;
+@property (nonatomic, copy) NSIndexPath *indexPath;
 @end
 

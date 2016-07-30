@@ -15,5 +15,5 @@
 @end
 
 @interface ClearHistoryController : UIViewController
-@property id<ClearHistoryControllerDelegate>  delegate;
+@property(nonatomic, weak) id<ClearHistoryControllerDelegate>  delegate;
 @end

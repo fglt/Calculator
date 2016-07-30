@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "HistoryViewController.h"
 
-@interface MainViewController : UIViewController<UIScrollViewDelegate, HistoryViewControllerDelegate>
-
-@property(nonatomic, strong) UITableView* historyTable;
+@interface MainViewController : UIViewController
 
 @end
