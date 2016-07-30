@@ -10,7 +10,7 @@
 
 @class ResultView;
 @class HistoryBoardView;
-@class CalBoardView;
+@class CalBoardView; 
 
 @interface BaseView : UIView
 @property (weak, nonatomic) IBOutlet ResultView *resultView;

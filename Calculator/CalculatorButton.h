@@ -12,7 +12,4 @@
 @interface CalculatorButton : UIButton
 @property (strong,nonatomic) CAGradientLayer *backgroundLayer, *highlightBackgroundLayer;
 
-- (void)drawHighlightBackgroundLayer;
-- (void)drawBackgroundLayer;
-- (void)drawButton;
 @end
