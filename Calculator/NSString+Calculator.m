@@ -54,7 +54,7 @@ static NSDictionary * operatorsDict;
     binaryOperator op = [self binaryOperator];
     if(op)
         return op(op1,  op2);
-     NSLog(@"运算符不存在");
+     //NSLog(@"运算符不存在");
     return NAN;
 }
 
@@ -62,7 +62,7 @@ static NSDictionary * operatorsDict;
     unaryOperator op = [self unaryOperator];
     if(op)
         return op(operand);
-    NSLog(@"运算符不存在");
+    //NSLog(@"运算符不存在");
     return NAN;
 }
 

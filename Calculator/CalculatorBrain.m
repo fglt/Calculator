@@ -64,7 +64,7 @@
                 lastOperator = [operators lastObject];
                int priority = [CalculatorConstants stackPriorityOpOut:opCurrent OpIn:lastOperator];
                 if(priority == INT_MAX){
-                    NSLog(@"操作符的优先级查询失败！");
+                    //NSLog(@"操作符的优先级查询失败！");
                     return INFINITY;
                 }
                 if(priority <= 0)

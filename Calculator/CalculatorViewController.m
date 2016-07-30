@@ -195,7 +195,7 @@ static NSString * const ErrorMessage = @"ERROR";
     if([op isNumberic]){
         [operatorsArray removeLastObject];
         [operatorsArray addObject:[op stringByAppendingString:input]];
-    }else{
+    }else if(![op isLeftUnaryOperator]){
         [operatorsArray addObject:input];
     }
 }

@@ -222,7 +222,7 @@ void addMultiply(NSMutableArray* opArray)
             
             u_long curPosition = displyText.length - 1;
             NSTextAttachment *attachment = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
-            UIImage *img = [ExpressionParser image2WithHeight:font.pointSize string:op];
+            UIImage *img = [ExpressionParser image2WithHeight:font string:op];
             attachment.image = img;
             attachment.bounds = CGRectMake(0, 0, img.size.width , img.size.height);
             NSAttributedString *imgText = [NSAttributedString attributedStringWithAttachment:attachment];
@@ -237,13 +237,13 @@ void addMultiply(NSMutableArray* opArray)
     
 }
 
-+(UIImage*)imageWithHeight:(CGFloat)height string:(NSString*)string
++(UIImage*)imageWithHeight:(UIFont*)font string:(NSString*)string
 {
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Bold" size:height *0.6]}];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font}];
     
     CGRect textFrame;
     
-    textFrame = [attrString boundingRectWithSize:CGSizeMake(200, height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading context:nil];
+    textFrame = [attrString boundingRectWithSize:CGSizeMake(200, font.pointSize) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading context:nil];
     
     //图片宽度不小于28.
     textFrame = CGRectMake(0, 0, MAX(textFrame.size.width, 28), textFrame.size.height);
@@ -272,7 +272,7 @@ void addMultiply(NSMutableArray* opArray)
 }
 
 
-+(UIImage*)image2WithHeight:(CGFloat)height string:(NSString*)string
++(UIImage*)image2WithHeight:(UIFont*)font string:(NSString*)string
 {
 //    static NSMutableArray *array ;
 //    if(!array){
@@ -281,13 +281,13 @@ void addMultiply(NSMutableArray* opArray)
 
     NSMutableAttributedString *attrString =
     [[NSMutableAttributedString alloc] initWithString:string
-                                           attributes:@{ NSFontAttributeName: [UIFont boldSystemFontOfSize:height *0.7 ] } ];
+                                           attributes:@{ NSFontAttributeName: font} ];
     
     //    [attrString addAttributes:@{NSBaselineOffsetAttributeName:@(5),NSFontAttributeName: [UIFont boldSystemFontOfSize:17]} range:(NSRange){3,2}];
     
     CGRect textFrame;
     
-    textFrame = [attrString boundingRectWithSize:CGSizeMake(200, height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading context:nil];
+    textFrame = [attrString boundingRectWithSize:CGSizeMake(200, font.pointSize) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading context:nil];
     //图片宽度不小于28.
     textFrame = CGRectMake(0, 0, MAX(textFrame.size.width, 28), textFrame.size.height);
     

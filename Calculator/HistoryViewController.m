@@ -18,7 +18,7 @@
 static NSString * const HistoryCellIdentifier = @"HistoryCell";
 static CGFloat  expressionFontSize = 17;
 
-@interface HistoryViewController  () <CellSelectedControllerDelegate,ClearHistoryControllerDelegate>
+@interface HistoryViewController  () <CellSelectedControllerDelegate,ClearHistoryControllerDelegate,UIPopoverPresentationControllerDelegate>
 @end
 
 @implementation HistoryViewController
@@ -93,7 +93,7 @@ static CGFloat  expressionFontSize = 17;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    //void(^completationBlock)(void) = ^(){[tableView deselectRowAtIndexPath:indexPath animated:YES];};
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         CellSelectedControllerViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"cellSelectedController"];
@@ -107,6 +107,7 @@ static CGFloat  expressionFontSize = 17;
         UIPopoverPresentationController *popController = [controller popoverPresentationController];
         //popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
         UIView *view = [self.tableView cellForRowAtIndexPath:indexPath];
+        popController.delegate = self;
         popController.sourceView = view;
         popController.sourceRect = view.bounds;
     }else{
@@ -138,11 +139,12 @@ static CGFloat  expressionFontSize = 17;
         [actionSheet addAction:deleteAction];
         [actionSheet addAction:useExpressionAction];
         [actionSheet addAction:useResultAction];
+        
         [self presentViewController:actionSheet animated:TRUE completion:nil];
-
     }
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 
 -(void)update
 {
@@ -162,12 +164,6 @@ static CGFloat  expressionFontSize = 17;
 //////    CGFloat height = size.height+1;
 ////    CGFloat height = estCell.expression.frame.size.height + estCell.result.frame.size.height + 1;
 ////    NSLog(@"%f",self.tableView.frame.size.width);
-//  //  ComputationCell * cell = [self.tableView dequeueReusableCellWithIdentifier:HistoryCellIdentifier];
-////    [cell configureForComputation:computation height:28];
-//    //CGFloat height = estCell.expression.frame.size.height + estCell.result.frame.size.height+2;
-////    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-////        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-////    });
 ////    
 ////    NSMutableAttributedString* attrString = [ExpressionParser parseString:computation.expression font:[UIFont systemFontOfSize:20] operatorColor:[UIColor greenColor]];
 ////    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
