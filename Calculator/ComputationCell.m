@@ -20,14 +20,6 @@
     // Initialization code
 }
 
--(instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    self= [super initWithCoder:aDecoder];
-    self.result.font = [UIFont systemFontOfSize:20];
-    self.expression.font = [UIFont systemFontOfSize:17];
-    return self;
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
