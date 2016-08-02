@@ -12,16 +12,14 @@
  NSString* const ComputationExpressionKey = @"expression";
  NSString* const ComputationResultKey = @"result";
 @implementation Computation
-@synthesize expression;
-@synthesize result;
-@synthesize date;
+
 
 -(id)initWithDictionary:(NSDictionary *)dict{
     self = [super init];
 
-    expression = [dict objectForKey:ComputationExpressionKey];
-    date = [dict objectForKey:ComputationDateKey];
-    result = [dict objectForKey:ComputationResultKey];
+    _expression = [dict objectForKey:ComputationExpressionKey];
+    _date = [dict objectForKey:ComputationDateKey];
+    _result = [dict objectForKey:ComputationResultKey];
     
     return  self;
 }
@@ -34,7 +32,12 @@
 
 -(NSDictionary*)dictionary
 {
-    NSDictionary * dict =[ NSDictionary dictionaryWithObjects:@[self.date, self.expression, self.result] forKeys:@[ComputationDateKey, ComputationExpressionKey, ComputationResultKey]];
+    NSDictionary * dict =[ NSDictionary dictionaryWithObjects:@[_date, _expression, _result] forKeys:@[ComputationDateKey, ComputationExpressionKey, ComputationResultKey]];
     return dict;
+}
+
+-(NSString*)description
+{
+    return [NSString stringWithFormat:@"<%@: %p, %@>", [self class], self, _expression];
 }
 @end
