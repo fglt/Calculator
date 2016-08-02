@@ -8,11 +8,8 @@
 
 #import "HistoryPlistDelegate.h"
 
-static NSString* const HistoryFileName = @"history.plist";
-static NSString* const DateKey = @"date";
-static NSString* const ExpressionKey = @"expression";
-static NSString* const ResultKey = @"result";
 
+static NSString* const HistoryFileName = @"history.plist";
 @implementation HistoryPlistDelegate
 @synthesize computations;
 @synthesize historyPath;
@@ -39,23 +36,20 @@ static NSString* const ResultKey = @"result";
     NSMutableArray<Computation*> *coms = [NSMutableArray arrayWithCapacity:20];
     for(NSDictionary* dict in computations)
     {
-        Computation* com = [[Computation alloc] init];
-        com.date = [dict objectForKey:DateKey];
-        com.expression = [dict objectForKey:ExpressionKey];
-        com.result = [dict objectForKey:ResultKey];
+        Computation* com = [Computation computationWithDictionary:dict];
         [coms addObject:com];
     }
     return coms;
 }
 
--(void) remove:(NSInteger)index
+-(void) removeAtIndex:(NSInteger)index
 {
     [computations removeObjectAtIndex:index];
     [computations writeToFile:historyPath atomically:true];
 }
 
--(void) add:(Computation*)computation{
-    NSDictionary *dict = [ NSDictionary dictionaryWithObjects:@[computation.date, computation.expression, computation.result] forKeys:@[DateKey, ExpressionKey, ResultKey]];
+-(void) addComputation:(Computation*)computation{
+    NSDictionary *dict = [ computation dictionary];
     [computations addObject:dict];
     [computations writeToFile:historyPath atomically:true];
 }

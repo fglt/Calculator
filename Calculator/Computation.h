@@ -7,20 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+extern  NSString* const ComputationDateKey ;
+extern  NSString* const ComputationExpressionKey;
+extern  NSString* const ComputationResultKey ;
 
 @interface Computation : NSObject
-@property NSString* expression;
-@property NSString* result;
-@property NSDate* date;
+@property (nonatomic,copy) NSString* expression;
+@property (nonatomic,copy) NSString* result;
+@property (nonatomic,strong) NSDate* date;
 
+-(instancetype)initWithDictionary:(NSDictionary*) otherDictionary;
++(instancetype)computationWithDictionary:(NSDictionary*) otherDictionary;
+-(NSDictionary*)dictionary;
 @end
+
 
 @protocol ComputationDelegate <NSObject>
 
 @required
 -(NSMutableArray*) findAllComputation;
--(void) remove:(NSInteger)index;
--(void) add:(Computation*)computation;
+-(void) removeAtIndex:(NSInteger)index;
+-(void) addComputation:(Computation*)computation;
 -(void) removeAll;
 
 @end

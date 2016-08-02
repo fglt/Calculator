@@ -12,5 +12,5 @@
 
 -(id) initWithInput:(NSString *)text;
 -(double) calculate;
-@property NSString * expression;
+@property (nonatomic,copy) NSString * expression;
 @end

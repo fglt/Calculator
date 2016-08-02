@@ -148,7 +148,7 @@
     computation.expression = self.lastExpression;
     computation.result = self.result;
 
-    [self.computationDao add:computation];
+    [self.computationDao addComputation:computation];
     [historyController update];
 }
 

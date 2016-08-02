@@ -13,8 +13,8 @@
 @property(strong, nonatomic) id<ComputationDelegate> delegate;
 +(ComputationDao*) singleInstance;
 
--(void) add:(Computation*)computation;
--(void) remove:(NSInteger) index;
+-(void) addComputation:(Computation*)computation;
+-(void) removeAtIndex:(NSInteger) index;
 -(NSMutableArray *)findAll;
 -(void) removeAll;
 

@@ -38,7 +38,7 @@
 -(void) deleteItemAtIndexPath:(NSIndexPath*)indexPath
 {
     [self.items removeObjectAtIndex:self.items.count - 1 - indexPath.row];
-    [self.computationDao remove:self.items.count  - indexPath.row];
+    [self.computationDao removeAtIndex:self.items.count  - indexPath.row];
 }
 
 -(void) deleteAll{

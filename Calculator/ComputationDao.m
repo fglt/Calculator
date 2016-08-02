@@ -10,7 +10,7 @@
 
 
 @implementation ComputationDao
-@synthesize delegate;
+
 static ComputationDao* singleInstance;
 
 +(ComputationDao*) singleInstance
@@ -23,22 +23,22 @@ static ComputationDao* singleInstance;
     return singleInstance;
 }
 
--(void) add:(Computation*)computation
+-(void) addComputation:(Computation*)computation
 {
-    [self.delegate add:computation];
+    [_delegate addComputation:computation];
 }
 
--(void) remove:(NSInteger) index
+-(void) removeAtIndex:(NSInteger) index
 {
-    [self.delegate remove:index];
+    [_delegate removeAtIndex:index];
 }
 
 -(NSMutableArray *)findAll{
-    return [self.delegate findAllComputation];
+    return [_delegate findAllComputation];
 }
 
 -(void) removeAll{
-    [self.delegate removeAll];
+    [_delegate removeAll];
 }
 
 @end
