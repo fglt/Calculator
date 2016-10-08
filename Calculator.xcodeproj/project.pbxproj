@@ -32,6 +32,8 @@
 		1747D1C01D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1BF1D3CAC1F002C2EE1 /* ComputaionCell+ConfigureForComputation.m */; };
 		1747D1C31D3CB289002C2EE1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C21D3CB289002C2EE1 /* BaseView.m */; };
 		1747D1C71D3CB78C002C2EE1 /* ArrayComputationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */; };
+		175940511DA91EF400F13B98 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 175940531DA91EF400F13B98 /* Localizable.strings */; };
+		175940571DA926B500F13B98 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 175940591DA926B500F13B98 /* InfoPlist.strings */; };
 		178629821D44FB4C00067294 /* ExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 178629811D44FB4C00067294 /* ExpressionParser.m */; };
 		1786298B1D4654FA00067294 /* OperatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1786298A1D4654FA00067294 /* OperatorButton.m */; };
 		178629911D4839D000067294 /* CalculatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178629901D4839D000067294 /* CalculatorButton.m */; };
@@ -92,6 +94,12 @@
 		1747D1C21D3CB289002C2EE1 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		1747D1C51D3CB78C002C2EE1 /* ArrayComputationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayComputationDataSource.h; sourceTree = "<group>"; };
 		1747D1C61D3CB78C002C2EE1 /* ArrayComputationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayComputationDataSource.m; sourceTree = "<group>"; };
+		1759404D1DA91A3000F13B98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		1759404E1DA91A3100F13B98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Other.strings"; sourceTree = "<group>"; };
+		175940521DA91EF400F13B98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		175940541DA91EFC00F13B98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		175940581DA926B500F13B98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		1759405A1DA926B600F13B98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		178629801D44FB4C00067294 /* ExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpressionParser.h; path = Calculator/ExpressionParser.h; sourceTree = "<group>"; };
 		178629811D44FB4C00067294 /* ExpressionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpressionParser.m; path = Calculator/ExpressionParser.m; sourceTree = "<group>"; };
 		178629891D4654FA00067294 /* OperatorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperatorButton.h; sourceTree = "<group>"; };
@@ -194,12 +202,14 @@
 		1747D17D1D3C6B36002C2EE1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				175940591DA926B500F13B98 /* InfoPlist.strings */,
 				1747D18B1D3C6B36002C2EE1 /* LaunchScreen.storyboard */,
 				1747D18E1D3C6B36002C2EE1 /* Info.plist */,
 				1747D1801D3C6B36002C2EE1 /* AppDelegate.h */,
 				1747D1811D3C6B36002C2EE1 /* AppDelegate.m */,
 				1747D1891D3C6B36002C2EE1 /* Assets.xcassets */,
 				1747D17E1D3C6B36002C2EE1 /* main.m */,
+				175940531DA91EF400F13B98 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			path = Calculator;
@@ -257,11 +267,12 @@
 		1747D1721D3C6B36002C2EE1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Coding;
 				TargetAttributes = {
 					1747D1791D3C6B36002C2EE1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = TQWU9HD7N3;
 					};
 				};
 			};
@@ -288,6 +299,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				175940511DA91EF400F13B98 /* Localizable.strings in Resources */,
+				175940571DA926B500F13B98 /* InfoPlist.strings in Resources */,
 				1747D18D1D3C6B36002C2EE1 /* LaunchScreen.storyboard in Resources */,
 				17F805911D49DD3F0085511A /* Other.storyboard in Resources */,
 				1747D18A1D3C6B36002C2EE1 /* Assets.xcassets in Resources */,
@@ -341,6 +354,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1747D1871D3C6B36002C2EE1 /* Base */,
+				1759404D1DA91A3000F13B98 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -353,10 +367,30 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		175940531DA91EF400F13B98 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				175940521DA91EF400F13B98 /* zh-Hans */,
+				175940541DA91EFC00F13B98 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		175940591DA926B500F13B98 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				175940581DA926B500F13B98 /* zh-Hans */,
+				1759405A1DA926B600F13B98 /* en */,
+			);
+			name = InfoPlist.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		17F8058F1D49DD3F0085511A /* Other.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				17F805901D49DD3F0085511A /* Base */,
+				1759404E1DA91A3100F13B98 /* zh-Hans */,
 			);
 			name = Other.storyboard;
 			sourceTree = "<group>";
@@ -368,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -378,8 +413,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -413,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -423,8 +461,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -488,7 +528,7 @@
 				1747D1901D3C6B36002C2EE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		1747D1911D3C6B36002C2EE1 /* Build configuration list for PBXNativeTarget "Calculator" */ = {
 			isa = XCConfigurationList;
@@ -497,7 +537,7 @@
 				1747D1931D3C6B36002C2EE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

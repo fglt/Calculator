@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Calculator
+
+  Created by Coding on 08/10/2016.
+  Copyright © 2016 Coding. All rights reserved.
+*/
+
+"记录"="records";
+"松开清空记录"="Release to clear records";
+"取消"="Cancel";
+"删除"="Delete";
+"清空"="Clear";
+"使用表达式"="Use expression";
+"使用结果"="Use result";

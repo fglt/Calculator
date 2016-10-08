@@ -17,6 +17,7 @@
 
 -(void)awakeFromNib
 {
+    [super awakeFromNib];
     self.layer.cornerRadius = 10;
     self.clipsToBounds = YES;
 }
@@ -70,8 +71,7 @@
 
 -(void)addHistoryButton{
     historyButton = [[UIButton alloc] init];
-    //historyButton.titleLabel.text = @"记录";
-    [historyButton setTitle:@"记录" forState:UIControlStateNormal];
+    [historyButton setTitle:NSLocalizedString(@"记录",comment: "") forState:UIControlStateNormal];
     [historyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     historyButton.backgroundColor = [UIColor blueColor];
     [historyButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];

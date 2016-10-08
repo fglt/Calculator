@@ -14,7 +14,7 @@ IB_DESIGNABLE
 -(void)drawButton{
     self.titleLabel.adjustsFontSizeToFitWidth = TRUE;
     self.titleLabel.minimumScaleFactor = 0.5;
-    self.titleLabel.font =  [UIFont systemFontOfSize:35 ];
+    self.titleLabel.font =  [UIFont systemFontOfSize:30 ];
     self.contentMode = UIViewContentModeScaleToFill;
     [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
     CALayer *layer = self.layer;

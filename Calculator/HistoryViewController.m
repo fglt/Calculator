@@ -33,6 +33,7 @@ static CGFloat  expressionFontSize = 17;
     [self setRefresh];
 }
 
+
 - (void)setupTableView
 {
     self.computationDao = [ComputationDao singleInstance];
@@ -47,7 +48,7 @@ static CGFloat  expressionFontSize = 17;
 
 -(void)setRefresh{
     UIRefreshControl *rc = [ [UIRefreshControl alloc] init];
-    rc.attributedTitle = [[NSAttributedString alloc] initWithString:@"松开清空记录"];
+    rc.attributedTitle = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"松开清空记录", comment:"")];
     [rc addTarget:self action:@selector(clearHistory) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = rc;
 }
@@ -71,22 +72,25 @@ static CGFloat  expressionFontSize = 17;
             popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
             popController.sourceView = self.tableView;
             popController.sourceRect = CGRectMake(self.tableView.bounds.size.width/4 ,self.tableView.bounds.size.height/4,self.tableView.bounds.size.width/2, self.tableView.bounds.size.height/2);
+            [self.refreshControl endRefreshing];
         }else{
             UIAlertController* actionSheet = [[UIAlertController alloc] init];
-            UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
+            UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", comment:"") style:UIAlertActionStyleDefault
                 handler:^(UIAlertAction *action){
-                                                                     
+                                 [self.refreshControl endRefreshing];
                 }];
-            UIAlertAction* deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive
+            UIAlertAction* deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"清空", comment:"") style:UIAlertActionStyleDestructive
                 handler:^(UIAlertAction *action){
+                    [self.refreshControl endRefreshing];
                     [self  clearTable];
                 } ];
             [actionSheet addAction:cancelAction];
             [actionSheet addAction:deleteAction];
-            [self presentViewController:actionSheet animated:TRUE completion:nil];
+            [self presentViewController:actionSheet animated:TRUE completion:^(){
+                
+            }];
         }
         
-        [self.refreshControl endRefreshing];
     }
 }
 
@@ -115,24 +119,24 @@ static CGFloat  expressionFontSize = 17;
     }else{
         UIAlertController* actionSheet = [[UIAlertController alloc] init];
         UIAlertAction* cancelAction =
-        [UIAlertAction actionWithTitle:@"取消"
+        [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", comment:"")
                                  style:UIAlertActionStyleCancel
                                handler:^(UIAlertAction *action){
                                     }];
         UIAlertAction* deleteAction =
-        [UIAlertAction actionWithTitle:@"删除"
+        [UIAlertAction actionWithTitle:NSLocalizedString(@"删除", comment:"")
                                  style:UIAlertActionStyleDestructive
                                handler:^(UIAlertAction *action){
                                     [self deleteCellAtIndex:indexPath];
                                     } ];
          UIAlertAction* useExpressionAction =
-        [UIAlertAction actionWithTitle:@"使用表达式"
+        [UIAlertAction actionWithTitle:NSLocalizedString(@"使用表达式", comment:"")
                                  style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action){
                                    [self useExpressionAtIndex:indexPath];
                                } ];
         UIAlertAction* useResultAction =
-        [UIAlertAction actionWithTitle:@"使用结果"
+        [UIAlertAction actionWithTitle:NSLocalizedString(@"使用结果", comment:"")
                                  style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action){
                                    [self useResultAtIndex:indexPath];
@@ -212,7 +216,6 @@ static CGFloat  expressionFontSize = 17;
 #pragma mark - ClearHistoryDelegate
 -(void)clearTable
 {
-    [self.refreshControl endRefreshing];
     [self.computationDataSource deleteAll];
     [self.tableView reloadData];
 }

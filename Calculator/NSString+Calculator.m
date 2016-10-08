@@ -211,10 +211,11 @@ static NSDictionary * operatorsDict;
         binaryOperator opMultiply  = ^(double a, double b){ return a * b; };
         binaryOperator opDivide  = ^(double a, double b){ return a / b; };
         binaryOperator opPow  = ^(double a, double b){ return pow( a , b); };
+        binaryOperator opScientist  = ^(double a, double b){ return a * pow( 10 , b); };
         binaryOperator opPowRoot  = ^(double a, double b){ return pow( a , 1 / b); };
         
         binaryOperators =@{Divide:opDivide,Multiply:opMultiply,Minius:opMinus,Add:opAdd,
-                           FunPower:opPow,FunPowRoot:opPowRoot,};
+                           FunPower:opPow,FunPowRoot:opPowRoot,FunScientific:opScientist};
     }
     
     return binaryOperators[self];
@@ -261,7 +262,7 @@ static NSDictionary * operatorsDict;
     ///数值3 表示：右操作符：操作符右边必需为操作数 或者 左括号 或者 右操作符 一元运算符；
     if(!operatorsDict){
         operatorsDict =@{Divide:@2,Multiply:@2,Minius:@2,Add:@2,
-                         FunPower:@2,FunPowRoot:@2,
+                         FunScientific:@2,FunPower:@2,FunPowRoot:@2,
                          FunSquare:@1,FunCube:@1,FunReciprocal:@1, FunPercent:@1,FunFactorial:@1,
                          FunSquareRoot:@3,FunLogDecimal:@3,FunLogE:@3,FunLogBinary:@3,
                          FunSin:@3,FunCos:@3,FunTan:@3,FunArcSin:@3,FunArcCos:@3,

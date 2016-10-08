@@ -34,7 +34,7 @@ static NSDictionary * buttonTag;
                                       FunArcSin:@9,FunArcCos:@9,FunArcTan:@9,
                                       FunSinh:@9, FunCosh:@9,FunTanh:@9,
                                       FunLogDecimal:@9,FunLogE:@9,FunLogBinary:@9,
-                                      FunPower:@9,FunPowRoot:@9,
+                                      FunScientific:@9, FunPower:@9,FunPowRoot:@9,
                                       FunFactorial:@11,FunSquare:@11,FunCube:@11,FunReciprocal:@11,
                                       RightBracket:@21
                                       };
@@ -66,7 +66,7 @@ static NSDictionary * buttonTag;
                                        FunArcSin:@8,FunArcCos:@8,FunArcTan:@8,
                                        FunSinh:@8, FunCosh:@8,FunTanh:@8,
                                        FunLogDecimal:@8,FunLogE:@8,FunLogBinary:@8,
-                                       FunPower:@8,FunPowRoot:@8,
+                                       FunScientific:@8,FunPower:@8,FunPowRoot:@8,
                                        FunFactorial:@10,FunSquare:@10,FunCube:@10,FunReciprocal:@10,
                                        RightBracket:@0
                                        };
