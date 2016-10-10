@@ -10,7 +10,7 @@
 
 @protocol ClearHistoryControllerDelegate <NSObject>
 
--(void)clearTable;
+- (void)clearTable;
 
 @end
 

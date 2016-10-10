@@ -20,7 +20,7 @@
 @end
 
 @implementation ArrayComputationDataSource
--(id)initWithCellIdentifier:(NSString *)aCellIdentifier configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
+- (id)initWithCellIdentifier:(NSString *)aCellIdentifier configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
 {
     self = [super init];
     self.computationDao = [ComputationDao singleInstance];
@@ -30,30 +30,30 @@
     return self;
 }
 
--(id) itemAtIndexPath:(NSIndexPath *)indexPath
+- (id)itemAtIndexPath:(NSIndexPath *)indexPath
 {
     return self.items[self.items.count - 1 - indexPath.row];
 }
 
--(void) deleteItemAtIndexPath:(NSIndexPath*)indexPath
+- (void)deleteItemAtIndexPath:(NSIndexPath*)indexPath
 {
     [self.items removeObjectAtIndex:self.items.count - 1 - indexPath.row];
     [self.computationDao removeAtIndex:self.items.count  - indexPath.row];
 }
 
--(void) deleteAll{
+- (void)deleteAll{
     [self.items removeAllObjects];
     [self.computationDao removeAll];
 }
 
--(void) update{
+- (void)update{
     self.items = [self.computationDao findAll];
     
 }
 
 #pragma mark - UITableViewDataSource
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.items.count;
 }
@@ -67,12 +67,12 @@
     return cell;
 }
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
 }
 
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete ) {
         // Delete the row from the data source

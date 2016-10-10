@@ -7,21 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <objc/runtime.h>
 
 
 @protocol CalculatorViewControllerDelegate <NSObject>
 
--(NSMutableString *)currentExpression;
--(NSString *)currentResult;
--(void) sendExpression:(NSString *)expression;
--(void) sendResult:(NSString *)result;
--(void) equal;
+- (NSMutableString *)currentExpression;
+- (NSString *)currentResult;
+- (void)sendExpression:(NSString *)expression;
+- (void)sendResult:(NSString *)result;
+- (void)equal;
 @end
 
 @interface CalculatorViewController : UIViewController
 @property (nonatomic, weak) id<CalculatorViewControllerDelegate>calculatorDelegate;
--(void)addOperand:(NSString*)operand;
+- (void)addOperand:(NSString*)operand;
 @end
 
 

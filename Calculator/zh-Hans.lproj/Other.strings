@@ -161,8 +161,8 @@
 /* Class = "UIButton"; normalTitle = "9"; ObjectID = "kMw-x8-qDJ"; */
 "kMw-x8-qDJ.normalTitle" = "9";
 
-/* Class = "UIButton"; normalTitle = "Deg"; ObjectID = "kNB-Rk-cLx"; */
-"kNB-Rk-cLx.normalTitle" = "Deg";
+/* Class = "UIButton"; normalTitle = "Rad"; ObjectID = "kNB-Rk-cLx"; */
+"kNB-Rk-cLx.normalTitle" = "Rad";
 
 /* Class = "UIButton"; normalTitle = "℮"; ObjectID = "lKb-ua-Nqz"; */
 "lKb-ua-Nqz.normalTitle" = "℮";

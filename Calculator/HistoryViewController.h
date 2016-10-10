@@ -12,7 +12,7 @@
 
 @protocol HistoryViewControllerDelegate <NSObject>
 
--(void)useComputation:(Computation*)computation;
+- (void)useComputation:(Computation*)computation;
 
 @end
 

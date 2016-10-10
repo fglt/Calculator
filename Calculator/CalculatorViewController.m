@@ -19,7 +19,8 @@ static NSString * const ErrorMessage = @"ERROR";
 @end
 
 @interface CalculatorViewController ()
-@property (nonatomic, strong) NSMutableArray* operatorsArray;
+@property (nonatomic, strong) NSMutableArray *operatorsArray;
+//@property (nonatomic, strong) NSString *expression;
 @end
 
 @implementation CalculatorViewController
@@ -34,17 +35,17 @@ static NSString * const ErrorMessage = @"ERROR";
     [self  start];
 }
 
--(void) start{
+- (void)start{
     operatorsArray = [NSMutableArray array];
 }
 
--(void)configureScrollView
+- (void)configureScrollView
 {
 
     self.calView.scrollView.delegate = self;    
 }
 
--(void) scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGPoint offset = scrollView.contentOffset;
     self.calView.pageControl.currentPage = offset.x / scrollView.frame.size.width ;
@@ -191,14 +192,14 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 
--(void) calculate
+- (void)calculate
 {
     NSString * expression = [operatorsArray componentsJoinedByString:@" "];
     [self.calculatorDelegate sendExpression:expression];
 }
 
 
--(void)changeLastObejctWithAppend:(NSString*)input
+- (void)changeLastObejctWithAppend:(NSString*)input
 {
      NSString * op = [operatorsArray lastObject];
     if([op isNumberic]){
@@ -209,7 +210,7 @@ static NSString * const ErrorMessage = @"ERROR";
     }
 }
 
--(void)addOperand:(NSString*)operand
+- (void)addOperand:(NSString*)operand
 {
     [operatorsArray removeAllObjects];
     [operatorsArray addObject:operand];

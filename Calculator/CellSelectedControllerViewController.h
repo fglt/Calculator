@@ -10,9 +10,9 @@
 
 @protocol CellSelectedControllerDelegate <NSObject>
 
--(void)deleteCellAtIndex:(NSIndexPath*)indexPath;
--(void)useResultAtIndex:(NSIndexPath*)indexPath;
--(void)useExpressionAtIndex:(NSIndexPath*)indexPath;
+- (void)deleteCellAtIndex:(NSIndexPath*)indexPath;
+- (void)useResultAtIndex:(NSIndexPath*)indexPath;
+- (void)useExpressionAtIndex:(NSIndexPath*)indexPath;
 
 @end
 

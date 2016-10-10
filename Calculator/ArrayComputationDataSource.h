@@ -18,7 +18,7 @@ typedef void (^TableViewCellConfigureBlock)(id cell, id item);
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
 
--(void) deleteItemAtIndexPath:(NSIndexPath*)indexPath;
--(void) deleteAll;
--(void) update;
+- (void)deleteItemAtIndexPath:(NSIndexPath*)indexPath;
+- (void)deleteAll;
+- (void)update;
 @end

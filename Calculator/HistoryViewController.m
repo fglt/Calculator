@@ -46,7 +46,7 @@ static CGFloat  expressionFontSize = 17;
     self.tableView.delegate = self;
 }
 
--(void)setRefresh{
+- (void)setRefresh{
     UIRefreshControl *rc = [ [UIRefreshControl alloc] init];
     rc.attributedTitle = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"松开清空记录", comment:"")];
     [rc addTarget:self action:@selector(clearHistory) forControlEvents:UIControlEventValueChanged];
@@ -55,7 +55,7 @@ static CGFloat  expressionFontSize = 17;
 
 
 #pragma mark - 下拉清空historyTable
--(void)clearHistory
+- (void)clearHistory
 {
     if(self.refreshControl.refreshing)
     {
@@ -152,13 +152,13 @@ static CGFloat  expressionFontSize = 17;
 }
 
 
--(void)update
+- (void)update
 {
     [self.computationDataSource update];
     [self.tableView reloadData];
 }
 
--(CGFloat)cellWidth{
+- (CGFloat)cellWidth{
     return 0;
 }
 //-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -189,13 +189,13 @@ static CGFloat  expressionFontSize = 17;
 
 #pragma mark - CellSelectedControllerDelegate
 
--(void)deleteCellAtIndex:(NSIndexPath*)indexPath
+- (void)deleteCellAtIndex:(NSIndexPath*)indexPath
 {
     [self.computationDataSource deleteItemAtIndexPath:indexPath];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
--(void)useResultAtIndex:(NSIndexPath*)indexPath
+- (void)useResultAtIndex:(NSIndexPath*)indexPath
 {
     Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
     Computation *newCom = [[Computation alloc]init];
@@ -204,7 +204,7 @@ static CGFloat  expressionFontSize = 17;
     [self.historyDelegate useComputation:newCom];
 }
 
--(void)useExpressionAtIndex:(NSIndexPath*)indexPath
+- (void)useExpressionAtIndex:(NSIndexPath*)indexPath
 {
     Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
     Computation *newCom = [[Computation alloc]init];
@@ -214,7 +214,7 @@ static CGFloat  expressionFontSize = 17;
 }
 
 #pragma mark - ClearHistoryDelegate
--(void)clearTable
+- (void)clearTable
 {
     [self.computationDataSource deleteAll];
     [self.tableView reloadData];
