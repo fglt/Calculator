@@ -58,7 +58,7 @@
     return self.items.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ComputationCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
     

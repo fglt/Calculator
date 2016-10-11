@@ -11,6 +11,10 @@
 #import "NSString+Calculator.h"
 #import "CalculatorConstants.h"
 #import "CalculateView.h"
+#import "CalculatorBrain.h"
+#import "Computation.h"
+#import "ComputationDao.h"
+
 
 static NSString * const ErrorMessage = @"ERROR";
 
@@ -20,15 +24,19 @@ static NSString * const ErrorMessage = @"ERROR";
 
 @interface CalculatorViewController ()
 @property (nonatomic, strong) NSMutableArray *operatorsArray;
-//@property (nonatomic, strong) NSString *expression;
+@property (nonatomic, strong) NSString *expression;
+@property (nonatomic, strong) NSString *result;
+@property (nonatomic, strong) Computation *computation;
+@property CalculatorBrain *brain;
+@property ComputationDao *computationDao;
 @end
 
 @implementation CalculatorViewController
 
-@synthesize calculatorDelegate;
+//@synthesize calculatorDelegate;
 @synthesize operatorsArray;
 
--(void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     [self configureScrollView];
@@ -37,6 +45,8 @@ static NSString * const ErrorMessage = @"ERROR";
 
 - (void)start{
     operatorsArray = [NSMutableArray array];
+    self.brain = [[CalculatorBrain alloc] init];
+    self.computationDao = [ComputationDao singleInstance];
 }
 
 - (void)configureScrollView
@@ -108,9 +118,18 @@ static NSString * const ErrorMessage = @"ERROR";
 - (IBAction)clickEqual:(UIButton *)sender {
 
     if(operatorsArray.count == 0) return;
-    [calculatorDelegate equal];
+
+    if([self.result isEqualToString:@"∞"]){
+        return;
+    }
+    Computation* computation = [[Computation alloc]initWithExpression:self.expression result:self.result date:[NSDate date]];
+    self.expression = self.result;
+
+    [self.computationDao addComputation:computation];
+    self.computation = computation;
+
     [operatorsArray removeAllObjects];
-    [operatorsArray addObject:[calculatorDelegate currentResult]];
+    [operatorsArray addObject:self.result];
 }
 
 
@@ -194,8 +213,21 @@ static NSString * const ErrorMessage = @"ERROR";
 
 - (void)calculate
 {
-    NSString * expression = [operatorsArray componentsJoinedByString:@" "];
-    [self.calculatorDelegate sendExpression:expression];
+    self.expression = [operatorsArray componentsJoinedByString:@" "];
+    _brain.expression = self.expression;
+    double calResult = [_brain calculate];
+    
+    if( calResult == INFINITY||calResult == -INFINITY)
+    {
+        self.result =@"INFINITY";;
+        
+        return ;
+    }
+    if(calResult < 1e-8 && calResult > -1e-8){
+        calResult = 0;
+    }
+    self.result = [NSString stringWithFormat:@"%.8g",calResult];
+    //[self.calculatorDelegate sendExpression:expression];
 }
 
 
@@ -215,4 +247,15 @@ static NSString * const ErrorMessage = @"ERROR";
     [operatorsArray removeAllObjects];
     [operatorsArray addObject:operand];
 }
+
+#pragma mark - HistoryViewContorller
+
+- (void)useComputation:(Computation*)computation
+{
+    self.expression = computation.expression;
+    [operatorsArray removeAllObjects];
+    [operatorsArray addObject:computation.result];
+    self.result = computation.result;
+}
+
 @end

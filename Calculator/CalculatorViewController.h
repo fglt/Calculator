@@ -8,19 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import "HistoryViewController.h"
 
+//
+//@protocol CalculatorViewControllerDelegate <NSObject>
+//
+////- (NSMutableString *)currentExpression;
+////- (NSString *)currentResult;
+////- (void)sendExpression:(NSString *)expression;
+////- (void)sendResult:(NSString *)result;
+////- (void)equal;
+//@end
 
-@protocol CalculatorViewControllerDelegate <NSObject>
-
-- (NSMutableString *)currentExpression;
-- (NSString *)currentResult;
-- (void)sendExpression:(NSString *)expression;
-- (void)sendResult:(NSString *)result;
-- (void)equal;
-@end
-
-@interface CalculatorViewController : UIViewController
-@property (nonatomic, weak) id<CalculatorViewControllerDelegate>calculatorDelegate;
+@interface CalculatorViewController : UIViewController<HistoryViewControllerDelegate>
+//@property (nonatomic, weak) id<CalculatorViewControllerDelegate>calculatorDelegate;
 - (void)addOperand:(NSString*)operand;
 @end
 

@@ -23,6 +23,17 @@
     
     return  self;
 }
+- (instancetype)initWithExpression:(NSString *)expression result:(NSString *)result date:(NSDate *)date
+{
+    self = [super init];
+    
+    _expression = expression;
+    _date = date;
+    _result = result;
+    
+    return  self;
+
+}
 
 +(instancetype)computationWithDictionary:(NSDictionary*) otherDictionary
 {

@@ -207,10 +207,17 @@ static CGFloat  expressionFontSize = 17;
 - (void)useExpressionAtIndex:(NSIndexPath*)indexPath
 {
     Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
-    Computation *newCom = [[Computation alloc]init];
-    newCom.expression = com.expression;
-    newCom.result = com.result;
+//    Computation *newCom = [[Computation alloc]init];
+//    newCom.expression = com.expression;
+//    newCom.result = com.result;
     [self.historyDelegate useComputation:com];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"computation"]){
+        [self update];
+    }
 }
 
 #pragma mark - ClearHistoryDelegate
@@ -219,5 +226,7 @@ static CGFloat  expressionFontSize = 17;
     [self.computationDataSource deleteAll];
     [self.tableView reloadData];
 }
+
+
 
 @end
