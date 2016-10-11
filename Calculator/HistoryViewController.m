@@ -21,6 +21,7 @@ static CGFloat  expressionFontSize = 17;
 @interface HistoryViewController  () <CellSelectedControllerDelegate,ClearHistoryControllerDelegate,UIPopoverPresentationControllerDelegate>
 @property (nonatomic, strong) ArrayComputationDataSource    *computationDataSource;
 @property (nonatomic, strong) ComputationDao                * computationDao;
+@property (nonatomic, strong) Computation *computation;
 @end
 
 @implementation HistoryViewController
@@ -157,10 +158,10 @@ static CGFloat  expressionFontSize = 17;
     [self.computationDataSource update];
     [self.tableView reloadData];
 }
-
-- (CGFloat)cellWidth{
-    return 0;
-}
+//
+//- (CGFloat)cellWidth{
+//    return 0;
+//}
 //-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //
 ////    Computation* computation = [self.computationDataSource itemAtIndexPath:indexPath];
@@ -198,19 +199,17 @@ static CGFloat  expressionFontSize = 17;
 - (void)useResultAtIndex:(NSIndexPath*)indexPath
 {
     Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
-    Computation *newCom = [[Computation alloc]init];
-    newCom.expression = com.result;
-    newCom.result = com.result;
-    [self.historyDelegate useComputation:newCom];
+    self.computation  = [[Computation alloc] initWithExpression:com.result result:com.result];
+    //[self.historyDelegate useComputation:newCom];
 }
 
 - (void)useExpressionAtIndex:(NSIndexPath*)indexPath
 {
-    Computation* com = [self.computationDataSource itemAtIndexPath:indexPath];
+    self.computation = [self.computationDataSource itemAtIndexPath:indexPath];
 //    Computation *newCom = [[Computation alloc]init];
 //    newCom.expression = com.expression;
 //    newCom.result = com.result;
-    [self.historyDelegate useComputation:com];
+    //[self.historyDelegate useComputation:com];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context

@@ -10,13 +10,13 @@
 
 @class Computation;
 
-@protocol HistoryViewControllerDelegate <NSObject>
-
-- (void)useComputation:(Computation*)computation;
-
-@end
+//@protocol HistoryViewControllerDelegate <NSObject>
+//
+//- (void)useComputation:(Computation*)computation;
+//
+//@end
 
 @interface HistoryViewController : UITableViewController
-@property (nonatomic, weak) id<HistoryViewControllerDelegate> historyDelegate;
--(void)update;
+//@property (nonatomic, weak) id<HistoryViewControllerDelegate> historyDelegate;
+//-(void)update;
 @end

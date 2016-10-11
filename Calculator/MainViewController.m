@@ -89,10 +89,11 @@
 
     [self.calView addSubview:calculatorController.view];
     [calculatorController didMoveToParentViewController:self];
-    historyController.historyDelegate = calculatorController;
+    //historyController.historyDelegate = calculatorController;
     [calculatorController addObserver:self forKeyPath:@"expression" options:NSKeyValueObservingOptionNew context:nil];
     [calculatorController addObserver:self forKeyPath:@"result" options:NSKeyValueObservingOptionNew context:nil];
-    [calculatorController addObserver:historyController forKeyPath:@"computation" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [calculatorController addObserver:historyController forKeyPath:@"computation" options:NSKeyValueObservingOptionNew  context:nil];
+    [historyController addObserver:calculatorController forKeyPath:@"computation" options:NSKeyValueObservingOptionNew  context:nil];
 }
 
 //- (void)useComputation:(Computation *)computation

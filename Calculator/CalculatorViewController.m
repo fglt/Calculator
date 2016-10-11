@@ -248,14 +248,28 @@ static NSString * const ErrorMessage = @"ERROR";
     [operatorsArray addObject:operand];
 }
 
-#pragma mark - HistoryViewContorller
 
-- (void)useComputation:(Computation*)computation
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    self.expression = computation.expression;
-    [operatorsArray removeAllObjects];
-    [operatorsArray addObject:computation.result];
-    self.result = computation.result;
+    if([keyPath isEqualToString:@"computation"]){
+        Computation *computation =[change objectForKey:@"new"];
+        self.expression = computation.expression;
+        self.result = computation.result;
+        [operatorsArray removeAllObjects];
+         NSArray* tempArray = [self.expression componentsSeparatedByCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@" "]];
+        
+        [operatorsArray addObjectsFromArray:tempArray] ;
+    }
 }
+
+//#pragma mark - HistoryViewContorller
+//
+//- (void)useComputation:(Computation*)computation
+//{
+//    self.expression = computation.expression;
+//    [operatorsArray removeAllObjects];
+//    [operatorsArray addObject:computation.result];
+//    self.result = computation.result;
+//}
 
 @end

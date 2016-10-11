@@ -18,6 +18,7 @@ extern  NSString* const ComputationResultKey ;
 
 -(instancetype)initWithDictionary:(NSDictionary*) otherDictionary;
 - (instancetype)initWithExpression:(NSString *)expression result:(NSString *)result date:(NSDate *)date;
+- (instancetype)initWithExpression:(NSString *)expression result:(NSString *)result;
 +(instancetype)computationWithDictionary:(NSDictionary*) otherDictionary;
 -(NSDictionary*)dictionary;
 @end
