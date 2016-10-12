@@ -75,7 +75,7 @@ static NSString * const ErrorMessage = @"ERROR";
         [operatorsArray removeAllObjects];
         self.isEqualed = NO;
     }
-    [self changeLastObejctWithAppend:sender.currentTitle];
+    [self addNumericString:sender.currentTitle];
     [self calculate];
 }
 
@@ -91,7 +91,7 @@ static NSString * const ErrorMessage = @"ERROR";
         return ;
     }
     
-    [self changeLastObejctWithAppend:sender.currentTitle];
+    [self addNumericString:sender.currentTitle];
     [self calculate];
 }
 
@@ -248,7 +248,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 
-- (void)changeLastObejctWithAppend:(NSString*)input
+- (void)addNumericString:(NSString*)input
 {
      NSString * op = [operatorsArray lastObject];
     if([op isNumberic]){
@@ -258,12 +258,12 @@ static NSString * const ErrorMessage = @"ERROR";
         [operatorsArray addObject:input];
     }
 }
-
-- (void)addOperand:(NSString*)operand
-{
-    [operatorsArray removeAllObjects];
-    [operatorsArray addObject:operand];
-}
+//
+//- (void)addOperand:(NSString*)operand
+//{
+//    [operatorsArray removeAllObjects];
+//    [operatorsArray addObject:operand];
+//}
 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
