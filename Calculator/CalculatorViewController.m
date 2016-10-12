@@ -253,7 +253,11 @@ static NSString * const ErrorMessage = @"ERROR";
      NSString * op = [operatorsArray lastObject];
     if([op isNumberic]){
         [operatorsArray removeLastObject];
-        [operatorsArray addObject:[op stringByAppendingString:input]];
+        if([op doubleValue] == 0 && ![op containsString:@"."]){
+            [operatorsArray addObject:input];
+        }else{
+            [operatorsArray addObject:[op stringByAppendingString:input]];
+        }
     }else if(![op isLeftUnaryOperator]){
         [operatorsArray addObject:input];
     }
