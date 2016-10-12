@@ -196,6 +196,7 @@
     [calculatorController removeObserver:self forKeyPath:@"expression"];
     [calculatorController removeObserver:self forKeyPath:@"result"];
     [calculatorController removeObserver:historyController forKeyPath:@"computation"];
+    [historyController removeObserver:calculatorController forKeyPath:@"computation"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context

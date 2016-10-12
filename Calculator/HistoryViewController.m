@@ -71,6 +71,7 @@ static CGFloat  expressionFontSize = 17;
             [self presentViewController:controller animated:YES completion:nil];
             UIPopoverPresentationController *popController = [controller popoverPresentationController];
             popController.permittedArrowDirections = UIPopoverArrowDirectionDown;
+            //popController.delegate = self;
             popController.sourceView = self.tableView;
             popController.sourceRect = CGRectMake(self.tableView.bounds.size.width/4 ,self.tableView.bounds.size.height/4,self.tableView.bounds.size.width/2, self.tableView.bounds.size.height/2);
             [self.refreshControl endRefreshing];
