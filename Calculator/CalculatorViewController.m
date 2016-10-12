@@ -29,6 +29,7 @@ static NSString * const ErrorMessage = @"ERROR";
 @property (nonatomic, strong) Computation *computation;
 @property CalculatorBrain *brain;
 @property ComputationDao *computationDao;
+@property BOOL isEqualed;
 @end
 
 @implementation CalculatorViewController
@@ -40,18 +41,19 @@ static NSString * const ErrorMessage = @"ERROR";
 {
     [super viewDidLoad];
     [self configureScrollView];
+    
     [self  start];
-}
-
-- (void)start{
-    operatorsArray = [NSMutableArray array];
     self.brain = [[CalculatorBrain alloc] init];
     self.computationDao = [ComputationDao singleInstance];
 }
 
+- (void)start{
+    operatorsArray = [NSMutableArray array];
+    self.isEqualed = NO;
+}
+
 - (void)configureScrollView
 {
-
     self.calView.scrollView.delegate = self;    
 }
 
@@ -68,20 +70,25 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)clickDigit:(UIButton *)sender {
+    if(self.isEqualed){
+        if([[operatorsArray lastObject] isNumberic])
+        [operatorsArray removeAllObjects];
+        self.isEqualed = NO;
+    }
     [self changeLastObejctWithAppend:sender.currentTitle];
     [self calculate];
 }
 
 - (IBAction)onClickZero:(UIButton *)sender {
-    
+    if(self.isEqualed){
+        if([[operatorsArray lastObject] isNumberic])
+            [operatorsArray removeAllObjects];
+        self.isEqualed = NO;
+    }
     NSString *lastOp = [operatorsArray lastObject];
-    if([lastOp isNumberic])
+    if([lastOp isNumberic] && ([lastOp doubleValue] == 0) && ( ![lastOp containCharacter:'.']))
     {
-        if([lastOp doubleValue] == 0)
-        {
-            if( ![lastOp containCharacter:'.'])
-                return ;
-        }
+        return ;
     }
     
     [self changeLastObejctWithAppend:sender.currentTitle];
@@ -94,6 +101,11 @@ static NSString * const ErrorMessage = @"ERROR";
  *  @param sender <#sender description#>
  */
 - (IBAction)clickDot:(UIButton *)sender {
+    if(self.isEqualed){
+        if([[operatorsArray lastObject] isNumberic])
+            [operatorsArray removeAllObjects];
+        self.isEqualed = NO;
+    }
 
     NSString *op = [operatorsArray lastObject];
 
@@ -118,8 +130,9 @@ static NSString * const ErrorMessage = @"ERROR";
 - (IBAction)clickEqual:(UIButton *)sender {
 
     if(operatorsArray.count == 0) return;
-
+    self.isEqualed = YES;
     if([self.result isEqualToString:@"∞"]){
+        [operatorsArray removeAllObjects];
         return;
     }
     Computation* computation = [[Computation alloc]initWithExpression:self.expression result:self.result date:[NSDate date]];
@@ -130,12 +143,13 @@ static NSString * const ErrorMessage = @"ERROR";
 
     [operatorsArray removeAllObjects];
     [operatorsArray addObject:self.result];
+    
 }
 
 
 //点击四则运算以及余数运算
 - (IBAction)clickOperator:(UIButton *)sender {
-    
+    //if(self.isEqualed) self.isEqualed = NO;
     if(operatorsArray.count == 0 ) return;
     NSString * lastop = [operatorsArray lastObject];
     NSString * inputOP = [CalculatorConstants buttonStringWithTag:sender.tag];
@@ -151,7 +165,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)ClickPIOrEXP:(UIButton *)sender {
-
+    //if(self.isEqualed) self.isEqualed = NO;
     [operatorsArray addObject:[CalculatorConstants buttonStringWithTag:sender.tag]];
     [self calculate];
 }
@@ -161,7 +175,10 @@ static NSString * const ErrorMessage = @"ERROR";
     [self calculate];
 }
 - (IBAction)onClickRand:(UIButton *)sender {
-
+    if(self.isEqualed){
+        [operatorsArray removeAllObjects];
+        self.isEqualed = NO;
+    }
     int randx = arc4random()%1000;
     
     if(operatorsArray.count ==0 || [[operatorsArray lastObject] isOpNeedRightOperand]  ){
@@ -171,7 +188,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)onClickButtons:(UIButton *)sender {
-    
+    //if(self.isEqualed) self.isEqualed = NO;
     NSString * send = [CalculatorConstants buttonStringWithTag:sender.tag];
     BOOL isAdd = false;
     NSString * lastInput = [operatorsArray lastObject];
@@ -219,7 +236,7 @@ static NSString * const ErrorMessage = @"ERROR";
     
     if( calResult == INFINITY||calResult == -INFINITY)
     {
-        self.result =@"INFINITY";;
+        self.result =@"∞";;
         
         return ;
     }
