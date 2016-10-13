@@ -39,10 +39,9 @@
         case UIDeviceOrientationPortrait:
         case UIDeviceOrientationPortraitUpsideDown:
             if(ipad){
-                self.calView.frame = CGRectMake(20, bounds.size.height * 0.2 +10, bounds.size.width - 40, bounds.size.height * 0.4 + 10 );
-                self.historyView.frame = CGRectMake(20, bounds.size.height* 0.6 +30, bounds.size.width -40, bounds.size.height * 0.4 - 50);
+                self.calView.frame = CGRectMake(10, bounds.size.height * 0.2 +10, bounds.size.width - 20, bounds.size.height * 0.4 + 10 );
+                self.historyView.frame = CGRectMake(10, bounds.size.height* 0.6 +30, bounds.size.width -20, bounds.size.height * 0.4 - 50);
             }else{
-                historyButton.frame =
                 self.calView.frame = CGRectMake(10, bounds.size.height * 0.2 +40, bounds.size.width - 20, bounds.size.height * 0.8 - 60 );
                  self.historyView.frame = CGRectMake(-bounds.size.width/2 + 50, bounds.size.height * 0.2 +40, bounds.size.width - 100, bounds.size.height * 0.8 - 100 );
                 historyButton.frame =  CGRectMake(10, bounds.size.height * 0.2, 40, 40);
@@ -53,8 +52,8 @@
             break;
         case UIDeviceOrientationLandscapeLeft:
         case UIDeviceOrientationLandscapeRight:
-            self.calView.frame = CGRectMake(bounds.size.width * 0.5 - 40, bounds.size.height * 0.2 +10, bounds.size.width * 0.5 + 20, bounds.size.height * 0.8 - 30 );
-            self.historyView.frame = CGRectMake(20, bounds.size.height* 0.2 +10, bounds.size.width * 0.5 - 80, bounds.size.height * 0.8 - 30);
+            self.calView.frame = CGRectMake(bounds.size.width * 0.5 - 40, bounds.size.height * 0.2 +10, bounds.size.width * 0.5 + 30, bounds.size.height * 0.8 - 30 );
+            self.historyView.frame = CGRectMake(10, bounds.size.height* 0.2 +10, bounds.size.width * 0.5 - 60, bounds.size.height * 0.8 - 30);
             historyButton.hidden = YES;
             self.historyView.hidden = NO;
         default:
