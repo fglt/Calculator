@@ -128,7 +128,7 @@ static NSString * const ErrorMessage = @"ERROR";
 }
 
 - (IBAction)clickEqual:(UIButton *)sender {
-
+    [self fullScreenshots];
     if(operatorsArray.count == 0) return;
     self.isEqualed = YES;
     if([self.result isEqualToString:@"∞"]){
@@ -296,5 +296,18 @@ static NSString * const ErrorMessage = @"ERROR";
 //    [operatorsArray addObject:computation.result];
 //    self.result = computation.result;
 //}
-
+-(void)fullScreenshots{
+    UIWindow *screenWindow = UIApplication.sharedApplication.keyWindow;
+    
+    UIGraphicsBeginImageContextWithOptions(screenWindow.frame.size, 1,0);
+    
+    [screenWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
+    
+}
 @end

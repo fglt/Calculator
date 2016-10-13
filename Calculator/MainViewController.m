@@ -187,7 +187,6 @@
 
 - (void)displayExpression
 {
-
     self.expressionLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSAttributedString *string = [ExpressionParser parseString:self.curExpression font:self.expressionLabel.font operatorColor:[UIColor blueColor]];
@@ -220,4 +219,5 @@
         self.resultLabel.text = [change objectForKey:@"new"];
     }
 }
+
 @end
