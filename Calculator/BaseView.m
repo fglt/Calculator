@@ -44,7 +44,7 @@
             }else{
                 self.calView.frame = CGRectMake(10, bounds.size.height * 0.2 +40, bounds.size.width - 20, bounds.size.height * 0.8 - 60 );
                  self.historyView.frame = CGRectMake(-bounds.size.width/2 + 50, bounds.size.height * 0.2 +40, bounds.size.width - 100, bounds.size.height * 0.8 - 100 );
-                historyButton.frame =  CGRectMake(10, bounds.size.height * 0.2, 40, 40);
+                historyButton.frame =  CGRectMake(10, bounds.size.height * 0.2, 80, 40);
                 self.historyView.hidden = YES;
             }
             historyButton.hidden = NO;
