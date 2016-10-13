@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[ComputationCell awakeFromNib]:ComputationCell.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.expression.preferredMaxLayoutWidth">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[HistoryViewController tableView:heightForRowAtIndexPath:]:HistoryViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "CGRectGetMaxY(ef)">
+            </PersistentString>
+            <PersistentString
+               value = "CGRectGetMaxY(rf)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

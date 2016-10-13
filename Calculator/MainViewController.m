@@ -189,7 +189,12 @@
 {
 
     self.expressionLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-    self.expressionLabel.attributedText = [ExpressionParser parseString:self.curExpression font:self.expressionLabel.font operatorColor:[UIColor blueColor]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSAttributedString *string = [ExpressionParser parseString:self.curExpression font:self.expressionLabel.font operatorColor:[UIColor blueColor]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.expressionLabel.attributedText = string;
+        });
+    });
 }
 
 - (void)dealloc{

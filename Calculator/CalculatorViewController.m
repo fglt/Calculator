@@ -232,18 +232,22 @@ static NSString * const ErrorMessage = @"ERROR";
 {
     self.expression = [operatorsArray componentsJoinedByString:@" "];
     _brain.expression = self.expression;
-    double calResult = [_brain calculate];
-    
-    if( calResult == INFINITY||calResult == -INFINITY)
-    {
-        self.result =@"∞";;
-        
-        return ;
-    }
-    if(calResult < 1e-8 && calResult > -1e-8){
-        calResult = 0;
-    }
-    self.result = [NSString stringWithFormat:@"%.8g",calResult];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        double calResult = [_brain calculate];
+        if(calResult < 1e-8 && calResult > -1e-8){
+            calResult = 0;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if( calResult == INFINITY||calResult == -INFINITY)
+            {
+                self.result =@"∞";;
+                
+                return ;
+            }
+            
+            self.result = [NSString stringWithFormat:@"%.8g",calResult];
+        });
+    });
     //[self.calculatorDelegate sendExpression:expression];
 }
 

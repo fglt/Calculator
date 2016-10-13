@@ -59,7 +59,7 @@
 		170827FC1D3F53CF005B3CAD /* ExpressionLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressionLabel.m; sourceTree = "<group>"; };
 		170827FF1D3FCD58005B3CAD /* CalculatorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorConstants.h; path = Calculator/CalculatorConstants.h; sourceTree = "<group>"; };
 		170828001D3FCD58005B3CAD /* CalculatorConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorConstants.m; path = Calculator/CalculatorConstants.m; sourceTree = "<group>"; };
-		1747D17A1D3C6B36002C2EE1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1747D17A1D3C6B36002C2EE1 /* fgltCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fgltCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1747D17E1D3C6B36002C2EE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1747D1801D3C6B36002C2EE1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1747D1811D3C6B36002C2EE1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		1747D17B1D3C6B36002C2EE1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1747D17A1D3C6B36002C2EE1 /* Calculator.app */,
+				1747D17A1D3C6B36002C2EE1 /* fgltCalculator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,9 +244,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1747D1791D3C6B36002C2EE1 /* Calculator */ = {
+		1747D1791D3C6B36002C2EE1 /* fgltCalculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1747D1911D3C6B36002C2EE1 /* Build configuration list for PBXNativeTarget "Calculator" */;
+			buildConfigurationList = 1747D1911D3C6B36002C2EE1 /* Build configuration list for PBXNativeTarget "fgltCalculator" */;
 			buildPhases = (
 				1747D1761D3C6B36002C2EE1 /* Sources */,
 				1747D1771D3C6B36002C2EE1 /* Frameworks */,
@@ -256,9 +256,9 @@
 			);
 			dependencies = (
 			);
-			name = Calculator;
+			name = fgltCalculator;
 			productName = Calculator;
-			productReference = 1747D17A1D3C6B36002C2EE1 /* Calculator.app */;
+			productReference = 1747D17A1D3C6B36002C2EE1 /* fgltCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -272,11 +272,11 @@
 				TargetAttributes = {
 					1747D1791D3C6B36002C2EE1 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = TQWU9HD7N3;
+						DevelopmentTeam = 6VZY322H4U;
 					};
 				};
 			};
-			buildConfigurationList = 1747D1751D3C6B36002C2EE1 /* Build configuration list for PBXProject "Calculator" */;
+			buildConfigurationList = 1747D1751D3C6B36002C2EE1 /* Build configuration list for PBXProject "fgltCalculator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -289,7 +289,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1747D1791D3C6B36002C2EE1 /* Calculator */,
+				1747D1791D3C6B36002C2EE1 /* fgltCalculator */,
 			);
 		};
 /* End PBXProject section */
@@ -419,6 +419,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -467,6 +468,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -494,9 +496,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6VZY322H4U;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fglt.Calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fglt.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -509,9 +512,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6VZY322H4U;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fglt.Calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fglt.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,23 +525,23 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1747D1751D3C6B36002C2EE1 /* Build configuration list for PBXProject "Calculator" */ = {
+		1747D1751D3C6B36002C2EE1 /* Build configuration list for PBXProject "fgltCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1747D18F1D3C6B36002C2EE1 /* Debug */,
 				1747D1901D3C6B36002C2EE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
-		1747D1911D3C6B36002C2EE1 /* Build configuration list for PBXNativeTarget "Calculator" */ = {
+		1747D1911D3C6B36002C2EE1 /* Build configuration list for PBXNativeTarget "fgltCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1747D1921D3C6B36002C2EE1 /* Debug */,
 				1747D1931D3C6B36002C2EE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
